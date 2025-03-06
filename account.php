@@ -234,7 +234,7 @@ if (strlen($_SESSION['alogin']) == "") {
 	                <!-- Bar Chart -->
 	                <div class="card">
 	                    <div class="card-body">
-	                        <h4 class="card-title mb-4">Monthly Data Overview</h4>
+	                        <h4 class="card-title mb-4">Monthly Register Students Overview</h4>
 	                        <canvas id="barChart" style="max-height: 300px; height: 100px;"></canvas>
 	                        <!-- <div style="width: 100%; height: 450px; margin: auto;">
 							    <canvas id="barChart"></canvas>
@@ -245,6 +245,22 @@ if (strlen($_SESSION['alogin']) == "") {
 	                </div>
 	            </div>
 	        </div>
+
+	        <div class="row mt-5">
+	            <div class="col-xl-12">
+	                <!-- Bar Chart -->
+	                <div class="card">
+	                    <div class="card-body">
+	                        <h4 class="card-title mb-4">Monthly Fees Overview</h4>
+	                        <canvas id="feesChart" style="max-height: 300px; height: 100px;"></canvas>
+	                    </div>
+	                    
+
+	                </div>
+	            </div>
+	        </div>
+
+	        
         
 	        <div class="row mt-5">
 	            <div class="col-lg-12">
