@@ -228,25 +228,6 @@ if (strlen($_SESSION['alogin']) == "") {
 
 
 
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>Dashboard | Softpro</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/logo.PNG">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <!-- DataTables CSS -->
-    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-
-</head>
-<body>
     <div class="container-fluid">
         <div class="row">
             <div class="col-xl-12">
@@ -359,8 +340,6 @@ if (strlen($_SESSION['alogin']) == "") {
 	});
 	</script>
 
-</body>
-</html>
 
 
 
