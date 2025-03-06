@@ -407,8 +407,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 <?php
-// Database connection
-require 'config.php'; // Ensure this connects to your database
 
 // Get the current month and year
 $currentMonth = date("m");
