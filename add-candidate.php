@@ -357,9 +357,9 @@ if (strlen($_SESSION['alogin']) == "") {
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="maritalstatus">Marital Status</label>
+                                                    <label for="maritalstatus">Marital Status <span style="color:red">*</span></label>
                                                     <select id="maritalstatus" name="maritalstatus"
-                                                        class="form-control">
+                                                        class="form-control" required>
                                                         <option selected>Select</option>
                                                         <option>Married</option>
                                                         <option>Un Married</option>
@@ -368,8 +368,8 @@ if (strlen($_SESSION['alogin']) == "") {
                                             </div>
                                             <div class="form-row">
                                                 <div class="form-group col-md-4">
-                                                    <label for="religion">Religion</label>
-                                                    <select id="religion" name="religion" class="form-control">
+                                                    <label for="religion">Religion <span style="color:red">*</span></label>
+                                                    <select id="religion" name="religion" class="form-control" required>
                                                         <option selected>Select</option>
                                                         <option>Hindu</option>
                                                         <option>Muslim</option>

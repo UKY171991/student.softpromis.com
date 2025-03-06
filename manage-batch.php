@@ -140,7 +140,8 @@ if (strlen($_SESSION['alogin']) == "") {
                                                             <?php echo htmlentities($cnt); ?>
                                                         </td>
                                                         <td>
-                                                            <?php echo htmlentities($result->batch_name); ?>
+                                                            
+                                                            <a href="manage-candidate.php?batch=<?php echo htmlentities($result->id); ?>" class="btn btn-info btn-xs" target="_blank"><?php echo htmlentities($result->batch_name); ?></a>
                                                         </td>
                                                         <td>
                                                             <?php echo htmlentities($result->jobrollname); ?>
@@ -180,6 +181,8 @@ if (strlen($_SESSION['alogin']) == "") {
                                                         } ?>
                                                 </tbody>
                                             </table>
+
+
                                             <!-- /.col-md-12 -->
                                         </div>
                                     </div>
@@ -275,4 +278,19 @@ $(document).ready(function() {
     });
 
 });
+
+function all_data(id) {
+    $("#c_data").html('Loading...');
+    $.ajax({
+        url: 'batch_list.php',
+        type: 'POST',
+        data: { action: 'fetch_data', id: id },
+        success: function(res) {
+            $("#c_data").html(res);
+        },
+        error: function() {
+            $("#c_data").html('<div class="alert alert-danger">Error fetching data.</div>');
+        }
+    });
+}
 </script>

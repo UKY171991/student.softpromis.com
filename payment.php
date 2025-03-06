@@ -492,14 +492,14 @@ if (strlen($_SESSION['alogin']) == "") {
 
             // emi table
             // Prepare and execute the query to fetch all records from the emi_list table
-            $sql = "SELECT id, candidate_id, paid, created FROM emi_list where candidate_id = '$candidate_id'";
+            $sql = "SELECT id, candidate_id, paid, created,added_type FROM emi_list where candidate_id = '$candidate_id'";
             $stmt = $dbh->prepare($sql);
             $stmt->execute();
 
             // Fetch all rows as an associative array
             $emi_result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
+            $pending_list=1;
         ?>
 
 
@@ -555,19 +555,23 @@ if (strlen($_SESSION['alogin']) == "") {
                 <p class="text-center"><b>SOFTPRO PAYMENT RECEIPT</b></p>
                 <hr>
                 <div class="row">
-                    <div class="col-xs-6 col-md-6" width="50%">
+                    <div class="col-xs-5 col-md-5" width="40%">
                         <p>EF. No: <b><?=$c_result[0]['enrollmentid']?></b></p>
                         <p>Student: <b><?=$c_result[0]['candidatename']?></b></p>
                         <p>Training Center: <b><?=$t_result[0]['trainingcentername']?></b></p>
                         <p>Scheme: <b><?=$scheme_result[0]['SchemeName']?></b></p>
                         <p>Sector: <b><?=$sector_result[0]['SectorName']?></b></p>
                     </div>
-                    <div class="col-xs-6 col-md-6" width="50%">
+                    <div class="col-xs-5 col-md-5" width="40%">
                         <p>Job Roll: <b><?=$job_result[0]['jobrollname']?></b></p>
                         <p>Batch: <b><?=$batch_result[0]['batch_name']?></b></p>
                         <p>Payment Date: <b><?=date("M d, Y", strtotime($p_result[0]['created_at']))?></b></p>
                         <p>Paid Amount: <b><?=$p_result[0]['paid']?></b></p>
                         <p>Remarks: <b>cash</b></p>
+                    </div>
+
+                    <div class="col-xs-2 col-md-2" width="20%">
+                        <img src="images/print_logo.jpg" style="width:100%">
                     </div>
                 </div>
                 <hr>
@@ -592,6 +596,13 @@ if (strlen($_SESSION['alogin']) == "") {
                                         </tr> -->
                                         <?php if (!empty($emi_result)): ?>
                                             <?php foreach ($emi_result as $row): ?>
+
+                                                <?php
+                                                if($row['added_type'] !=1 ){
+                                                    $pending_list = $row['added_type'];
+                                                }
+                                                 
+                                                 ?>
                                             
                                             <tr>
                                                 <td><b><?=date("M d, Y", strtotime($row['created']))?></b></td>
@@ -623,8 +634,8 @@ if (strlen($_SESSION['alogin']) == "") {
                 </table>
               </div>
               <div class="modal-footer">
-                <?php print_r($_SESSION['user_type'])?>
-                <?php if($_SESSION['user_type']==1){ ?>
+                <?php // print_r($_SESSION['user_type'])?>
+                <?php if($pending_list == 1){ ?>
                 <button type="button" class="btn btn-success" id="printButton" data-dismiss="modal">Print</button>
                 <?php }else{ echo "Pending Approval"; } ?>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

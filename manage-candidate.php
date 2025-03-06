@@ -202,7 +202,14 @@ if (strlen($_SESSION['alogin']) == "") {
                                                     </tr>
                                                 </tfoot>
                                                 <tbody>
-                                                    <?php $sql = "SELECT * from tblcandidate ORDER BY CandidateId DESC";
+                                                    <?php
+                                                    if(isset($_GET['batch'])){
+                                                        $batch_id = $_GET['batch'];
+                                                        $sql = "SELECT * from tblcandidate WHERE batch='$batch_id' ORDER BY CandidateId DESC";
+                                                    }else{
+                                                        $sql = "SELECT * from tblcandidate ORDER BY CandidateId DESC";
+                                                    }
+                                                     //$sql = "SELECT * from tblcandidate ORDER BY CandidateId DESC";
                                                         $query = $dbh->prepare($sql);
                                                         $query->execute();
                                                         $results = $query->fetchAll(PDO::FETCH_OBJ);
