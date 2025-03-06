@@ -10,6 +10,8 @@
                 <i class="fa-solid fa-tachometer-alt me-2"></i>Dashboard
             </a>
         </li>
+
+        <li class="nav-item"><a href="account.php"><i class="fa fa fa-server"></i> <span>Account</span></a></li>
         
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#candidateSubmenu" role="button" aria-expanded="false" aria-controls="candidateSubmenu">
