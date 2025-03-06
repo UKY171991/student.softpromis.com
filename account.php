@@ -418,11 +418,8 @@ if (strlen($_SESSION['alogin']) == "") {
                                                         <td><?=$status ?></td>
                                                         
                                                         <td>
-                                                            <a class="btn-info btn-xs" href="edit-candidate.php?candidateid=<?php echo htmlentities($result->CandidateId); ?>" title="Edit Records"><i class="fa fa-edit"></i></a>
-                                                            <a class="btn-warning btn-xs" href="#" type="button" onClick='payment_status(<?php echo htmlentities($result->CandidateId); ?>)' data-toggle="modal" data-target="#myModal" title="Payment Status"><i class="fa fa-check" aria-hidden="true"></i></a>
-                                                            <a class="btn-success btn-xs" href="#" type="button" data-toggle="modal" data-target="#myModal_<?php echo htmlentities($result->CandidateId); ?>"><i class="fa fa-picture-o" aria-hidden="true" title="View Images"></i></a>
-                                                            <a href="#" class="delete btn-danger btn-xs" id='del_<?php echo htmlentities($result->CandidateId); ?>' title="Delete record"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                                            
+                                                            <a class="btn-info btn-sm" href="edit-candidate.php?candidateid=<?php echo htmlentities($result->CandidateId); ?>" title="Edit Records"><i class="fa fa-edit"></i></a>
+                                                           
                                                         </td>
 
                                                         
