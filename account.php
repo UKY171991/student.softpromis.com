@@ -129,17 +129,29 @@ if (strlen($_SESSION['alogin']) == "") {
       <main class="col-lg-10 col-md-9 p-4">
         <h2 class="mb-4">Softpro Account Dashboard</h2>
         <div class="row g-3">
+
           <!-- Regd Candidates Card -->
           <div class="col-md-3">
             <div class="dashboard-card bg-teal" onclick="location.href='manage-candidate.php';">
               <div class="d-flex justify-content-between align-items-center">
                 <div>
                   <?php
-                    $sql1 = "SELECT CandidateId FROM tblcandidate";
-                    $query1 = $dbh->prepare($sql1);
-                    $query1->execute();
-                    $totalstudents = $query1->rowCount();
+                    // $sql1 = "SELECT CandidateId FROM tblcandidate";
+                    // $query1 = $dbh->prepare($sql1);
+                    // $query1->execute();
+                    // $totalstudents = $query1->rowCount();
                   ?>
+
+                <?php
+	                $currentYear = date("Y");
+	                $sql1 = "SELECT CandidateId FROM tblcandidate WHERE YEAR(DateCreated) = :currentYear";
+	                $query1 = $dbh->prepare($sql1);
+	                $query1->bindParam(':currentYear', $currentYear, PDO::PARAM_INT);
+	                $query1->execute();
+	                $totalstudents = $query1->rowCount();
+                ?>
+                <h3><?php echo $totalstudents; ?></h3>
+
                   <h3><?php echo $totalstudents; ?></h3>
                   <p>Regd Candidates</p>
                 </div>
@@ -147,6 +159,7 @@ if (strlen($_SESSION['alogin']) == "") {
               </div>
             </div>
           </div>
+
           <!-- Trained Candidates Card -->
           <div class="col-md-3">
             <div class="dashboard-card bg-purple" onclick="location.href='trained-candidate.php';">
