@@ -236,10 +236,24 @@ if (strlen($_SESSION['alogin']) == "") {
     <title>Dashboard | Softpro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/logo.PNG">
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<!-- DataTables CSS -->
+<link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+
+<!-- Chart.js (For Graphs) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.min.css">
+
+
+    <!-- <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" /> -->
 </head>
 <body>
     <div class="container-fluid">
@@ -299,11 +313,25 @@ if (strlen($_SESSION['alogin']) == "") {
     </div>
 
     <!-- Scripts -->
-    <script src="https://insurance.softpromis.com/assets/libs/jquery/jquery.min.js"></script>
+    <!-- <script src="https://insurance.softpromis.com/assets/libs/jquery/jquery.min.js"></script> -->
     <!-- <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script> -->
-    <script src="https://insurance.softpromis.com/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <!-- <script src="https://insurance.softpromis.com/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://insurance.softpromis.com/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="https://adminlte.io/themes/v3/plugins/chart.js/Chart.min.js"></script>
+    <script src="https://adminlte.io/themes/v3/plugins/chart.js/Chart.min.js"></script> -->
+
+    <!-- jQuery (Required for DataTables and Bootstrap) -->
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+	<!-- Bootstrap Bundle (JS + Popper.js) -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+	<!-- DataTables JS -->
+	<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+	<!-- Chart.js (For Graphs) -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.min.js"></script>
+
     
     <script>
     $(document).ready(function() {
