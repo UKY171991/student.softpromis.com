@@ -142,15 +142,14 @@ if (strlen($_SESSION['alogin']) == "") {
                     // $totalstudents = $query1->rowCount();
                   ?>
 
-                <?php
-	                $currentYear = date("Y");
-	                $sql1 = "SELECT CandidateId FROM tblcandidate WHERE YEAR(DateCreated) = :currentYear";
-	                $query1 = $dbh->prepare($sql1);
-	                $query1->bindParam(':currentYear', $currentYear, PDO::PARAM_INT);
-	                $query1->execute();
-	                $totalstudents = $query1->rowCount();
-                ?>
-                <h3><?php echo $totalstudents; ?></h3>
+	                <?php
+		                $currentYear = date("Y");
+		                $sql1 = "SELECT CandidateId FROM tblcandidate WHERE YEAR(DateCreated) = :currentYear";
+		                $query1 = $dbh->prepare($sql1);
+		                $query1->bindParam(':currentYear', $currentYear, PDO::PARAM_INT);
+		                $query1->execute();
+		                $totalstudents = $query1->rowCount();
+	                ?>
 
                   <h3><?php echo $totalstudents; ?></h3>
                   <p>Regd Candidates</p>
