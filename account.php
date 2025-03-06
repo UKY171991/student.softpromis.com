@@ -235,7 +235,7 @@ if (strlen($_SESSION['alogin']) == "") {
 	                <div class="card">
 	                    <div class="card-body">
 	                        <h4 class="card-title mb-4">Monthly Data Overview</h4>
-	                        <canvas id="barChart" style="max-height: 100px; height: 100px;"></canvas>
+	                        <canvas id="barChart" style="max-height: 300px; height: 100px;"></canvas>
 	                        <!-- <div style="width: 100%; height: 450px; margin: auto;">
 							    <canvas id="barChart"></canvas>
 							</div> -->
