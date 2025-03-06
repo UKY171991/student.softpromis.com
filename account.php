@@ -347,51 +347,42 @@ $monthLabels = array_reverse($monthLabels);
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 
-    <!-- Chart.js (For Graphs) - Latest Version -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <canvas id="barChart"></canvas>
 
-    <script>
-	$(document).ready(function() {
-	    $('#datatable').DataTable();
-	});
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
-	// Function to initialize Chart.js
-	function renderChart() {
-	    var ctx = document.getElementById('barChart').getContext('2d');
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var ctx = document.getElementById('barChart').getContext('2d');
 
-	    // ✅ Destroy existing chart instance if it exists
-	    if (window.myBarChart instanceof Chart) {
-	        window.myBarChart.destroy();
-	    }
+    // ✅ Destroy existing chart instance if it exists
+    if (window.myBarChart instanceof Chart) {
+        window.myBarChart.destroy();
+    }
 
-	    // ✅ Create a new chart instance
-	    window.myBarChart = new Chart(ctx, {
-	        type: 'bar',
-	        data: {
-	            labels: <?php echo json_encode($monthLabels); ?>, // PHP Array to JS
-	            datasets: [{
-	                label: 'Registered Candidates',
-	                backgroundColor: '#007bff',
-	                data: <?php echo json_encode($monthlyData); ?> // PHP Array to JS
-	            }]
-	        },
-	        options: {
-	            responsive: true,
-	            maintainAspectRatio: false,
-	            scales: {
-	                y: {
-	                    beginAtZero: true
-	                }
-	            }
-	        }
-	    });
-	}
-
-	// ✅ Ensure Chart.js only initializes once
-	document.addEventListener("DOMContentLoaded", function() {
-	    renderChart();
-	});
-	</script>
+    // ✅ Create a new chart instance
+    window.myBarChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: <?php echo json_encode($monthLabels); ?>, // PHP Array to JS
+            datasets: [{
+                label: 'Registered Candidates',
+                backgroundColor: '#007bff',
+                data: <?php echo json_encode($monthlyData); ?> // PHP Array to JS
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true, // ✅ Prevents infinite height growth
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+});
+</script>
 
 
 
