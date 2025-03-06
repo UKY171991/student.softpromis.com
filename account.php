@@ -397,7 +397,6 @@ $monthLabels = array_reverse($monthLabels);
 
 	<canvas id="barChart" style="min-height: 250px; height: 250px;"></canvas>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     var ctx = document.getElementById('barChart').getContext('2d');
