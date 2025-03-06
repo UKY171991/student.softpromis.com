@@ -232,115 +232,16 @@ if (strlen($_SESSION['alogin']) == "") {
 
 
 
-
-
-
-
-<!doctype html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8" />
-    <title>Dashboard | Softpro</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/logo.PNG">
     <link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
     <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
     <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-</head>
 
 <body data-sidebar="dark">
     <div id="layout-wrapper">
-        <header id="page-topbar">
-            <div class="navbar-header">
-    <div class="d-flex">
-        <!-- LOGO -->
-        <div class="navbar-brand-box">
-            <a href="home.php" class="logo logo-dark"> <span class="logo-sm">
-                        <h3 style="color:#fff;" height="22">SOFTPRO</h3>
-                    </span>
-                <span class="logo-lg">
-                        <h3 style="color:#fff;" height="17">SOFTPRO</h3>
-                    </span>
-            </a>
-            <a href="home.php" class="logo logo-light"> <span class="logo-sm">
-                        <h3 style="color:#fff;margin-top: 20px;font-weight: bold;" height="22">SOFTPRO</h3>
-                    </span>
-                <span class="logo-lg">
-                        <h3 style="color:#fff;margin-top: 20px;font-weight: bold;" height="19">SOFTPRO</h3>
-                    </span>
-            </a>
-        </div>
-        <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect" id="vertical-menu-btn"> <i class="fa fa-fw fa-bars"></i>
-        </button>
-    </div>
-    <div class="d-flex">
-        <div class="dropdown d-none d-lg-inline-block ms-1">
-            <button type="button" class="btn header-item noti-icon waves-effect" data-bs-toggle="fullscreen"> <i class="bx bx-fullscreen"></i>
-            </button>
-        </div>
-        <div class="dropdown d-inline-block">
-            <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="rounded-circle header-profile-user" src="assets/profile/Logo copy.PNG" alt="Header Avatar"> <span class="d-none d-xl-inline-block ms-1" key="t-henry">Admin</span>
-                <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-end">
-                <!-- item--> <a class="dropdown-item" href="profile.php"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">Profile</span></a>
-                <a class="dropdown-item d-block" href="change-password.php"><span class="badge bg-success float-end"></span><i class="bx bx-wrench font-size-16 align-middle me-1"></i> <span key="t-settings">Settings</span></a>
-                <div class="dropdown-divider"></div> <a class="dropdown-item text-danger" href="include/logout.php"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Logout</span></a>
-            </div>
-        </div>
-    </div>
-</div>        </header>
-        <div class="vertical-menu">
-            <div data-simplebar class="h-100">
-                <div id="sidebar-menu">
-                    <ul class="metismenu list-unstyled" id="side-menu">
-    <li>
-        <a href="home.php" class="waves-effect active" > <i class="bx bx-home-circle"></i>
-            <span key="t-dashboards">Dashboards</span>
-        </a>
-    </li>
-    <li>
-        <a href="policies.php" class="waves-effect active" > <i class="bx bx-file"></i>
-            <span key="t-dashboards">Policies</span>
-        </a>
-    </li>
-    <li>
-        <a href="manage-renewal.php" class="has-arrow waves-effect active"> <i class="bx bx-task"></i>
-            <span key="t-layouts">Manage Renewal</span>
-        </a>
-    </li>
-    <li>
-        <a href="feedback-renewal.php" class="waves-effect active" > <i class="bx bx-file"></i>
-            <span key="t-dashboards">Manage Follow UP</span>
-        </a>
-    </li>
-    <li>
-        <a href="javascript: void(0);" class="has-arrow waves-effect active"> <i class="bx bx-cog"></i>
-            <span key="t-layouts">Setting</span>
-        </a>
-        <ul class="sub-menu" aria-expanded="true">
-            <li>
-                <a href="users.php"  key="t-vertical">User</a>
-                <a href="change-password.php"  key="t-vertical">Change Password</a>
-            </li>
-        </ul>
-    </li>
-    
-    
-    
-    <li>
-        <a href="include/logout.php" class="waves-effect active" > <i class="mdi mdi-logout"></i>
-            <span key="t-dashboards">Logout</span>
-        </a>
-    </li>
-    
-</ul>                </div>
-            </div>
-        </div>
+
+     
         <div class="main-content">
             <div class="page-content">
                 <div class="container-fluid">
