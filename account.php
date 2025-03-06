@@ -188,7 +188,7 @@ if (strlen($_SESSION['alogin']) == "") {
 		            <div>
 		                <?php
 		                $currentYear = date("Y");
-		                $sql = "SELECT SUM(amount) AS total_collection FROM payment WHERE YEAR(created_at) = :currentYear";
+		                $sql = "SELECT SUM(total_fee) AS total_collection FROM payment WHERE YEAR(created_at) = :currentYear";
 		                $query = $dbh->prepare($sql);
 		                $query->bindParam(':currentYear', $currentYear, PDO::PARAM_INT);
 		                $query->execute();
