@@ -299,10 +299,10 @@ if (strlen($_SESSION['alogin']) == "") {
     </div>
 
     <!-- Scripts -->
-    <script src="assets/libs/jquery/jquery.min.js"></script>
-    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://insurance.softpromis.com/assets/libs/jquery/jquery.min.js"></script>
+    <!-- <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script> -->
+    <script src="https://insurance.softpromis.com/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://insurance.softpromis.com/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="https://adminlte.io/themes/v3/plugins/chart.js/Chart.min.js"></script>
     
     <script>
