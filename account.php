@@ -132,16 +132,9 @@ if (strlen($_SESSION['alogin']) == "") {
 
           <!-- Regd Candidates Card -->
           <div class="col-md-3">
-            <div class="dashboard-card bg-teal" onclick="location.href='manage-candidate.php';">
+            <div class="dashboard-card bg-teal">
               <div class="d-flex justify-content-between align-items-center">
                 <div>
-                  <?php
-                    // $sql1 = "SELECT CandidateId FROM tblcandidate";
-                    // $query1 = $dbh->prepare($sql1);
-                    // $query1->execute();
-                    // $totalstudents = $query1->rowCount();
-                  ?>
-
 	                <?php
 		                $currentYear = date("Y");
 		                $sql1 = "SELECT CandidateId FROM tblcandidate WHERE YEAR(DateCreated) = :currentYear";
@@ -161,7 +154,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
           <!-- Trained Candidates Card -->
           <div class="col-md-3">
-            <div class="dashboard-card bg-purple" onclick="location.href='trained-candidate.php';">
+            <div class="dashboard-card bg-purple">
               <div class="d-flex justify-content-between align-items-center">
                 <div>
                   <?php
