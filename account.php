@@ -368,16 +368,16 @@ $monthLabels = array_reverse($monthLabels);
 	    window.myBarChart = new Chart(ctx, {
 	        type: 'bar',
 	        data: {
-	            labels: ['January', 'February', 'March', 'April'],
+	            labels: <?php echo json_encode($monthLabels); ?>, // PHP Array to JS
 	            datasets: [{
-	                label: 'Data Count',
+	                label: 'Registered Candidates',
 	                backgroundColor: '#007bff',
-	                data: [50, 30, 20, 40]
+	                data: <?php echo json_encode($monthlyData); ?> // PHP Array to JS
 	            }]
 	        },
 	        options: {
 	            responsive: true,
-	            maintainAspectRatio: true, // ✅ Prevents infinite height growth
+	            maintainAspectRatio: false,
 	            scales: {
 	                y: {
 	                    beginAtZero: true
@@ -396,40 +396,6 @@ $monthLabels = array_reverse($monthLabels);
 
 
 	<canvas id="barChart" style="min-height: 250px; height: 250px;"></canvas>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    var ctx = document.getElementById('barChart').getContext('2d');
-
-    // Destroy previous instance if it exists
-    if (window.myBarChart instanceof Chart) {
-        window.myBarChart.destroy();
-    }
-
-    // Create a new chart
-    window.myBarChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: <?php echo json_encode($monthLabels); ?>, // PHP Array to JS
-            datasets: [{
-                label: 'Registered Candidates',
-                backgroundColor: '#007bff',
-                data: <?php echo json_encode($monthlyData); ?> // PHP Array to JS
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-});
-</script>
-
 
 
 </body>
