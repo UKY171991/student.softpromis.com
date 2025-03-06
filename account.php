@@ -167,7 +167,7 @@ if (strlen($_SESSION['alogin']) == "") {
                   <?php
 	                $currentYear = date("Y");
 	                $currentMonth = date("m");
-	                $sql1 = "SELECT CandidateId FROM tblcandidate WHERE YEAR(registration_date) = :currentYear AND MONTH(registration_date) = :currentMonth";
+	                $sql1 = "SELECT CandidateId FROM tblcandidate WHERE YEAR(DateCreated) = :currentYear AND MONTH(DateCreated) = :currentMonth";
 	                $query1 = $dbh->prepare($sql1);
 	                $query1->bindParam(':currentYear', $currentYear, PDO::PARAM_INT);
 	                $query1->bindParam(':currentMonth', $currentMonth, PDO::PARAM_INT);
