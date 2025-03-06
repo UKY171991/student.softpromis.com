@@ -442,11 +442,6 @@ $monthLabels = array_reverse($monthLabels);
 ?>
 
 
-<div style="width: 400px; height: 250px; margin: auto;">
-    <canvas id="feesChart"></canvas>
-</div>
-
-
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     var ctxf = document.getElementById('feesChart').getContext('2d');
