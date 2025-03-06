@@ -101,6 +101,7 @@
                         </li>
                         <li><a href="add-candidate-to-batch.php"><i class="fa fa fa-server"></i> <span>Add Candidate to
                                     Batch</span></a></li>
+                        <li><a href="account.php"><i class="fa fa fa-server"></i> <span>Account</span></a></li>
                     </ul>
                 </li>
                 <li class="has-children">
