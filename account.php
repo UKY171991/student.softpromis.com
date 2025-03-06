@@ -228,7 +228,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
 
 
-	    <div class="container-fluid">
+	    <div class="container-fluid mt-5">
 	        <div class="row">
 	            <div class="col-xl-12">
 	                <!-- Bar Chart -->
@@ -241,47 +241,47 @@ if (strlen($_SESSION['alogin']) == "") {
 	            </div>
 	        </div>
         
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title mb-4">Data List</h4>
-                        <div class="table-responsive">
-                            <table id="datatable" class="table table-bordered dt-responsive nowrap w-100">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th class="text-center">S.No.</th>
-                                        <th class="text-center">Name</th>
-                                        <th class="text-center">Phone</th>
-                                        <th class="text-center">Category</th>
-                                        <th class="text-center">Date</th>
-                                        <th class="text-center">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="text-center">1</td>
-                                        <td class="text-center">John Doe</td>
-                                        <td class="text-center">1234567890</td>
-                                        <td class="text-center">Category A</td>
-                                        <td class="text-center">01-03-2025</td>
-                                        <td class="text-center"><button class="btn btn-primary btn-sm">View</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">2</td>
-                                        <td class="text-center">Jane Smith</td>
-                                        <td class="text-center">0987654321</td>
-                                        <td class="text-center">Category B</td>
-                                        <td class="text-center">05-03-2025</td>
-                                        <td class="text-center"><button class="btn btn-primary btn-sm">View</button></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+	        <div class="row mt-5">
+	            <div class="col-lg-12">
+	                <div class="card">
+	                    <div class="card-body">
+	                        <h4 class="card-title mb-4">Data List</h4>
+	                        <div class="table-responsive">
+	                            <table id="datatable" class="table table-bordered dt-responsive nowrap w-100">
+	                                <thead class="table-light">
+	                                    <tr>
+	                                        <th class="text-center">S.No.</th>
+	                                        <th class="text-center">Name</th>
+	                                        <th class="text-center">Phone</th>
+	                                        <th class="text-center">Category</th>
+	                                        <th class="text-center">Date</th>
+	                                        <th class="text-center">Actions</th>
+	                                    </tr>
+	                                </thead>
+	                                <tbody>
+	                                    <tr>
+	                                        <td class="text-center">1</td>
+	                                        <td class="text-center">John Doe</td>
+	                                        <td class="text-center">1234567890</td>
+	                                        <td class="text-center">Category A</td>
+	                                        <td class="text-center">01-03-2025</td>
+	                                        <td class="text-center"><button class="btn btn-primary btn-sm">View</button></td>
+	                                    </tr>
+	                                    <tr>
+	                                        <td class="text-center">2</td>
+	                                        <td class="text-center">Jane Smith</td>
+	                                        <td class="text-center">0987654321</td>
+	                                        <td class="text-center">Category B</td>
+	                                        <td class="text-center">05-03-2025</td>
+	                                        <td class="text-center"><button class="btn btn-primary btn-sm">View</button></td>
+	                                    </tr>
+	                                </tbody>
+	                            </table>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
 
     
 
@@ -352,7 +352,7 @@ if (strlen($_SESSION['alogin']) == "") {
 	    renderChart();
 	});
 	</script>
-	
+
 
 </body>
 </html>
