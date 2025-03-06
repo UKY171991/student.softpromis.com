@@ -233,10 +233,14 @@ if (strlen($_SESSION['alogin']) == "") {
 	            <div class="col-xl-12">
 	                <!-- Bar Chart -->
 	                <div class="card">
-	                    <div class="card-body">
+	                    <!-- <div class="card-body">
 	                        <h4 class="card-title mb-4">Monthly Data Overview</h4>
 	                        <canvas id="barChart" style="min-height: 100px; height: 100px;"></canvas>
-	                    </div>
+	                    </div> -->
+	                    <div style="width: 400px; height: 250px; margin: auto;">
+						    <canvas id="barChart"></canvas>
+						</div>
+
 	                </div>
 	            </div>
 	        </div>
