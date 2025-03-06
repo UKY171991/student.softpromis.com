@@ -238,7 +238,6 @@ if (strlen($_SESSION['alogin']) == "") {
     <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 
-<body data-sidebar="dark">
     <div id="layout-wrapper">
 
      
@@ -896,7 +895,9 @@ if (strlen($_SESSION['alogin']) == "") {
             </footer>
         </div>
     </div>
-                <script src="assets/libs/jquery/jquery.min.js"></script>
+
+
+    <script src="assets/libs/jquery/jquery.min.js"></script>
     <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/libs/metismenu/metisMenu.min.js"></script>
     <script src="assets/libs/simplebar/simplebar.min.js"></script>
@@ -1212,9 +1213,7 @@ if (strlen($_SESSION['alogin']) == "") {
             (chart = new ApexCharts(document.querySelector("#policy_type_chart"), options)).render();
         });
     </script>
-</body>
 
-</html>
 
 
 
