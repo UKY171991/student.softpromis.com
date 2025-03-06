@@ -12,7 +12,7 @@
         </li>
 
         <li class="nav-item">
-            <a href="account.php" class="nav-link active">
+            <a href="account.php" class="nav-link">
                 <i class="fa fa fa-server"></i> <span>Account</span>
             </a>
         </li>
