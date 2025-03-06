@@ -390,6 +390,85 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 
+<?php
+// Database connection
+require 'config.php'; // Ensure this connects to your database
+
+// Get the current month and year
+$currentMonth = date("m");
+$currentYear = date("Y");
+
+// Array to store data for the past 12 months
+$monthlyFeesData = [];
+$monthLabels = [];
+
+for ($i = 0; $i < 12; $i++) {
+    // Calculate the month and year for each iteration
+    $month = date("m", strtotime("-$i months"));
+    $year = date("Y", strtotime("-$i months"));
+
+    // Query to sum total fees collected for each month
+    $sql = "SELECT SUM(total_fee) AS total FROM payment WHERE YEAR(created_at) = :year AND MONTH(created_at) = :month";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':year', $year, PDO::PARAM_INT);
+    $query->bindParam(':month', $month, PDO::PARAM_INT);
+    $query->execute();
+
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+    $total = $result['total'] ?? 0; // If no data, default to 0
+
+    // Store values in arrays
+    $monthlyFeesData[] = $total;
+    $monthLabels[] = date("M Y", strtotime("-$i months")); // Month Name + Year (e.g., "Mar 2025")
+}
+
+// Reverse arrays to display oldest to newest month
+$monthlyFeesData = array_reverse($monthlyFeesData);
+$monthLabels = array_reverse($monthLabels);
+?>
+
+
+<div style="width: 400px; height: 250px; margin: auto;">
+    <canvas id="feesChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var ctx = document.getElementById('feesChart').getContext('2d');
+
+    // ✅ Destroy existing chart instance if it exists
+    if (window.myFeesChart instanceof Chart) {
+        window.myFeesChart.destroy();
+    }
+
+    // ✅ Create a new chart instance
+    window.myFeesChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: <?php echo json_encode($monthLabels); ?>, // PHP Array to JS
+            datasets: [{
+                label: 'Monthly Fees Collected (₹)',
+                backgroundColor: '#28a745', // Green color
+                data: <?php echo json_encode($monthlyFeesData); ?> // PHP Array to JS
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false, // ✅ Allows custom height and width
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+});
+</script>
+
+
+
 
 </body>
 </html>
