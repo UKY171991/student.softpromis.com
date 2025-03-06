@@ -268,36 +268,173 @@ if (strlen($_SESSION['alogin']) == "") {
 	                    <div class="card-body">
 	                        <h4 class="card-title mb-4">Data List</h4>
 	                        <div class="table-responsive">
-	                            <table id="datatable" class="table table-bordered dt-responsive nowrap w-100">
-	                                <thead class="table-light">
-	                                    <tr>
-	                                        <th class="text-center">S.No.</th>
-	                                        <th class="text-center">Name</th>
-	                                        <th class="text-center">Phone</th>
-	                                        <th class="text-center">Category</th>
-	                                        <th class="text-center">Date</th>
-	                                        <th class="text-center">Actions</th>
-	                                    </tr>
-	                                </thead>
-	                                <tbody>
-	                                    <tr>
-	                                        <td class="text-center">1</td>
-	                                        <td class="text-center">John Doe</td>
-	                                        <td class="text-center">1234567890</td>
-	                                        <td class="text-center">Category A</td>
-	                                        <td class="text-center">01-03-2025</td>
-	                                        <td class="text-center"><button class="btn btn-primary btn-sm">View</button></td>
-	                                    </tr>
-	                                    <tr>
-	                                        <td class="text-center">2</td>
-	                                        <td class="text-center">Jane Smith</td>
-	                                        <td class="text-center">0987654321</td>
-	                                        <td class="text-center">Category B</td>
-	                                        <td class="text-center">05-03-2025</td>
-	                                        <td class="text-center"><button class="btn btn-primary btn-sm">View</button></td>
-	                                    </tr>
-	                                </tbody>
-	                            </table>
+
+	                            <!-- <table id="datatable" class="table table-bordered dt-responsive nowrap w-100"> -->
+	                            	<table id="example" class="table table-stripped table-bordered table-hover table-full-width table-grey table-responsive-lg table custom-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Enrollment ID</th>
+                                                        <th>Candidate Name</th>
+                                                        <th>Phone Number</th>
+                                                        <th>Job Roll</th>
+                                                        <th>CandidateId</th>
+                                                        <th>Father name</th>
+                                                        <th>Aadhar number</th>
+                                                        <th>Qqualification</th>
+                                                        <th>Date of birth</th>
+                                                        <th>Gender</th>
+                                                        <th>Marital status</th>
+                                                        <th>Religion</th>
+                                                        <th>Category</th>
+                                                        <th>Village</th>
+                                                        <th>Mandal</th>
+                                                        <th>District</th>
+                                                        <th>State</th>
+                                                        <th>Pincode</th>
+                                                        <th>Date Created</th>
+                                                        <th>Date Modified</th>
+                                                        <th>Batch id</th>
+                                                        <th>Training center</th>
+                                                        <th>Scheme</th>
+                                                        <th>Sector</th>
+                                                        <th>Batch</th>
+                                                        <th>Payment Status</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Enrollment ID</th>
+                                                        <th>Candidate Name</th>
+                                                        <th>Phone Number</th>
+                                                        <th>Job Roll</th>
+                                                        <th>CandidateId</th>
+                                                        <th>Father name</th>
+                                                        <th>Aadhar number</th>
+                                                        <th>Qualification</th>
+                                                        <th>Date of birth</th>
+                                                        <th>Gender</th>
+                                                        <th>Marital status</th>
+                                                        <th>Religion</th>
+                                                        <th>Category</th>
+                                                        <th>Village</th>
+                                                        <th>Mandal</th>
+                                                        <th>District</th>
+                                                        <th>State</th>
+                                                        <th>Pincode</th>
+                                                        <th>Date Created</th>
+                                                        <th>Date Modified</th>
+                                                        <th>Batch id</th>
+                                                        <th>Training center</th>
+                                                        <th>Scheme</th>
+                                                        <th>Sector</th>
+                                                        <th>Batch</th>
+                                                        <th>Payment Status</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </tfoot>
+                                                <tbody>
+                                                    <?php
+                                                    if(isset($_GET['batch'])){
+                                                        $batch_id = $_GET['batch'];
+                                                        $sql = "SELECT * from tblcandidate WHERE batch='$batch_id' ORDER BY CandidateId DESC";
+                                                    }else{
+                                                        $sql = "SELECT * from tblcandidate ORDER BY CandidateId DESC";
+                                                    }
+                                                     //$sql = "SELECT * from tblcandidate ORDER BY CandidateId DESC";
+                                                        $query = $dbh->prepare($sql);
+                                                        $query->execute();
+                                                        $results = $query->fetchAll(PDO::FETCH_OBJ);
+                                                        $cnt = 1;
+                                                        if ($query->rowCount() > 0) {
+                                                            foreach ($results as $result) {
+
+                                                            $jobrollname ='';
+
+                                                            // SQL query to fetch the last tbljobroll
+                                                             $JobrollId = $result->job_roll;
+                                                        $sql4 = "SELECT JobrollId, jobrollname FROM tbljobroll WHERE JobrollId = '$JobrollId' ORDER BY JobrollId DESC";
+                                                        $query4 = $dbh->prepare($sql4);
+                                                        $query4->execute();
+                                                        $result4 = $query4->fetchAll(PDO::FETCH_ASSOC);
+                                                        $jobrollname = $result4[0]['jobrollname'];
+
+
+                                                        ?>
+                                                    <tr>
+                                                        <td><?php echo htmlentities($cnt); ?></td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-info btn-xs" onClick='all_data(<?php echo htmlentities($result->CandidateId); ?>)' data-toggle="modal" data-target="#c_myModal"><?php echo htmlentities($result->enrollmentid); ?></td></button>
+
+                                                        <td><?php echo htmlentities($result->candidatename); ?></td>
+                                                        <td><?php echo htmlentities($result->phonenumber); ?></td>
+                                                        
+                                
+                                                        <td><?php echo $jobrollname; ?></td>
+                                                    
+                                                        <td><?php echo htmlentities($result->CandidateId); ?></td>
+                                                        <td><?php echo htmlentities($result->fathername); ?></td>
+                                                        <td><?php echo htmlentities($result->aadharnumber); ?></td>
+                                                        <td><?php echo htmlentities($result->qualification); ?></td>
+                                                        <td><?php echo htmlentities($result->dateofbirth); ?></td>
+                                                        <td><?php echo htmlentities($result->gender); ?></td>
+                                                        <td><?php echo htmlentities($result->maritalstatus); ?></td>
+                                                        <td><?php echo htmlentities($result->religion); ?></td>
+                                                        <td><?php echo htmlentities($result->category); ?></td>
+                                                        <td><?php echo htmlentities($result->village); ?></td>
+                                                        <td><?php echo htmlentities($result->mandal); ?></td>
+                                                        <td><?php echo htmlentities($result->district); ?></td>
+                                                        <td><?php echo htmlentities($result->state); ?></td>
+                                                        <td><?php echo htmlentities($result->pincode); ?></td>
+                                                        <td><?php echo htmlentities($result->DateCreated); ?></td>
+                                                        <td><?php echo htmlentities($result->DateModified); ?></td>
+                                                        <td><?php echo htmlentities($result->tblbatch_id); ?></td>
+                                                        <td><?php echo htmlentities($result->training_center); ?></td>
+                                                        <td><?php echo htmlentities($result->scheme); ?></td>
+                                                        <td><?php echo htmlentities($result->sector); ?></td>
+                                                        <td><?php echo htmlentities($result->batch); ?></td>
+
+                                                        <?php
+                                                         // Payment table
+                                                            $candidate_id = $result->CandidateId;
+                                                            $p_checkSql = "SELECT * FROM payment WHERE candidate_id = :candidate_id";
+
+                                                            $p_checkQuery = $dbh->prepare($p_checkSql);
+                                                            $p_checkQuery->bindParam(':candidate_id', $candidate_id, PDO::PARAM_INT);
+                                                            $p_checkQuery->execute();
+                                                            $p_result = $p_checkQuery->fetchAll(PDO::FETCH_ASSOC);
+                                                            $status='';
+                                                            if(count($p_result) ==0){
+                                                                $status = '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank"><button class="btn btn-danger btn-xs">Unpaid</abutton></a>';
+                                                            }elseif($p_result[0]['paid'] != $p_result[0]['total_fee']){
+                                                                $status = '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank"><button class="btn btn-warning btn-xs">Pending</button></a>';
+                                                            }else{
+                                                                $status = '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank"><button class="btn btn-success btn-xs">Paid</button></a>';
+                                                            }
+                                                        ?>
+
+                                                        <td><?=$status ?></td>
+                                                        
+                                                        <td>
+                                                            <a class="btn-info btn-xs" href="edit-candidate.php?candidateid=<?php echo htmlentities($result->CandidateId); ?>" title="Edit Records"><i class="fa fa-edit"></i></a>
+                                                            <a class="btn-warning btn-xs" href="#" type="button" onClick='payment_status(<?php echo htmlentities($result->CandidateId); ?>)' data-toggle="modal" data-target="#myModal" title="Payment Status"><i class="fa fa-check" aria-hidden="true"></i></a>
+                                                            <a class="btn-success btn-xs" href="#" type="button" data-toggle="modal" data-target="#myModal_<?php echo htmlentities($result->CandidateId); ?>"><i class="fa fa-picture-o" aria-hidden="true" title="View Images"></i></a>
+                                                            <a href="#" class="delete btn-danger btn-xs" id='del_<?php echo htmlentities($result->CandidateId); ?>' title="Delete record"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                                            
+                                                        </td>
+
+                                                        
+                                                    </tr>
+                                                    <?php $cnt = $cnt + 1;
+                                                            }
+                                                        } ?>
+
+
+                                                </tbody>
+                                            </table>
+
 	                        </div>
 	                    </div>
 	                </div>
