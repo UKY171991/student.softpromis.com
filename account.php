@@ -317,30 +317,48 @@ if (strlen($_SESSION['alogin']) == "") {
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
     <script>
-    $(document).ready(function() {
-        $('#datatable').DataTable();
-    });
+	$(document).ready(function() {
+	    $('#datatable').DataTable();
+	});
 
-    // Ensure Chart.js is initialized properly
-    document.addEventListener("DOMContentLoaded", function() {
-        var ctx = document.getElementById('barChart').getContext('2d');
-        var barChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['January', 'February', 'March', 'April'],
-                datasets: [{
-                    label: 'Data Count',
-                    backgroundColor: '#007bff',
-                    data: [50, 30, 20, 40]
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false
-            }
-        });
-    });
-    </script>
+	// Function to initialize Chart.js
+	function renderChart() {
+	    var ctx = document.getElementById('barChart').getContext('2d');
+
+	    // ✅ Destroy existing chart instance if it exists
+	    if (window.myBarChart instanceof Chart) {
+	        window.myBarChart.destroy();
+	    }
+
+	    // ✅ Create a new chart instance
+	    window.myBarChart = new Chart(ctx, {
+	        type: 'bar',
+	        data: {
+	            labels: ['January', 'February', 'March', 'April'],
+	            datasets: [{
+	                label: 'Data Count',
+	                backgroundColor: '#007bff',
+	                data: [50, 30, 20, 40]
+	            }]
+	        },
+	        options: {
+	            responsive: true,
+	            maintainAspectRatio: true, // ✅ Prevents infinite height growth
+	            scales: {
+	                y: {
+	                    beginAtZero: true
+	                }
+	            }
+	        }
+	    });
+	}
+
+	// ✅ Ensure Chart.js only initializes once
+	document.addEventListener("DOMContentLoaded", function() {
+	    renderChart();
+	});
+	</script>
+
 </body>
 </html>
 
