@@ -312,14 +312,7 @@ if (strlen($_SESSION['alogin']) == "") {
         </div>
     </div>
 
-    <!-- Scripts -->
-    <!-- <script src="https://insurance.softpromis.com/assets/libs/jquery/jquery.min.js"></script> -->
-    <!-- <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script> -->
-    <!-- <script src="https://insurance.softpromis.com/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://insurance.softpromis.com/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="https://adminlte.io/themes/v3/plugins/chart.js/Chart.min.js"></script> -->
-
-    <!-- jQuery (Required for DataTables and Bootstrap) -->
+     <!-- jQuery (Required for DataTables and Bootstrap) -->
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
 	<!-- Bootstrap Bundle (JS + Popper.js) -->
@@ -330,7 +323,16 @@ if (strlen($_SESSION['alogin']) == "") {
 	<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 
 	<!-- Chart.js (For Graphs) -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.min.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.min.js"></script> -->
+
+    <!-- Scripts -->
+    <!-- <script src="https://insurance.softpromis.com/assets/libs/jquery/jquery.min.js"></script> -->
+    <!-- <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script> -->
+    <!-- <script src="https://insurance.softpromis.com/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://insurance.softpromis.com/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script> -->
+    <script src="https://adminlte.io/themes/v3/plugins/chart.js/Chart.min.js"></script>
+
+   
 
     
     <script>
