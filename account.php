@@ -228,7 +228,6 @@ if (strlen($_SESSION['alogin']) == "") {
 
 
 
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -238,22 +237,14 @@ if (strlen($_SESSION['alogin']) == "") {
     <link rel="shortcut icon" href="assets/logo.PNG">
 
     <!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Font Awesome Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<!-- DataTables CSS -->
-<link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <!-- DataTables CSS -->
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 
-<!-- Chart.js (For Graphs) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.min.css">
-
-
-    <!-- <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" /> -->
 </head>
 <body>
     <div class="container-fluid">
@@ -312,54 +303,47 @@ if (strlen($_SESSION['alogin']) == "") {
         </div>
     </div>
 
-     <!-- jQuery (Required for DataTables and Bootstrap) -->
-	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- jQuery (Required for DataTables and Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-	<!-- Bootstrap Bundle (JS + Popper.js) -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap Bundle (JS + Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-	<!-- DataTables JS -->
-	<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-	<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 
-	<!-- Chart.js (For Graphs) -->
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.min.js"></script> -->
+    <!-- Chart.js (For Graphs) - Latest Version -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
-    <!-- Scripts -->
-    <!-- <script src="https://insurance.softpromis.com/assets/libs/jquery/jquery.min.js"></script> -->
-    <!-- <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script> -->
-    <!-- <script src="https://insurance.softpromis.com/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://insurance.softpromis.com/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script> -->
-    <script src="https://insurance.softpromis.com/assets/libs/apexcharts/apexcharts.min.js"></script>
-    <script src="https://adminlte.io/themes/v3/plugins/chart.js/Chart.min.js"></script>
-
-   
-
-    
     <script>
     $(document).ready(function() {
         $('#datatable').DataTable();
     });
-    
-    var ctx = document.getElementById('barChart').getContext('2d');
-    var barChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['January', 'February', 'March', 'April'],
-            datasets: [{
-                label: 'Data Count',
-                backgroundColor: '#007bff',
-                data: [50, 30, 20, 40]
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false
-        }
+
+    // Ensure Chart.js is initialized properly
+    document.addEventListener("DOMContentLoaded", function() {
+        var ctx = document.getElementById('barChart').getContext('2d');
+        var barChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['January', 'February', 'March', 'April'],
+                datasets: [{
+                    label: 'Data Count',
+                    backgroundColor: '#007bff',
+                    data: [50, 30, 20, 40]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
     });
     </script>
 </body>
 </html>
+
 
 
 
