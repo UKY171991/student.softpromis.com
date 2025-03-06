@@ -152,7 +152,7 @@ if (strlen($_SESSION['alogin']) == "") {
 	                ?>
 
                   <h3><?php echo $totalstudents; ?></h3>
-                  <p>Regd Candidates</p>
+                  <p>Regd Candidates Current Year</p>
                 </div>
                 <div class="icon"><i class="fa-solid fa-users"></i></div>
               </div>
@@ -165,15 +165,17 @@ if (strlen($_SESSION['alogin']) == "") {
               <div class="d-flex justify-content-between align-items-center">
                 <div>
                   <?php
-                    $sql = "SELECT CandidateId FROM tblcandidate 
-                            JOIN tblbatch ON tblcandidate.tblbatch_id = tblbatch.id 
-                            AND tblbatch.end_date < CURRENT_DATE()";
-                    $query = $dbh->prepare($sql);
-                    $query->execute();
-                    $totalTrained = $query->rowCount();
-                  ?>
-                  <h3><?php echo htmlentities($totalTrained); ?></h3>
-                  <p>Trained Candidates</p>
+	                $currentYear = date("Y");
+	                $currentMonth = date("m");
+	                $sql1 = "SELECT CandidateId FROM tblcandidate WHERE YEAR(registration_date) = :currentYear AND MONTH(registration_date) = :currentMonth";
+	                $query1 = $dbh->prepare($sql1);
+	                $query1->bindParam(':currentYear', $currentYear, PDO::PARAM_INT);
+	                $query1->bindParam(':currentMonth', $currentMonth, PDO::PARAM_INT);
+	                $query1->execute();
+	                $totalstudentsMonth = $query1->rowCount();
+	                ?>
+	                <h3><?php echo $totalstudentsMonth; ?></h3>
+                  <p>Regd Candidates Current Month</p>
                 </div>
                 <div class="icon"><i class="fa-solid fa-ticket"></i></div>
               </div>
