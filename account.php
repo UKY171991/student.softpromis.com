@@ -395,9 +395,6 @@ $monthLabels = array_reverse($monthLabels);
 
 
 
-	<canvas id="barChart" style="min-height: 250px; height: 250px;"></canvas>
-
-
 </body>
 </html>
 <?php } ?>
