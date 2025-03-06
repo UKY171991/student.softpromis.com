@@ -177,7 +177,7 @@ if (strlen($_SESSION['alogin']) == "") {
 	                <h3><?php echo $totalstudentsMonth; ?></h3>
                   <p>Regd Candidates Current Month</p>
                 </div>
-                <div class="icon"><i class="fa-solid fa-ticket"></i></div>
+                <div class="icon"><i class="fa-solid fa-users"></i></div>
               </div>
             </div>
           </div>
@@ -197,7 +197,7 @@ if (strlen($_SESSION['alogin']) == "") {
                   <h3><?php echo htmlentities($ongoingCandidates); ?></h3>
                   <p>Ongoing Candidates</p>
                 </div>
-                <div class="icon"><i class="fa-solid fa-spinner"></i></div>
+                <div class="icon"><i class="fa-solid fa-ticket"></i></div>
               </div>
             </div>
           </div>
