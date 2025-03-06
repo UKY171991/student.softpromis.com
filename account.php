@@ -269,8 +269,7 @@ if (strlen($_SESSION['alogin']) == "") {
 	                        <h4 class="card-title mb-4">Data List</h4>
 	                        <div class="table-responsive">
 
-	                            <!-- <table id="datatable" class="table table-bordered dt-responsive nowrap w-100"> -->
-	                            	<table id="example" class="table table-stripped table-bordered table-hover table-full-width table-grey table-responsive-lg table custom-bordered">
+	                            	<table id="datatable" class="table table-bordered dt-responsive nowrap w-100">
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
