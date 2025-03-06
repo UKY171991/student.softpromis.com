@@ -432,11 +432,10 @@ $monthLabels = array_reverse($monthLabels);
     <canvas id="feesChart"></canvas>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    var ctx = document.getElementById('feesChart').getContext('2d');
+    var ctxf = document.getElementById('feesChart').getContext('2d');
 
     // ✅ Destroy existing chart instance if it exists
     if (window.myFeesChart instanceof Chart) {
@@ -444,7 +443,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // ✅ Create a new chart instance
-    window.myFeesChart = new Chart(ctx, {
+    window.myFeesChart = new Chart(ctxf, {
         type: 'bar',
         data: {
             labels: <?php echo json_encode($monthLabels); ?>, // PHP Array to JS
