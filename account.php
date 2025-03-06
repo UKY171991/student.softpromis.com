@@ -297,6 +297,46 @@ if (strlen($_SESSION['alogin']) == "") {
   </div><!-- /.container-fluid -->
 
 
+
+  <?php
+// Database connection
+//require 'config.php'; // Ensure this connects to your database
+
+// Get the current month and year
+$currentMonth = date("m");
+$currentYear = date("Y");
+
+// Array to store data for the past 12 months
+$monthlyData = [];
+$monthLabels = [];
+
+for ($i = 0; $i < 12; $i++) {
+    // Calculate the month and year for each iteration
+    $month = date("m", strtotime("-$i months"));
+    $year = date("Y", strtotime("-$i months"));
+    
+    // Query to count registered candidates for each month
+    $sql = "SELECT COUNT(CandidateId) AS total FROM tblcandidate WHERE YEAR(DateCreated) = :year AND MONTH(DateCreated) = :month";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':year', $year, PDO::PARAM_INT);
+    $query->bindParam(':month', $month, PDO::PARAM_INT);
+    $query->execute();
+    
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+    $total = $result['total'] ?? 0; // If no data, default to 0
+    
+    // Store values in arrays
+    $monthlyData[] = $total;
+    $monthLabels[] = date("M Y", strtotime("-$i months")); // Month Name + Year (e.g., "Mar 2025")
+}
+
+// Reverse arrays to display oldest to newest month
+$monthlyData = array_reverse($monthlyData);
+$monthLabels = array_reverse($monthLabels);
+?>
+
+
+
   <!-- jQuery (Required for DataTables and Bootstrap) -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
@@ -352,6 +392,45 @@ if (strlen($_SESSION['alogin']) == "") {
 	    renderChart();
 	});
 	</script>
+
+
+
+	<canvas id="barChart" style="min-height: 250px; height: 250px;"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var ctx = document.getElementById('barChart').getContext('2d');
+
+    // Destroy previous instance if it exists
+    if (window.myBarChart instanceof Chart) {
+        window.myBarChart.destroy();
+    }
+
+    // Create a new chart
+    window.myBarChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: <?php echo json_encode($monthLabels); ?>, // PHP Array to JS
+            datasets: [{
+                label: 'Registered Candidates',
+                backgroundColor: '#007bff',
+                data: <?php echo json_encode($monthlyData); ?> // PHP Array to JS
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+});
+</script>
+
 
 
 </body>
