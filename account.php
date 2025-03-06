@@ -228,18 +228,18 @@ if (strlen($_SESSION['alogin']) == "") {
 
 
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xl-12">
-                <!-- Bar Chart -->
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title mb-4">Monthly Data Overview</h4>
-                        <canvas id="barChart" style="min-height: 250px; height: 250px;"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
+	    <div class="container-fluid">
+	        <div class="row">
+	            <div class="col-xl-12">
+	                <!-- Bar Chart -->
+	                <div class="card">
+	                    <div class="card-body">
+	                        <h4 class="card-title mb-4">Monthly Data Overview</h4>
+	                        <canvas id="barChart" style="min-height: 250px; height: 250px;"></canvas>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
         
         <div class="row">
             <div class="col-lg-12">
@@ -282,9 +282,22 @@ if (strlen($_SESSION['alogin']) == "") {
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- jQuery (Required for DataTables and Bootstrap) -->
+    
+
+
+
+
+
+
+
+        </div><!-- /.row -->
+      </main>
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+
+
+  <!-- jQuery (Required for DataTables and Bootstrap) -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <!-- Bootstrap Bundle (JS + Popper.js) -->
@@ -339,17 +352,7 @@ if (strlen($_SESSION['alogin']) == "") {
 	    renderChart();
 	});
 	</script>
-
-
-
-
-
-
-
-        </div><!-- /.row -->
-      </main>
-    </div><!-- /.row -->
-  </div><!-- /.container-fluid -->
+	
 
 </body>
 </html>
