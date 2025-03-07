@@ -278,27 +278,8 @@ if (strlen($_SESSION['alogin']) == "") {
                                                         <th>Candidate Name</th>
                                                         <th>Phone Number</th>
                                                         <th>Job Roll</th>
-                                                        <th>CandidateId</th>
-                                                        <th>Father name</th>
-                                                        <th>Aadhar number</th>
-                                                        <th>Qqualification</th>
-                                                        <th>Date of birth</th>
-                                                        <th>Gender</th>
-                                                        <th>Marital status</th>
-                                                        <th>Religion</th>
-                                                        <th>Category</th>
-                                                        <th>Village</th>
-                                                        <th>Mandal</th>
-                                                        <th>District</th>
-                                                        <th>State</th>
-                                                        <th>Pincode</th>
-                                                        <th>Date Created</th>
-                                                        <th>Date Modified</th>
-                                                        <th>Batch id</th>
-                                                        <th>Training center</th>
-                                                        <th>Scheme</th>
-                                                        <th>Sector</th>
-                                                        <th>Batch</th>
+                                                        
+                                                        
                                                         <th>Payment Status</th>
                                                         <th>Action</th>
                                                     </tr>
@@ -309,28 +290,8 @@ if (strlen($_SESSION['alogin']) == "") {
                                                         <th>Enrollment ID</th>
                                                         <th>Candidate Name</th>
                                                         <th>Phone Number</th>
-                                                        <th>Job Roll</th>
-                                                        <th>CandidateId</th>
-                                                        <th>Father name</th>
-                                                        <th>Aadhar number</th>
-                                                        <th>Qualification</th>
-                                                        <th>Date of birth</th>
-                                                        <th>Gender</th>
-                                                        <th>Marital status</th>
-                                                        <th>Religion</th>
-                                                        <th>Category</th>
-                                                        <th>Village</th>
-                                                        <th>Mandal</th>
-                                                        <th>District</th>
-                                                        <th>State</th>
-                                                        <th>Pincode</th>
-                                                        <th>Date Created</th>
-                                                        <th>Date Modified</th>
-                                                        <th>Batch id</th>
-                                                        <th>Training center</th>
-                                                        <th>Scheme</th>
-                                                        <th>Sector</th>
-                                                        <th>Batch</th>
+                                                        
+                                                        
                                                         <th>Payment Status</th>
                                                         <th>Action</th>
                                                     </tr>
@@ -374,27 +335,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                 
                                                         <td><?php echo $jobrollname; ?></td>
                                                     
-                                                        <td><?php echo htmlentities($result->CandidateId); ?></td>
-                                                        <td><?php echo htmlentities($result->fathername); ?></td>
-                                                        <td><?php echo htmlentities($result->aadharnumber); ?></td>
-                                                        <td><?php echo htmlentities($result->qualification); ?></td>
-                                                        <td><?php echo htmlentities($result->dateofbirth); ?></td>
-                                                        <td><?php echo htmlentities($result->gender); ?></td>
-                                                        <td><?php echo htmlentities($result->maritalstatus); ?></td>
-                                                        <td><?php echo htmlentities($result->religion); ?></td>
-                                                        <td><?php echo htmlentities($result->category); ?></td>
-                                                        <td><?php echo htmlentities($result->village); ?></td>
-                                                        <td><?php echo htmlentities($result->mandal); ?></td>
-                                                        <td><?php echo htmlentities($result->district); ?></td>
-                                                        <td><?php echo htmlentities($result->state); ?></td>
-                                                        <td><?php echo htmlentities($result->pincode); ?></td>
-                                                        <td><?php echo htmlentities($result->DateCreated); ?></td>
-                                                        <td><?php echo htmlentities($result->DateModified); ?></td>
-                                                        <td><?php echo htmlentities($result->tblbatch_id); ?></td>
-                                                        <td><?php echo htmlentities($result->training_center); ?></td>
-                                                        <td><?php echo htmlentities($result->scheme); ?></td>
-                                                        <td><?php echo htmlentities($result->sector); ?></td>
-                                                        <td><?php echo htmlentities($result->batch); ?></td>
+                                                        
 
                                                         <?php
                                                          // Payment table
