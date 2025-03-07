@@ -309,7 +309,18 @@ if (strlen($_SESSION['alogin']) == "") {
                                                         if ($query->rowCount() > 0) {
                                                             foreach ($results as $result) {
 
+
                                                             $jobrollname ='';
+
+                                                             // Payment table
+                                                            $candidate_id = $result->CandidateId;
+                                                            $p_checkSql = "SELECT * FROM payment WHERE candidate_id = :candidate_id";
+
+                                                            $p_checkQuery = $dbh->prepare($p_checkSql);
+                                                            $p_checkQuery->bindParam(':candidate_id', $candidate_id, PDO::PARAM_INT);
+                                                            $p_checkQuery->execute();
+                                                            $p_result = $p_checkQuery->fetchAll(PDO::FETCH_ASSOC);
+
 
                                                             // SQL query to fetch the last tbljobroll
                                                              $JobrollId = $result->job_roll;
@@ -321,6 +332,8 @@ if (strlen($_SESSION['alogin']) == "") {
 
 
                                                         ?>
+
+                                                        <?php if(count($p_result) ==0 OR $p_result[0]['paid'] != $p_result[0]['total_fee']){ ?>
                                                     <tr>
                                                         <td><?php echo htmlentities($cnt); ?></td>
                                                         <td>
@@ -335,14 +348,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                         
 
                                                         <?php
-                                                         // Payment table
-                                                            $candidate_id = $result->CandidateId;
-                                                            $p_checkSql = "SELECT * FROM payment WHERE candidate_id = :candidate_id";
-
-                                                            $p_checkQuery = $dbh->prepare($p_checkSql);
-                                                            $p_checkQuery->bindParam(':candidate_id', $candidate_id, PDO::PARAM_INT);
-                                                            $p_checkQuery->execute();
-                                                            $p_result = $p_checkQuery->fetchAll(PDO::FETCH_ASSOC);
+                                                        
                                                             $status='';
                                                             if(count($p_result) ==0){
                                                                 $status = '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank"><button class="btn btn-danger btn-xs">Unpaid</abutton></a>';
@@ -362,6 +368,8 @@ if (strlen($_SESSION['alogin']) == "") {
 
                                                         
                                                     </tr>
+                                                  <?php } ?>
+
                                                     <?php $cnt = $cnt + 1;
                                                             }
                                                         } ?>
