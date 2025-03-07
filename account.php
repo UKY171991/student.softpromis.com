@@ -278,8 +278,6 @@ if (strlen($_SESSION['alogin']) == "") {
                                                         <th>Candidate Name</th>
                                                         <th>Phone Number</th>
                                                         <th>Job Roll</th>
-                                                        
-                                                        
                                                         <th>Payment Status</th>
                                                         <th>Action</th>
                                                     </tr>
@@ -290,8 +288,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                         <th>Enrollment ID</th>
                                                         <th>Candidate Name</th>
                                                         <th>Phone Number</th>
-                                                        
-                                                        
+                                                        <th>Job Roll</th>
                                                         <th>Payment Status</th>
                                                         <th>Action</th>
                                                     </tr>
