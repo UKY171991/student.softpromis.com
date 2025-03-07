@@ -351,7 +351,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                         
                                                             $status='';
                                                             if(count($p_result) ==0){
-                                                                $status = '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank"><button class="btn btn-danger btn-xs">Unpaid</abutton></a>';
+                                                                $status = '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank"><button class="btn btn-danger btn-xs">Unpaid</button></a>';
                                                             }elseif($p_result[0]['paid'] != $p_result[0]['total_fee']){
                                                                 $status = '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank"><button class="btn btn-warning btn-xs">Pending</button></a>';
                                                             }else{
