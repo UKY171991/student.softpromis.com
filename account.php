@@ -371,12 +371,12 @@ if (strlen($_SESSION['alogin']) == "") {
                                                   <?php } ?>
 
                                                     <?php $cnt = $cnt + 1;
-                                                            }
-                                                        }else{ ?>
+                                                            }else{ ?>
                                                           <tr>
                                                             <td colspan="7">Not record found</td>
                                                           </tr>
-                                                        <?php } ?>
+                                                        <?php }
+                                                        } ?>
 
 
                                                 </tbody>
