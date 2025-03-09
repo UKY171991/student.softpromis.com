@@ -709,7 +709,7 @@ if (strlen($_SESSION['alogin']) == "") {
                         <div class="receipt-header">
                             <table class="table">
                                 <tr>
-                                    <td><h4 class="fw-bold">SOFTPRO <br> PAYMENT RECEIPT</h4></td>
+                                    <td><h4 class="fw-bold"><span>SOFTPRO</span> <br> PAYMENT RECEIPT</h4></td>
                                     <td><img src="images/print_logo.jpg" alt="SoftPro Logo"></td>
                                 </tr>
                             </table>
