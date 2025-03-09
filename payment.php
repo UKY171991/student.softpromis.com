@@ -638,8 +638,8 @@ if (strlen($_SESSION['alogin']) == "") {
                                 width: 100%;
                                 max-width: 100%;
 /*                                border: none;*/
-                                box-shadow: none;
-                                margin: 0 auto;
+/*                                box-shadow: none;*/
+/*                                margin: 0 auto;*/
                                 padding: 10mm; /* Ensures consistent padding */
                             }
                             .table {
