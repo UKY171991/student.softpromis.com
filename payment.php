@@ -621,6 +621,9 @@ if (strlen($_SESSION['alogin']) == "") {
                             background: #212529;
                             color: white;
                         }
+                        .table-dark th{
+                            color: white;
+                        }
                     </style>
                 </head>
                 <body>
