@@ -624,6 +624,9 @@ if (strlen($_SESSION['alogin']) == "") {
                         .table-dark th{
                             color: white;
                         }
+                        .table-bordered, .table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+                            border: 1px solid #212529;
+                        }
                     </style>
                 </head>
                 <body>
