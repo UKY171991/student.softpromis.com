@@ -156,7 +156,7 @@ if (isset($_POST['submit'])) {
 
       <!-- Main Content -->
       <main class="col-lg-10 col-md-9 p-4">
-        <h2 class="mb-4">Softpro Dashboard</h2>
+        <h2 class="mb-4">Bulk upload</h2>
         <div class="row g-3">
           
         <div class="container-fluid">
@@ -206,83 +206,6 @@ if (isset($_POST['submit'])) {
   </div><!-- /.container-fluid -->
 
 
-
-
-    <div class="main-wrapper">
-        <!-- ========== TOP NAVBAR ========== -->
-        <?php //include('includes/topbar.php'); ?>
-        <!-- ========== WRAPPER FOR BOTH SIDEBARS & MAIN CONTENT ========== -->
-        <div class="content-wrapper">
-            <div class="content-container">
-                <!-- ========== LEFT SIDEBAR ========== -->
-                <?php include('includes/leftbar.php'); ?>
-                <!-- /.left-sidebar -->
-                <div class="main-page">
-                    <div class="container-fluid">
-                        <div class="row page-title-div">
-                            <div class="col-md-6">
-                                <h2 class="title">Bulk upload</h2>
-                            </div>
-                            <!-- /.col-md-6 text-right -->
-                        </div>
-                        <!-- /.row -->
-                        <div class="row breadcrumb-div">
-                            <div class="col-md-6">
-                                <ul class="breadcrumb">
-                                    <li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
-                                    <li class="active">Bulk upload</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- /.row -->
-                    </div>
-
-
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="panel">
-                                    <div class="panel-body">
-                                        <?php if ($msg) { ?>
-                                        <div class="alert alert-success left-icon-alert" role="alert">
-                                            <strong>Well done!</strong>
-                                            <?php echo htmlentities($msg); ?>
-                                        </div>
-                                        <?php } else if ($error) { ?>
-                                        <div class="alert alert-danger left-icon-alert" role="alert">
-                                            <strong>Oh snap!</strong>
-                                            <?php echo htmlentities($error); ?>
-                                        </div>
-                                        <?php } ?>
-                                        <form class="form-horizontal" action="candidate-bulk-upload.php" method="post"
-                                            enctype="multipart/form-data">
-                                            <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">upload file</label>
-                                                <div class="col-sm-4">
-                                                    <input type="file" name="file" class="form-control-file" id="file"
-                                                        required="required">
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="col-sm-offset-1 col-sm-10">
-                                                        <button type="submit" name="submit" id="submit"
-                                                            class="btn btn-primary">Bulk
-                                                            upload</button>
-                                                    </div>
-                                                </div>
-                                        </form>
-                                        Demo csv file <a href="csv/sample_bulk_upload.csv" download target="_blank">Click here</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.col-md-12 -->
-                        </div>
-                    </div>
-                </div>
-                <!-- /.content-container -->
-            </div>
-            <!-- /.content-wrapper -->
-        </div>
         <!-- Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
