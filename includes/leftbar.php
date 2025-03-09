@@ -9,7 +9,7 @@
         </div>
         <!-- /.user-info -->
 
-        <div class="sidebar-nav">
+        <div class="sidebar-nav sidebar-nav-old">
             <ul class="side-nav color-gray">
                 <li class="nav-header">
                     <span class="">Main Category</span>
