@@ -83,6 +83,12 @@ if (strlen($_SESSION['alogin']) == "") {
       margin: 0;
     }
 
+    .navbar-toggle {
+        font-size: 11px;
+        border-radius: 5px;
+        background: white;
+    }
+
     @media (max-width: 992px) { /* Hide for screens smaller than 992px (Tablets & Mobile) */
         .sidebarnew { 
             display: none !important;
