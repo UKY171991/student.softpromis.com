@@ -603,6 +603,10 @@ if (strlen($_SESSION['alogin']) == "") {
                             font-size: 14px;
                         }
 
+                        .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+                            padding: 0px;
+                        }
+
                         @media (min-width: 1140px) {
                             .receipt h4, .receipt .h4 {
                                 font-size: 19.60708345px;
