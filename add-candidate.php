@@ -213,6 +213,11 @@ if (strlen($_SESSION['alogin']) == "") {
     <link rel="stylesheet" href="css/mystyle.css">
     <script src="js/modernizr/modernizr.min.js"></script>
 
+    <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
 
 <body class="top-navbar-fixed">
@@ -601,6 +606,9 @@ if (strlen($_SESSION['alogin']) == "") {
             </div>
             <!-- /.content-wrapper -->
         </div>
+
+        <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <!-- /.main-wrapper -->
         <script src="js/jquery/jquery-2.2.4.min.js"></script>
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
