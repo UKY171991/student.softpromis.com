@@ -563,10 +563,10 @@ if (strlen($_SESSION['alogin']) == "") {
                         }
                         .receipt-header img {
                             height: 50px;
-                            position: absolute;
+                           /* position: absolute;
                             right: 27px;
                             top: 39px;
-                            margin: 11px;
+                            margin: 11px;*/
                         }
                         .receipt-details {
                             display: flex;
@@ -695,8 +695,14 @@ if (strlen($_SESSION['alogin']) == "") {
                 <body>
                     <div class="receipt">
                         <div class="receipt-header">
-                            <h4 class="fw-bold">SOFTPRO <br> PAYMENT RECEIPT</h4>
-                            <img src="images/print_logo.jpg" alt="SoftPro Logo">
+                            <table class="table">
+                                <tr>
+                                    <td><h4 class="fw-bold">SOFTPRO <br> PAYMENT RECEIPT</h4></td>
+                                    <td><img src="images/print_logo.jpg" alt="SoftPro Logo"></td>
+                                </tr>
+                            </table>
+                            
+                            
                         </div>
                         <div class="receipt-details">
                             <div class="column">
