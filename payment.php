@@ -624,7 +624,7 @@ if (strlen($_SESSION['alogin']) == "") {
                             }
                             .receipt {
                                 width: 100%;
-                                height: 50vh; /* Half of A4 page height */
+/*                                height: 50vh;*/
                                 page-break-after: always;
                                 box-shadow: none;
                                 margin: 0 auto;
