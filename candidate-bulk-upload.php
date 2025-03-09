@@ -133,9 +133,81 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="css/select2/select2.min.css">
     <link rel="stylesheet" href="css/main.css" media="screen">
     <script src="js/modernizr/modernizr.min.js"></script>
+
+      <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="includes/style.css">
+
 </head>
 
 <body class="top-navbar-fixed">
+    <?php include('includes/topbar-new.php'); ?>
+
+
+    <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+
+      <?php include('includes/left-sidebar-new.php'); ?>
+       <?php include('includes/leftbar.php'); ?>
+
+
+      <!-- Main Content -->
+      <main class="col-lg-10 col-md-9 p-4">
+        <h2 class="mb-4">Softpro Dashboard</h2>
+        <div class="row g-3">
+          
+        <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <?php if ($msg) { ?>
+                                <div class="alert alert-success left-icon-alert" role="alert">
+                                    <strong>Well done!</strong>
+                                    <?php echo htmlentities($msg); ?>
+                                </div>
+                                <?php } else if ($error) { ?>
+                                <div class="alert alert-danger left-icon-alert" role="alert">
+                                    <strong>Oh snap!</strong>
+                                    <?php echo htmlentities($error); ?>
+                                </div>
+                                <?php } ?>
+                                <form class="form-horizontal" action="candidate-bulk-upload.php" method="post"
+                                    enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <label for="default" class="col-sm-2 control-label">upload file</label>
+                                        <div class="col-sm-4">
+                                            <input type="file" name="file" class="form-control-file" id="file"
+                                                required="required">
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-1 col-sm-10">
+                                                <button type="submit" name="submit" id="submit"
+                                                    class="btn btn-primary">Bulk
+                                                    upload</button>
+                                            </div>
+                                        </div>
+                                </form>
+                                Demo csv file <a href="csv/sample_bulk_upload.csv" download target="_blank">Click here</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col-md-12 -->
+                </div>
+            </div>
+        
+        </div><!-- /.row -->
+      </main>
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+
+
+
+
     <div class="main-wrapper">
         <!-- ========== TOP NAVBAR ========== -->
         <?php include('includes/topbar.php'); ?>
@@ -164,6 +236,8 @@ if (isset($_POST['submit'])) {
                         </div>
                         <!-- /.row -->
                     </div>
+
+
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
@@ -209,6 +283,9 @@ if (isset($_POST['submit'])) {
             </div>
             <!-- /.content-wrapper -->
         </div>
+        <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
         <!-- /.main-wrapper -->
         <script src="js/jquery/jquery-2.2.4.min.js"></script>
         <script src="js/bootstrap/bootstrap.min.js"></script>
