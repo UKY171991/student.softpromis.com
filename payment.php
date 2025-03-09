@@ -657,7 +657,7 @@ if (strlen($_SESSION['alogin']) == "") {
                         </div>
                         <h5 class="fw-bold border-bottom pb-2 text-center">Payment Summary</h5>
                         <table class="table table-bordered">
-                            <thead class="table-dark">
+                            <thead class="table-dark" style="background: #212529;">
                                 <tr>
                                     <th>Date</th>
                                     <th>Amount</th>
