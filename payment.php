@@ -557,8 +557,8 @@ if (strlen($_SESSION['alogin']) == "") {
                         .receipt-header {
                             text-align: center;
                             border-bottom: 2px solid #000;
-                            padding-bottom: 15px;
-                            margin-bottom: 15px;
+                            padding-bottom: 5px;
+                            margin-bottom: 5px;
                         }
                         .receipt-header img {
                             height: 50px;
@@ -601,6 +601,16 @@ if (strlen($_SESSION['alogin']) == "") {
                             margin-top: 20px;
                             font-size: 14px;
                         }
+
+                        @media (min-width: 1140px) {
+                            .receipt h4, .receipt .h4 {
+                                font-size: 19.60708345px;
+                                margin-top: 0;
+                                line-height: 1;
+                                margin-bottom: 0;
+                            }
+                        }
+
                         @media print {
                             body {
                                 background: none;
