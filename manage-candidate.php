@@ -674,7 +674,7 @@ $(document).ready(function() {
 
         if (confirm("Are you sure you want to delete selected records?")) {
             $.ajax({
-                url: "delete.php",
+                url: "delete_candidate.php",
                 type: "POST",
                 data: { ids: selectedIds },
                 success: function(response) {
