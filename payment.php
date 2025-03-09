@@ -670,6 +670,18 @@ if (strlen($_SESSION['alogin']) == "") {
                     <td><strong>Balance</strong></td>
                     <td><strong>1000.00</strong></td>
                 </tr>
+                <tr>
+                    <td>Total Payable Fee</td>
+                    <td class="text-right"><b><?=$p_result[0]['total_fee']?></b></td>
+                </tr>
+                <tr>
+                    <td>Total Paid</td>
+                    <td class="text-right"><b><?=$p_result[0]['paid']?></b></td>
+                </tr>
+                <tr>
+                    <td>Balance</td>
+                    <td class="text-right"><b><?=$p_result[0]['balance']?></b></td>
+                </tr>
             </tbody>
         </table>
         <div class="signature">
