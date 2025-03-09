@@ -81,12 +81,12 @@ if (strlen($_SESSION['alogin']) == "") {
       </button>
       <div class="collapse navbar-collapse" id="navbarContent">
         <ul class="navbar-nav ms-auto align-items-center">
-          <li class="nav-item me-3">
+          <!-- <li class="nav-item me-3">
             <a class="nav-link" href="#"><i class="fa-solid fa-user"></i></a>
           </li>
           <li class="nav-item me-3">
             <a class="nav-link" href="#"><i class="fa-solid fa-arrows-alt"></i></a>
-          </li>
+          </li> -->
 
           <?php
                 // Prepare the query to count the rows
