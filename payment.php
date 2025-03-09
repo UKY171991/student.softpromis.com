@@ -570,7 +570,7 @@ if (strlen($_SESSION['alogin']) == "") {
                         }
 
                         .receipt-header .table>tbody>tr>td {
-                            padding: 8px;
+                            padding: 0px;
                             line-height: 1.428571429;
                             vertical-align: top;
                             border: 0px solid #ffff;
