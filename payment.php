@@ -637,7 +637,7 @@ if (strlen($_SESSION['alogin']) == "") {
                             .receipt {
                                 width: 100%;
                                 max-width: 100%;
-                                border: none;
+/*                                border: none;*/
                                 box-shadow: none;
                                 margin: 0 auto;
                                 padding: 10mm; /* Ensures consistent padding */
