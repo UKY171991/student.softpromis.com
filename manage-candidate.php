@@ -139,7 +139,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                             <table id="example" class="table table-stripped table-bordered table-hover table-full-width table-grey table-responsive-lg table custom-bordered">
                                                 <thead>
                                                     <tr>
-                                                        <th><input type="checkbox"> #</th>
+                                                        <th><input type="checkbox" id="selectAll"> #</th>
                                                         <th>Enrollment ID</th>
                                                         <th>Candidate Name</th>
                                                         <th>Phone Number</th>
@@ -171,7 +171,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 </thead>
                                                 <tfoot>
                                                     <tr>
-                                                        <th><input type="checkbox"> #</th>
+                                                        <th><input type="checkbox" id="selectAll"> #</th>
                                                         <th>Enrollment ID</th>
                                                         <th>Candidate Name</th>
                                                         <th>Phone Number</th>
@@ -230,7 +230,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
                                                         ?>
                                                     <tr>
-                                                        <td><input type="checkbox" data-id="<?=$result->CandidateId?>"> <?php echo htmlentities($cnt); ?></td>
+                                                        <td><input type="checkbox" class="deleteCheckbox" value="<?=$result->CandidateId?>"> <?php echo htmlentities($cnt); ?></td>
                                                         <td>
                                                             <button type="button" class="btn btn-info btn-xs" onClick='all_data(<?php echo htmlentities($result->CandidateId); ?>)' data-toggle="modal" data-target="#c_myModal"><?php echo htmlentities($result->enrollmentid); ?></td></button>
 
@@ -403,6 +403,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
                                                 </tbody>
                                             </table>
+                                            <button type="button" id="deleteBtn" class="btn btn-danger">Delete Selected</button>
 
 
                                             <!-- /.col-md-12 -->
@@ -518,49 +519,6 @@ if (strlen($_SESSION['alogin']) == "") {
 <!-- ========== THEME JS ========== -->
 <script src="js/main.js"></script>
 
-<script>
-//   $(function () {
-      
-      
-//     $("#example").DataTable({
-//       "responsive": true, "lengthChange": false, "autoWidth": false,
-//       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-//       //"buttons": ["copy", "csv", "excel", "pdf", "print", "colvis" { extend: 'colvis', columns: [0, 2, 3, 4], text: 'Select Columns' }]
-//     }).buttons().container().appendTo('#example_wrapper .col-md-6:eq(0)');
-    
-//   });
-
-</script>
-
-<script>
-/*
-  $(function () {
-    $("#example").DataTable({
-      "responsive": true,
-      "lengthChange": true, // Enable length change dropdown
-      "autoWidth": false,
-      "pageLength": 10, // Default number of records per page
-      "lengthMenu": [[10, 20, 30, 100, 500], [10, 20, 30, 100, 500]], // Dropdown options for records per page
-      "buttons": [
-        "copy",
-        "csv",
-        "excel",
-        "pdf",
-        "print",
-        {
-          extend: 'colvis', // Column visibility button
-          columns: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27], // Allow toggling these columns
-          text: 'Select Columns' // Button label
-        }
-      ],
-      "columnDefs": [
-        { "targets": [0,1,2,3,4,26,27], "visible": true }, // Show specific columns
-        { "targets": "_all", "visible": false } // Hide all other columns
-      ]
-    }).buttons().container().appendTo('#example_wrapper .col-md-6:eq(0)');
-  });
-  */
-</script>
 
 
 <script>
@@ -689,5 +647,46 @@ $(document).ready(function() {
       return false;
     }
   });
+});
+</script>
+
+
+
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+<script>
+$(document).ready(function() {
+    // Select all checkboxes
+    $("#selectAll").click(function() {
+        $(".deleteCheckbox").prop('checked', this.checked);
+    });
+
+    // Delete selected records
+    $("#deleteBtn").click(function() {
+        var selectedIds = [];
+        $(".deleteCheckbox:checked").each(function() {
+            selectedIds.push($(this).val());
+        });
+
+        if (selectedIds.length === 0) {
+            alert("Please select at least one record to delete.");
+            return;
+        }
+
+        if (confirm("Are you sure you want to delete selected records?")) {
+            $.ajax({
+                url: "delete.php",
+                type: "POST",
+                data: { ids: selectedIds },
+                success: function(response) {
+                    if (response.trim() === "success") {
+                        alert("Selected records deleted successfully!");
+                        location.reload();
+                    } else {
+                        alert("Error deleting records. Please try again.");
+                    }
+                }
+            });
+        }
+    });
 });
 </script>
