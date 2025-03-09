@@ -77,7 +77,7 @@ if (strlen($_SESSION['alogin']) == "") {
     <div class="container-fluid">
       <a class="navbar-brand fw-bold" href="#">SOFTPRO Admin</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
-        <span class="navbar-toggler-icon"></span>
+        <span class="fa fa-ellipsis-v"></span>
       </button>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
