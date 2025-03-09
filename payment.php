@@ -615,8 +615,8 @@ if (strlen($_SESSION['alogin']) == "") {
                         }
                         .contact-info {
                             text-align: center;
-                            margin-top: 20px;
-                            font-size: 14px;
+                            margin-top: 0px;
+                            font-size: 12px;
                         }
 
                         .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
