@@ -613,17 +613,17 @@ if (strlen($_SESSION['alogin']) == "") {
         </div>
         <div class="receipt-details">
             <div class="column">
-                <p><strong>EF. No:</strong> SPA0001</p>
-                <p><strong>Student:</strong> Jhfykg Hjhgjh</p>
-                <p><strong>Training Center:</strong> ghbjjkbjh</p>
-                <p><strong>Scheme:</strong> YTC</p>
-                <p><strong>Sector:</strong> Retail</p>
+                <p><strong>EF. No:</strong> <?=$c_result[0]['enrollmentid']?></p>
+                <p><strong>Student:</strong> <?=$c_result[0]['candidatename']?></p>
+                <p><strong>Training Center:</strong> <?=$t_result[0]['trainingcentername']?></p>
+                <p><strong>Scheme:</strong> <?=$scheme_result[0]['SchemeName']?></p>
+                <p><strong>Sector:</strong> <?=$sector_result[0]['SectorName']?></p>
             </div>
             <div class="column">
-                <p><strong>Job Roll:</strong> Sales</p>
-                <p><strong>Batch:</strong> 10-12</p>
-                <p><strong>Payment Date:</strong> Mar 09, 2025</p>
-                <p><strong>Paid Amount:</strong> 4000.00</p>
+                <p><strong>Job Roll:</strong> <?=$job_result[0]['jobrollname']?></p>
+                <p><strong>Batch:</strong> <?=$batch_result[0]['batch_name']?></p>
+                <p><strong>Payment Date:</strong> <?=date("M d, Y", strtotime($p_result[0]['created_at']))?></p>
+                <p><strong>Paid Amount:</strong> <?=$p_result[0]['paid']?></p>
                 <p><strong>Remarks:</strong> Cash</p>
             </div>
         </div>
