@@ -609,7 +609,7 @@ if (strlen($_SESSION['alogin']) == "") {
     <div class="receipt">
         <div class="receipt-header">
             <h4 class="fw-bold">SOFTPRO PAYMENT RECEIPT</h4>
-            <img src="logo.png" alt="SoftPro Logo">
+            <img src="images/print_logo.jpg" alt="SoftPro Logo">
         </div>
         <div class="receipt-details">
             <div class="column">
