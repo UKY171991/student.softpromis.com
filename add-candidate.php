@@ -155,7 +155,7 @@ if (strlen($_SESSION['alogin']) == "") {
         
         $enroll= $newEnrollmentId;
     } else {
-        $enroll = "SPA0001";
+        $enroll = "SPHOA2501";
     }
 
 
