@@ -13,7 +13,7 @@ if (strlen($_SESSION['alogin']) == "") {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SOFTPRO | ADMIN | Dashboard</title>
 
-  <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
+  <!-- <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
     <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen">
@@ -23,7 +23,7 @@ if (strlen($_SESSION['alogin']) == "") {
     <link rel="stylesheet" href="css/select2/select2.min.css">
     <link rel="stylesheet" href="css/main.css" media="screen">
     <link rel="stylesheet" href="css/mystyle.css">
-    <script src="js/modernizr/modernizr.min.js"></script>
+    <script src="js/modernizr/modernizr.min.js"></script> -->
 
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
