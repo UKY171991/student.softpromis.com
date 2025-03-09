@@ -171,7 +171,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 </thead>
                                                 <tfoot>
                                                     <tr>
-                                                        <th><input type="checkbox" id="selectAll"> #</th>
+                                                        <th><input type="checkbox" id="selectAlls"> #</th>
                                                         <th>Enrollment ID</th>
                                                         <th>Candidate Name</th>
                                                         <th>Phone Number</th>
@@ -656,7 +656,7 @@ $(document).ready(function() {
 <script>
 $(document).ready(function() {
     // Select all checkboxes
-    $("#selectAll").click(function() {
+    $("#selectAll,#selectAlls").click(function() {
         $(".deleteCheckbox").prop('checked', this.checked);
     });
 
