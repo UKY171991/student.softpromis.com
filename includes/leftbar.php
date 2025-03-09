@@ -1,4 +1,4 @@
-<div class="left-sidebar bg-black-300 box-shadow ">
+<div class="left-sidebar bg-black-300 box-shadow sidebar-nav-old">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <div class="sidebar-content">
@@ -9,7 +9,7 @@
         </div>
         <!-- /.user-info -->
 
-        <div class="sidebar-nav sidebar-nav-old">
+        <div class="sidebar-nav ">
             <ul class="side-nav color-gray">
                 <li class="nav-header">
                     <span class="">Main Category</span>
