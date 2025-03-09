@@ -668,7 +668,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                 padding: 5px;
                             }
                             @page {
-                                margin: 5mm; /* Adjusts page margins for A4 */
+                                margin: 0mm; /* Adjusts page margins for A4 */
                             }
                         }
 
