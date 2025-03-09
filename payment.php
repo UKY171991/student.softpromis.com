@@ -575,6 +575,9 @@ if (strlen($_SESSION['alogin']) == "") {
                             vertical-align: top;
                             border: 0px solid #ffff;
                         }
+                        .receipt-header .table tbody tr:nth-child(odd) {
+                            background-color: #ffff;
+                        }
 
                         .receipt-details {
                             display: flex;
