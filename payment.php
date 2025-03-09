@@ -505,7 +505,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
         <!-- Modal for all Content-->
         <div id="p_myModal" class="modal fade" role="dialog">
-          <div class="modal-dialog" id="p_myModals">
+          <div class="modal-dialog">
 
             <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
              <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
@@ -517,7 +517,21 @@ if (strlen($_SESSION['alogin']) == "") {
             <link rel="stylesheet" href="css/main.css" media="screen">
             <link rel="stylesheet" href="css/mystyle.css">
 
+            <style type="text/css">
+                #p_myModal p, #p_myModal blockquote, #p_myModal pre, #p_myModal address, #p_myModal dl, #p_myModal ol, #p_myModal ul, #p_myModal table {
+                    margin-bottom: 0em;
+                }
+            </style>
 
+            <?php // print_r($p_result)?>
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Payment Receipt</h4>
+              </div>
+              <div class="modal-body" id="p_myModals">
 
 
 
@@ -666,25 +680,6 @@ if (strlen($_SESSION['alogin']) == "") {
 </html>
 
 
-
-
-
-
-            <style type="text/css">
-                #p_myModal p, #p_myModal blockquote, #p_myModal pre, #p_myModal address, #p_myModal dl, #p_myModal ol, #p_myModal ul, #p_myModal table {
-                    margin-bottom: 0em;
-                }
-            </style>
-
-            <?php // print_r($p_result)?>
-
-            <!-- Modal content-->
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Payment Receipt</h4>
-              </div>
-              <div class="modal-body" >
                 <style>
                     hr {
                         margin-top: 7px;
