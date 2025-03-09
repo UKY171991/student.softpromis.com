@@ -614,6 +614,11 @@ if (strlen($_SESSION['alogin']) == "") {
                                 border: 2px solid #000;
                             }
                         }
+
+                        .table {
+                            border-collapse: collapse;
+                        }
+
                         .table-dark{
                             background: #212529;
                             color: white;
@@ -626,6 +631,37 @@ if (strlen($_SESSION['alogin']) == "") {
                         }
                         .table-warning td{
                             background: #fff3cd;
+                        }
+
+                        @media print {
+                            .receipt {
+                                width: 100%;
+                                max-width: 100%;
+                                border: none;
+                                box-shadow: none;
+                                margin: 0 auto;
+                                padding: 10mm; /* Ensures consistent padding */
+                            }
+                            .table {
+                                width: 100%;
+                                border-collapse: collapse; /* Prevents double borders */
+                            }
+                            .table th, .table td {
+                                border: 1px solid #000;
+                                padding: 5px;
+                            }
+                            @page {
+                                margin: 10mm; /* Adjusts page margins for A4 */
+                            }
+                        }
+
+
+
+                        @media print {
+                            .receipt {
+                                height: auto;
+                                page-break-after: always; /* Ensures correct page breaks */
+                            }
                         }
                     </style>
                 </head>
