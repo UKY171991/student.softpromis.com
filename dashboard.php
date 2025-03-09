@@ -109,7 +109,7 @@ if (strlen($_SESSION['alogin']) == "") {
         <span class="navbar-toggler-icon"></span>
       </button> -->
 
-      <button type="button" class="navbar-toggle mobile-nav-toggle">
+      <button type="button" class="navbar-toggle mobile-nav-toggle sidebar-nav-old">
           <i class="fa fa-bars"></i>
       </button>
 
