@@ -1,4 +1,4 @@
-<nav class="col-lg-2 col-md-3 d-none d-md-block sidebar p-0">
+<nav class="col-lg-2 col-md-3 d-none d-md-block sidebar p-0 sidebar-nav">
     <div class="sidebar-header">
         <img src="images/logo.jpg" alt="Profile" class="rounded-circle mb-2" width="80">
         <h6>Rajesh G</h6>
