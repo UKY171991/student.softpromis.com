@@ -213,28 +213,19 @@ if (strlen($_SESSION['alogin']) == "") {
     <link rel="stylesheet" href="css/mystyle.css">
     <script src="js/modernizr/modernizr.min.js"></script>
 
-    <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome 6 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
 </head>
 
 <body class="top-navbar-fixed">
-
-    <?php include('includes/topbar-new.php'); ?>
-    <?php include('includes/left-sidebar-new.php'); ?>
-
     <div class="main-wrapper">
 
         <!-- ========== TOP NAVBAR ========== -->
-        <?php // include('includes/topbar.php'); ?>
+        <?php include('includes/topbar.php'); ?>
         <!-- ========== WRAPPER FOR BOTH SIDEBARS & MAIN CONTENT ========== -->
         <div class="content-wrapper">
             <div class="content-container">
 
                 <!-- ========== LEFT SIDEBAR ========== -->
-                <?php // include('includes/leftbar.php'); ?>
+                <?php include('includes/leftbar.php'); ?>
                 <!-- /.left-sidebar -->
 
                 <div class="main-page">
@@ -607,9 +598,6 @@ if (strlen($_SESSION['alogin']) == "") {
             </div>
             <!-- /.content-wrapper -->
         </div>
-
-        <!-- Bootstrap Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <!-- /.main-wrapper -->
         <script src="js/jquery/jquery-2.2.4.min.js"></script>
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
