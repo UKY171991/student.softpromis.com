@@ -535,263 +535,169 @@ if (strlen($_SESSION['alogin']) == "") {
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Receipt</title>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
-    <style>
-        /*body {
-            background-color: #f8f9fa;
-            font-family: Arial, sans-serif;
-        }*/
-        .receipt {
-            width: 100%;
-            max-width: 600px;
-            background: #fff;
-            padding: 20px;
-            border: 2px solid #000;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin: 30px auto;
-        }
-        .receipt-header {
-            text-align: center;
-            border-bottom: 2px solid #000;
-            padding-bottom: 15px;
-            margin-bottom: 15px;
-        }
-        .receipt-header img {
-            height: 50px;
-        }
-        .receipt-details {
-            display: flex;
-            justify-content: space-between;
-        }
-        .receipt-details .column {
-            width: 48%;
-        }
-        .receipt-details p {
-            margin: 5px 0;
-            font-size: 16px;
-            color: #000;
-        }
-        .table th, .table td {
-            vertical-align: middle;
-            text-align: center;
-            border: 1px solid #000;
-        }
-        .table tbody tr:nth-child(odd) {
-            background-color: #f2f2f2;
-        }
-        .signature {
-            margin-top: 30px;
-            text-align: right;
-            font-size: 16px;
-            font-weight: bold;
-        }
-        .signature-line {
-            margin-top: 10px;
-            border-top: 2px solid #000;
-            width: 200px;
-            text-align: center;
-            margin-left: auto;
-        }
-        .contact-info {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 14px;
-        }
-        @media print {
-            body {
-                background: none;
-            }
-            .receipt {
-                width: 100%;
-                height: 50vh; /* Half of A4 page height */
-                page-break-after: always;
-                box-shadow: none;
-                margin: 0 auto;
-                border: 2px solid #000;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="receipt">
-        <div class="receipt-header">
-            <h4 class="fw-bold">SOFTPRO PAYMENT RECEIPT</h4>
-            <img src="images/print_logo.jpg" alt="SoftPro Logo">
-        </div>
-        <div class="receipt-details">
-            <div class="column">
-                <p><strong>EF. No:</strong> <?=$c_result[0]['enrollmentid']?></p>
-                <p><strong>Student:</strong> <?=$c_result[0]['candidatename']?></p>
-                <p><strong>Training Center:</strong> <?=$t_result[0]['trainingcentername']?></p>
-                <p><strong>Scheme:</strong> <?=$scheme_result[0]['SchemeName']?></p>
-                <p><strong>Sector:</strong> <?=$sector_result[0]['SectorName']?></p>
-            </div>
-            <div class="column">
-                <p><strong>Job Roll:</strong> <?=$job_result[0]['jobrollname']?></p>
-                <p><strong>Batch:</strong> <?=$batch_result[0]['batch_name']?></p>
-                <p><strong>Payment Date:</strong> <?=date("M d, Y", strtotime($p_result[0]['created_at']))?></p>
-                <p><strong>Paid Amount:</strong> <?=$p_result[0]['paid']?></p>
-                <p><strong>Remarks:</strong> Cash</p>
-            </div>
-        </div>
-        <h5 class="fw-bold border-bottom pb-2 text-center">Payment Summary</h5>
-        <table class="table table-bordered">
-            <thead class="table-dark">
-                <tr>
-                    <th>Date</th>
-                    <th>Amount</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if (!empty($emi_result)): ?>
-                    <?php foreach ($emi_result as $row): ?>
-
-                        <?php
-                        if($row['added_type'] !=1 ){
-                            $pending_list = $row['added_type'];
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Payment Receipt</title>
+                    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+                    <style>
+                        /*body {
+                            background-color: #f8f9fa;
+                            font-family: Arial, sans-serif;
+                        }*/
+                        .receipt {
+                            width: 100%;
+                            max-width: 600px;
+                            background: #fff;
+                            padding: 20px;
+                            border: 2px solid #000;
+                            border-radius: 10px;
+                            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                            margin: 30px auto;
                         }
-                         
-                         ?>
-                    
-                    <tr>
-                        <td><b><?=date("M d, Y", strtotime($row['created']))?></b></td>
-                        <td class="text-right"><b><?php echo htmlspecialchars($row['paid']); ?></b></td>
-                    </tr>
-                    <?php endforeach; ?>
-                <?php endif ?>
-                <tr>
-                    <td><b>Total Payable Fee</b></td>
-                    <td class="text-right"><b><?=$p_result[0]['total_fee']?></b></td>
-                </tr>
-                <tr>
-                    <td><b>Total Paid</b></td>
-                    <td class="text-right"><b><?=$p_result[0]['paid']?></b></td>
-                </tr>
-                <tr>
-                    <td><b>Balance</b></td>
-                    <td class="text-right"><b><?=$p_result[0]['balance']?></b></td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="signature">
-            Authorised Signature
-        </div>
-        <div class="contact-info">
-            <p><strong>Address:</strong> 18-86 B, Main Road, Parvathipuram Manyam, Andhra Pradesh - 535501</p>
-            <p><strong>Ph:</strong> 7799773656</p>
-        </div>
-    </div>
-</body>
-</html>
+                        .receipt-header {
+                            text-align: center;
+                            border-bottom: 2px solid #000;
+                            padding-bottom: 15px;
+                            margin-bottom: 15px;
+                        }
+                        .receipt-header img {
+                            height: 50px;
+                        }
+                        .receipt-details {
+                            display: flex;
+                            justify-content: space-between;
+                        }
+                        .receipt-details .column {
+                            width: 48%;
+                        }
+                        .receipt-details p {
+                            margin: 5px 0;
+                            font-size: 16px;
+                            color: #000;
+                        }
+                        .table th, .table td {
+                            vertical-align: middle;
+                            text-align: center;
+                            border: 1px solid #000;
+                        }
+                        .table tbody tr:nth-child(odd) {
+                            background-color: #f2f2f2;
+                        }
+                        .signature {
+                            margin-top: 30px;
+                            text-align: right;
+                            font-size: 16px;
+                            font-weight: bold;
+                        }
+                        .signature-line {
+                            margin-top: 10px;
+                            border-top: 2px solid #000;
+                            width: 200px;
+                            text-align: center;
+                            margin-left: auto;
+                        }
+                        .contact-info {
+                            text-align: center;
+                            margin-top: 20px;
+                            font-size: 14px;
+                        }
+                        @media print {
+                            body {
+                                background: none;
+                            }
+                            .receipt {
+                                width: 100%;
+                                height: 50vh; /* Half of A4 page height */
+                                page-break-after: always;
+                                box-shadow: none;
+                                margin: 0 auto;
+                                border: 2px solid #000;
+                            }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="receipt">
+                        <div class="receipt-header">
+                            <h4 class="fw-bold">SOFTPRO PAYMENT RECEIPT</h4>
+                            <img src="images/print_logo.jpg" alt="SoftPro Logo">
+                        </div>
+                        <div class="receipt-details">
+                            <div class="column">
+                                <p><strong>EF. No:</strong> <?=$c_result[0]['enrollmentid']?></p>
+                                <p><strong>Student:</strong> <?=$c_result[0]['candidatename']?></p>
+                                <p><strong>Training Center:</strong> <?=$t_result[0]['trainingcentername']?></p>
+                                <p><strong>Scheme:</strong> <?=$scheme_result[0]['SchemeName']?></p>
+                                <p><strong>Sector:</strong> <?=$sector_result[0]['SectorName']?></p>
+                            </div>
+                            <div class="column">
+                                <p><strong>Job Roll:</strong> <?=$job_result[0]['jobrollname']?></p>
+                                <p><strong>Batch:</strong> <?=$batch_result[0]['batch_name']?></p>
+                                <p><strong>Payment Date:</strong> <?=date("M d, Y", strtotime($p_result[0]['created_at']))?></p>
+                                <p><strong>Paid Amount:</strong> <?=$p_result[0]['paid']?></p>
+                                <p><strong>Remarks:</strong> Cash</p>
+                            </div>
+                        </div>
+                        <h5 class="fw-bold border-bottom pb-2 text-center">Payment Summary</h5>
+                        <table class="table table-bordered">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php if (!empty($emi_result)): ?>
+                                    <?php foreach ($emi_result as $row): ?>
 
-
-                <style>
-                    hr {
-                        margin-top: 7px;
-                        margin-bottom: 8px;
-                    }
-                    .modal-body {
-                        padding-top: 0px;
-                        padding-bottom: 0px;
-                    }
-                    #p_myModals p {
-                        font-size: 12px;
-                        line-height: 1.45em;
-                    }
-                    #p_myModals .table>tbody>tr>td, #p_myModals .table>tbody>tr>th, #p_myModals .table>tfoot>tr>td, #p_myModals .table>tfoot>tr>th, #p_myModals .table>thead>tr>td, #p_myModals .table>thead>tr>th {
-                        padding: 3px;
-                    }
-                        #p_myModals table td, #p_myModals table th, #p_myModals table td b,#p_myModals table th b {
-                        font-size: 12px;
-                    }
-                </style>
-                <p class="text-center"><b>SOFTPRO PAYMENT RECEIPT</b></p>
-                <hr>
-                <div class="row">
-                    <div class="col-xs-5 col-md-5" width="40%">
-                        <p>EF. No: <b><?=$c_result[0]['enrollmentid']?></b></p>
-                        <p>Student: <b><?=$c_result[0]['candidatename']?></b></p>
-                        <p>Training Center: <b><?=$t_result[0]['trainingcentername']?></b></p>
-                        <p>Scheme: <b><?=$scheme_result[0]['SchemeName']?></b></p>
-                        <p>Sector: <b><?=$sector_result[0]['SectorName']?></b></p>
+                                        <?php
+                                        if($row['added_type'] !=1 ){
+                                            $pending_list = $row['added_type'];
+                                        }
+                                         
+                                         ?>
+                                    
+                                    <tr>
+                                        <td><b><?=date("M d, Y", strtotime($row['created']))?></b></td>
+                                        <td class="text-right"><b><?php echo htmlspecialchars($row['paid']); ?></b></td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                <?php endif ?>
+                                <tr>
+                                    <td><b>Total Payable Fee</b></td>
+                                    <td class="text-right"><b><?=$p_result[0]['total_fee']?></b></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Total Paid</b></td>
+                                    <td class="text-right"><b><?=$p_result[0]['paid']?></b></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Balance</b></td>
+                                    <td class="text-right"><b><?=$p_result[0]['balance']?></b></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="signature">
+                            Authorised Signature
+                        </div>
+                        <div class="contact-info">
+                            <p><strong>Address:</strong> 18-86 B, Main Road, Parvathipuram Manyam, Andhra Pradesh - 535501</p>
+                            <p><strong>Ph:</strong> 7799773656</p>
+                        </div>
                     </div>
-                    <div class="col-xs-5 col-md-5" width="40%">
-                        <p>Job Roll: <b><?=$job_result[0]['jobrollname']?></b></p>
-                        <p>Batch: <b><?=$batch_result[0]['batch_name']?></b></p>
-                        <p>Payment Date: <b><?=date("M d, Y", strtotime($p_result[0]['created_at']))?></b></p>
-                        <p>Paid Amount: <b><?=$p_result[0]['paid']?></b></p>
-                        <p>Remarks: <b>cash</b></p>
-                    </div>
+                </body>
+                </html>
 
-                    <div class="col-xs-2 col-md-2" width="20%">
-                        <img src="images/print_logo.jpg" style="width:100%">
-                    </div>
-                </div>
-                <hr>
 
-                <p><b>Payment Summary</b></p>
+                
+                
+             
 
-                <table class="table table-bordered">
-                    <tbody>
-                        <tr>
-                            
-                            <td width="100%">
-                            <p><b>Payment Details</b></p>
-                                <table width="100%" class="table table-bordered">
-                                    <tbody>
-                                        <tr>
-                                            <td width="50%">Date</td>
-                                            <td width="50%" class="text-right">Amount</td>
-                                        </tr>
-                                        <!-- <tr>
-                                            <td><b><?=date("M d, Y", strtotime($p_result[0]['created_at']))?></b></td>
-                                            <td class="text-right"><b><?=$p_result[0]['paid']?></b></td>
-                                        </tr> -->
-                                        <?php if (!empty($emi_result)): ?>
-                                            <?php foreach ($emi_result as $row): ?>
-
-                                                <?php
-                                                if($row['added_type'] !=1 ){
-                                                    $pending_list = $row['added_type'];
-                                                }
-                                                 
-                                                 ?>
-                                            
-                                            <tr>
-                                                <td><b><?=date("M d, Y", strtotime($row['created']))?></b></td>
-                                                <td class="text-right"><b><?php echo htmlspecialchars($row['paid']); ?></b></td>
-                                            </tr>
-                                            <?php endforeach; ?>
-                                        <?php endif ?>
-                                    </tbody>
-                                </table>
-                                <table width="100%" class="table table-bordered">
-                                    <tbody>
-                                        <tr>
-                                            <td>Total Payable Fee</td>
-                                            <td class="text-right"><b><?=$p_result[0]['total_fee']?></b></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Total Paid</td>
-                                            <td class="text-right"><b><?=$p_result[0]['paid']?></b></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Balance</td>
-                                            <td class="text-right"><b><?=$p_result[0]['balance']?></b></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                
+            
               </div>
               <div class="modal-footer">
                 <?php // print_r($_SESSION['user_type'])?>
