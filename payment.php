@@ -665,7 +665,7 @@ if (strlen($_SESSION['alogin']) == "") {
                             }
                             .table th, .table td {
                                 border: 1px solid #000;
-                                padding: 5px;
+                                padding: 1px;
                             }
                             @page {
                                 margin: 5mm; /* Adjusts page margins for A4 */
