@@ -217,10 +217,12 @@ if (strlen($_SESSION['alogin']) == "") {
 
 <body class="top-navbar-fixed">
 
+    <?php include('includes/topbar-new.php'); ?>
+
     <div class="main-wrapper">
 
         <!-- ========== TOP NAVBAR ========== -->
-        <?php include('includes/topbar-new.php'); ?>
+        <?php // include('includes/topbar.php'); ?>
         <!-- ========== WRAPPER FOR BOTH SIDEBARS & MAIN CONTENT ========== -->
         <div class="content-wrapper">
             <div class="content-container">
