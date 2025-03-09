@@ -585,7 +585,7 @@ if (strlen($_SESSION['alogin']) == "") {
                             background-color: #f2f2f2;
                         }
                         .signature {
-                            margin-top: 10px;
+                            margin-top: 30px;
                             text-align: right;
                             font-size: 16px;
                             font-weight: bold;
