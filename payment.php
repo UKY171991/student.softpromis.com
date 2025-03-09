@@ -622,14 +622,14 @@ if (strlen($_SESSION['alogin']) == "") {
                             body {
                                 background: none;
                             }
-                            /*.receipt {
+                            .receipt {
                                 width: 100%;
                                 height: 50vh; 
                                 page-break-after: always;
                                 box-shadow: none;
                                 margin: 0 auto;
                                 border: 2px solid #000;
-                            }*/
+                            }
                         }
 
                         .table {
@@ -668,7 +668,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                 padding: 5px;
                             }
                             @page {
-                                margin: 10mm; /* Adjusts page margins for A4 */
+                                margin: 5mm; /* Adjusts page margins for A4 */
                             }
                         }
 
