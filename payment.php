@@ -657,7 +657,7 @@ if (strlen($_SESSION['alogin']) == "") {
 /*                                border: none;*/
 /*                                box-shadow: none;*/
 /*                                margin: 0 auto;*/
-                                padding: 10mm; /* Ensures consistent padding */
+                                padding: 5mm; /* Ensures consistent padding */
                             }
                             .table {
                                 width: 100%;
