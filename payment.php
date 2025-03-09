@@ -650,18 +650,22 @@ if (strlen($_SESSION['alogin']) == "") {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><strong>Mar 09, 2025</strong></td>
-                    <td>4000.00</td>
-                </tr>
-                <tr>
-                    <td><strong>Total Payable Fee</strong></td>
-                    <td><strong>5000.00</strong></td>
-                </tr>
-                <tr>
-                    <td><strong>Total Paid</strong></td>
-                    <td><strong>4000.00</strong></td>
-                </tr>
+                <?php if (!empty($emi_result)): ?>
+                    <?php foreach ($emi_result as $row): ?>
+
+                        <?php
+                        if($row['added_type'] !=1 ){
+                            $pending_list = $row['added_type'];
+                        }
+                         
+                         ?>
+                    
+                    <tr>
+                        <td><b><?=date("M d, Y", strtotime($row['created']))?></b></td>
+                        <td class="text-right"><b><?php echo htmlspecialchars($row['paid']); ?></b></td>
+                    </tr>
+                    <?php endforeach; ?>
+                <?php endif ?>
                 <tr class="table-warning">
                     <td><strong>Balance</strong></td>
                     <td><strong>1000.00</strong></td>
