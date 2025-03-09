@@ -621,6 +621,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
                         .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
                             padding: 0px;
+                            font-size: 10px;
                         }
 
                         @media (min-width: 1140px) {
