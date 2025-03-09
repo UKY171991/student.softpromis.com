@@ -627,6 +627,9 @@ if (strlen($_SESSION['alogin']) == "") {
                         .table-bordered, .table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
                             border: 1px solid #212529;
                         }
+                        .table-warning{
+                            background: #fff3cd;
+                        }
                     </style>
                 </head>
                 <body>
@@ -684,7 +687,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                     <td><b>Total Paid</b></td>
                                     <td class="text-right"><b><?=$p_result[0]['paid']?></b></td>
                                 </tr>
-                                <tr>
+                                <tr class="table-warning">
                                     <td><b>Balance</b></td>
                                     <td class="text-right"><b><?=$p_result[0]['balance']?></b></td>
                                 </tr>
