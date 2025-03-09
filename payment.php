@@ -622,14 +622,14 @@ if (strlen($_SESSION['alogin']) == "") {
                             body {
                                 background: none;
                             }
-                            .receipt {
+                            /*.receipt {
                                 width: 100%;
-/*                                height: 50vh;*/
+                                height: 50vh; 
                                 page-break-after: always;
                                 box-shadow: none;
                                 margin: 0 auto;
                                 border: 2px solid #000;
-                            }
+                            }*/
                         }
 
                         .table {
