@@ -82,7 +82,16 @@ if (strlen($_SESSION['alogin']) == "") {
     .dashboard-card p {
       margin: 0;
     }
+
+    @media (max-width: 992px) { /* Hide for screens smaller than 992px (Tablets & Mobile) */
+        .sidebarnew { 
+            display: none !important;
+        }
+    }
+
   </style>
+
+
 </head>
 <body>
   <!-- Top Navbar -->
