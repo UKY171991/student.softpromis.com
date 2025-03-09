@@ -89,6 +89,11 @@ if (strlen($_SESSION['alogin']) == "") {
         }
     }
 
+    @media (min-width: 992px) { /* Hide for screens smaller than 992px (Tablets & Mobile) */
+        .sidebar-nav { 
+            display: none !important;
+        }
+    }
   </style>
 
 
