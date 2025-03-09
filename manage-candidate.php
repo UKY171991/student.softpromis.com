@@ -139,7 +139,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                             <table id="example" class="table table-stripped table-bordered table-hover table-full-width table-grey table-responsive-lg table custom-bordered">
                                                 <thead>
                                                     <tr>
-                                                        <th>#</th>
+                                                        <th><input type="checkbox"> #</th>
                                                         <th>Enrollment ID</th>
                                                         <th>Candidate Name</th>
                                                         <th>Phone Number</th>
@@ -171,7 +171,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 </thead>
                                                 <tfoot>
                                                     <tr>
-                                                        <th>#</th>
+                                                        <th><input type="checkbox"> #</th>
                                                         <th>Enrollment ID</th>
                                                         <th>Candidate Name</th>
                                                         <th>Phone Number</th>
@@ -230,7 +230,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
                                                         ?>
                                                     <tr>
-                                                        <td><?php echo htmlentities($cnt); ?></td>
+                                                        <td><input type="checkbox" data-id="<?=$result->CandidateId?>"> <?php echo htmlentities($cnt); ?></td>
                                                         <td>
                                                             <button type="button" class="btn btn-info btn-xs" onClick='all_data(<?php echo htmlentities($result->CandidateId); ?>)' data-toggle="modal" data-target="#c_myModal"><?php echo htmlentities($result->enrollmentid); ?></td></button>
 
