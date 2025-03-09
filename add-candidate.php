@@ -223,7 +223,6 @@ if (strlen($_SESSION['alogin']) == "") {
 <body class="top-navbar-fixed">
 
     <?php include('includes/topbar-new.php'); ?>
-    <?php include('includes/left-sidebar-new.php'); ?>
 
     <div class="main-wrapper">
 
@@ -235,6 +234,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
                 <!-- ========== LEFT SIDEBAR ========== -->
                 <?php // include('includes/leftbar.php'); ?>
+                <?php include('includes/left-sidebar-new.php'); ?>
                 <!-- /.left-sidebar -->
 
                 <div class="main-page">
