@@ -572,8 +572,9 @@ if (strlen($_SESSION['alogin']) == "") {
                         }
                         .receipt-details p {
                             margin: 5px 0;
-                            font-size: 16px;
+                            font-size: 12px;
                             color: #000;
+                            line-height: 12px;
                         }
                         .table th, .table td {
                             vertical-align: middle;
