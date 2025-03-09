@@ -505,7 +505,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
         <!-- Modal for all Content-->
         <div id="p_myModal" class="modal fade" role="dialog">
-          <div class="modal-dialog">
+          <div class="modal-dialog" id="p_myModals">
 
             <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
              <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
@@ -684,7 +684,7 @@ if (strlen($_SESSION['alogin']) == "") {
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Payment Receipt</h4>
               </div>
-              <div class="modal-body" id="p_myModals">
+              <div class="modal-body" >
                 <style>
                     hr {
                         margin-top: 7px;
