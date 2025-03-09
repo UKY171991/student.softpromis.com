@@ -568,6 +568,14 @@ if (strlen($_SESSION['alogin']) == "") {
                             top: 39px;
                             margin: 11px;*/
                         }
+
+                        .receipt-header .table>tbody>tr>td {
+                            padding: 8px;
+                            line-height: 1.428571429;
+                            vertical-align: top;
+                            border: 0px solid #ffff;
+                        }
+
                         .receipt-details {
                             display: flex;
                             justify-content: space-between;
