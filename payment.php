@@ -609,7 +609,14 @@ if (strlen($_SESSION['alogin']) == "") {
                                 line-height: 1;
                                 margin-bottom: 0;
                             }
+                            .receipt h5, .receipt .h5 {
+                                font-size: 16.5680164262px;
+                                margin-top: 5px;
+                                line-height: 2;
+                                margin-bottom: 0;
+                            }
                         }
+
 
                         @media print {
                             body {
