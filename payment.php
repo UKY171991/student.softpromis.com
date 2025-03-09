@@ -517,6 +517,159 @@ if (strlen($_SESSION['alogin']) == "") {
             <link rel="stylesheet" href="css/main.css" media="screen">
             <link rel="stylesheet" href="css/mystyle.css">
 
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Receipt</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .receipt {
+            width: 100%;
+            max-width: 600px;
+            background: #fff;
+            padding: 20px;
+            border: 2px solid #000;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 30px auto;
+        }
+        .receipt-header {
+            text-align: center;
+            border-bottom: 2px solid #000;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+        .receipt-header img {
+            height: 50px;
+        }
+        .receipt-details {
+            display: flex;
+            justify-content: space-between;
+        }
+        .receipt-details .column {
+            width: 48%;
+        }
+        .receipt-details p {
+            margin: 5px 0;
+            font-size: 16px;
+            color: #000;
+        }
+        .table th, .table td {
+            vertical-align: middle;
+            text-align: center;
+            border: 1px solid #000;
+        }
+        .table tbody tr:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+        .signature {
+            margin-top: 30px;
+            text-align: right;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .signature-line {
+            margin-top: 10px;
+            border-top: 2px solid #000;
+            width: 200px;
+            text-align: center;
+            margin-left: auto;
+        }
+        .contact-info {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        @media print {
+            body {
+                background: none;
+            }
+            .receipt {
+                width: 100%;
+                height: 50vh; /* Half of A4 page height */
+                page-break-after: always;
+                box-shadow: none;
+                margin: 0 auto;
+                border: 2px solid #000;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="receipt">
+        <div class="receipt-header">
+            <h4 class="fw-bold">SOFTPRO PAYMENT RECEIPT</h4>
+            <img src="logo.png" alt="SoftPro Logo">
+        </div>
+        <div class="receipt-details">
+            <div class="column">
+                <p><strong>EF. No:</strong> SPA0001</p>
+                <p><strong>Student:</strong> Jhfykg Hjhgjh</p>
+                <p><strong>Training Center:</strong> ghbjjkbjh</p>
+                <p><strong>Scheme:</strong> YTC</p>
+                <p><strong>Sector:</strong> Retail</p>
+            </div>
+            <div class="column">
+                <p><strong>Job Roll:</strong> Sales</p>
+                <p><strong>Batch:</strong> 10-12</p>
+                <p><strong>Payment Date:</strong> Mar 09, 2025</p>
+                <p><strong>Paid Amount:</strong> 4000.00</p>
+                <p><strong>Remarks:</strong> Cash</p>
+            </div>
+        </div>
+        <h5 class="fw-bold border-bottom pb-2 text-center">Payment Summary</h5>
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Date</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Mar 09, 2025</strong></td>
+                    <td>4000.00</td>
+                </tr>
+                <tr>
+                    <td><strong>Total Payable Fee</strong></td>
+                    <td><strong>5000.00</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Total Paid</strong></td>
+                    <td><strong>4000.00</strong></td>
+                </tr>
+                <tr class="table-warning">
+                    <td><strong>Balance</strong></td>
+                    <td><strong>1000.00</strong></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="signature">
+            Authorised Signature
+        </div>
+        <div class="contact-info">
+            <p><strong>Address:</strong> 18-86 B, Main Road, Parvathipuram Manyam, Andhra Pradesh - 535501</p>
+            <p><strong>Ph:</strong> 7799773656</p>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
             <style type="text/css">
                 #p_myModal p, #p_myModal blockquote, #p_myModal pre, #p_myModal address, #p_myModal dl, #p_myModal ol, #p_myModal ul, #p_myModal table {
                     margin-bottom: 0em;
