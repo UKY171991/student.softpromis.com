@@ -155,7 +155,7 @@ if (strlen($_SESSION['alogin']) == "") {
         
         $enroll= $newEnrollmentId;
     } else {
-        $enroll = "No records found.";
+        $enroll = "SPA0001";
     }
 
 
