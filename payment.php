@@ -666,10 +666,6 @@ if (strlen($_SESSION['alogin']) == "") {
                     </tr>
                     <?php endforeach; ?>
                 <?php endif ?>
-                <tr class="table-warning">
-                    <td><strong>Balance</strong></td>
-                    <td><strong>1000.00</strong></td>
-                </tr>
                 <tr>
                     <td>Total Payable Fee</td>
                     <td class="text-right"><b><?=$p_result[0]['total_fee']?></b></td>
