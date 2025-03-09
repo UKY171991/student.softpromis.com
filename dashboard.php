@@ -148,6 +148,7 @@ if (strlen($_SESSION['alogin']) == "") {
       <!-- Sidebar -->
 
       <?php include('includes/left-sidebar-new.php'); ?>
+       <?php include('includes/leftbar.php'); ?>
 
 
       <!-- Main Content -->
