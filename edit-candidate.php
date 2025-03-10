@@ -586,7 +586,7 @@ $(document).ready(function(){
     });
 
     $(document).ready(function() {
-        $('#job_roll').load(function() {
+        $(window).load(function() {
             var job_id = $('#job_roll').val();
 
             $.ajax({
