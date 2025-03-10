@@ -568,67 +568,7 @@ $(document).ready(function(){
 </script>
 
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#job_roll').change(function() {
-            var job_id = $(this).val();
 
-            $.ajax({
-                url: 'get_batches.php',
-                type: 'POST',
-                data: {job_id: job_id},
-                dataType: 'json',
-                success: function(response) {
-                    $('#batch').empty().append('<option selected disabled>Select Batch</option>');
-                    if (response.length > 0) {
-                        $.each(response, function(index, batch) {
-                            $('#batch').append('<option value="' + batch.id + '">' + batch.batch_name + '</option>');
-                        });
-                    } else {
-                        $('#batch').append('<option disabled>No batches available</option>');
-                    }
-                },
-                error: function(xhr, status, error) {
-                    alert("Error loading batches: " + error);
-                }
-            });
-        });
-    });
-
-    $(document).ready(function() {
-        $(window).on('load', function() {
-            var job_id = $('#job_roll').val();
-            var batch_selected_id = $('#batch_selected_id').val();
-
-            $.ajax({
-                url: 'get_batches.php',
-                type: 'POST',
-                data: { job_id: job_id },
-                dataType: 'json',
-                success: function(response) {
-                    $('#batch').empty().append('<option selected disabled>Select Batch</option>');
-                    
-                    if (response.length > 0) {
-                        $.each(response, function(index, batch) {
-                            // Fix here: declare 'selected' properly
-                            var selected = (batch_selected_id == batch.id) ? 'selected' : '';
-                            
-                            $('#batch').append(
-                                '<option value="' + batch.id + '" ' + selected + '>' + batch.batch_name + '</option>'
-                            );
-                        });
-                    } else {
-                        $('#batch').append('<option disabled>No batches available</option>');
-                    }
-                },
-                error: function(xhr, status, error) {
-                    alert("Error loading batches: " + error);
-                }
-            });
-        });
-    });
-
-</script>
 
 
 <script type="text/javascript">
@@ -812,6 +752,68 @@ $(document).ready(function(){
                 },
                 error: function(xhr, status, error) {
                     alert("Error loading job roll: " + error);
+                }
+            });
+        });
+    });
+
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#job_roll').change(function() {
+            var job_id = $(this).val();
+
+            $.ajax({
+                url: 'get_batches.php',
+                type: 'POST',
+                data: {job_id: job_id},
+                dataType: 'json',
+                success: function(response) {
+                    $('#batch').empty().append('<option selected disabled>Select Batch</option>');
+                    if (response.length > 0) {
+                        $.each(response, function(index, batch) {
+                            $('#batch').append('<option value="' + batch.id + '">' + batch.batch_name + '</option>');
+                        });
+                    } else {
+                        $('#batch').append('<option disabled>No batches available</option>');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert("Error loading batches: " + error);
+                }
+            });
+        });
+    });
+
+    $(document).ready(function() {
+        $(window).on('load', function() {
+            var job_id = $('#job_roll').val();
+            var batch_selected_id = $('#batch_selected_id').val();
+
+            $.ajax({
+                url: 'get_batches.php',
+                type: 'POST',
+                data: { job_id: job_id },
+                dataType: 'json',
+                success: function(response) {
+                    $('#batch').empty().append('<option selected disabled>Select Batch</option>');
+                    
+                    if (response.length > 0) {
+                        $.each(response, function(index, batch) {
+                            // Fix here: declare 'selected' properly
+                            var selected = (batch_selected_id == batch.id) ? 'selected' : '';
+                            
+                            $('#batch').append(
+                                '<option value="' + batch.id + '" ' + selected + '>' + batch.batch_name + '</option>'
+                            );
+                        });
+                    } else {
+                        $('#batch').append('<option disabled>No batches available</option>');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert("Error loading batches: " + error);
                 }
             });
         });
