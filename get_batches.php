@@ -32,7 +32,7 @@ if (isset($_POST['training_center'])) {
     	$scheme_id = $row5['scheme_id'];
 
     	// Example Query: Adjust according to your actual database schema
-	    $sql = "SELECT SchemeId, SchemeName FROM tblscheme WHERE SchemeId = :scheme_id ORDER BY id DESC";
+	    $sql = "SELECT SchemeId, SchemeName FROM tblscheme WHERE SchemeId = :scheme_id ORDER BY SchemeId DESC";
 	    $query = $dbh->prepare($sql);
 	    $query->bindParam(':scheme_id', $scheme_id, PDO::PARAM_INT);
 	    $query->execute();
