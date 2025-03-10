@@ -603,7 +603,7 @@ $(document).ready(function(){
                     if (response.length > 0) {
                         $.each(response, function(index, batch) {
                             if(batch_selected_id == batch.id){
-                                 select = "selected";
+                                var select = "selected";
                             }
                             $('#batch').append('<option value="' + batch.id + '" '+select+'>' + batch.batch_name + '</option>');
                         });
