@@ -757,6 +757,69 @@ $(document).ready(function(){
 </script>
 
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#sector').change(function() {
+            var sector = $(this).val();
+
+            $.ajax({
+                url: 'get_batches.php',
+                type: 'POST',
+                data: {sector: sector},
+                dataType: 'json',
+                success: function(response) {
+                    $('#job_roll').empty().append('<option selected disabled>Select job roll</option>');
+                    if (response.length > 0) {
+                        $.each(response, function(index, job_roll) {
+                            $('#job_roll').append('<option value="' + job_roll.SectorId + '">' + job_roll.SectorName + '</option>');
+                        });
+                    } else {
+                        $('#job_roll').append('<option disabled>No job roll available</option>');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert("Error loading job roll: " + error);
+                }
+            });
+        });
+    });
+
+    $(document).ready(function() {
+        $(window).on('load', function() {
+            var sector = $('#sector').val();
+            var sector_id = $('#sector_id').val();
+
+            $.ajax({
+                url: 'get_batches.php',
+                type: 'POST',
+                data: { sector: sector },
+                dataType: 'json',
+                success: function(response) {
+                    $('#job_roll').empty().append('<option selected disabled>Select Batch</option>');
+                    
+                    if (response.length > 0) {
+                        $.each(response, function(index, job_roll) {
+                            // Fix here: declare 'selected' properly
+                            var selected = (batch_selected_id == job_roll.id) ? 'selected' : '';
+                            
+                            $('#job_roll').append(
+                                '<option value="' + job_roll.JobrollId + '" ' + selected + '>' + job_roll.jobrollname + '</option>'
+                            );
+                        });
+                    } else {
+                        $('#job_roll').append('<option disabled>No job roll available</option>');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert("Error loading job roll: " + error);
+                }
+            });
+        });
+    });
+
+</script>
+
+
 
     <!-- ========== ADD custom.js FILE BELOW WITH YOUR CHANGES ========== -->
 </body>
