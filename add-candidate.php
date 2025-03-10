@@ -778,13 +778,13 @@ $(document).ready(function(){
                 data: {scheme: scheme},
                 dataType: 'json',
                 success: function(response) {
-                    $('#sector').empty().append('<option selected disabled>Select Scheme</option>');
+                    $('#sector').empty().append('<option selected disabled>Select Sector</option>');
                     if (response.length > 0) {
                         $.each(response, function(index, sector) {
                             $('#sector').append('<option value="' + sector.SectorId + '">' + sector.SectorName + '</option>');
                         });
                     } else {
-                        $('#sector').append('<option disabled>No Scheme available</option>');
+                        $('#sector').append('<option disabled>No Sector available</option>');
                     }
                 },
                 error: function(xhr, status, error) {
