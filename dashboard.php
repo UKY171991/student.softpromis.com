@@ -89,7 +89,7 @@ if (strlen($_SESSION['alogin']) == "") {
           </div>
           <!-- Ongoing Candidates Card -->
           <div class="col-md-3">
-            <div class="dashboard-card bg-orange" onclick="location.href='ongoing-candidate.php';">
+            <div class="dashboard-card bg-warning text-dark" onclick="location.href='ongoing-candidate.php';">
               <div class="d-flex justify-content-between align-items-center">
                 <div>
                   <?php
