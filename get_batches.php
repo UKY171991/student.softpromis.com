@@ -21,6 +21,15 @@ if (isset($_POST['job_id'])) {
 if (isset($_POST['training_center'])) {
     $training_center = intval($_POST['training_center']);
 
+    $sql_s = "SELECT * FROM tblassignscheme WHERE trainingcenter_id = :training_center ORDER BY id DESC";
+    $query_s = $dbh->prepare($sql);
+    $query_s->bindParam(':training_center', $training_center, PDO::PARAM_INT);
+    $query_s->execute();
+
+    $sch_s = $query_s->fetchAll(PDO::FETCH_ASSOC);
+
+    print_r($sch_s);
+
     // Example Query: Adjust according to your actual database schema
     $sql = "SELECT SchemeId, SchemeName FROM tblscheme WHERE job_roll_id = :job_id ORDER BY id DESC";
     $query = $dbh->prepare($sql);
@@ -29,7 +38,7 @@ if (isset($_POST['training_center'])) {
 
     $training_center = $query->fetchAll(PDO::FETCH_ASSOC);
 
-    print_r($training_center);
+    //print_r($training_center);
 
     echo json_encode($training_center);
 }
