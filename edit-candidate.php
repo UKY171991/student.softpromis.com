@@ -575,6 +575,7 @@ $(document).ready(function(){
     $(document).ready(function() {
         $('#training_center').change(function() {
             var job_id = $(this).val();
+            alert(job_id);
 
             $.ajax({
                 url: 'get_batches.php',
