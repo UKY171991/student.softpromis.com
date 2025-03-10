@@ -612,6 +612,18 @@ if (strlen($_SESSION['alogin']) == "") {
       </script>
 
 
+      <script>
+$(document).ready(function(){
+    $('#village,#mandal').on('keyup', function(){
+        var value = $(this).val().toLowerCase().replace(/\b[a-z]/g, function(letter) {
+            return letter.toUpperCase();
+        });
+        $(this).val(value);
+    });
+});
+</script>
+
+
 
     <!-- ========== ADD custom.js FILE BELOW WITH YOUR CHANGES ========== -->
 </body>
