@@ -424,6 +424,8 @@ if (strlen($_SESSION['alogin']) == "") {
                                                     </div>
                                                 </div>
 
+                                                <input type="hidden" name="" id="training_center_id" value="<?=$result->TrainingcenterId?>">
+
                                                 <div class="form-group col-md-4">
                                                     <label for="training_center">Training Center</label>
                                                     <select id="training_center" name="training_center" class="form-control js-example-basic-single" required>
@@ -436,6 +438,8 @@ if (strlen($_SESSION['alogin']) == "") {
                                                     </select>
                                                 </div>
 
+                                                <input type="hidden" name="" id="scheme_id" value="<?=$result->scheme?>">
+
                                                 <div class="form-group col-md-4">
                                                     <label for="scheme">Scheme</label>
                                                     <select id="scheme" name="scheme" class="form-control js-example-basic-single" required>
@@ -446,6 +450,8 @@ if (strlen($_SESSION['alogin']) == "") {
                                                         <?php } ?>
                                                     </select>
                                                 </div>
+
+                                                <input type="hidden" name="" id="sector_id" value="<?=$result->sector?>">
 
                                                 <div class="form-group col-md-4">
                                                     <label for="sector">Sector</label>
@@ -458,6 +464,8 @@ if (strlen($_SESSION['alogin']) == "") {
                                                     </select>
                                                 </div>
 
+                                                <input type="hidden" name="" id="job_roll_id" value="<?=$result->job_roll?>">
+                                                
                                                 <div class="form-group col-md-4">
                                                     <label for="job_roll">Job Roll</label>
                                                     <select id="job_roll" name="job_roll" class="form-control js-example-basic-single" required>
@@ -470,6 +478,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 </div>
 
                                                 <input type="hidden" name="" id="batch_selected_id" value="<?=$result->batch?>">
+                                                
 
                                                 <div class="form-group col-md-4">
                                                     <label for="batch">Batch</label>
@@ -621,6 +630,68 @@ $(document).ready(function(){
 
 </script>
 
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#training_center').change(function() {
+            var job_id = $(this).val();
+
+            $.ajax({
+                url: 'get_batches.php',
+                type: 'POST',
+                data: {training_center: training_center},
+                dataType: 'json',
+                success: function(response) {
+                    $('#scheme').empty().append('<option selected disabled>Select Batch</option>');
+                    if (response.length > 0) {
+                        $.each(response, function(index, scheme) {
+                            $('#scheme').append('<option value="' + scheme.SchemeId + '">' + scheme.SchemeName + '</option>');
+                        });
+                    } else {
+                        $('#scheme').append('<option disabled>No batches available</option>');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert("Error loading batches: " + error);
+                }
+            });
+        });
+    });
+
+    $(document).ready(function() {
+        $(window).on('load', function() {
+            var training_center = $('#training_center').val();
+            var batch_selected_id = $('#training_center_id').val();
+
+            $.ajax({
+                url: 'get_batches.php',
+                type: 'POST',
+                data: { training_center: training_center },
+                dataType: 'json',
+                success: function(response) {
+                    $('#scheme').empty().append('<option selected disabled>Select Batch</option>');
+                    
+                    if (response.length > 0) {
+                        $.each(response, function(index, scheme) {
+                            // Fix here: declare 'selected' properly
+                            var selected = (batch_selected_id == scheme.id) ? 'selected' : '';
+                            
+                            $('#scheme').append(
+                                '<option value="' + scheme.SchemeId + '" ' + selected + '>' + scheme.SchemeName + '</option>'
+                            );
+                        });
+                    } else {
+                        $('#scheme').append('<option disabled>No batches available</option>');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert("Error loading batches: " + error);
+                }
+            });
+        });
+    });
+
+</script>
 
 
 
