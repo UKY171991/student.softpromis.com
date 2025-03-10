@@ -470,6 +470,8 @@ if (strlen($_SESSION['alogin']) == "") {
                                                     </select>
                                                 </div>
 
+                                                <input type="hidden" name="" id="batch_selected_id" value="<?=$result->batch?>">
+
                                                 <div class="form-group col-md-4">
                                                     <label for="batch">Batch</label>
                                                     <select id="batch" name="batch" class="form-control js-example-basic-single" required>
@@ -588,6 +590,7 @@ $(document).ready(function(){
     $(document).ready(function() {
         $(window).load(function() {
             var job_id = $('#job_roll').val();
+            var batch_selected_id = $('#batch_selected_id').val();
 
             $.ajax({
                 url: 'get_batches.php',
@@ -596,9 +599,13 @@ $(document).ready(function(){
                 dataType: 'json',
                 success: function(response) {
                     $('#batch').empty().append('<option selected disabled>Select Batch</option>');
+                    var select = "";
                     if (response.length > 0) {
                         $.each(response, function(index, batch) {
-                            $('#batch').append('<option value="' + batch.id + '">' + batch.batch_name + '</option>');
+                            if(batch_selected_id == batch.id){
+                                var select = "selected";
+                            }
+                            $('#batch').append('<option value="' + batch.id + '" '+select+'>' + batch.batch_name + '</option>');
                         });
                     } else {
                         $('#batch').append('<option disabled>No batches available</option>');
