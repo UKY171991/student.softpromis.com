@@ -706,6 +706,15 @@ if (strlen($_SESSION['alogin']) == "") {
         }
     });
 </script>
+
+<script>
+$(document).ready(function(){
+    $('#village').on('keyup', function(){
+        $(this).val($(this).val().toUpperCase());
+    });
+});
+</script>
+
   
 </body>
 
