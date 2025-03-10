@@ -616,7 +616,7 @@ $(document).ready(function(){
                             // Fix here: declare 'selected' properly
                             var selected = (scheme_id == scheme.id) ? 'selected' : '';
 
-                            alert(training_center);
+                            alert(response);
                             
                             $('#scheme').append(
                                 '<option value="' + scheme.SchemeId + '" ' + selected + '>' + scheme.SchemeName + '</option>'
