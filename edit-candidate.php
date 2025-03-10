@@ -41,8 +41,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
         $status = 1;
 
-        $sql = "UPDATE tblcandidate SET candidatename=:candidatename, fathername=:fathername, aadharnumber=:aadharnumber, phonenumber=:phonenumber, phonenumber2=:phonenumber2,
-    dateofbirth=:dateofbirth, gender=:gender, maritalstatus=:maritalstatus, religion=:religion, category=:category, village=:village,
+        $sql = "UPDATE tblcandidate SET candidatename=:candidatename, fathername=:fathername, aadharnumber=:aadharnumber, phonenumber=:phonenumber, dateofbirth=:dateofbirth, gender=:gender, maritalstatus=:maritalstatus, religion=:religion, category=:category, village=:village,
     mandal=:mandal, district=:district, state=:state, pincode=:pincode, training_center=:training_center, scheme=:scheme, sector=:sector, job_roll=:job_roll, batch=:batch
     WHERE CandidateId=:cid";
     $query = $dbh->prepare($sql);
@@ -51,7 +50,6 @@ if (strlen($_SESSION['alogin']) == "") {
     $query->bindParam(':fathername', $fathername, PDO::PARAM_STR);
     $query->bindParam(':aadharnumber', $aadharnumber, PDO::PARAM_STR);
     $query->bindParam(':phonenumber', $phonenumber, PDO::PARAM_STR);
-    $query->bindParam(':phonenumber2', $phonenumber2, PDO::PARAM_STR);
     $query->bindParam(':dateofbirth', $dateofbirth, PDO::PARAM_STR);
     $query->bindParam(':gender', $gender, PDO::PARAM_STR);
     $query->bindParam(':maritalstatus', $maritalstatus, PDO::PARAM_STR);
