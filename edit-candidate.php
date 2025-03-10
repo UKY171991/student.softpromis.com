@@ -426,7 +426,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
                                                 <div class="form-group col-md-4">
                                                     <label for="training_center">Training Center</label>
-                                                    <select id="training_center" name="training_center" class="form-control" required>
+                                                    <select id="training_center" name="training_center" class="form-control js-example-basic-single" required>
                                                         <option>Select</option>
                                                         <?php 
                                                         foreach ($result1 as $row1) { ?>
@@ -438,7 +438,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
                                                 <div class="form-group col-md-4">
                                                     <label for="scheme">Scheme</label>
-                                                    <select id="scheme" name="scheme" class="form-control" required>
+                                                    <select id="scheme" name="scheme" class="form-control js-example-basic-single" required>
                                                         <option>Select</option>
                                                         <?php 
                                                         foreach ($result2 as $row2) { ?>
@@ -449,7 +449,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
                                                 <div class="form-group col-md-4">
                                                     <label for="sector">Sector</label>
-                                                    <select id="sector" name="sector" class="form-control" required>
+                                                    <select id="sector" name="sector" class="form-control js-example-basic-single" required>
                                                         <option>Select</option>
                                                         <?php 
                                                         foreach ($result3 as $row3) { ?>
@@ -460,7 +460,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
                                                 <div class="form-group col-md-4">
                                                     <label for="job_roll">Job Roll</label>
-                                                    <select id="job_roll" name="job_roll" class="form-control" required>
+                                                    <select id="job_roll" name="job_roll" class="form-control js-example-basic-single" required>
                                                         <option>Select</option>
                                                         <?php 
                                                         foreach ($result4 as $row4) { ?>
@@ -471,7 +471,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
                                                 <div class="form-group col-md-4">
                                                     <label for="batch">Batch</label>
-                                                    <select id="batch" name="batch" class="form-control" required>
+                                                    <select id="batch" name="batch" class="form-control js-example-basic-single" required>
                                                         <option>Select</option>
                                                         <?php 
                                                         foreach ($result5 as $row5) { ?>
@@ -546,6 +546,12 @@ $(document).ready(function(){
         });
         $(this).val(value);
     });
+});
+
+
+// In your Javascript (external .js resource or <script> tag)
+$(document).ready(function() {
+    $('.js-example-basic-single').select2();
 });
 </script>
 
