@@ -58,7 +58,7 @@ if (isset($_POST['training_center'])) {
 
 
 if (isset($_POST['scheme'])) {
-    $scheme = intval($_POST['scheme']);
+    echo $scheme = intval($_POST['scheme']);
 
 
     $sql_s = "SELECT * FROM tblassignsector WHERE scheme_id = :scheme ORDER BY id DESC";
