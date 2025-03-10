@@ -41,43 +41,44 @@ if (strlen($_SESSION['alogin']) == "") {
 
         $status = 1;
 
-        $sql = "update  tblcandidate set candidatename=:candidatename,fathername=:fathername,aadharnumber=:aadharnumber,phonenumber=:phonenumber,phonenumber2=:phonenumber2,
-        dateofbirth=:dateofbirth,gender=:gender,maritalstatus=:maritalstatus,religion=:religion,category=:category,village=:village,
-        mandal=:mandal,district=:district,state=:state,pincode=:pincode,training_center=:training_center,scheme=:scheme,sector=:sector,job_roll=:job_roll,batch=:batch
-        where CandidateId=:cid ";
-        $query = $dbh->prepare($sql);
-        $query->bindParam(':candidatename', $candidatename, PDO::PARAM_STR);
-        $query->bindParam(':fathername', $fathername, PDO::PARAM_STR);
-        $query->bindParam(':aadharnumber', $aadharnumber, PDO::PARAM_STR);
-        $query->bindParam(':phonenumber', $phonenumber, PDO::PARAM_STR);
-        $query->bindParam(':phonenumber2', $phonenumber2, PDO::PARAM_STR);
-        //$query->bindParam(':qualification', $qualification, PDO::PARAM_STR);
-        $query->bindParam(':dateofbirth', $dateofbirth, PDO::PARAM_STR);
-        $query->bindParam(':gender', $gender, PDO::PARAM_STR);
-        $query->bindParam(':maritalstatus', $maritalstatus, PDO::PARAM_STR);
-        $query->bindParam(':religion', $religion, PDO::PARAM_STR);
-        $query->bindParam(':category', $category, PDO::PARAM_STR);
-        $query->bindParam(':village', $village, PDO::PARAM_STR);
-        $query->bindParam(':mandal', $mandal, PDO::PARAM_STR);
-        $query->bindParam(':district', $district, PDO::PARAM_STR);
-        $query->bindParam(':state', $state, PDO::PARAM_STR);
-        $query->bindParam(':pincode', $pincode, PDO::PARAM_STR);
+        $sql = "UPDATE tblcandidate SET candidatename=:candidatename, fathername=:fathername, aadharnumber=:aadharnumber, phonenumber=:phonenumber, phonenumber2=:phonenumber2,
+    dateofbirth=:dateofbirth, gender=:gender, maritalstatus=:maritalstatus, religion=:religion, category=:category, village=:village,
+    mandal=:mandal, district=:district, state=:state, pincode=:pincode, training_center=:training_center, scheme=:scheme, sector=:sector, job_roll=:job_roll, batch=:batch
+    WHERE CandidateId=:cid";
+    $query = $dbh->prepare($sql);
 
-        $query->bindParam(':training_center', $training_center, PDO::PARAM_INT);
-        $query->bindParam(':scheme', $scheme, PDO::PARAM_INT);
-        $query->bindParam(':sector', $sector, PDO::PARAM_INT);
-        $query->bindParam(':job_roll', $job_roll, PDO::PARAM_INT);
-        $query->bindParam(':batch', $batch, PDO::PARAM_INT);
+    $query->bindParam(':candidatename', $candidatename, PDO::PARAM_STR);
+    $query->bindParam(':fathername', $fathername, PDO::PARAM_STR);
+    $query->bindParam(':aadharnumber', $aadharnumber, PDO::PARAM_STR);
+    $query->bindParam(':phonenumber', $phonenumber, PDO::PARAM_STR);
+    $query->bindParam(':phonenumber2', $phonenumber2, PDO::PARAM_STR);
+    $query->bindParam(':dateofbirth', $dateofbirth, PDO::PARAM_STR);
+    $query->bindParam(':gender', $gender, PDO::PARAM_STR);
+    $query->bindParam(':maritalstatus', $maritalstatus, PDO::PARAM_STR);
+    $query->bindParam(':religion', $religion, PDO::PARAM_STR);
+    $query->bindParam(':category', $category, PDO::PARAM_STR);
+    $query->bindParam(':village', $village, PDO::PARAM_STR);
+    $query->bindParam(':mandal', $mandal, PDO::PARAM_STR);
+    $query->bindParam(':district', $district, PDO::PARAM_STR);
+    $query->bindParam(':state', $state, PDO::PARAM_STR);
+    $query->bindParam(':pincode', $pincode, PDO::PARAM_STR);
+    $query->bindParam(':training_center', $training_center, PDO::PARAM_INT);
+    $query->bindParam(':scheme', $scheme, PDO::PARAM_INT);
+    $query->bindParam(':sector', $sector, PDO::PARAM_INT);
+    $query->bindParam(':job_roll', $job_roll, PDO::PARAM_INT);
+    $query->bindParam(':batch', $batch, PDO::PARAM_INT);
 
+    // IMPORTANT FIX: Bind the candidate ID
+    $query->bindParam(':cid', $cid, PDO::PARAM_INT);
 
-        $query->bindParam(':cid', $cid, PDO::PARAM_STR);
-
-
-        $query->execute();
-
-
+    // Execute the query and check for success
+    if ($query->execute()) {
         $msg = "Data has been updated successfully";
-        echo  '<script> setTimeout(function() { window.location.href = "payment.php?last_id='.$cid.'"; }, 2000); </script>';
+        echo '<script> setTimeout(function() { window.location.href = "payment.php?last_id=' . $cid . '"; }, 2000); </script>';
+    } else {
+        $error = "An error occurred while updating data.";
+    }
+
     }
 
 
