@@ -792,6 +792,30 @@ $(document).ready(function(){
                 }
             });
         });
+
+        $('#sector').change(function() {
+            var sector = $(this).val();
+
+            $.ajax({
+                url: 'get_batches.php',
+                type: 'POST',
+                data: {sector: sector},
+                dataType: 'json',
+                success: function(response) {
+                    $('#job_roll').empty().append('<option selected disabled>Select job roll</option>');
+                    if (response.length > 0) {
+                        $.each(response, function(index, job_roll) {
+                            $('#job_roll').append('<option value="' + job_roll.SectorId + '">' + job_roll.SectorName + '</option>');
+                        });
+                    } else {
+                        $('#job_roll').append('<option disabled>No job roll available</option>');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert("Error loading batches: " + error);
+                }
+            });
+        });
     });
 </script>
 

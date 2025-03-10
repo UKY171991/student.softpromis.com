@@ -96,4 +96,44 @@ if (isset($_POST['scheme'])) {
     exit();
 }
 
+
+if (isset($_POST['sector'])) {
+    $sector = intval($_POST['sector']);
+
+    $sql_s = "SELECT * FROM tblassignjobroll WHERE jobroll_id = :sector ORDER BY id DESC";
+    $query_s = $dbh->prepare($sql_s);
+    $query_s->bindParam(':sector', $sector, PDO::PARAM_INT);
+    $query_s->execute();
+
+    $sch_s = $query_s->fetchAll(PDO::FETCH_ASSOC);
+
+    print_r($sch_s);
+
+    $final_result = [];  // Create an empty array to hold all results
+
+    foreach ($sch_s as $row5) {
+    	$sector_id = $row5['sector_id'];
+
+    	// Example Query: Adjust according to your actual database schema
+	    $sql = "SELECT JobrollId, jobrollname FROM tbljobroll WHERE SectorId = :sector_id ORDER BY SectorId DESC";
+	    $query = $dbh->prepare($sql);
+	    $query->bindParam(':sector_id', $sector_id, PDO::PARAM_INT);
+	    $query->execute();
+
+	    $training_center = $query->fetchAll(PDO::FETCH_ASSOC);
+
+	    //print_r($training_center);
+
+	    foreach ($training_center as $scheme) {
+	        $final_result[] = $scheme;
+	    }
+
+    }
+
+    //print_r($sch_s[0]['scheme_id']);
+    echo json_encode($final_result);
+
+    exit();
+}
+
 ?>
