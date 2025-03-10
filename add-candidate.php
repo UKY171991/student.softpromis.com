@@ -606,15 +606,15 @@ if (strlen($_SESSION['alogin']) == "") {
         <script src="js/select2/select2.min.js"></script>
         <script src="js/main.js"></script>
         <script>
-        $(function($) {
-            $(".js-states").select2();
-            $(".js-states-limit").select2({
-                maximumSelectionLength: 2
-            });
-            $(".js-states-hide").select2({
-                minimumResultsForSearch: Infinity
-            });
-        });
+        // $(function($) {
+        //     $(".js-states").select2();
+        //     $(".js-states-limit").select2({
+        //         maximumSelectionLength: 2
+        //     });
+        //     $(".js-states-hide").select2({
+        //         minimumResultsForSearch: Infinity
+        //     });
+        // });
         </script>
         
         <script>
