@@ -28,13 +28,11 @@ if (isset($_POST['training_center'])) {
 
     $sch_s = $query_s->fetchAll(PDO::FETCH_ASSOC);
 
-    $scheme_id = $sch_s[0]['scheme_id'];
-
     foreach ($sch_s as $row5) {
-    	print_r($row5);
+    	echo $row5['id'];
     }
 
-    print_r($sch_s[0]['scheme_id']);
+    //print_r($sch_s[0]['scheme_id']);
 
     exit();
 
