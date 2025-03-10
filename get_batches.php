@@ -75,7 +75,7 @@ if (isset($_POST['scheme'])) {
     	$sector_id = $row5['sector_id'];
 
     	// Example Query: Adjust according to your actual database schema
-	    $sql = "SELECT * FROM tblsector WHERE SectorId = :sector_id ORDER BY SchemeId DESC";
+	    $sql = "SELECT * FROM tblsector WHERE SectorId = :sector_id ORDER BY SectorId DESC";
 	    $query = $dbh->prepare($sql);
 	    $query->bindParam(':sector_id', $sector_id, PDO::PARAM_INT);
 	    $query->execute();
