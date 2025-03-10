@@ -715,6 +715,13 @@ $(document).ready(function() {
 </script>
 
 
+<script type="text/javascript">
+    $('#job_roll').change(function(){
+        alet();
+    });
+</script>
+
+
   
 </body>
 
