@@ -22,7 +22,7 @@ if (isset($_POST['training_center'])) {
     $training_center = intval($_POST['training_center']);
 
     $sql_s = "SELECT * FROM tblassignscheme WHERE trainingcenter_id = :training_center ORDER BY id DESC";
-    $query_s = $dbh->prepare($sql);
+    $query_s = $dbh->prepare($sql_s);
     $query_s->bindParam(':training_center', $training_center, PDO::PARAM_INT);
     $query_s->execute();
 
