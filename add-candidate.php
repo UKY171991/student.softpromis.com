@@ -710,10 +710,14 @@ if (strlen($_SESSION['alogin']) == "") {
 <script>
 $(document).ready(function(){
     $('#village').on('keyup', function(){
-        $(this).val($(this).val().toUpperCase());
+        var value = $(this).val().toLowerCase().replace(/\b[a-z]/g, function(letter) {
+            return letter.toUpperCase();
+        });
+        $(this).val(value);
     });
 });
 </script>
+
 
   
 </body>
