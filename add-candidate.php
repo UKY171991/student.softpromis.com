@@ -550,7 +550,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
                                         <div class="form-group col-md-4">
                                             <label for="batch">Batch</label>
-                                            <select id="batch" name="batch" class="form-control" required>
+                                            <select id="batch" name="batch" class="form-control js-example-basic-single" required>
                                                 <option selected>Select</option>
                                                 <?php 
                                                 foreach ($result5 as $row5) { ?>
@@ -708,6 +708,11 @@ $(document).ready(function(){
     });
 });
 </script>
+
+// In your Javascript (external .js resource or <script> tag)
+$(document).ready(function() {
+    $('.js-example-basic-single').select2();
+});
   
 </body>
 
