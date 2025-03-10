@@ -69,7 +69,7 @@ if (strlen($_SESSION['alogin']) == "") {
         $query->execute();
         $results = $query->fetchAll(PDO::FETCH_OBJ);
         $totalcandidate = $query->rowCount();
-        if ($totalcandidate == 0) {
+        if ($totalcandidate < 10) {
             $sql = "INSERT INTO tblcandidate (
                 enrollmentid, candidatename, fathername, aadharnumber, phonenumber, email, dateofbirth, gender, maritalstatus, religion, category, village, 
                 mandal, district, state, pincode, candidatephoto, aadhaarphoto, 

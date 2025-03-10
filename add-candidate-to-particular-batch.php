@@ -27,7 +27,7 @@ if (strlen($_SESSION['alogin']) == "") {
         }
     }
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 
 <head>

@@ -59,7 +59,7 @@ if (strlen($_SESSION['alogin']) == "") {
             url: "get_student.php",
             data: 'trainingid=' + val,
             success: function(data) {
-                $("#studentid").html(data);
+                $("#studentid").html(data); 
 
             }
         });
