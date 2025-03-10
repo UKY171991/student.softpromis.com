@@ -19,7 +19,7 @@ if (isset($_POST['job_id'])) {
 
 
 if (isset($_POST['training_center'])) {
-    echo $training_center = intval($_POST['training_center']);
+    $training_center = intval($_POST['training_center']);
 
     // Example Query: Adjust according to your actual database schema
     $sql = "SELECT SchemeId, SchemeName FROM tblscheme WHERE job_roll_id = :job_id ORDER BY id DESC";
@@ -27,10 +27,10 @@ if (isset($_POST['training_center'])) {
     $query->bindParam(':job_id', $job_id, PDO::PARAM_INT);
     $query->execute();
 
-    $batches = $query->fetchAll(PDO::FETCH_ASSOC);
+    $training_center = $query->fetchAll(PDO::FETCH_ASSOC);
 
-    //print_r($batches);
+    print_r($training_center);
 
-    echo json_encode($batches);
+    echo json_encode($training_center);
 }
 ?>
