@@ -781,7 +781,7 @@ $(document).ready(function(){
                     $('#sector').empty().append('<option selected disabled>Select Scheme</option>');
                     if (response.length > 0) {
                         $.each(response, function(index, sector) {
-                            $('#sector').append('<option value="' + sector.SchemeId + '">' + sector.SchemeName + '</option>');
+                            $('#sector').append('<option value="' + sector.SectorId + '">' + sector.SectorName + '</option>');
                         });
                     } else {
                         $('#sector').append('<option disabled>No Scheme available</option>');
