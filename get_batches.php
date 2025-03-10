@@ -112,10 +112,10 @@ if (isset($_POST['sector'])) {
     $final_result = [];  // Create an empty array to hold all results
 
     foreach ($sch_s as $row5) {
-    	echo $sector_id = $row5['jobroll_id'];
+    	$sector_id = $row5['jobroll_id'];
 
     	// Example Query: Adjust according to your actual database schema
-	    $sql = "SELECT JobrollId, jobrollname FROM tbljobroll WHERE JobrollId = :sector_id ORDER BY SectorId DESC";
+	    $sql = "SELECT JobrollId, jobrollname FROM tbljobroll WHERE JobrollId = :sector_id ORDER BY JobrollId DESC";
 	    $query = $dbh->prepare($sql);
 	    $query->bindParam(':sector_id', $sector_id, PDO::PARAM_INT);
 	    $query->execute();
