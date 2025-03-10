@@ -30,6 +30,10 @@ if (isset($_POST['training_center'])) {
 
     $scheme_id = $sch_s[0]['scheme_id'];
 
+    foreach ($sch_s as $row5) {
+    	print_r($row5);
+    }
+
     print_r($sch_s[0]['scheme_id']);
 
     exit();
