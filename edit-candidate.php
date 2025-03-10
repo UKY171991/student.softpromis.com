@@ -5,6 +5,82 @@ include('includes/config.php');
 if (strlen($_SESSION['alogin']) == "") {
     header("Location: index.php");
 } else {
+
+    if (isset($_POST['update'])) {
+
+    $cid = $_POST['candidateid'];
+
+    // Rearrange date format to YYYY-MM-DD
+    $dob = DateTime::createFromFormat('d-m-Y', $_POST['dateofbirth']);
+    $dateofbirth = $dob->format('Y-m-d');
+
+    // Collect form inputs
+    $formData = [
+        ':enrollmentid'    => $_POST['enrollmentid'],
+        ':candidatename'   => $_POST['candidatename'],
+        ':fathername'      => $_POST['fathername'],
+        ':aadharnumber'    => $_POST['aadharnumber'],
+        ':phonenumber'     => $_POST['phonenumber'],
+        ':phonenumber2'    => $_POST['phonenumber2'],
+        ':dateofbirth'     => $dateofbirth,
+        ':gender'          => $_POST['gender'],
+        ':maritalstatus'   => $_POST['maritalstatus'],
+        ':religion'        => $_POST['religion'],
+        ':category'        => $_POST['category'],
+        ':village'         => $_POST['village'],
+        ':mandal'          => $_POST['mandal'],
+        ':district'        => $_POST['district'],
+        ':state'           => $_POST['state'],
+        ':pincode'         => $_POST['pincode'],
+        ':training_center' => $_POST['training_center'],
+        ':scheme'          => $_POST['scheme'],
+        ':sector'          => $_POST['sector'],
+        ':job_roll'        => $_POST['job_roll'],
+        ':batch'           => $_POST['batch'],
+        ':cid'             => $cid
+    ];
+
+    try {
+        $sql = "UPDATE tblcandidate SET 
+                    enrollmentid=:enrollmentid,
+                    candidatename=:candidatename,
+                    fathername=:fathername,
+                    aadharnumber=:aadharnumber,
+                    phonenumber=:phonenumber,
+                    phonenumber2=:phonenumber2,
+                    dateofbirth=:dateofbirth,
+                    gender=:gender,
+                    maritalstatus=:maritalstatus,
+                    religion=:religion,
+                    category=:category,
+                    village=:village,
+                    mandal=:mandal,
+                    district=:district,
+                    state=:state,
+                    pincode=:pincode,
+                    training_center=:training_center,
+                    scheme=:scheme,
+                    sector=:sector,
+                    job_roll=:job_roll,
+                    batch=:batch
+                WHERE CandidateId=:cid";
+
+        $query = $dbh->prepare($sql);
+        $query->execute($formData);
+
+        if ($query->rowCount() > 0) {
+            $msg = "Data has been updated successfully";
+            echo '<script>setTimeout(function() { window.location.href = "payment.php?last_id=' . $cid . '"; }, 2000);</script>';
+        } else {
+            $error = "No changes made or invalid candidate ID.";
+        }
+    } catch (PDOException $e) {
+        $error = "Database error: " . $e->getMessage();
+    }
+}
+
+/*
+
     if (isset($_POST['update'])) {
 
         $cid = ($_POST['candidateid']);
@@ -80,6 +156,8 @@ if (strlen($_SESSION['alogin']) == "") {
         $msg = "Data has been updated successfully";
         echo  '<script> setTimeout(function() { window.location.href = "payment.php?last_id='.$cid.'"; }, 2000); </script>';
     }
+
+    */
 
 
     ///  last five column data for  select
