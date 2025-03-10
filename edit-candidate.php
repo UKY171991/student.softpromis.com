@@ -614,9 +614,9 @@ $(document).ready(function(){
                     if (response.length > 0) {
                         $.each(response, function(index, scheme) {
                             // Fix here: declare 'selected' properly
-                            var selected = (batch_selected_id == scheme.id) ? 'selected' : '';
+                            var selected = (training_center_id == scheme.id) ? 'selected' : '';
 
-                            alert(batch_selected_id +"tt "+ scheme.id);
+                            alert(training_center_id +"tt "+ scheme.id);
                             
                             $('#scheme').append(
                                 '<option value="' + scheme.SchemeId + '" ' + selected + '>' + scheme.SchemeName + '</option>'
