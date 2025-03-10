@@ -19,7 +19,7 @@ if (isset($_POST['job_id'])) {
 
 
 if (isset($_POST['training_center'])) {
-    $training_center = intval($_POST['training_center']);
+    echo $training_center = intval($_POST['training_center']);
 
     // Example Query: Adjust according to your actual database schema
     $sql = "SELECT SchemeId, SchemeName FROM tblscheme WHERE job_roll_id = :job_id ORDER BY id DESC";
