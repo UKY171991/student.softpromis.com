@@ -717,7 +717,7 @@ $(document).ready(function(){
 
 <script type="text/javascript">
     $('#job_roll').change(function(){
-        alet();
+        alert();
     });
 </script>
 
