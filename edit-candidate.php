@@ -9,7 +9,6 @@ if (strlen($_SESSION['alogin']) == "") {
     if (isset($_POST['update'])) {
 
         $cid = ($_POST['candidateid']);
-        $enrollmentid = $_POST['enrollmentid'];
         $candidatename = $_POST['candidatename'];
         $fathername = $_POST['fathername'];
         $aadharnumber = $_POST['aadharnumber'];
@@ -42,12 +41,11 @@ if (strlen($_SESSION['alogin']) == "") {
 
         $status = 1;
 
-        $sql = "update  tblcandidate set enrollmentid=:enrollmentid,candidatename=:candidatename,fathername=:fathername,aadharnumber=:aadharnumber,phonenumber=:phonenumber,phonenumber2=:phonenumber2,
+        $sql = "update  tblcandidate set candidatename=:candidatename,fathername=:fathername,aadharnumber=:aadharnumber,phonenumber=:phonenumber,phonenumber2=:phonenumber2,
         dateofbirth=:dateofbirth,gender=:gender,maritalstatus=:maritalstatus,religion=:religion,category=:category,village=:village,
         mandal=:mandal,district=:district,state=:state,pincode=:pincode,training_center=:training_center,scheme=:scheme,sector=:sector,job_roll=:job_roll,batch=:batch
         where CandidateId=:cid ";
         $query = $dbh->prepare($sql);
-        $query->bindParam(':enrollmentid', $enrollmentid, PDO::PARAM_STR);
         $query->bindParam(':candidatename', $candidatename, PDO::PARAM_STR);
         $query->bindParam(':fathername', $fathername, PDO::PARAM_STR);
         $query->bindParam(':aadharnumber', $aadharnumber, PDO::PARAM_STR);
