@@ -552,7 +552,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                             <label for="batch">Batch</label>
                                             <!-- <select id="batch" name="batch" class="form-control js-example-basic-single" required>
                                                 <option selected>Select</option>
-                                                <?php /'8'
+                                                <?php /*
                                                 foreach ($result5 as $row5) { ?>
                                                     <option value="<?=$row5['id']; ?>"><?=$row5['batch_name']?></option>
                                                 <?php } */ ?>
