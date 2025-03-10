@@ -112,7 +112,7 @@ if (isset($_POST['sector'])) {
     $final_result = [];  // Create an empty array to hold all results
 
     foreach ($sch_s as $row5) {
-    	$sector_id = $row5['id'];
+    	$sector_id = $row5['jobroll_id'];
 
     	// Example Query: Adjust according to your actual database schema
 	    $sql = "SELECT JobrollId, jobrollname FROM tbljobroll WHERE JobrollId = :sector_id ORDER BY SectorId DESC";
