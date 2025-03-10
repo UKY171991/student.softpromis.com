@@ -5,69 +5,6 @@ include('includes/config.php');
 if (strlen($_SESSION['alogin']) == "") {
     header("Location: index.php");
 } else {
-
-    if (isset($_POST['update'])) {
-        $cid = $_POST['candidateid'];
-        $enrollmentid = $_POST['enrollmentid'];
-        $candidatename = $_POST['candidatename'];
-        $fathername = $_POST['fathername'];
-        $aadharnumber = $_POST['aadharnumber'];
-        $phonenumber = $_POST['phonenumber'];
-        $phonenumber2 = $_POST['phonenumber2'];
-        $dateofbirth = date('Y-m-d', strtotime($_POST['dateofbirth']));
-        $gender = $_POST['gender'];
-        $maritalstatus = $_POST['maritalstatus'];
-        $religion = $_POST['religion'];
-        $category = $_POST['category'];
-        $village = $_POST['village'];
-        $mandal = $_POST['mandal'];
-        $district = $_POST['district'];
-        $state = $_POST['state'];
-        $pincode = $_POST['pincode'];
-
-        $sql = "UPDATE tblcandidate SET 
-            enrollmentid=:enrollmentid,
-            candidatename=:candidatename,
-            fathername=:fathername,
-            aadharnumber=:aadharnumber,
-            phonenumber=:phonenumber,
-            dateofbirth=:dateofbirth,
-            gender=:gender,
-            maritalstatus=:maritalstatus,
-            religion=:religion,
-            category=:category,
-            village=:village,
-            mandal=:mandal,
-            district=:district,
-            state=:state,
-            pincode=:pincode
-            WHERE CandidateId=:cid";
-
-        $query = $dbh->prepare($sql);
-        $query->bindParam(':enrollmentid', $enrollmentid);
-        $query->bindParam(':candidatename', $candidatename);
-        $query->bindParam(':fathername', $fathername);
-        $query->bindParam(':aadharnumber', $aadharnumber);
-        $query->bindParam(':phonenumber', $phonenumber);
-        $query->bindParam(':dateofbirth', $dateofbirth);
-        $query->bindParam(':gender', $gender);
-        $query->bindParam(':maritalstatus', $maritalstatus);
-        $query->bindParam(':religion', $religion);
-        $query->bindParam(':category', $category);
-        $query->bindParam(':village', $village);
-        $query->bindParam(':mandal', $mandal);
-        $query->bindParam(':district', $district);
-        $query->bindParam(':state', $state);
-        $query->bindParam(':pincode', $pincode);
-        $query->bindParam(':cid', $cid);
-
-        $query->execute();
-
-        $msg = "Data has been updated successfully";
-        echo  '<script> setTimeout(function() { window.location.href = "payment.php?last_id='.$cid.'"; }, 2000); </script>';
-    }
-
-    /*
     if (isset($_POST['update'])) {
 
         $cid = ($_POST['candidateid']);
@@ -143,8 +80,6 @@ if (strlen($_SESSION['alogin']) == "") {
         $msg = "Data has been updated successfully";
         echo  '<script> setTimeout(function() { window.location.href = "payment.php?last_id='.$cid.'"; }, 2000); </script>';
     }
-
-    */
 
 
     ///  last five column data for  select
@@ -480,7 +415,6 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 } ?>
 
                                             <div class="form-row">
-                                                <!--
 
                                                 <div class="form-group col-md-12"><hr></div>
 
@@ -490,71 +424,63 @@ if (strlen($_SESSION['alogin']) == "") {
                                                     </div>
                                                 </div>
 
-                                                -->
-                                                <!--
-
                                                 <div class="form-group col-md-4">
                                                     <label for="training_center">Training Center</label>
                                                     <select id="training_center" name="training_center" class="form-control" required>
                                                         <option>Select</option>
-                                                        <?php /*
+                                                        <?php 
                                                         foreach ($result1 as $row1) { ?>
                                                             <option <?=($result->training_center == $row1['TrainingcenterId']) ? "selected" : "";?> value="<?=$row1['TrainingcenterId']; ?>"><?=$row1['trainingcentername']?></option>
-                                                        <?php } */ ?>
+                                                        <?php } ?>
                                                         
                                                     </select>
                                                 </div>
-                                                -->
-                                                <!--
 
                                                 <div class="form-group col-md-4">
                                                     <label for="scheme">Scheme</label>
                                                     <select id="scheme" name="scheme" class="form-control" required>
                                                         <option>Select</option>
-                                                        <?php /*
+                                                        <?php 
                                                         foreach ($result2 as $row2) { ?>
                                                             <option <?=($result->scheme == $row2['SchemeId']) ? "selected" : "";?> value="<?=$row2['SchemeId']; ?>"><?=$row2['SchemeName']?></option>
-                                                        <?php } */ ?>
+                                                        <?php } ?>
                                                     </select>
                                                 </div>
-                                                -->
-                                                <!--
+
                                                 <div class="form-group col-md-4">
                                                     <label for="sector">Sector</label>
                                                     <select id="sector" name="sector" class="form-control" required>
                                                         <option>Select</option>
-                                                        <?php /*
+                                                        <?php 
                                                         foreach ($result3 as $row3) { ?>
                                                             <option <?=($result->sector == $row3['SectorId']) ? "selected" : "";?> value="<?=$row3['SectorId']; ?>"><?=$row3['SectorName']?></option>
-                                                        <?php } */ ?>
+                                                        <?php } ?>
                                                     </select>
                                                 </div>
-                                                -->
-                                                <!--
+
                                                 <div class="form-group col-md-4">
                                                     <label for="job_roll">Job Roll</label>
                                                     <select id="job_roll" name="job_roll" class="form-control" required>
                                                         <option>Select</option>
-                                                        <?php /*
+                                                        <?php 
                                                         foreach ($result4 as $row4) { ?>
                                                             <option <?=($result->job_roll == $row4['JobrollId']) ? "selected" : "";?> value="<?=$row4['JobrollId']; ?>"><?=$row4['jobrollname']?></option>
-                                                        <?php } */ ?>
+                                                        <?php } ?>
                                                     </select>
                                                 </div>
-                                                -->
-                                                <!--
+
                                                 <div class="form-group col-md-4">
                                                     <label for="batch">Batch</label>
                                                     <select id="batch" name="batch" class="form-control" required>
                                                         <option>Select</option>
-                                                        <?php  /*
+                                                        <?php 
                                                         foreach ($result5 as $row5) { ?>
                                                             <option <?=($result->batch == $row5['id']) ? "selected" : "";?> value="<?=$row5['id']; ?>"><?=$row5['batch_name']?></option>
-                                                        <?php } */ ?>
+                                                        <?php } ?>
                                                     </select>
                                                 </div>
 
-                                                -->
+
                                             </div>
 
                                             <div class="form-row">
@@ -565,7 +491,6 @@ if (strlen($_SESSION['alogin']) == "") {
                                                                 class="fa fa-check"></i></span></button>
                                                 </div>
                                             </div>
-
                                         </form>
                                     </div>
                                 </div>
@@ -610,6 +535,7 @@ if (strlen($_SESSION['alogin']) == "") {
           });
         });
       </script>
+
 
 
       <script>
