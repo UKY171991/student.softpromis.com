@@ -70,7 +70,7 @@ if (strlen($_SESSION['alogin']) == "") {
         $query->bindParam(':batch', $batch, PDO::PARAM_INT);
 
 
-      //  $query->bindParam(':cid', $cid, PDO::PARAM_STR);
+        $query->bindParam(':cid', $cid, PDO::PARAM_STR);
 
 
         $query->execute();
