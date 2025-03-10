@@ -63,7 +63,7 @@ if (isset($_POST['scheme'])) {
 
     $sql_s = "SELECT * FROM tblassignsector WHERE scheme_id = :scheme ORDER BY id DESC";
     $query_s = $dbh->prepare($sql_s);
-    $query_s->bindParam(':scheme', $training_center, PDO::PARAM_INT);
+    $query_s->bindParam(':scheme', $scheme, PDO::PARAM_INT);
     $query_s->execute();
 
     $sch_s = $query_s->fetchAll(PDO::FETCH_ASSOC);
