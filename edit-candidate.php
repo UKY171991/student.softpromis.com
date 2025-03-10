@@ -82,7 +82,6 @@ if (strlen($_SESSION['alogin']) == "") {
         echo  '<script> setTimeout(function() { window.location.href = "payment.php?last_id='.$cid.'"; }, 2000); </script>';
     }
 
-    */
 
 
     ///  last five column data for  select
