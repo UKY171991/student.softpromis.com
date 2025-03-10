@@ -16,7 +16,6 @@ if (strlen($_SESSION['alogin']) == "") {
 
     // Collect form inputs
     $formData = [
-        ':enrollmentid'    => $_POST['enrollmentid'],
         ':candidatename'   => $_POST['candidatename'],
         ':fathername'      => $_POST['fathername'],
         ':aadharnumber'    => $_POST['aadharnumber'],
@@ -42,7 +41,6 @@ if (strlen($_SESSION['alogin']) == "") {
 
     try {
         $sql = "UPDATE tblcandidate SET 
-                    enrollmentid=:enrollmentid,
                     candidatename=:candidatename,
                     fathername=:fathername,
                     aadharnumber=:aadharnumber,
