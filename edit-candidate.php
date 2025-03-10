@@ -575,7 +575,6 @@ $(document).ready(function(){
     $(document).ready(function() {
         $('#training_center').change(function() {
             var job_id = $(this).val();
-            alert(job_id);
 
             $.ajax({
                 url: 'get_batches.php',
@@ -616,6 +615,8 @@ $(document).ready(function(){
                         $.each(response, function(index, scheme) {
                             // Fix here: declare 'selected' properly
                             var selected = (batch_selected_id == scheme.id) ? 'selected' : '';
+
+                            alert(batch_selected_id +"tt "+ scheme.id);
                             
                             $('#scheme').append(
                                 '<option value="' + scheme.SchemeId + '" ' + selected + '>' + scheme.SchemeName + '</option>'
