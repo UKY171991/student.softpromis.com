@@ -617,7 +617,9 @@ $(document).ready(function(){
                             //var selected = (scheme_id == scheme.id) ? 'selected' : '';
                             var selected = (parseInt(scheme_id) === parseInt(scheme.id)) ? 'selected' : '';
 
-                            alert(selected);
+                            console.log(typeof scheme_id, scheme_id, typeof scheme.id, scheme.id);
+
+                            //alert(selected);
                             
                             $('#scheme').append(
                                 '<option value="' + scheme.SchemeId + '" ' + selected + '>' + scheme.SchemeName + '</option>'
