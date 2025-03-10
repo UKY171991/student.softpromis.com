@@ -754,13 +754,13 @@ $(document).ready(function(){
                 data: {training_center: training_center},
                 dataType: 'json',
                 success: function(response) {
-                    $('#scheme').empty().append('<option selected disabled>Select Batch</option>');
+                    $('#scheme').empty().append('<option selected disabled>Select Scheme</option>');
                     if (response.length > 0) {
                         $.each(response, function(index, scheme) {
                             $('#scheme').append('<option value="' + scheme.SchemeId + '">' + scheme.SchemeName + '</option>');
                         });
                     } else {
-                        $('#scheme').append('<option disabled>No batches available</option>');
+                        $('#scheme').append('<option disabled>No Scheme available</option>');
                     }
                 },
                 error: function(xhr, status, error) {
