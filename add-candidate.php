@@ -757,7 +757,7 @@ $(document).ready(function(){
                     $('#scheme').empty().append('<option selected disabled>Select Batch</option>');
                     if (response.length > 0) {
                         $.each(response, function(index, scheme) {
-                            $('#scheme').append('<option value="' + scheme.id + '">' + scheme.batch_name + '</option>');
+                            $('#scheme').append('<option value="' + scheme.SchemeId + '">' + scheme.SchemeName + '</option>');
                         });
                     } else {
                         $('#scheme').append('<option disabled>No batches available</option>');
