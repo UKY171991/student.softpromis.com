@@ -617,7 +617,7 @@ $(document).ready(function(){
                             //var selected = (scheme_id == scheme.id) ? 'selected' : '';
                             var selected = (parseInt(scheme_id) === parseInt(scheme.id)) ? 'selected' : '';
 
-                            console.log(typeof scheme_id, scheme_id, typeof scheme.id, scheme.id);
+                            console.log( scheme_id, scheme_id,  scheme.id, scheme.id);
 
                             //alert(selected);
                             
