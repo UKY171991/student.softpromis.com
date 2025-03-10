@@ -13,6 +13,8 @@ if (isset($_POST['job_id'])) {
 
     $batches = $query->fetchAll(PDO::FETCH_ASSOC);
 
+    print_r($batches);
+
     echo json_encode($batches);
 }
 ?>
