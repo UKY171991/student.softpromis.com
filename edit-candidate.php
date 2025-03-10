@@ -465,7 +465,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 </div>
 
                                                 <input type="hidden" name="" id="job_roll_id" value="<?=$result->job_roll?>">
-                                                
+
                                                 <div class="form-group col-md-4">
                                                     <label for="job_roll">Job Roll</label>
                                                     <select id="job_roll" name="job_roll" class="form-control js-example-basic-single" required>
@@ -661,7 +661,7 @@ $(document).ready(function(){
     $(document).ready(function() {
         $(window).on('load', function() {
             var training_center = $('#training_center').val();
-            var batch_selected_id = $('#training_center_id').val();
+            var training_center_id = $('#training_center_id').val();
 
             $.ajax({
                 url: 'get_batches.php',
@@ -686,6 +686,69 @@ $(document).ready(function(){
                 },
                 error: function(xhr, status, error) {
                     alert("Error loading batches: " + error);
+                }
+            });
+        });
+    });
+
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#scheme').change(function() {
+            var job_id = $(this).val();
+
+            $.ajax({
+                url: 'get_batches.php',
+                type: 'POST',
+                data: {scheme: scheme},
+                dataType: 'json',
+                success: function(response) {
+                    $('#sector').empty().append('<option selected disabled>Select sector</option>');
+                    if (response.length > 0) {
+                        $.each(response, function(index, sector) {
+                            $('#sector').append('<option value="' + sector.SectorId + '">' + sector.SectorName + '</option>');
+                        });
+                    } else {
+                        $('#sector').append('<option disabled>No sector available</option>');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert("Error loading sector: " + error);
+                }
+            });
+        });
+    });
+
+    $(document).ready(function() {
+        $(window).on('load', function() {
+            var scheme = $('#scheme').val();
+            var scheme_id = $('#scheme_id').val();
+
+            $.ajax({
+                url: 'get_batches.php',
+                type: 'POST',
+                data: { scheme: scheme },
+                dataType: 'json',
+                success: function(response) {
+                    $('#sector').empty().append('<option selected disabled>Select Batch</option>');
+                    
+                    if (response.length > 0) {
+                        $.each(response, function(index, sector) {
+                            // Fix here: declare 'selected' properly
+                            var selected = (batch_selected_id == sector.id) ? 'selected' : '';
+                            
+                            $('#sector').append(
+                                '<option value="' + sector.SectorId + '" ' + selected + '>' + sector.SectorName + '</option>'
+                            );
+                        });
+                    } else {
+                        $('#sector').append('<option disabled>No sector available</option>');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert("Error loading sector: " + error);
                 }
             });
         });
