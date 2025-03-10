@@ -332,7 +332,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
                                                 <div class="form-group col-md-6">
                                                     <label for="created_at">Created Date</label>
-                                                    <input type="date" name="created_at" class="form-control"
+                                                    <input type="text" name="created_at" class="form-control"
                                                         id="created_at" required="required"
                                                         placeholder="Created Date" value="<?=$results['DateCreated']; ?>">
                                                 </div>
