@@ -615,9 +615,9 @@ $(document).ready(function(){
                         $.each(response, function(index, scheme) {
                             // Fix here: declare 'selected' properly
                             //var selected = (scheme_id == scheme.id) ? 'selected' : '';
-                            var selected = (parseInt(scheme_id) === parseInt(scheme.id)) ? 'selected' : '';
+                            var selected = (parseInt(scheme_id) === parseInt(scheme.SchemeId)) ? 'selected' : '';
 
-                            console.log( scheme_id, scheme_id,  scheme.id, scheme.id);
+                            console.log( scheme_id, scheme_id,  scheme.SchemeId, scheme.SchemeId);
 
                             //alert(selected);
                             
