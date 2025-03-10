@@ -494,7 +494,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
 
                                     <div class="form-row">
-
+                                        <!--
                                         <div class="form-group col-md-12"><hr></div>
 
                                         <div class="form-group col-md-12">
@@ -502,62 +502,71 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 <h5>Job Information</h5>
                                             </div>
                                         </div>
+                                        -->
+                                        <!--
 
                                         <div class="form-group col-md-4">
                                             <label for="training_center">Training Center</label>
                                             <select id="training_center" name="training_center" class="form-control" required>
                                                 <option selected>Select</option>
-                                                <?php 
+                                                <?php /*
                                                 foreach ($result1 as $row1) { ?>
                                                     <option value="<?=$row1['TrainingcenterId']; ?>"><?=$row1['trainingcentername']?></option>
-                                                <?php } ?>
+                                                <?php } */ ?>
                                                 
                                             </select>
                                         </div>
+                                        -->
+                                        <!--
 
                                         <div class="form-group col-md-4">
                                             <label for="scheme">Scheme</label>
                                             <select id="scheme" name="scheme" class="form-control" required>
                                                 <option selected>Select</option>
-                                                <?php 
+                                                <?php /*
                                                 foreach ($result2 as $row2) { ?>
                                                     <option value="<?=$row2['SchemeId']; ?>"><?=$row2['SchemeName']?></option>
-                                                <?php } ?>
+                                                <?php } */ ?>
                                             </select>
                                         </div>
-
+                                        -->
+                                        <!--
                                         <div class="form-group col-md-4">
                                             <label for="sector">Sector</label>
                                             <select id="sector" name="sector" class="form-control" required>
                                                 <option selected>Select</option>
-                                                <?php 
+                                                <?php  /*
                                                 foreach ($result3 as $row3) { ?>
                                                     <option value="<?=$row3['SectorId']; ?>"><?=$row3['SectorName']?></option>
-                                                <?php } ?>
+                                                <?php } */ ?>
                                             </select>
                                         </div>
-
+                                        -->
+                                        <!--
                                         <div class="form-group col-md-4">
                                             <label for="job_roll">Job Roll</label>
                                             <select id="job_roll" name="job_roll" class="form-control" required>
                                                 <option selected>Select</option>
-                                                <?php 
-                                                foreach ($result4 as $row4) { ?>
+                                                <?php /*
+                                                foreach  ($result4 as $row4) { ?>
                                                     <option value="<?=$row4['JobrollId']; ?>"><?=$row4['jobrollname']?></option>
-                                                <?php } ?>
+                                                <?php } */ ?>
                                             </select>
                                         </div>
-
+                                        -->
+                                        <!--
                                         <div class="form-group col-md-4">
                                             <label for="batch">Batch</label>
                                             <select id="batch" name="batch" class="form-control" required>
                                                 <option selected>Select</option>
-                                                <?php 
+                                                <?php /*
                                                 foreach ($result5 as $row5) { ?>
                                                     <option value="<?=$row5['id']; ?>"><?=$row5['batch_name']?></option>
-                                                <?php } ?>
+                                                <?php } */ ?>
                                             </select>
                                         </div>
+
+                                        -->
 
 
                                     </div>
