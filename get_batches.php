@@ -56,19 +56,45 @@ if (isset($_POST['training_center'])) {
 }
 
 
+
 if (isset($_POST['scheme'])) {
     $scheme = intval($_POST['scheme']);
 
-    // Example Query: Adjust according to your actual database schema
-    $sql = "SELECT SectorId, SectorName FROM tblsector WHERE SectorId = :scheme ORDER BY id DESC";
-    $query = $dbh->prepare($sql);
-    $query->bindParam(':scheme', $scheme, PDO::PARAM_INT);
-    $query->execute();
 
-    $scheme = $query->fetchAll(PDO::FETCH_ASSOC);
+    $sql_s = "SELECT * FROM tblassignsector WHERE scheme_id = :scheme ORDER BY id DESC";
+    $query_s = $dbh->prepare($sql_s);
+    $query_s->bindParam(':scheme', $training_center, PDO::PARAM_INT);
+    $query_s->execute();
 
-    //print_r($scheme);
+    $sch_s = $query_s->fetchAll(PDO::FETCH_ASSOC);
 
-    echo json_encode($scheme);
+    print_r($sch_s);
+
+    $final_result = [];  // Create an empty array to hold all results
+
+    foreach ($sch_s as $row5) {
+    	$scheme_id = $row5['scheme_id'];
+
+    	// Example Query: Adjust according to your actual database schema
+	    $sql = "SELECT SchemeId, SchemeName FROM tblscheme WHERE SchemeId = :scheme_id ORDER BY SchemeId DESC";
+	    $query = $dbh->prepare($sql);
+	    $query->bindParam(':scheme_id', $scheme_id, PDO::PARAM_INT);
+	    $query->execute();
+
+	    $training_center = $query->fetchAll(PDO::FETCH_ASSOC);
+
+	    //print_r($training_center);
+
+	    foreach ($training_center as $scheme) {
+	        $final_result[] = $scheme;
+	    }
+
+    }
+
+    //print_r($sch_s[0]['scheme_id']);
+    echo json_encode($final_result);
+
+    exit();
 }
+
 ?>
