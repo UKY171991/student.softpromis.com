@@ -28,6 +28,8 @@ if (isset($_POST['training_center'])) {
 
     $sch_s = $query_s->fetchAll(PDO::FETCH_ASSOC);
 
+    $final_result = [];  // Create an empty array to hold all results
+
     foreach ($sch_s as $row5) {
     	$scheme_id = $row5['scheme_id'];
 
@@ -41,11 +43,14 @@ if (isset($_POST['training_center'])) {
 
 	    //print_r($training_center);
 
-	    echo json_encode($training_center);
+	    foreach ($training_center as $scheme) {
+	        $final_result[] = $scheme;
+	    }
 
     }
 
     //print_r($sch_s[0]['scheme_id']);
+    echo json_encode($final_result);
 
     exit();
 }
