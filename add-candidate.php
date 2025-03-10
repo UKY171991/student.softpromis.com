@@ -555,7 +555,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 <?php /*
                                                 foreach ($result5 as $row5) { ?>
                                                     <option value="<?=$row5['id']; ?>"><?=$row5['batch_name']?></option>
-                                                <?php } */ ?>
+                                                <?php } */ ?> 
                                             </select> -->
                                             <select id="batch" name="batch" class="form-control js-example-basic-single" required>
                                                 <option selected disabled>Select Batch</option>
