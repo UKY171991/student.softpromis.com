@@ -601,7 +601,7 @@ $(document).ready(function(){
     $(document).ready(function() {
         $(window).on('load', function() {
             var training_center = $('#training_center').val();
-            var training_center_id = $('#training_center_id').val();
+            var scheme_id = $('#scheme_id').val();
 
             $.ajax({
                 url: 'get_batches.php',
@@ -614,9 +614,9 @@ $(document).ready(function(){
                     if (response.length > 0) {
                         $.each(response, function(index, scheme) {
                             // Fix here: declare 'selected' properly
-                            var selected = (training_center_id == scheme.id) ? 'selected' : '';
+                            var selected = (scheme_id == scheme.id) ? 'selected' : '';
 
-                            alert(training_center_id +"tt "+ scheme.id);
+                            alert(scheme_id +"tt "+ scheme.id);
                             
                             $('#scheme').append(
                                 '<option value="' + scheme.SchemeId + '" ' + selected + '>' + scheme.SchemeName + '</option>'
