@@ -768,6 +768,30 @@ $(document).ready(function(){
                 }
             });
         });
+
+        $('#scheme').change(function() {
+            var scheme = $(this).val();
+
+            $.ajax({
+                url: 'get_batches.php',
+                type: 'POST',
+                data: {scheme: scheme},
+                dataType: 'json',
+                success: function(response) {
+                    $('#sector').empty().append('<option selected disabled>Select Scheme</option>');
+                    if (response.length > 0) {
+                        $.each(response, function(index, sector) {
+                            $('#sector').append('<option value="' + sector.SchemeId + '">' + sector.SchemeName + '</option>');
+                        });
+                    } else {
+                        $('#sector').append('<option disabled>No Scheme available</option>');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert("Error loading batches: " + error);
+                }
+            });
+        });
     });
 </script>
 

@@ -54,4 +54,21 @@ if (isset($_POST['training_center'])) {
 
     exit();
 }
+
+
+if (isset($_POST['scheme'])) {
+    $scheme = intval($_POST['scheme']);
+
+    // Example Query: Adjust according to your actual database schema
+    $sql = "SELECT SectorId, SectorName FROM tblsector WHERE SectorId = :scheme ORDER BY id DESC";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':scheme', $scheme, PDO::PARAM_INT);
+    $query->execute();
+
+    $scheme = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    //print_r($scheme);
+
+    echo json_encode($scheme);
+}
 ?>
