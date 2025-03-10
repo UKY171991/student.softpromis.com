@@ -588,24 +588,26 @@ $(document).ready(function(){
     });
 
     $(document).ready(function() {
-        $(window).load(function() {
+        $(window).on('load', function() {
             var job_id = $('#job_roll').val();
             var batch_selected_id = $('#batch_selected_id').val();
 
             $.ajax({
                 url: 'get_batches.php',
                 type: 'POST',
-                data: {job_id: job_id},
+                data: { job_id: job_id },
                 dataType: 'json',
                 success: function(response) {
                     $('#batch').empty().append('<option selected disabled>Select Batch</option>');
-                    var select = "";
+                    
                     if (response.length > 0) {
                         $.each(response, function(index, batch) {
-                            if(batch_selected_id == batch.id){
-                                var select = "selected";
-                            }
-                            $('#batch').append('<option value="' + batch.id + '" '+select+'>' + batch.batch_name + '</option>');
+                            // Fix here: declare 'selected' properly
+                            var selected = (batch_selected_id == batch.id) ? 'selected' : '';
+                            
+                            $('#batch').append(
+                                '<option value="' + batch.id + '" ' + selected + '>' + batch.batch_name + '</option>'
+                            );
                         });
                     } else {
                         $('#batch').append('<option disabled>No batches available</option>');
@@ -617,6 +619,7 @@ $(document).ready(function(){
             });
         });
     });
+
 </script>
 
 
