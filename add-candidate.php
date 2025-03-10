@@ -720,6 +720,7 @@ $(document).ready(function(){
 
 <script type="text/javascript">
     $(document).ready(function() {
+        // Job 
         $('#job_roll').change(function() {
             var job_id = $(this).val();
 
@@ -736,6 +737,30 @@ $(document).ready(function(){
                         });
                     } else {
                         $('#batch').append('<option disabled>No batches available</option>');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert("Error loading batches: " + error);
+                }
+            });
+        });
+
+        $('#training_center').change(function() {
+            var training_center = $(this).val();
+
+            $.ajax({
+                url: 'get_batches.php',
+                type: 'POST',
+                data: {training_center: training_center},
+                dataType: 'json',
+                success: function(response) {
+                    $('#scheme').empty().append('<option selected disabled>Select Batch</option>');
+                    if (response.length > 0) {
+                        $.each(response, function(index, scheme) {
+                            $('#scheme').append('<option value="' + scheme.id + '">' + scheme.batch_name + '</option>');
+                        });
+                    } else {
+                        $('#scheme').append('<option disabled>No batches available</option>');
                     }
                 },
                 error: function(xhr, status, error) {
