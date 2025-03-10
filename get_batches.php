@@ -68,17 +68,17 @@ if (isset($_POST['scheme'])) {
 
     $sch_s = $query_s->fetchAll(PDO::FETCH_ASSOC);
 
-    print_r($sch_s);
+    //print_r($sch_s);
 
     $final_result = [];  // Create an empty array to hold all results
 
     foreach ($sch_s as $row5) {
-    	$scheme_id = $row5['scheme_id'];
+    	$sector_id = $row5['sector_id'];
 
     	// Example Query: Adjust according to your actual database schema
-	    $sql = "SELECT SchemeId, SchemeName FROM tblscheme WHERE SchemeId = :scheme_id ORDER BY SchemeId DESC";
+	    $sql = "SELECT * FROM tblsector WHERE SectorId = :sector_id ORDER BY SchemeId DESC";
 	    $query = $dbh->prepare($sql);
-	    $query->bindParam(':scheme_id', $scheme_id, PDO::PARAM_INT);
+	    $query->bindParam(':sector_id', $sector_id, PDO::PARAM_INT);
 	    $query->execute();
 
 	    $training_center = $query->fetchAll(PDO::FETCH_ASSOC);
