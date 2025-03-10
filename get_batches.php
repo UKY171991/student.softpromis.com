@@ -30,6 +30,8 @@ if (isset($_POST['training_center'])) {
 
     print_r($sch_s);
 
+    exit();
+
     // Example Query: Adjust according to your actual database schema
     $sql = "SELECT SchemeId, SchemeName FROM tblscheme WHERE job_roll_id = :job_id ORDER BY id DESC";
     $query = $dbh->prepare($sql);
