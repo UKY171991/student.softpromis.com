@@ -415,7 +415,6 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 } ?>
 
                                             <div class="form-row">
-                                                -->
                                                 <!--
 
                                                 <div class="form-group col-md-12"><hr></div>
