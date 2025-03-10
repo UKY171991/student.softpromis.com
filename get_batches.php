@@ -28,7 +28,7 @@ if (isset($_POST['training_center'])) {
 
     $sch_s = $query_s->fetchAll(PDO::FETCH_ASSOC);
 
-    print_r($sch_s['scheme_id']);
+    print_r($sch_s);
 
     exit();
 
