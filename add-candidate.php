@@ -805,7 +805,7 @@ $(document).ready(function(){
                     $('#job_roll').empty().append('<option selected disabled>Select job roll</option>');
                     if (response.length > 0) {
                         $.each(response, function(index, job_roll) {
-                            $('#job_roll').append('<option value="' + job_roll.SectorId + '">' + job_roll.SectorName + '</option>');
+                            $('#job_roll').append('<option value="' + job_roll.JobrollId + '">' + job_roll.jobrollname + '</option>');
                         });
                     } else {
                         $('#job_roll').append('<option disabled>No job roll available</option>');
