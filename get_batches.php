@@ -107,7 +107,7 @@ if (isset($_POST['sector'])) {
 
     $sch_s = $query_s->fetchAll(PDO::FETCH_ASSOC);
 
-    print_r($sch_s);
+    //print_r($sch_s);
 
     $final_result = [];  // Create an empty array to hold all results
 
