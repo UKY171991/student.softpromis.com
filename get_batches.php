@@ -8,6 +8,7 @@ if (isset($_POST['job_id'])) {
     $sql = "SELECT id, batch_name FROM tblbatch WHERE id = :job_id ORDER BY id DESC";
     $query = $dbh->prepare($sql);
     $query->bindParam(':job_id', $job_id, PDO::PARAM_INT);
+    $query->bindParam(':batch_name', $batch_name, PDO::PARAM_STR);
     $query->execute();
 
     $batches = $query->fetchAll(PDO::FETCH_ASSOC);
