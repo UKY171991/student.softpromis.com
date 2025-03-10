@@ -5,6 +5,69 @@ include('includes/config.php');
 if (strlen($_SESSION['alogin']) == "") {
     header("Location: index.php");
 } else {
+
+    if (isset($_POST['update'])) {
+        $cid = $_POST['candidateid'];
+        $enrollmentid = $_POST['enrollmentid'];
+        $candidatename = $_POST['candidatename'];
+        $fathername = $_POST['fathername'];
+        $aadharnumber = $_POST['aadharnumber'];
+        $phonenumber = $_POST['phonenumber'];
+        $phonenumber2 = $_POST['phonenumber2'];
+        $dateofbirth = date('Y-m-d', strtotime($_POST['dateofbirth']));
+        $gender = $_POST['gender'];
+        $maritalstatus = $_POST['maritalstatus'];
+        $religion = $_POST['religion'];
+        $category = $_POST['category'];
+        $village = $_POST['village'];
+        $mandal = $_POST['mandal'];
+        $district = $_POST['district'];
+        $state = $_POST['state'];
+        $pincode = $_POST['pincode'];
+
+        $sql = "UPDATE tblcandidate SET 
+            enrollmentid=:enrollmentid,
+            candidatename=:candidatename,
+            fathername=:fathername,
+            aadharnumber=:aadharnumber,
+            phonenumber=:phonenumber,
+            dateofbirth=:dateofbirth,
+            gender=:gender,
+            maritalstatus=:maritalstatus,
+            religion=:religion,
+            category=:category,
+            village=:village,
+            mandal=:mandal,
+            district=:district,
+            state=:state,
+            pincode=:pincode
+            WHERE CandidateId=:cid";
+
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':enrollmentid', $enrollmentid);
+        $query->bindParam(':candidatename', $candidatename);
+        $query->bindParam(':fathername', $fathername);
+        $query->bindParam(':aadharnumber', $aadharnumber);
+        $query->bindParam(':phonenumber', $phonenumber);
+        $query->bindParam(':dateofbirth', $dateofbirth);
+        $query->bindParam(':gender', $gender);
+        $query->bindParam(':maritalstatus', $maritalstatus);
+        $query->bindParam(':religion', $religion);
+        $query->bindParam(':category', $category);
+        $query->bindParam(':village', $village);
+        $query->bindParam(':mandal', $mandal);
+        $query->bindParam(':district', $district);
+        $query->bindParam(':state', $state);
+        $query->bindParam(':pincode', $pincode);
+        $query->bindParam(':cid', $cid);
+
+        $query->execute();
+
+        $msg = "Data has been updated successfully";
+        echo  '<script> setTimeout(function() { window.location.href = "payment.php?last_id='.$cid.'"; }, 2000); </script>';
+    }
+
+    /*
     if (isset($_POST['update'])) {
 
         $cid = ($_POST['candidateid']);
@@ -80,6 +143,8 @@ if (strlen($_SESSION['alogin']) == "") {
         $msg = "Data has been updated successfully";
         echo  '<script> setTimeout(function() { window.location.href = "payment.php?last_id='.$cid.'"; }, 2000); </script>';
     }
+
+    */
 
 
     ///  last five column data for  select
