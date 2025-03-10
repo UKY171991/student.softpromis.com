@@ -709,7 +709,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
 <script>
 $(document).ready(function(){
-    $('#village').on('keyup', function(){
+    $('#village,#mandal').on('keyup', function(){
         var value = $(this).val().toLowerCase().replace(/\b[a-z]/g, function(letter) {
             return letter.toUpperCase();
         });
