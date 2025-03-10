@@ -48,9 +48,10 @@ if (strlen($_SESSION['alogin']) == "") {
       <main class="col-lg-10 col-md-9 p-4">
         <h2 class="mb-4">Softpro Dashboard</h2>
         <div class="row g-3">
+          
           <!-- Regd Candidates Card -->
           <div class="col-md-3">
-            <div class="dashboard-card bg-teal" onclick="location.href='manage-candidate.php';">
+            <div class="dashboard-card bg-primary text-white" onclick="location.href='manage-candidate.php';">
               <div class="d-flex justify-content-between align-items-center">
                 <div>
                   <?php
