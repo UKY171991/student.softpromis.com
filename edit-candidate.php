@@ -743,7 +743,7 @@ $(document).ready(function(){
                             // Fix here: declare 'selected' properly
                             var selected = (job_roll_id == job_roll.id) ? 'selected' : '';
 
-                            //console.log( scheme_id, scheme_id,  scheme.SchemeId, scheme.SchemeId);
+                            console.log( job_roll_id,  job_roll.id);
                             
                             $('#job_roll').append(
                                 '<option value="' + job_roll.JobrollId + '" ' + selected + '>' + job_roll.jobrollname + '</option>'
