@@ -716,11 +716,33 @@ $(document).ready(function(){
 
 
 <script type="text/javascript">
-    $('#job_roll').change(function(){
-        var job_id = $(this).val();
-        alert(job_id);
+    $(document).ready(function() {
+        $('#job_roll').change(function() {
+            var job_id = $(this).val();
+
+            $.ajax({
+                url: 'get_batches.php',
+                type: 'POST',
+                data: {job_id: job_id},
+                dataType: 'json',
+                success: function(response) {
+                    $('#batch').empty().append('<option selected disabled>Select Batch</option>');
+                    if (response.length > 0) {
+                        $.each(response, function(index, batch) {
+                            $('#batch').append('<option value="' + batch.id + '">' + batch.batch_name + '</option>');
+                        });
+                    } else {
+                        $('#batch').append('<option disabled>No batches available</option>');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert("Error loading batches: " + error);
+                }
+            });
+        });
     });
 </script>
+
 
 
   
