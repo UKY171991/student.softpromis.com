@@ -616,10 +616,6 @@ $(document).ready(function(){
                             // Fix here: declare 'selected' properly
                             //var selected = (scheme_id == scheme.id) ? 'selected' : '';
                             var selected = (parseInt(scheme_id) === parseInt(scheme.SchemeId)) ? 'selected' : '';
-
-                            console.log( scheme_id, scheme_id,  scheme.SchemeId, scheme.SchemeId);
-
-                            //alert(selected);
                             
                             $('#scheme').append(
                                 '<option value="' + scheme.SchemeId + '" ' + selected + '>' + scheme.SchemeName + '</option>'
@@ -669,7 +665,7 @@ $(document).ready(function(){
     $(document).ready(function() {
         $(window).on('load', function() {
             var scheme = $('#scheme').val();
-            var scheme_id = $('#scheme_id').val();
+            var sector_id = $('#sector_id').val();
 
             $.ajax({
                 url: 'get_batches.php',
@@ -682,7 +678,9 @@ $(document).ready(function(){
                     if (response.length > 0) {
                         $.each(response, function(index, sector) {
                             // Fix here: declare 'selected' properly
-                            var selected = (batch_selected_id == sector.id) ? 'selected' : '';
+                            var selected = (sector_id == sector.SectorId) ? 'selected' : '';
+
+                            console.log( scheme_id, scheme_id,  scheme.SchemeId, scheme.SchemeId);
                             
                             $('#sector').append(
                                 '<option value="' + sector.SectorId + '" ' + selected + '>' + sector.SectorName + '</option>'
