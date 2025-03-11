@@ -675,66 +675,49 @@ function loadSectors(scheme, selectedSectorId = null) {
 
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('#sector').change(function() {
-            var sector = $(this).val();
+ $(document).ready(function() {
+    function loadJobRolls(sector, selectedJobRollId = null) {
+        $.ajax({
+            url: 'get_batches.php',
+            type: 'POST',
+            data: { sector: sector },
+            dataType: 'json',
+            success: function(response) {
+                var options = '<option selected disabled>Select job roll</option>';
 
-            $.ajax({
-                url: 'get_batches.php',
-                type: 'POST',
-                data: {sector: sector},
-                dataType: 'json',
-                success: function(response) {
-                    $('#job_roll').empty().append('<option selected disabled>Select job roll</option>');
-                    if (response.length > 0) {
-                        $.each(response, function(index, job_roll) {
-                            $('#job_roll').append('<option value="' + job_roll.SectorId + '">' + job_roll.SectorName + '</option>');
-                        });
-                    } else {
-                        $('#job_roll').append('<option disabled>No job roll available</option>');
-                    }
-                },
-                error: function(xhr, status, error) {
-                    alert("Error loading job roll: " + error);
+                if (response.length > 0) {
+                    $.each(response, function(index, job_roll) {
+                        // Make sure to match the IDs correctly as per your response
+                        var selected = (selectedJobRollId == job_roll.JobrollId) ? 'selected' : '';
+                        options += '<option value="' + job_roll.JobrollId + '" ' + selected + '>' + job_roll.jobrollname + '</option>';
+                    });
+                } else {
+                    options += '<option disabled>No job roll available</option>';
                 }
-            });
+
+                $('#job_roll').html(options);
+            },
+            error: function(xhr, status, error) {
+                alert("Error loading job roll: " + error);
+            }
         });
+    }
+
+    // On sector change event
+    $('#sector').change(function() {
+        var sector = $(this).val();
+        loadJobRolls(sector);
     });
 
-    $(document).ready(function() {
-        $(window).on('load', function() {
-            var sector = $('#sector').val();
-            var job_roll_id = $('#job_roll_id').val();
+    // Initial job_roll load on page ready
+    var initialSector = $('#sector').val();
+    var selectedJobRollId = $('#job_roll_id').val();
 
-            $.ajax({
-                url: 'get_batches.php',
-                type: 'POST',
-                data: { sector: sector },
-                dataType: 'json',
-                success: function(response) {
-                    $('#job_roll').empty().append('<option selected disabled>Select Batch</option>');
-                    
-                    if (response.length > 0) {
-                        $.each(response, function(index, job_roll) {
-                            // Fix here: declare 'selected' properly
-                            var selected = (job_roll_id == job_roll.id) ? 'selected' : '';
+    if(initialSector){ 
+        loadJobRolls(initialSector, selectedJobRollId);
+    }
+});
 
-                            console.log( job_roll_id,  job_roll.id);
-                            
-                            $('#job_roll').append(
-                                '<option value="' + job_roll.JobrollId + '" ' + selected + '>' + job_roll.jobrollname + '</option>'
-                            );
-                        });
-                    } else {
-                        $('#job_roll').append('<option disabled>No job roll available</option>');
-                    }
-                },
-                error: function(xhr, status, error) {
-                    alert("Error loading job roll: " + error);
-                }
-            });
-        });
-    });
 
 </script>
 
