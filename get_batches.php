@@ -28,32 +28,31 @@ if (isset($_POST['training_center'])) {
 
     $sch_s = $query_s->fetchAll(PDO::FETCH_ASSOC);
 
-    $final_result = [];  // Create an empty array to hold all results
+    $final_result = [];  
+    $unique_names = []; // Track unique scheme names
 
     foreach ($sch_s as $row5) {
-    	$scheme_id = $row5['scheme_id'];
+        $scheme_id = $row5['scheme_id'];
 
-    	// Example Query: Adjust according to your actual database schema
-	    $sql = "SELECT SchemeId, SchemeName FROM tblscheme WHERE SchemeId = :scheme_id ORDER BY SchemeId DESC";
-	    $query = $dbh->prepare($sql);
-	    $query->bindParam(':scheme_id', $scheme_id, PDO::PARAM_INT);
-	    $query->execute();
+        $sql = "SELECT SchemeId, SchemeName FROM tblscheme WHERE SchemeId = :scheme_id ORDER BY SchemeId DESC";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':scheme_id', $scheme_id, PDO::PARAM_INT);
+        $query->execute();
 
-	    $training_center = $query->fetchAll(PDO::FETCH_ASSOC);
+        $schemes = $query->fetchAll(PDO::FETCH_ASSOC);
 
-	    //print_r($training_center);
-
-	    foreach ($training_center as $scheme) {
-	        $final_result[] = $scheme;
-	    }
-
+        foreach ($schemes as $scheme) {
+            if (!in_array($scheme['SchemeName'], $unique_names)) { 
+                $final_result[] = $scheme;
+                $unique_names[] = $scheme['SchemeName']; 
+            }
+        }
     }
 
-    //print_r($sch_s[0]['scheme_id']);
     echo json_encode($final_result);
-
     exit();
 }
+
 
 
 
@@ -67,34 +66,31 @@ if (isset($_POST['scheme'])) {
 
     $sch_s = $query_s->fetchAll(PDO::FETCH_ASSOC);
 
-    //print_r($sch_s);
-
-    $final_result = [];  // Create an empty array to hold all results
+    $final_result = [];  
+    $unique_names = []; // Track unique sector names
 
     foreach ($sch_s as $row5) {
-    	$sector_id = $row5['sector_id'];
+        $sector_id = $row5['sector_id'];
 
-    	// Example Query: Adjust according to your actual database schema
-	    $sql = "SELECT * FROM tblsector WHERE SectorId = :sector_id ORDER BY SectorId DESC";
-	    $query = $dbh->prepare($sql);
-	    $query->bindParam(':sector_id', $sector_id, PDO::PARAM_INT);
-	    $query->execute();
+        $sql = "SELECT * FROM tblsector WHERE SectorId = :sector_id ORDER BY SectorId DESC";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':sector_id', $sector_id, PDO::PARAM_INT);
+        $query->execute();
 
-	    $training_center = $query->fetchAll(PDO::FETCH_ASSOC);
+        $training_center = $query->fetchAll(PDO::FETCH_ASSOC);
 
-	    //print_r($training_center);
-
-	    foreach ($training_center as $scheme) {
-	        $final_result[] = $scheme;
-	    }
-
+        foreach ($training_center as $sector) {
+            if (!in_array($sector['SectorName'], $unique_names)) { // Replace 'SectorName' with the actual column name
+                $final_result[] = $sector;
+                $unique_names[] = $sector['SectorName']; 
+            }
+        }
     }
 
-    //print_r($sch_s[0]['scheme_id']);
     echo json_encode($final_result);
-
     exit();
 }
+
 
 
 if (isset($_POST['sector'])) {
