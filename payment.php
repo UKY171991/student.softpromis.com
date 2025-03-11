@@ -760,6 +760,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                     <?php endforeach; ?>
                                 <?php endif ?>
                                 <tr>
+                                    <td><b></b></td>
                                     <td><b>Total Payable Fee</b></td>
                                     <td class="text-right"><b><?=$p_result[0]['total_fee']?></b></td>
                                 </tr>
