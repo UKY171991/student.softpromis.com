@@ -284,14 +284,26 @@ if (strlen($_SESSION['alogin']) == "") {
 
                                                             $scheme_name = $query->fetchAll(PDO::FETCH_ASSOC);
 
+                                                        ?>
+
+                                                        <td><?php echo htmlentities($scheme_name[0]['SchemeName']); ?></td>
+
+                                                        <?php 
+                                                            $sector = intval($result->sector);
+                                                          // Example Query: Adjust according to your actual database schema
+                                                            $sql = "SELECT * FROM tblsector WHERE SectorId = :sector ";
+                                                            $query = $dbh->prepare($sql);
+                                                            $query->bindParam(':sector', $sector, PDO::PARAM_INT);
+                                                            $query->execute();
+
+                                                            $sector_name = $query->fetchAll(PDO::FETCH_ASSOC);
+
                                                             //print_r($training_center_name);
 
                                                             //echo json_encode($training_center_name);
                                                         ?>
 
-                                                        <td><?php echo htmlentities($scheme_name[0]['SchemeName']); ?></td>
-
-                                                        <td><?php echo htmlentities($result->sector); ?></td>
+                                                        <td><?php echo htmlentities($sector_name[0]['SectorName']); ?></td>
 
                                                         <td><?php echo htmlentities($result->batch); ?></td>
 
