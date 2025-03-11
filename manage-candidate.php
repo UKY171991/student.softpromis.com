@@ -270,14 +270,26 @@ if (strlen($_SESSION['alogin']) == "") {
 
                                                             $training_center_name = $query->fetchAll(PDO::FETCH_ASSOC);
 
+                                                        ?>
+
+                                                        <td><?php echo $training_center_name[0]['trainingcentername']; ?></td>
+
+                                                        <?php 
+                                                            $scheme = intval($result->scheme);
+                                                          // Example Query: Adjust according to your actual database schema
+                                                            $sql = "SELECT SchemeId, SchemeName FROM tblscheme WHERE SchemeId = :scheme ";
+                                                            $query = $dbh->prepare($sql);
+                                                            $query->bindParam(':scheme', $scheme, PDO::PARAM_INT);
+                                                            $query->execute();
+
+                                                            $scheme_name = $query->fetchAll(PDO::FETCH_ASSOC);
+
                                                             //print_r($training_center_name);
 
                                                             //echo json_encode($training_center_name);
                                                         ?>
 
-                                                        <td><?php echo htmlentities($result->training_center); print_r($training_center_name[0]['trainingcentername']); ?></td>
-
-                                                        <td><?php echo htmlentities($result->scheme); ?></td>
+                                                        <td><?php echo htmlentities($scheme_name[0]['SchemeName']); ?></td>
 
                                                         <td><?php echo htmlentities($result->sector); ?></td>
 
