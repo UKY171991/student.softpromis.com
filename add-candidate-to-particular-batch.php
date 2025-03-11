@@ -7,7 +7,7 @@ if (strlen($_SESSION['alogin']) == "") {
     header("Location: index.php");
 } else {
 
-    $sql_b = "SELECT id,job_roll_id, batch_name FROM tblbatch WHERE id = :batchid ORDER BY id DESC";
+    $sql_b = "SELECT * FROM tblbatch WHERE id = :batchid ORDER BY id DESC";
     $query_b = $dbh->prepare($sql_b);
     $query_b->bindParam(':batchid', $batchid, PDO::PARAM_INT);
     $query_b->execute();
