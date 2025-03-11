@@ -636,64 +636,40 @@ $(document).ready(function(){
 
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('#scheme').change(function() {
-            var job_id = $(this).val();
-
-            $.ajax({
-                url: 'get_batches.php',
-                type: 'POST',
-                data: {scheme: scheme},
-                dataType: 'json',
-                success: function(response) {
-                    $('#sector').empty().append('<option selected disabled>Select sector</option>');
-                    if (response.length > 0) {
-                        $.each(response, function(index, sector) {
-                            $('#sector').append('<option value="' + sector.SectorId + '">' + sector.SectorName + '</option>');
-                        });
-                    } else {
-                        $('#sector').append('<option disabled>No sector available</option>');
-                    }
-                },
-                error: function(xhr, status, error) {
-                    alert("Error loading sector: " + error);
-                }
-            });
-        });
+$(document).ready(function() {
+    // Change Event
+    $('#scheme').change(function() {
+        loadSectors($(this).val());
     });
 
-    $(document).ready(function() {
-        $(window).on('load', function() {
-            var scheme = $('#scheme').val();
-            var sector_id = $('#sector_id').val();
+    // Initial Load
+    var initialScheme = $('#scheme').val();
+    loadSectors(initialScheme, $('#sector_id').val());
+});
 
-            $.ajax({
-                url: 'get_batches.php',
-                type: 'POST',
-                data: { scheme: scheme },
-                dataType: 'json',
-                success: function(response) {
-                    $('#sector').empty().append('<option selected disabled>Select Batch</option>');
-                    
-                    if (response.length > 0) {
-                        $.each(response, function(index, sector) {
-                            // Fix here: declare 'selected' properly
-                            var selected = (sector_id == sector.SectorId) ? 'selected' : '';
-                            
-                            $('#sector').append(
-                                '<option value="' + sector.SectorId + '" ' + selected + '>' + sector.SectorName + '</option>'
-                            );
-                        });
-                    } else {
-                        $('#sector').append('<option disabled>No sector available</option>');
-                    }
-                },
-                error: function(xhr, status, error) {
-                    alert("Error loading sector: " + error);
-                }
-            });
-        });
+function loadSectors(scheme, selectedSectorId = null) {
+    $.ajax({
+        url: 'get_batches.php',
+        type: 'POST',
+        data: { scheme: scheme },
+        dataType: 'json',
+        success: function(response) {
+            $('#sector').empty().append('<option selected disabled>Select sector</option>');
+            if (response.length > 0) {
+                $.each(response, function(index, sector) {
+                    var selected = (selectedSectorId == sector.SectorId) ? 'selected' : '';
+                    $('#sector').append('<option value="' + sector.SectorId + '" ' + selected + '>' + sector.SectorName + '</option>');
+                });
+            } else {
+                $('#sector').append('<option disabled>No sector available</option>');
+            }
+        },
+        error: function(xhr, status, error) {
+            alert("Error loading sector: " + error);
+        }
     });
+}
+
 
 </script>
 
