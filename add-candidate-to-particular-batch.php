@@ -10,6 +10,7 @@ if (strlen($_SESSION['alogin']) == "") {
         $date  = mysqli_real_escape_string($dbh, $_POST['date']);
         $candidateid     = $_POST['chkbox'];
         $batchid = $_POST['batchid'];
+        print_r($_POST); die;
         //INSERT
         foreach ($candidateid as $id) {
             # code...
