@@ -275,7 +275,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                             //echo json_encode($training_center_name);
                                                         ?>
 
-                                                        <td><?php echo htmlentities($result->training_center); print_r($training_center_name); ?></td>
+                                                        <td><?php echo htmlentities($result->training_center); print_r($training_center_name[0]['trainingcentername']); ?></td>
 
                                                         <td><?php echo htmlentities($result->scheme); ?></td>
 
