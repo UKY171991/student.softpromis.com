@@ -722,64 +722,49 @@ function loadSectors(scheme, selectedSectorId = null) {
 </script>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('#job_roll').change(function() {
-            var job_id = $(this).val();
+$(document).ready(function() {
 
-            $.ajax({
-                url: 'get_batches.php',
-                type: 'POST',
-                data: {job_id: job_id},
-                dataType: 'json',
-                success: function(response) {
-                    $('#batch').empty().append('<option selected disabled>Select Batch</option>');
-                    if (response.length > 0) {
-                        $.each(response, function(index, batch) {
-                            $('#batch').append('<option value="' + batch.id + '">' + batch.batch_name + '</option>');
-                        });
-                    } else {
-                        $('#batch').append('<option disabled>No batches available</option>');
-                    }
-                },
-                error: function(xhr, status, error) {
-                    alert("Error loading batches: " + error);
+    function loadBatches(job_id, selectedBatchId = null) {
+        $.ajax({
+            url: 'get_batches.php',
+            type: 'POST',
+            data: { job_id: job_id },
+            dataType: 'json',
+            success: function(response) {
+                var options = '<option selected disabled>Select Batch</option>';
+
+                if (response.length > 0) {
+                    $.each(response, function(index, batch) {
+                        var selected = (selectedBatchId == batch.id) ? 'selected' : '';
+                        options += '<option value="' + batch.id + '" ' + selected + '>' + batch.batch_name + '</option>';
+                    });
+                } else {
+                    options += '<option disabled>No batches available</option>';
                 }
-            });
+
+                $('#batch').html(options);
+            },
+            error: function(xhr, status, error) {
+                alert("Error loading batches: " + error);
+            }
         });
+    }
+
+    // Load batches on 'job_roll' dropdown change
+    $('#job_roll').change(function() {
+        var job_id = $(this).val();
+        loadBatches(job_id);
     });
 
-    $(document).ready(function() {
-        $(window).on('load', function() {
-            var job_id = $('#job_roll').val();
-            var batch_selected_id = $('#batch_selected_id').val();
+    // Initial load when page is ready
+    var initialJobId = $('#job_roll').val();
+    var initialBatchId = $('#batch_selected_id').val();
 
-            $.ajax({
-                url: 'get_batches.php',
-                type: 'POST',
-                data: { job_id: job_id },
-                dataType: 'json',
-                success: function(response) {
-                    $('#batch').empty().append('<option selected disabled>Select Batch</option>');
-                    
-                    if (response.length > 0) {
-                        $.each(response, function(index, batch) {
-                            // Fix here: declare 'selected' properly
-                            var selected = (batch_selected_id == batch.id) ? 'selected' : '';
-                            
-                            $('#batch').append(
-                                '<option value="' + batch.id + '" ' + selected + '>' + batch.batch_name + '</option>'
-                            );
-                        });
-                    } else {
-                        $('#batch').append('<option disabled>No batches available</option>');
-                    }
-                },
-                error: function(xhr, status, error) {
-                    alert("Error loading batches: " + error);
-                }
-            });
-        });
-    });
+    if (initialJobId) {
+        loadBatches(initialJobId, initialBatchId);
+    }
+});
+
 
 </script>
 
