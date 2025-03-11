@@ -304,7 +304,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                         <?php 
                                                             $batch = intval($result->batch);
                                                           // Example Query: Adjust according to your actual database schema
-                                                            $sql = "SELECT id,job_roll_id, batch_name FROM tblbatch WHERE job_roll_id = :batch ";
+                                                            $sql = "SELECT id,job_roll_id, batch_name FROM tblbatch WHERE id = :batch ";
                                                             $query = $dbh->prepare($sql);
                                                             $query->bindParam(':batch', $batch, PDO::PARAM_INT);
                                                             $query->execute();
