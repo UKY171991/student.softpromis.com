@@ -117,7 +117,7 @@ if (isset($_POST['sector'])) {
     	// Example Query: Adjust according to your actual database schema
 	    $sql = "SELECT JobrollId, jobrollname FROM tbljobroll WHERE JobrollId = :sector_id ORDER BY JobrollId DESC";
 	    $query = $dbh->prepare($sql);
-	    $query->bindParam(':sector_id', $sector_id, PDO::PARAM_INT);
+	    $query->bindParam(':sector_id', $sector_id, PDO::PARAM_INT); 
 	    $query->execute();
 
 	    $training_center = $query->fetchAll(PDO::FETCH_ASSOC);
