@@ -24,7 +24,7 @@ if (strlen($_SESSION['alogin']) == "") {
         $sector = $batches[0]['sector_id'];
         $job_roll = $batches[0]['job_roll_id'];
 
-        print_r($_POST); die;
+        //print_r($_POST); die;
         //INSERT
         foreach ($candidateid as $id) {
             # code...
