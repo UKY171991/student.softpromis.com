@@ -297,15 +297,22 @@ if (strlen($_SESSION['alogin']) == "") {
                                                             $query->execute();
 
                                                             $sector_name = $query->fetchAll(PDO::FETCH_ASSOC);
-
-                                                            //print_r($training_center_name);
-
-                                                            //echo json_encode($training_center_name);
                                                         ?>
 
                                                         <td><?php echo htmlentities($sector_name[0]['SectorName']); ?></td>
 
-                                                        <td><?php echo htmlentities($result->batch); ?></td>
+                                                        <?php 
+                                                            $batch = intval($result->batch);
+                                                          // Example Query: Adjust according to your actual database schema
+                                                            $sql = "SELECT id,job_roll_id, batch_name FROM tblbatch WHERE job_roll_id = :batch ";
+                                                            $query = $dbh->prepare($sql);
+                                                            $query->bindParam(':batch', $batch, PDO::PARAM_INT);
+                                                            $query->execute();
+
+                                                            $batch_name = $query->fetchAll(PDO::FETCH_ASSOC);
+                                                        ?>
+
+                                                        <td><?php echo htmlentities($batch_name[0]['batch_name']); ?></td>
 
                                                         <?php
                                                          // Payment table
