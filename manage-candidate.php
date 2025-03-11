@@ -260,29 +260,22 @@ if (strlen($_SESSION['alogin']) == "") {
                                                         <td><?php echo htmlentities($result->tblbatch_id); ?></td>
 
 
-                                                        <?php
+                                                        <?php 
+                                                            $training_center = intval($result->training_center);
+                                                          // Example Query: Adjust according to your actual database schema
+                                                            $sql = "SELECT TrainingcenterId,trainingcentername FROM tbltrainingcenter WHERE TrainingcenterId = :training_center ";
+                                                            $query = $dbh->prepare($sql);
+                                                            $query->bindParam(':training_center', $training_center, PDO::PARAM_INT);
+                                                            $query->execute();
 
-                                                        // Fetch all Training Centers
-                                                        tcSQL = "SELECT TrainingcenterId, trainingcentername, tclocation, tcaddress, spocname, spoccontact, spocemailaddress, tcuserid, tcpassword, DateCreated, DateModified FROM tbltrainingcenter ORDER BY TrainingcenterId ASC";
-                                                        $tcQuery = $dbh->prepare($tcSQL);
-                                                        $tcQuery->execute();
-                                                        $trainingCenters = $tcQuery->fetchAll(PDO::FETCH_ASSOC);
+                                                            $training_center_name = $query->fetchAll(PDO::FETCH_ASSOC);
 
-                                                        // Example usage:
-                                                        foreach($trainingCenters as $center) {
-                                                            echo "Training Center: " . htmlspecialchars($center['trainingcentername']) . "<br>";
-                                                            echo "Location: " . htmlspecialchars($center['tclocation']) . "<br>";
-                                                            echo "Address: " . htmlspecialchars($center['tcaddress']) . "<br>";
-                                                            echo "SPOC Name: " . htmlspecialchars($center['spocname']) . "<br>";
-                                                            echo "Contact: " . htmlspecialchars($center['spoccontact']) . "<br>";
-                                                            echo "Email: " . htmlspecialchars($center['spocemailaddress']) . "<br>";
-                                                            echo "Created On: " . htmlspecialchars($center['DateCreated']) . "<br><hr>";
-                                                        }
+                                                            //print_r($training_center_name);
 
+                                                            //echo json_encode($training_center_name);
                                                         ?>
 
-
-                                                        <td><?php echo htmlentities($result->training_center); echo $center[0]['trainingcentername']; ?></td>
+                                                        <td><?php echo htmlentities($result->training_center); print_r($training_center_name); ?></td>
 
                                                         <td><?php echo htmlentities($result->scheme); ?></td>
 
