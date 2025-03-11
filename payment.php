@@ -752,6 +752,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                          ?>
                                     
                                     <tr>
+                                        <td><b>Paid On :</b></td>
                                         <td><b><?=date("M d, Y", strtotime($row['created']))?></b></td>
                                         <td class="text-right"><b><?php echo htmlspecialchars($row['paid']); ?></b></td>
                                     </tr>
