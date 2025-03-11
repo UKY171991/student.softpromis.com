@@ -28,7 +28,26 @@ if (strlen($_SESSION['alogin']) == "") {
         //INSERT
         foreach ($candidateid as $id) {
             # code...
-            $sql = "UPDATE tblcandidate SET tblbatch_id=:batch_id, training_center=:training_center, scheme=:scheme, sector=:sector, job_roll=:job_roll,batch:batch WHERE CandidateId=:candidateid ";
+            // $sql = "UPDATE tblcandidate SET tblbatch_id=:batch_id, training_center=:training_center, scheme=:scheme, sector=:sector, job_roll=:job_roll,batch:batch WHERE CandidateId=:candidateid ";
+            // $query = $dbh->prepare($sql);
+            // $query->bindParam(':batch_id', $batchid, PDO::PARAM_STR);
+            // $query->bindParam(':training_center', $training_center, PDO::PARAM_STR);
+            // $query->bindParam(':scheme', $scheme, PDO::PARAM_STR);
+            // $query->bindParam(':sector', $sector, PDO::PARAM_STR);
+            // $query->bindParam(':job_roll', $job_roll, PDO::PARAM_STR);
+            // $query->bindParam(':batch', $batch, PDO::PARAM_STR);
+
+            // $query->bindParam(':candidateid', $id, PDO::PARAM_STR);
+
+            $sql = "UPDATE tblcandidate 
+        SET tblbatch_id=:batch_id, 
+            training_center=:training_center, 
+            scheme=:scheme, 
+            sector=:sector, 
+            job_roll=:job_roll, 
+            batch=:batch 
+        WHERE CandidateId=:candidateid";
+
             $query = $dbh->prepare($sql);
             $query->bindParam(':batch_id', $batchid, PDO::PARAM_STR);
             $query->bindParam(':training_center', $training_center, PDO::PARAM_STR);
@@ -36,8 +55,8 @@ if (strlen($_SESSION['alogin']) == "") {
             $query->bindParam(':sector', $sector, PDO::PARAM_STR);
             $query->bindParam(':job_roll', $job_roll, PDO::PARAM_STR);
             $query->bindParam(':batch', $batch, PDO::PARAM_STR);
-
             $query->bindParam(':candidateid', $id, PDO::PARAM_STR);
+            
             $query->execute();
             // echo $result;
         }
