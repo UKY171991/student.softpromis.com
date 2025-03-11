@@ -107,33 +107,30 @@ if (isset($_POST['sector'])) {
 
     $sch_s = $query_s->fetchAll(PDO::FETCH_ASSOC);
 
-    //print_r($sch_s);
-
-    $final_result = [];  // Create an empty array to hold all results
+    $final_result = [];  
+    $unique_names = []; // Track unique jobroll names
 
     foreach ($sch_s as $row5) {
-    	$sector_id = $row5['jobroll_id'];
+        $sector_id = $row5['jobroll_id'];
 
-    	// Example Query: Adjust according to your actual database schema
-	    $sql = "SELECT JobrollId, jobrollname FROM tbljobroll WHERE JobrollId = :sector_id ORDER BY JobrollId DESC";
-	    $query = $dbh->prepare($sql);
-	    $query->bindParam(':sector_id', $sector_id, PDO::PARAM_INT); 
-	    $query->execute();
+        $sql = "SELECT JobrollId, jobrollname FROM tbljobroll WHERE JobrollId = :sector_id ORDER BY JobrollId DESC";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':sector_id', $sector_id, PDO::PARAM_INT); 
+        $query->execute();
 
-	    $training_center = $query->fetchAll(PDO::FETCH_ASSOC);
+        $training_center = $query->fetchAll(PDO::FETCH_ASSOC);
 
-	    //print_r($training_center);
-
-	    foreach ($training_center as $scheme) {
-	        $final_result[] = $scheme;
-	    }
-
+        foreach ($training_center as $scheme) {
+            if (!in_array($scheme['jobrollname'], $unique_names)) {
+                $final_result[] = $scheme;
+                $unique_names[] = $scheme['jobrollname'];
+            }
+        }
     }
 
-    //print_r($sch_s[0]['scheme_id']);
     echo json_encode($final_result);
-
     exit();
 }
+
 
 ?>
