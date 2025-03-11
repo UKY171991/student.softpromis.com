@@ -98,7 +98,7 @@ if (isset($_POST['scheme'])) {
 
 
 if (isset($_POST['sector'])) {
-    echo $sector = intval($_POST['sector']);
+    $sector = intval($_POST['sector']);
 
     $sql_s = "SELECT * FROM tblassignjobroll WHERE jobroll_id = :sector ORDER BY id DESC";
     $query_s = $dbh->prepare($sql_s);
