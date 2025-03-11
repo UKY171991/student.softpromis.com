@@ -256,10 +256,31 @@ if (strlen($_SESSION['alogin']) == "") {
                                                         <td><?php echo htmlentities($result->pincode); ?></td>
                                                         <td><?php echo htmlentities($result->DateCreated); ?></td>
                                                         <td><?php echo htmlentities($result->DateModified); ?></td>
+
                                                         <td><?php echo htmlentities($result->tblbatch_id); ?></td>
-                                                        <td><?php echo htmlentities($result->training_center); ?></td>
+
+
+                                                        <?php 
+                                                            $training_center = intval($result->training_center);
+                                                          // Example Query: Adjust according to your actual database schema
+                                                            $sql = "SELECT TrainingcenterId,trainingcentername FROM tbltrainingcenter WHERE TrainingcenterId = :training_center ";
+                                                            $query = $dbh->prepare($sql);
+                                                            $query->bindParam(':training_center', $training_center, PDO::PARAM_INT);
+                                                            $query->execute();
+
+                                                            $training_center_name = $query->fetchAll(PDO::FETCH_ASSOC);
+
+                                                            //print_r($training_center_name);
+
+                                                            //echo json_encode($training_center_name);
+                                                        ?>
+
+                                                        <td><?php echo htmlentities($result->training_center); json_encode($training_center_name) ?></td>
+
                                                         <td><?php echo htmlentities($result->scheme); ?></td>
+
                                                         <td><?php echo htmlentities($result->sector); ?></td>
+
                                                         <td><?php echo htmlentities($result->batch); ?></td>
 
                                                         <?php
@@ -289,25 +310,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                             <a class="btn-success btn-xs" href="#" type="button" data-toggle="modal" data-target="#myModal_<?php echo htmlentities($result->CandidateId); ?>"><i class="fa fa-picture-o" aria-hidden="true" title="View Images"></i></a>
                                                             <a href="#" class="delete btn-danger btn-xs" id='del_<?php echo htmlentities($result->CandidateId); ?>' title="Delete record"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                                             
-                                                            
-                                                            <?php /*
-                                                            <div class="dropdown">
-                                                                <a class="rotated  dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                                                                  <i class="fa fa-ellipsis-v"></i> <!-- 3 dots icon -->
-                                                                </a>
-                                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                                                  <li><a href="edit-candidate.php?candidateid=<?php echo htmlentities($result->CandidateId); ?>" >Edit</a></li>
-                                                                  <li><a href="#" class="delete" id='del_<?php echo htmlentities($result->CandidateId); ?>'>delete</a></li>
-                                                                  <li><a href="#" type="button" onClick='payment_status(<?php echo htmlentities($result->CandidateId); ?>)' data-toggle="modal" data-target="#myModal">Status</a></li>
-                                                                  <li><a href="#" type="button" data-toggle="modal" data-target="#myModal_<?php echo htmlentities($result->CandidateId); ?>">
-                                                                        Images
-                                                                    </a></li>
-                                                                </ul>
-                                                              </div>
-                                                              */ ?>
-                                                              
-                                                            
-                                                                    
+                                                                
 
                                                         </td>
 
