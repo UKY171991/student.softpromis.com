@@ -43,7 +43,7 @@ if (strlen($_SESSION['alogin']) == "") {
             }
         }
     } else {
-        $error = "Batch name already exist. Please try again";
+        $error ''; //= "Batch name already exist. Please try again";
     }
 }
 ?>
