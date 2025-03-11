@@ -128,7 +128,10 @@ if (strlen($_SESSION['alogin']) == "") {
                                                     </tr>
                                                 </tfoot>
                                                 <tbody>
-                                                    <?php $sql = "SELECT tbltrainingcenter.trainingcentername,tblscheme.SchemeName,tblsector.SectorName,tbljobroll.jobrollname,tblbatch.* from tbltrainingcenter,tblscheme,tblsector,tbljobroll,tblbatch WHERE tblbatch.training_centre_id  = tbltrainingcenter.TrainingcenterId AND tblbatch.scheme_id = tblscheme.SchemeId AND tblbatch.sector_id = tblsector.SectorId AND tblbatch.job_roll_id = tbljobroll.JobrollId";
+                                                    <?php 
+                                                    //$sql = "SELECT tbltrainingcenter.trainingcentername,tblscheme.SchemeName,tblsector.SectorName,tbljobroll.jobrollname,tblbatch.* from tbltrainingcenter,tblscheme,tblsector,tbljobroll,tblbatch WHERE tblbatch.training_centre_id  = tbltrainingcenter.TrainingcenterId AND tblbatch.scheme_id = tblscheme.SchemeId AND tblbatch.sector_id = tblsector.SectorId AND tblbatch.job_roll_id = tbljobroll.JobrollId";
+                                                    
+                                                    $sql = "SELECT tbltrainingcenter.trainingcentername,tblscheme.SchemeName,tblsector.SectorName,tbljobroll.jobrollname,tblbatch.* from tbltrainingcenter,tblscheme,tblsector,tbljobroll,tblbatch;";
                                                         $query = $dbh->prepare($sql);
                                                         $query->execute();
                                                         $results = $query->fetchAll(PDO::FETCH_OBJ);
