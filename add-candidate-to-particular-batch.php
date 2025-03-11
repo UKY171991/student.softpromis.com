@@ -7,18 +7,19 @@ if (strlen($_SESSION['alogin']) == "") {
     header("Location: index.php");
 } else {
 
-    $sql_b = "SELECT * FROM tblbatch WHERE id = :batchid ORDER BY id DESC";
-    $query_b = $dbh->prepare($sql_b);
-    $query_b->bindParam(':batchid', $batchid, PDO::PARAM_INT);
-    $query_b->execute();
-    $batches = $query_b->fetchAll(PDO::FETCH_ASSOC);
-
-    print_r($batches);
-
     if (isset($_POST['submit'])) {
         $date  = mysqli_real_escape_string($dbh, $_POST['date']);
         $candidateid     = $_POST['chkbox'];
         $batchid = $_POST['batchid'];
+
+        $sql_b = "SELECT * FROM tblbatch WHERE id = :batchid ORDER BY id DESC";
+        $query_b = $dbh->prepare($sql_b);
+        $query_b->bindParam(':batchid', $batchid, PDO::PARAM_INT);
+        $query_b->execute();
+        $batches = $query_b->fetchAll(PDO::FETCH_ASSOC);
+
+        print_r($batches);
+    
         print_r($_POST); die;
         //INSERT
         foreach ($candidateid as $id) {
