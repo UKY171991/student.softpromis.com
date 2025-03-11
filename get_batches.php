@@ -98,7 +98,7 @@ if (isset($_POST['scheme'])) {
 
 
 if (isset($_POST['sector'])) {
-    $sector = intval($_POST['sector']);
+    echo $sector = intval($_POST['sector']);
 
     $sql_s = "SELECT * FROM tblassignjobroll WHERE jobroll_id = :sector ORDER BY id DESC";
     $query_s = $dbh->prepare($sql_s);
@@ -112,7 +112,7 @@ if (isset($_POST['sector'])) {
     $final_result = [];  // Create an empty array to hold all results
 
     foreach ($sch_s as $row5) {
-    	echo $sector_id = $row5['jobroll_id'];
+    	$sector_id = $row5['jobroll_id'];
 
     	// Example Query: Adjust according to your actual database schema
 	    $sql = "SELECT JobrollId, jobrollname FROM tbljobroll WHERE JobrollId = :sector_id ORDER BY JobrollId DESC";
