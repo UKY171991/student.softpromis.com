@@ -765,10 +765,12 @@ if (strlen($_SESSION['alogin']) == "") {
                                     <td class="text-right"><b><?=$p_result[0]['total_fee']?></b></td>
                                 </tr>
                                 <tr>
+                                    <td><b></b></td>
                                     <td><b>Total Paid</b></td>
                                     <td class="text-right"><b><?=$p_result[0]['paid']?></b></td>
                                 </tr>
                                 <tr class="table-warning">
+                                    <td><b></b></td>
                                     <td><b>Balance</b></td>
                                     <td class="text-right"><b><?=$p_result[0]['balance']?></b></td>
                                 </tr>
