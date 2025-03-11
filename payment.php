@@ -736,6 +736,7 @@ if (strlen($_SESSION['alogin']) == "") {
                         <table class="table table-bordered">
                             <thead class="table-dark" style="background: #212529;">
                                 <tr>
+                                    <th>#</th>
                                     <th>Date</th>
                                     <th>Amount</th>
                                 </tr>
