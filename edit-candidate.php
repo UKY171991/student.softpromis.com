@@ -241,7 +241,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label for="email">Email</label>
-                                                    <input type="number" name="email"
+                                                    <input type="email" name="email"
                                                     class="form-control" id="email"
                                                     value="<?php echo htmlentities($result->email); ?>">
                                                 </div>
