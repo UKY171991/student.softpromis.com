@@ -892,10 +892,35 @@ if (strlen($_SESSION['alogin']) == "") {
     </script>
 
     <script>
-      $( function() {
-        $( "#datepicker" ).datepicker();
-      } );
+      // $( function() {
+      //   $( "#datepicker" ).datepicker();
+      // } );
       </script>
+
+      <!-- jQuery and jQuery UI -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<!-- jQuery Timepicker Addon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.js"></script>
+
+<!-- Date & Time Picker Initialization -->
+<script>
+  $(function() {
+    $("#datepicker").datetimepicker({
+      dateFormat: "yy-mm-dd",  // Format for the date
+      timeFormat: "HH:mm:ss",  // 24-hour time format
+      controlType: 'select',   // Dropdown selection for time
+      oneLine: true            // Displays date & time in one line
+    });
+  });
+</script>
+
+<!-- Input Field -->
+<input type="text" id="datepicker" placeholder="Select Date & Time">
+
 
 </body>
 
