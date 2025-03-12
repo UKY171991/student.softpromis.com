@@ -248,7 +248,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 <div class="col-md-4">
                                                      <?php 
                                                 
-                                                            $dob = $result->dateofbirth; // Example input date in DD-MM-YY format
+                                                            echo $dob = $result->dateofbirth; // Example input date in DD-MM-YY format
 
                                                             $dateInput = "21-01-2025"; // Example input date in DD-MM-YYYY format
                                                             
