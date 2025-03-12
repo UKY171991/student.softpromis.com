@@ -149,7 +149,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
             $paid = $_POST['discount'] + $_POST['paid'];
 
-            $insertSql = "INSERT INTO emi_list (candidate_id, paid, created ,added_type,payment_mode) VALUES ( :candidate_id, :paid, :created ,:added_type,payment_mode)";
+            $insertSql = "INSERT INTO emi_list (candidate_id, paid, created ,added_type,payment_mode) VALUES ( :candidate_id, :paid, :created ,:added_type,:payment_mode)";
             $insertQuery = $dbh->prepare($insertSql);
             $insertQuery->bindParam(':candidate_id', $candidate_id, PDO::PARAM_INT);
             $insertQuery->bindParam(':paid', $paid, PDO::PARAM_STR);
