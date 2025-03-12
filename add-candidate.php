@@ -274,6 +274,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                 </div>
                                 <?php } ?>
                                 <form method="post" enctype="multipart/form-data">
+                                <div class="">
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="candidatename">Enrollment ID</label>
@@ -290,6 +291,8 @@ if (strlen($_SESSION['alogin']) == "") {
                                         </div>
 
                                     </div>
+                                </div>
+                                <div class="">
 
                                     <div class="form-row">
 
@@ -326,6 +329,8 @@ if (strlen($_SESSION['alogin']) == "") {
 
 
                                     </div>
+                                </div>
+
 
                                     <div class="form-row">
 
