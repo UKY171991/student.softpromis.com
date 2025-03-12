@@ -263,6 +263,7 @@ if (strlen($_SESSION['alogin']) == "") {
     <link rel="stylesheet" href="css/prism/prism.css" media="screen">
     <link rel="stylesheet" href="css/select2/select2.min.css">
     <link rel="stylesheet" href="css/main.css" media="screen">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="css/mystyle.css">
     <script src="js/modernizr/modernizr.min.js"></script>
 
@@ -338,7 +339,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 <div class="form-group col-md-6">
                                                     <label for="created_at">Created Date</label>
                                                     <input type="text" name="created_at" class="form-control"
-                                                        id="created_at" required="required"
+                                                        id="datepicker" required="required"
                                                         placeholder="Created Date" value="<?=$results['DateCreated']; ?>">
                                                 </div>
                                                 
@@ -823,6 +824,8 @@ if (strlen($_SESSION['alogin']) == "") {
 
         <!-- /.main-wrapper -->
         <script src="js/jquery/jquery-2.2.4.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+
         <script src="js/bootstrap/bootstrap.min.js"></script>
         <script src="js/pace/pace.min.js"></script>
         <script src="js/lobipanel/lobipanel.min.js"></script>
@@ -887,6 +890,12 @@ if (strlen($_SESSION['alogin']) == "") {
             $('#balance').val(total_fee - discount - paid);
         });
     </script>
+
+    <script>
+      $( function() {
+        $( "#datepicker" ).datepicker();
+      } );
+      </script>
 
 </body>
 
