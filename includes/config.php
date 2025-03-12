@@ -1,4 +1,5 @@
 <?php 
+date_default_timezone_set("Asia/Kolkata"); // Set to IST (Indian Standard Time)
 // DB credentials.
 define('DB_HOST','localhost');
 define('DB_USER','u820431346_smis');
