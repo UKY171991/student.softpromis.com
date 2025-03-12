@@ -289,6 +289,10 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 placeholder="Enter Full Name">
                                         </div>
 
+                                    </div>
+
+                                    <div class="form-row">
+
                                         <div class="form-group col-md-4">
                                             <label for="fathername">Father Name <span style="color:red">*</span></label>
                                             <input type="text" name="fathername" required="required"
