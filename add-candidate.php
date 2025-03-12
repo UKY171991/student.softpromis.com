@@ -287,7 +287,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 placeholder="Enter Full Name">
                                         </div>
 
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-md-4">
                                             <label for="fathername">Father Name <span style="color:red">*</span></label>
                                             <input type="text" name="fathername" required="required"
                                                 class="form-control" id="fathername"
@@ -304,13 +304,28 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 placeholder="Enter Aadhar Number">
                                         </div> -->
 
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-md-4">
                                             <label for="aadharnumber">Aadhar Number <span style="color:red">*</span></label>
                                             <input type="text" required name="aadharnumber" maxlength="12"
                                                 class="form-control" id="aadharnumber" placeholder="Enter Aadhar Number"
                                                 oninput="validateInput(this, 12)">
                                             <small id="aadharError" style="color:red; display:none;">Aadhar number must be exactly 12 digits.</small>
                                         </div>
+
+                                        <div class="form-group col-md-4">
+                                            <label for="qualification">Qualification <span style="color:red">*</span></label>
+                                            <select name="qualification" id="qualification" class="form-control" required>
+                                                <option value="">Select Qualification</option>
+                                                <option value="High School">High School</option>
+                                                <option value="Intermediate">Intermediate</option>
+                                                <option value="Diploma">Diploma</option>
+                                                <option value="Graduate">Graduate</option>
+                                                <option value="Post Graduate">Post Graduate</option>
+                                                <option value="Doctorate">Doctorate</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+
 
 
 
