@@ -57,6 +57,7 @@ if (strlen($_SESSION['alogin']) == "") {
     $paid = $_POST['paid'];
     $balance = $_POST['balance'];
     $total_fee = $_POST['total_fee'];
+    $payment_mode = $_POST['payment_mode'];
     $created_at = date("Y-m-d H:i:s"); // Current timestamp
 
 
@@ -90,6 +91,7 @@ if (strlen($_SESSION['alogin']) == "") {
             $updateQuery = $dbh->prepare($updateSql);
 
             // Bind parameters
+            $updateQuery->bindParam(':payment_mode', $payment_mode, PDO::PARAM_STR); // Adjust type if needed
             $updateQuery->bindParam(':discount', $discount, PDO::PARAM_STR); // Adjust type if needed
             $updateQuery->bindParam(':paid', $paid, PDO::PARAM_STR);
             $updateQuery->bindParam(':balance', $balance, PDO::PARAM_STR);
@@ -102,12 +104,13 @@ if (strlen($_SESSION['alogin']) == "") {
             $updateQuery->execute();
 
             $paid = $_POST['discount'] + $_POST['paid'];
-            $insertSql = "INSERT INTO emi_list (candidate_id, paid, created,added_type ) VALUES ( :candidate_id, :paid, :created,:added_type )";
+            $insertSql = "INSERT INTO emi_list (candidate_id, paid, created,added_type,payment_mode ) VALUES ( :candidate_id, :paid, :created,:added_type,:payment_mode )";
             $insertQuery = $dbh->prepare($insertSql);
             $insertQuery->bindParam(':candidate_id', $candidate_id, PDO::PARAM_INT);
             $insertQuery->bindParam(':paid', $paid, PDO::PARAM_STR);
             $insertQuery->bindParam(':created', $created, PDO::PARAM_STR);
             $insertQuery->bindParam(':added_type', $_SESSION['user_type'], PDO::PARAM_STR);
+            $insertQuery->bindParam(':payment_mode', $payment_mode, PDO::PARAM_INT);
             $insertQuery->execute();
 
 
@@ -146,12 +149,13 @@ if (strlen($_SESSION['alogin']) == "") {
 
             $paid = $_POST['discount'] + $_POST['paid'];
 
-            $insertSql = "INSERT INTO emi_list (candidate_id, paid, created ,added_type) VALUES ( :candidate_id, :paid, :created ,:added_type)";
+            $insertSql = "INSERT INTO emi_list (candidate_id, paid, created ,added_type,payment_mode) VALUES ( :candidate_id, :paid, :created ,:added_type,payment_mode)";
             $insertQuery = $dbh->prepare($insertSql);
             $insertQuery->bindParam(':candidate_id', $candidate_id, PDO::PARAM_INT);
             $insertQuery->bindParam(':paid', $paid, PDO::PARAM_STR);
             $insertQuery->bindParam(':created', $created, PDO::PARAM_STR);
             $insertQuery->bindParam(':added_type', $_SESSION['user_type'], PDO::PARAM_STR);
+            $insertQuery->bindParam(':payment_mode', $payment_mode, PDO::PARAM_STR);
             $insertQuery->execute();
 
             echo "<script>alert('Record inserted successfully')</script>";
@@ -761,7 +765,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                          ?>
                                     
                                     <tr>
-                                        <td><b>Paid On :</b></td>
+                                        <td><b>Paid On :<?php echo htmlspecialchars($row['payment_mode']); ?> </b></td>
                                         <td><b><?=date("M d, Y", strtotime($row['created']))?></b></td>
                                         <td class="text-right"><b><?php echo htmlspecialchars($row['paid']); ?></b></td>
                                     </tr>
