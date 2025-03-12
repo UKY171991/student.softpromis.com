@@ -110,7 +110,7 @@ if (strlen($_SESSION['alogin']) == "") {
             $insertQuery->bindParam(':paid', $paid, PDO::PARAM_STR);
             $insertQuery->bindParam(':created', $created, PDO::PARAM_STR);
             $insertQuery->bindParam(':added_type', $_SESSION['user_type'], PDO::PARAM_STR);
-            $insertQuery->bindParam(':payment_mode', $payment_mode, PDO::PARAM_INT);
+            $insertQuery->bindParam(':payment_mode', $payment_mode, PDO::PARAM_STR);
             $insertQuery->execute();
 
 
