@@ -71,18 +71,30 @@ if (strlen($_SESSION['alogin']) == "") {
         $results = $query->fetchAll(PDO::FETCH_OBJ);
         $totalcandidate = $query->rowCount();
         if ($totalcandidate < 10) {
-            $sql = "INSERT INTO tblcandidate (
+            // $sql = "INSERT INTO tblcandidate (
+            //     enrollmentid, candidatename, fathername, aadharnumber, phonenumber, email, dateofbirth, gender, maritalstatus, religion, category, village, 
+            //     mandal, district, state, pincode, candidatephoto, aadhaarphoto, 
+            //     qualificationphoto, applicationphoto, training_center, scheme, sector, 
+            //     job_roll, batch,tblbatch_id
+            // ) 
+            // VALUES (
+            //     :enrollmentid, :candidatename, :fathername, :aadharnumber, :phonenumber, :email, :dateofbirth, :gender, :maritalstatus, :religion, :category, :village, 
+            //     :mandal, :district, :state, :pincode, :candidatephoto, :aadhaarphoto, 
+            //     :qualificationphoto, :applicationphoto, :training_center, :scheme, :sector, 
+            //     :job_roll, :batch,:tblbatch_id
+            // )";
+
+             $sql = "INSERT INTO tblcandidate (
                 enrollmentid, candidatename, fathername, aadharnumber, phonenumber, email, dateofbirth, gender, maritalstatus, religion, category, village, 
                 mandal, district, state, pincode, candidatephoto, aadhaarphoto, 
-                qualificationphoto, applicationphoto, training_center, scheme, sector, 
-                job_roll, batch,tblbatch_id
+                qualificationphoto, applicationphoto
             ) 
             VALUES (
                 :enrollmentid, :candidatename, :fathername, :aadharnumber, :phonenumber, :email, :dateofbirth, :gender, :maritalstatus, :religion, :category, :village, 
                 :mandal, :district, :state, :pincode, :candidatephoto, :aadhaarphoto, 
-                :qualificationphoto, :applicationphoto, :training_center, :scheme, :sector, 
-                :job_roll, :batch,:tblbatch_id
+                :qualificationphoto, :applicationphoto
             )";
+
             $query = $dbh->prepare($sql);
 
             // Bind parameters
@@ -107,12 +119,12 @@ if (strlen($_SESSION['alogin']) == "") {
             $query->bindParam(':aadhaarphoto', $aadhaarphoto, PDO::PARAM_STR);
             $query->bindParam(':qualificationphoto', $qualificationphoto, PDO::PARAM_STR);
             $query->bindParam(':applicationphoto', $applicationphoto, PDO::PARAM_STR);
-            $query->bindParam(':training_center', $training_center, PDO::PARAM_INT);
-            $query->bindParam(':scheme', $scheme, PDO::PARAM_INT);
-            $query->bindParam(':sector', $sector, PDO::PARAM_INT);
-            $query->bindParam(':job_roll', $job_roll, PDO::PARAM_INT);
-            $query->bindParam(':batch', $batch, PDO::PARAM_INT);
-            $query->bindParam(':tblbatch_id', $tblbatch_id, PDO::PARAM_INT);
+            // $query->bindParam(':training_center', $training_center, PDO::PARAM_INT);
+            // $query->bindParam(':scheme', $scheme, PDO::PARAM_INT);
+            // $query->bindParam(':sector', $sector, PDO::PARAM_INT);
+            // $query->bindParam(':job_roll', $job_roll, PDO::PARAM_INT);
+            // $query->bindParam(':batch', $batch, PDO::PARAM_INT);
+            // $query->bindParam(':tblbatch_id', $tblbatch_id, PDO::PARAM_INT);
 
             $query->execute();
             move_uploaded_file($_FILES['candidatephoto']['tmp_name'], $candidatephototarget);
@@ -494,7 +506,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
                                     
 
-
+                                    <?php /*
                                     <div class="form-row">
 
                                         <div class="form-group col-md-12"><hr></div>
@@ -566,6 +578,8 @@ if (strlen($_SESSION['alogin']) == "") {
 
 
                                     </div>
+
+                                    */ ?>
 
                                     <div class="form-row">
                                         <div class="form-group col-md-12">
