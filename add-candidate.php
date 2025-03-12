@@ -274,33 +274,51 @@ if (strlen($_SESSION['alogin']) == "") {
                                 </div>
                                 <?php } ?>
                                 <form method="post" enctype="multipart/form-data">
-                                <div class="">
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-6">
                                             <label for="candidatename">Enrollment ID</label>
                                             <input type="text" name="enrollmentid" class="form-control"
                                                 id="enrollmentid" required="required"
                                                 placeholder="Enrollment ID" value="<?=$enroll?>" readonly>
                                         </div>
-                                        
-                                        <div class="form-group col-md-6">
+                                        <div class="col-md-6">
                                             <label for="candidatename">Full Name <span style="color:red">*</span></label>
                                             <input type="text" name="candidatename" class="form-control"
                                                 id="candidatename" required="required"
                                                 placeholder="Enter Full Name">
                                         </div>
-
-                                    </div>
-                                </div>
-                                <div class="">
-
-                                    <div class="form-row">
-
-                                        <div class="form-group col-md-4">
+                                        <div class="col-md-4">
                                             <label for="fathername">Father Name <span style="color:red">*</span></label>
                                             <input type="text" name="fathername" required="required"
                                                 class="form-control" id="fathername"
                                                 placeholder="Enter Father Name">
+                                        </div>
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-4"></div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            
+                                        </div>
+                                        
+                                        <div class="form-group col-md-6">
+                                            
+                                        </div>
+
+                                    </div>
+                                
+
+                                    <div class="form-row">
+
+                                        <div class="form-group col-md-4">
+                                            
                                         </div>
                                     
                         
@@ -329,8 +347,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
 
                                     </div>
-                                </div>
-                                <div class="">
+                               
 
 
                                     <div class="form-row">
@@ -359,7 +376,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                         </div>
 
                                     </div>
-                                </div>
+                               
                                 
 
                                     <div class="form-row">
