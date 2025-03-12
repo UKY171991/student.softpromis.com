@@ -295,7 +295,10 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 class="form-control" id="fathername"
                                                 placeholder="Enter Father Name">
                                         </div>
-                                    
+                                    </div>
+
+                                    <div class="form-row">
+                        
 
                                         <div class="form-group col-md-4">
                                             <label for="aadharnumber">Aadhar Number <span style="color:red">*</span></label>
@@ -305,8 +308,29 @@ if (strlen($_SESSION['alogin']) == "") {
                                             <small id="aadharError" style="color:red; display:none;">Aadhar number must be exactly 12 digits.</small>
                                         </div>
 
-                                       
+                                        <div class="form-group col-md-4">
+                                            <label for="qualification">Qualification <span style="color:red">*</span></label>
+                                            <select name="qualification" id="qualification" class="form-control" required>
+                                                <option value="">Select Qualification</option>
+                                                <option value="Below SSC">Below SSC</option>
+                                                <option value="SSC">SSC</option>
+                                                <option value="Intermediate">Intermediate</option>
+                                                <option value="Graduation">Graduation</option>
+                                                <option value="Post Graduate">Post Graduate</option>
+                                            </select>
+                                        </div>
 
+
+
+
+
+                                        <!-- <div class="form-group col-md-4">
+                                            <label for="phonenumber">Phone Number <span style="color:red">*</span></label>
+                                            <input type="number" required="required" name="phonenumber"
+                                                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                maxlength="10" class="form-control" id="phonenumber"
+                                                placeholder="Phone Number">
+                                        </div> -->
 
                                         <div class="form-group col-md-4">
                                             <label for="phonenumber">Phone Number <span style="color:red">*</span></label>
@@ -316,10 +340,6 @@ if (strlen($_SESSION['alogin']) == "") {
                                             <small id="phoneError" style="color:red; display:none;">Phone number must be exactly 10 digits.</small>
                                         </div>
 
-                                    </div>
-
-                                    <div class="form-row">
-
 
                                         <div class="form-group col-md-4">
                                             <label for="email">Email</label>
@@ -327,7 +347,9 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 class="form-control" id="email"
                                                 placeholder="Email">
                                         </div>
-                                    
+                                    </div>
+
+                                    <div class="form-row">
 
                                         <div class="form-group col-md-4">
                                             <label for="dateofbirth">Date of Birth <span style="color:red">*</span></label>
