@@ -293,45 +293,14 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 class="form-control" id="fathername"
                                                 placeholder="Enter Father Name">
                                         </div>
-                                        <div class="col-md-4"></div>
-                                        <div class="col-md-4"></div>
-                                        <div class="col-md-4"></div>
-                                        <div class="col-md-4"></div>
-                                        <div class="col-md-4"></div>
-                                        <div class="col-md-4"></div>
-                                        <div class="col-md-4"></div>
-                                        <div class="col-md-4"></div>
-                                    </div>
-
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            
-                                        </div>
-                                        
-                                        <div class="form-group col-md-6">
-                                            
-                                        </div>
-
-                                    </div>
-                                
-
-                                    <div class="form-row">
-
-                                        <div class="form-group col-md-4">
-                                            
-                                        </div>
-                                    
-                        
-
-                                        <div class="form-group col-md-4">
-                                            <label for="aadharnumber">Aadhar Number <span style="color:red">*</span></label>
+                                        <div class="col-md-4">
+                                             <label for="aadharnumber">Aadhar Number <span style="color:red">*</span></label>
                                             <input type="text" required name="aadharnumber" maxlength="12"
                                                 class="form-control" id="aadharnumber" placeholder="Enter Aadhar Number"
                                                 oninput="validateInput(this, 12)">
                                             <small id="aadharError" style="color:red; display:none;">Aadhar number must be exactly 12 digits.</small>
                                         </div>
-
-                                        <div class="form-group col-md-4">
+                                        <div class="col-md-4">
                                             <label for="qualification">Qualification <span style="color:red">*</span></label>
                                             <select name="qualification" id="qualification" class="form-control" required>
                                                 <option value="">Select Qualification</option>
@@ -342,42 +311,30 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 <option value="Post Graduate">Post Graduate</option>
                                             </select>
                                         </div>
-
-                                        
-
-
-                                    </div>
-                               
-
-
-                                    <div class="form-row">
-
-                                        <div class="form-group col-md-12">
+                                        <div class="col-md-4">
                                             <label for="phonenumber">Phone Number <span style="color:red">*</span></label>
                                             <input type="text" required name="phonenumber" maxlength="10"
                                                 class="form-control" id="phonenumber" placeholder="Phone Number"
                                                 oninput="validateInput(this, 10)">
                                             <small id="phoneError" style="color:red; display:none;">Phone number must be exactly 10 digits.</small>
                                         </div>
-
-
-                                        <div class="form-group col-md-4">
+                                        <div class="col-md-4">
                                             <label for="email">Email</label>
                                             <input type="email" name="email"
                                                 class="form-control" id="email"
                                                 placeholder="Email">
                                         </div>
-                                    
-
-                                        <div class="form-group col-md-4">
+                                        <div class="col-md-4">
                                             <label for="dateofbirth">Date of Birth <span style="color:red">*</span></label>
                                             <input type="text" name="dateofbirth" class="form-control"
                                                 id="dateofbirth" required>
                                         </div>
-
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-4"></div>
                                     </div>
-                               
-                                
+
+                                   
 
                                     <div class="form-row">
 
