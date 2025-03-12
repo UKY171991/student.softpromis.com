@@ -39,11 +39,12 @@ if (strlen($_SESSION['alogin']) == "") {
         $job_roll = $_POST['job_roll'];
         $batch = $_POST['batch'];
         $tblbatch_id = $_POST['batch'];
+        $qualification = $_POST['qualification'];
 
         $status = 1;
 
         $sql = "UPDATE tblcandidate SET candidatename=:candidatename, fathername=:fathername, aadharnumber=:aadharnumber, phonenumber=:phonenumber, dateofbirth=:dateofbirth, gender=:gender, maritalstatus=:maritalstatus, religion=:religion, category=:category, village=:village,
-    mandal=:mandal, district=:district, state=:state, pincode=:pincode, training_center=:training_center, scheme=:scheme, sector=:sector, job_roll=:job_roll, batch=:batch,tblbatch_id=:tblbatch_id
+    mandal=:mandal, district=:district, state=:state, pincode=:pincode, training_center=:training_center, scheme=:scheme, sector=:sector, job_roll=:job_roll, batch=:batch,tblbatch_id=:tblbatch_id,qualification=:qualification
     WHERE CandidateId=:cid";
     $query = $dbh->prepare($sql);
 
@@ -67,6 +68,7 @@ if (strlen($_SESSION['alogin']) == "") {
     $query->bindParam(':job_roll', $job_roll, PDO::PARAM_INT);
     $query->bindParam(':batch', $batch, PDO::PARAM_INT);
     $query->bindParam(':tblbatch_id', $tblbatch_id, PDO::PARAM_INT);
+    $query->bindParam(':qualification', $qualification, PDO::PARAM_STR);
 
     // IMPORTANT FIX: Bind the candidate ID
     $query->bindParam(':cid', $cid, PDO::PARAM_INT);
@@ -220,7 +222,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                         value="<?php echo htmlentities($result->candidatename); ?>">
                                                 </div>
 
-                                                <div class="form-group col-md-6">
+                                                <div class="form-group col-md-4">
                                                     <label for="fathername">Father Name</label>
                                                     <input type="text" name="fathername" class="form-control"
                                                         id="fathername"
@@ -229,13 +231,26 @@ if (strlen($_SESSION['alogin']) == "") {
                                             </div>
 
                                             <div class="form-row">
-                                                <div class="form-group col-md-6">
+                                                <div class="form-group col-md-4">
                                                     <label for="aadharnumber">Aadhar Number</label>
                                                     <input type="number" name="aadharnumber"
                                                         oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                                         maxlength="12" class="form-control" id="aadharnumber"
                                                         value="<?php echo htmlentities($result->aadharnumber); ?>">
                                                 </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="qualification">Qualification <span style="color:red">*</span></label>
+                                                    <select name="qualification" id="qualification" class="form-control" required>
+                                                        <option value="">Select Qualification</option>
+                                                        <option value="Below SSC">Below SSC</option>
+                                                        <option value="SSC">SSC</option>
+                                                        <option value="Intermediate">Intermediate</option>
+                                                        <option value="Graduation">Graduation</option>
+                                                        <option value="Post Graduate">Post Graduate</option>
+                                                    </select>
+                                                </div>
+
 
                                                 <div class="form-group col-md-4">
                                                     <label for="phonenumber">Phone Number</label>

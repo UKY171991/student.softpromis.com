@@ -44,6 +44,7 @@ if (strlen($_SESSION['alogin']) == "") {
         $job_roll = $_POST['job_roll'];
         $batch = $_POST['batch'];
         $tblbatch_id = $_POST['batch'];
+        $qualification = $_POST['qualification'];
 
         $candidatephoto = ($_FILES['candidatephoto']['name']);
         $candidatephototarget = 'doc/' . basename($candidatephoto);
@@ -87,12 +88,12 @@ if (strlen($_SESSION['alogin']) == "") {
              $sql = "INSERT INTO tblcandidate (
                 enrollmentid, candidatename, fathername, aadharnumber, phonenumber, email, dateofbirth, gender, maritalstatus, religion, category, village, 
                 mandal, district, state, pincode, candidatephoto, aadhaarphoto, 
-                qualificationphoto, applicationphoto
+                qualificationphoto, applicationphoto,qualification
             ) 
             VALUES (
                 :enrollmentid, :candidatename, :fathername, :aadharnumber, :phonenumber, :email, :dateofbirth, :gender, :maritalstatus, :religion, :category, :village, 
                 :mandal, :district, :state, :pincode, :candidatephoto, :aadhaarphoto, 
-                :qualificationphoto, :applicationphoto
+                :qualificationphoto, :applicationphoto,:qualification
             )";
 
             $query = $dbh->prepare($sql);
@@ -119,6 +120,7 @@ if (strlen($_SESSION['alogin']) == "") {
             $query->bindParam(':aadhaarphoto', $aadhaarphoto, PDO::PARAM_STR);
             $query->bindParam(':qualificationphoto', $qualificationphoto, PDO::PARAM_STR);
             $query->bindParam(':applicationphoto', $applicationphoto, PDO::PARAM_STR);
+            $query->bindParam(':qualification', $qualification, PDO::PARAM_STR);
             // $query->bindParam(':training_center', $training_center, PDO::PARAM_INT);
             // $query->bindParam(':scheme', $scheme, PDO::PARAM_INT);
             // $query->bindParam(':sector', $sector, PDO::PARAM_INT);
@@ -316,15 +318,14 @@ if (strlen($_SESSION['alogin']) == "") {
                                             <label for="qualification">Qualification <span style="color:red">*</span></label>
                                             <select name="qualification" id="qualification" class="form-control" required>
                                                 <option value="">Select Qualification</option>
-                                                <option value="High School">High School</option>
+                                                <option value="Below SSC">Below SSC</option>
+                                                <option value="SSC">SSC</option>
                                                 <option value="Intermediate">Intermediate</option>
-                                                <option value="Diploma">Diploma</option>
-                                                <option value="Graduate">Graduate</option>
+                                                <option value="Graduation">Graduation</option>
                                                 <option value="Post Graduate">Post Graduate</option>
-                                                <option value="Doctorate">Doctorate</option>
-                                                <option value="Other">Other</option>
                                             </select>
                                         </div>
+
 
 
 
