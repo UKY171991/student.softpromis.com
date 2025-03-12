@@ -104,6 +104,7 @@ if (strlen($_SESSION['alogin']) == "") {
             $updateQuery->execute();
 
             $paid = $_POST['discount'] + $_POST['paid'];
+            $payment_mode = $_POST['payment_mode'];
             $insertSql = "INSERT INTO emi_list (candidate_id, paid, created,added_type,payment_mode ) VALUES ( :candidate_id, :paid, :created,:added_type,:payment_mode )";
             $insertQuery = $dbh->prepare($insertSql);
             $insertQuery->bindParam(':candidate_id', $candidate_id, PDO::PARAM_INT);
@@ -148,6 +149,7 @@ if (strlen($_SESSION['alogin']) == "") {
             $lastInsertId = $dbh->lastInsertId();
 
             $paid = $_POST['discount'] + $_POST['paid'];
+            $payment_mode = $_POST['payment_mode'];
 
             $insertSql = "INSERT INTO emi_list (candidate_id, paid, created ,added_type,payment_mode) VALUES ( :candidate_id, :paid, :created ,:added_type,:payment_mode)";
             $insertQuery = $dbh->prepare($insertSql);
@@ -741,7 +743,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                 <p><strong>Batch:</strong> <?=$batch_result[0]['batch_name']?></p>
                                 <p><strong>Payment Date:</strong> <?=date("M d, Y", strtotime($p_result[0]['created_at']))?></p>
                                 <p><strong>Paid Amount:</strong> <?=$p_result[0]['paid']?></p>
-                                <!-- <p><strong>Payment Mode:</strong> Cash/Online</p> -->
+                                <p><strong>Payment Mode:</strong> Cash/Online</p>
                             </div>
                         </div>
                         <h5 class="fw-bold border-bottom pb-2 text-center">Payment Summary</h5>
