@@ -913,13 +913,12 @@ if (strlen($_SESSION['alogin']) == "") {
       dateFormat: "yy-mm-dd",  // Format for the date
       timeFormat: "HH:mm:ss",  // 24-hour time format
       controlType: 'select',   // Dropdown selection for time
-      oneLine: true            // Displays date & time in one line
+      oneLine: true,           // Displays date & time in one line
+      timezone: "+05:30"       // Set to IST (Indian Standard Time)
     });
   });
 </script>
 
-<!-- Input Field -->
-<input type="text" id="datepicker" placeholder="Select Date & Time">
 
 
 </body>
