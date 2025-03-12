@@ -730,7 +730,6 @@ if (strlen($_SESSION['alogin']) == "") {
                                 <p><strong>Payment Date:</strong> <?=date("M d, Y", strtotime($p_result[0]['created_at']))?></p>
                                 <p><strong>Paid Amount:</strong> <?=$p_result[0]['paid']?></p>
                                 <!-- <p><strong>Payment Mode:</strong> Cash/Online</p> -->
-                                <p><strong>Payment Mode:</strong> <input type="text" class="form-control" value="Cash/Online"></p>
                             </div>
                         </div>
                         <h5 class="fw-bold border-bottom pb-2 text-center">Payment Summary</h5>
