@@ -206,40 +206,34 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 if ($query->rowCount() > 0) {
                                                     foreach ($results as $result) {   ?>
                                             <input type="hidden" name="candidateid" value="<?php echo $cid; ?>">
-                                            <div class="form-row">
-                                                
-                                                <div class="form-group col-md-6">
+
+                                            <div class="row">
+                                                <div class="col-md-6">
                                                     <label for="enrollmentid">Enrollment ID</label>
                                                     <input type="text" name="enrollmentid" class="form-control"
                                                         id="enrollmentid"
                                                         value="<?php echo htmlentities($result->enrollmentid); ?>" readonly>
                                                 </div>
-                                                
-                                                <div class="form-group col-md-6">
+                                                <div class="col-md-6">
                                                     <label for="candidatename">Full Name</label>
                                                     <input type="text" name="candidatename" class="form-control"
                                                         id="candidatename"
                                                         value="<?php echo htmlentities($result->candidatename); ?>">
                                                 </div>
-
-                                                <div class="form-group col-md-4">
+                                                <div class="col-md-4">
                                                     <label for="fathername">Father Name</label>
                                                     <input type="text" name="fathername" class="form-control"
                                                         id="fathername"
                                                         value="<?php echo htmlentities($result->fathername); ?>">
                                                 </div>
-                                            </div>
-
-                                            <div class="form-row">
-                                                <div class="form-group col-md-4">
+                                                <div class="col-md-4">
                                                     <label for="aadharnumber">Aadhar Number</label>
                                                     <input type="number" name="aadharnumber"
                                                         oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                                         maxlength="12" class="form-control" id="aadharnumber"
                                                         value="<?php echo htmlentities($result->aadharnumber); ?>">
                                                 </div>
-
-                                                <div class="form-group col-md-4">
+                                                <div class="col-md-4">
                                                     <label for="qualification">Qualification <span style="color:red">*</span></label>
                                                     <select name="qualification" id="qualification" class="form-control" required>
                                                         <option value="">Select Qualification</option>
@@ -250,22 +244,26 @@ if (strlen($_SESSION['alogin']) == "") {
                                                         <option value="Post Graduate">Post Graduate</option>
                                                     </select>
                                                 </div>
-
-
-                                                <div class="form-group col-md-4">
+                                                <div class="col-md-4">
                                                     <label for="phonenumber">Phone Number</label>
                                                     <input type="number" name="phonenumber"
                                                         oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                                         maxlength="10" class="form-control" id="phonenumber"
                                                         value="<?php echo htmlentities($result->phonenumber); ?>">
                                                 </div>
-                                                <div class="form-group col-md-4">
+                                                <div class="col-md-4">
                                                     <label for="email">Email</label>
                                                     <input type="number" name="email"
                                                     class="form-control" id="email"
                                                     value="<?php echo htmlentities($result->email); ?>">
                                                 </div>
+                                                <div class="col-md-4"></div>
+                                                <div class="col-md-4"></div>
+                                                <div class="col-md-4"></div>
+                                                <div class="col-md-4"></div>
                                             </div>
+                                            
+
 
                                             <div class="form-row">
                                                 
