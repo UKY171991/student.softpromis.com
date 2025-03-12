@@ -135,11 +135,394 @@ if (strlen($_SESSION['alogin']) == "") {
     <link rel="stylesheet" href="css/main.css" media="screen">
     <script src="js/modernizr/modernizr.min.js"></script>
 
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="includes/style.css">
   
 </head>
 
 <body class="top-navbar-fixed">
+    <?php include('includes/topbar-new.php'); ?>
+
+
+
+    <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+
+      <?php include('includes/left-sidebar-new.php'); ?>
+       <?php include('includes/leftbar.php'); ?>
+
+
+      <!-- Main Content -->
+      <main class="col-lg-10 col-md-9 p-4">
+        <h2 class="mb-4">Candidate Registration</h2>
+        <div class="row g-3">
+          <!-- Regd Candidates Card -->
+
+            <div class="container-fluid">
+
+                <div class="col-md-12" style="background-color: white;">
+                                    <div class="panel">
+                                        <div class="panel-heading">
+                                            <div class="panel-title">
+                                                <h5>Update Candidate info<?php echo $candidatephoto;
+                                                                                ?></h5>
+                                            </div>
+                                        </div>
+                                        <?php if ($msg) { ?>
+                                        <div class="alert alert-success left-icon-alert" role="alert">
+                                            <strong>Well done!</strong>
+                                            <?php echo htmlentities($msg); ?>
+                                        </div>
+                                        <?php } else if ($error) { ?>
+                                        <div class="alert alert-danger left-icon-alert" role="alert">
+                                            <strong>Oh snap!</strong>
+                                            <?php echo htmlentities($error); ?>
+                                        </div>
+                                        <?php } ?>
+                                        <form method="post" enctype="multipart/form-data">
+                                            <?php
+                                                $cid = intval($_GET['candidateid']);
+                                                $sql = "SELECT * from tblcandidate where CandidateId=:cid";
+                                                $query = $dbh->prepare($sql);
+                                                $query->bindParam(':cid', $cid, PDO::PARAM_STR);
+                                                $query->execute();
+                                                $results = $query->fetchAll(PDO::FETCH_OBJ);
+                                                $cnt = 1;
+                                                if ($query->rowCount() > 0) {
+                                                    foreach ($results as $result) {   ?>
+                                            <input type="hidden" name="candidateid" value="<?php echo $cid; ?>">
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label for="enrollmentid">Enrollment ID</label>
+                                                    <input type="text" name="enrollmentid" class="form-control"
+                                                        id="enrollmentid"
+                                                        value="<?php echo htmlentities($result->enrollmentid); ?>" readonly>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="candidatename">Full Name</label>
+                                                    <input type="text" name="candidatename" class="form-control"
+                                                        id="candidatename"
+                                                        value="<?php echo htmlentities($result->candidatename); ?>">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label for="fathername">Father Name</label>
+                                                    <input type="text" name="fathername" class="form-control"
+                                                        id="fathername"
+                                                        value="<?php echo htmlentities($result->fathername); ?>">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label for="aadharnumber">Aadhar Number</label>
+                                                    <input type="number" name="aadharnumber"
+                                                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                        maxlength="12" class="form-control" id="aadharnumber"
+                                                        value="<?php echo htmlentities($result->aadharnumber); ?>">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label for="qualification">Qualification <span style="color:red">*</span></label>
+                                                    <select name="qualification" id="qualification" class="form-control" required>
+                                                        <option value="">Select Qualification</option>
+                                                        <option value="Below SSC">Below SSC</option>
+                                                        <option value="SSC">SSC</option>
+                                                        <option value="Intermediate">Intermediate</option>
+                                                        <option value="Graduation">Graduation</option>
+                                                        <option value="Post Graduate">Post Graduate</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label for="phonenumber">Phone Number</label>
+                                                    <input type="number" name="phonenumber"
+                                                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                        maxlength="10" class="form-control" id="phonenumber"
+                                                        value="<?php echo htmlentities($result->phonenumber); ?>">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label for="email">Email</label>
+                                                    <input type="number" name="email"
+                                                    class="form-control" id="email"
+                                                    value="<?php echo htmlentities($result->email); ?>">
+                                                </div>
+                                                <div class="col-md-4"></div>
+                                                <div class="col-md-4"></div>
+                                                <div class="col-md-4"></div>
+                                                <div class="col-md-4"></div>
+                                            </div>
+                                            
+
+
+                                            <div class="form-row">
+                                                
+                                                <?php 
+                                                
+                                                    $dob = $result->dateofbirth; // Example input date in DD-MM-YY format
+
+                                                    $dateInput = "21-01-2025"; // Example input date in DD-MM-YYYY format
+                                                    
+                                                    // Split the input date into parts using explode
+                                                    $dateParts = explode('-', $dob); // [21, 01, 2025]
+                                                    
+                                                    // Rearrange the parts to match YYYY-MM-DD format
+                                                    $correctedDate = implode('-', array_reverse($dateParts)); // [2025, 01, 21]
+                                                ?>
+                                                
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="dateofbirth">Date of Birth</label>
+                                                    <input type="text" name="dateofbirth" class="form-control"
+                                                        id="dateofbirth"
+                                                        value="<?php echo $correctedDate ?>">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="gender">Gender</label>
+                                                    <select id="gender" name="gender" class="form-control">
+                                                        <option selected><?php echo htmlentities($result->gender); ?>
+                                                        </option>
+                                                        <option>Male</option>
+                                                        <option>Female</option>
+                                                        <option>Other</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-4">
+                                                    <label for="maritalstatus">Marital Status</label>
+                                                    <select id="maritalstatus" name="maritalstatus"
+                                                        class="form-control">
+                                                        <option selected>
+                                                            <?php echo htmlentities($result->maritalstatus); ?></option>
+                                                        <option>Married</option>
+                                                        <option>Un Married</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="religion">Religion</label>
+                                                    <select id="religion" name="religion" class="form-control">
+                                                        <option selected><?php echo htmlentities($result->religion); ?>
+                                                        </option>
+                                                        <option>Hindu</option>
+                                                        <option>Muslim</option>
+                                                        <option>Christian</option>
+                                                        <option>Other</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="category">Category</label>
+                                                    <select id="category" name="category" class="form-control">
+                                                        <option selected><?php echo htmlentities($result->category); ?>
+                                                        </option>
+                                                        <option>BC-A</option>
+                                                        <option>BC-B</option>
+                                                        <option>BC-C</option>
+                                                        <option>BC-D</option>
+                                                        <option>BC-E</option>
+                                                        <option>EBC</option>
+                                                        <option>Minorities</option>
+                                                        <option>Other</option>
+                                                        <option>OC</option>
+                                                        <option>SC</option>
+                                                        <option>ST</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-4">
+                                                    <label for="village">Village</label>
+                                                    <input type="text" name="village" class="form-control" id="village"
+                                                        value="<?php echo htmlentities($result->village); ?>">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="mandal">Mandal</label>
+                                                    <input type="text" name="mandal" class="form-control" id="mandal"
+                                                        value="<?php echo htmlentities($result->mandal); ?>">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-4">
+                                                    <label for="district">District</label>
+                                                    <select id="district" name="district" class="form-control">
+                                                        <option selected><?php echo htmlentities($result->district); ?>
+                                                        </option>
+                                                        <option>Alluri Sitharama Raju</option>
+                                                        <option>Anakapalli</option>
+                                                        <option>Anantapur</option>
+                                                        <option>Annamayya</option>
+                                                        <option>Bapatla</option>
+                                                        <option>Chittoor</option>
+                                                        <option>Dr. B. R. Ambedkar</option>
+                                                        <option>East Godavari</option>
+                                                        <option>Eluru</option>
+                                                        <option>Guntur</option>
+                                                        <option>Kakinada</option>
+                                                        <option>Krishna</option>
+                                                        <option>Kurnool</option>
+                                                        <option>Nandyal</option>
+                                                        <option>NTR</option>
+                                                        <option>Palnadu</option>
+                                                        <option>Parvathipuram Manyam</option>
+                                                        <option>Prakasam</option>
+                                                        <option>Sri Potti Sriramulu Nellore</option>
+                                                        <option>Sri Sathya Sai</option>
+                                                        <option>Srikakulam</option>
+                                                        <option>Tirupati</option>
+                                                        <option>Visakhapatnam</option>
+                                                        <option>Vizianagaram</option>
+                                                        <option>West Godavari</option>
+                                                        <option>YSR (Kadapa)</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="state">State</label>
+                                                    <select id="state" name="state" class="form-control">
+                                                        <option selected><?php echo htmlentities($result->state); ?>
+                                                        </option>
+                                                        <option>Andhra Pradesh</option>
+                                                        <option>Orissa</option>
+                                                        <option>Telangana</option>
+                                                        <option>Delhi</option>
+                                                        <option>Jammu & Kashmir</option>
+                                                        <option>Kerala</option>
+                                                        <option>Arunachal Pradesh</option>
+                                                        <option>Maharastra</option>
+                                                        <option>Goa</option>
+                                                        <option>Rajastan</option>
+                                                        <option>Gujarat</option>
+                                                        <option>Uttarakand</option>
+                                                        <option>Uttar Pradesh</option>
+                                                        <option>Assam</option>
+                                                        <option>Tiruvanantapur</option>
+                                                        <option>Meghalaya</option>
+                                                        <option>Sikkim</option>
+
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="pincode">Pin Code</label>
+                                                    <input type="number" name="pincode" class="form-control" id="pincode" placeholder="Pin Code" maxlength="6" oninput="this.value = this.value.slice(0, 6)" value="<?php echo htmlentities($result->pincode); ?>" required>
+                                                </div>
+                                                
+
+                                                </div>
+                                            </div>
+
+
+                                            <?php }
+                                                } ?>
+
+                                            <div class="form-row">
+
+                                                <div class="form-group col-md-12"><hr></div>
+
+                                                <div class="form-group col-md-12">
+                                                    <div class="panel-title">
+                                                        <h5>Job Information</h5>
+                                                    </div>
+                                                </div>
+
+                                                <input type="hidden" name="" id="training_center_id" value="<?=$result->TrainingcenterId?>">
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="training_center">Training Center</label>
+                                                    <select id="training_center" name="training_center" class="form-control js-example-basic-single" required>
+                                                        <option>Select</option>
+                                                        <?php 
+                                                        foreach ($result1 as $row1) { ?>
+                                                            <option <?=($result->training_center == $row1['TrainingcenterId']) ? "selected" : "";?> value="<?=$row1['TrainingcenterId']; ?>"><?=$row1['trainingcentername']?></option>
+                                                        <?php } ?>
+                                                        
+                                                    </select>
+                                                </div>
+
+                                                <input type="hidden" name="" id="scheme_id" value="<?=$result->scheme?>">
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="scheme">Scheme</label>
+                                                    <select id="scheme" name="scheme" class="form-control js-example-basic-single" required>
+                                                        <option>Select</option>
+                                                        <?php 
+                                                        foreach ($result2 as $row2) { ?>
+                                                            <option <?=($result->scheme == $row2['SchemeId']) ? "selected" : "";?> value="<?=$row2['SchemeId']; ?>"><?=$row2['SchemeName']?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+
+                                                <input type="hidden" name="" id="sector_id" value="<?=$result->sector?>">
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="sector">Sector</label>
+                                                    <select id="sector" name="sector" class="form-control js-example-basic-single" required>
+                                                        <option>Select</option>
+                                                        <?php 
+                                                        foreach ($result3 as $row3) { ?>
+                                                            <option <?=($result->sector == $row3['SectorId']) ? "selected" : "";?> value="<?=$row3['SectorId']; ?>"><?=$row3['SectorName']?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+
+                                                <input type="hidden" name="" id="job_roll_id" value="<?=$result->job_roll?>">
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="job_roll">Job Roll</label>
+                                                    <select id="job_roll" name="job_roll" class="form-control js-example-basic-single" required>
+                                                        <option>Select</option>
+                                                        <?php 
+                                                        foreach ($result4 as $row4) { ?>
+                                                            <option <?=($result->job_roll == $row4['JobrollId']) ? "selected" : "";?> value="<?=$row4['JobrollId']; ?>"><?=$row4['jobrollname']?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+
+                                                <input type="hidden" name="" id="batch_selected_id" value="<?=$result->batch?>">
+                                                
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="batch">Batch</label>
+                                                    <select id="batch" name="batch" class="form-control js-example-basic-single" required>
+                                                        <option>Select</option>
+                                                        <?php 
+                                                        foreach ($result5 as $row5) { ?>
+                                                            <option <?=($result->batch == $row5['id']) ? "selected" : "";?> value="<?=$row5['id']; ?>"><?=$row5['batch_name']?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+
+
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                    <button type="submit" name="update"
+                                                        class="btn btn-success btn-labeled">Update<span
+                                                            class="btn-label btn-label-right"><i
+                                                                class="fa fa-check"></i></span></button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+            </div>
+
+         
+        </div><!-- /.row -->
+      </main>
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+
+
+
+
+
+
+
+
     <div class="main-wrapper">
 
         <!-- ========== TOP NAVBAR ========== -->
