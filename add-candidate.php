@@ -315,7 +315,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
                                     </div>
 
-                                    <div class="row">
+                                    <div class="form-row">
 
                                         <div class="form-group col-md-4">
                                             <label for="phonenumber">Phone Number <span style="color:red">*</span></label>
