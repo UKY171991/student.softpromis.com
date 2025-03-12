@@ -30,13 +30,6 @@ if (strlen($_SESSION['alogin']) == "") {
 
     <link rel="stylesheet" href="css/main.css" media="screen">
     <script src="js/modernizr/modernizr.min.js"></script>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome 6 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="includes/style.css">
-
-
     <style>
     .errorWrap {
         padding: 10px;
@@ -86,7 +79,7 @@ if (strlen($_SESSION['alogin']) == "") {
 </head>
 
 <body class="top-navbar-fixed">
-    <div class="main-wrapper"> 
+    <div class="main-wrapper">
 
         <!-- ========== TOP NAVBAR ========== -->
         <?php include('includes/topbar.php'); ?>
@@ -530,9 +523,6 @@ if (strlen($_SESSION['alogin']) == "") {
 
 
 <!-- ========== COMMON JS FILES ========== -->
-
-<!-- Bootstrap Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
