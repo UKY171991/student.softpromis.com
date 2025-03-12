@@ -274,142 +274,329 @@ if (strlen($_SESSION['alogin']) == "") {
                                 </div>
                                 <?php } ?>
                                 <form method="post" enctype="multipart/form-data">
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="enrollmentid">Enrollment ID</label>
-            <input type="text" name="enrollmentid" class="form-control" id="enrollmentid" required placeholder="Enrollment ID" value="<?=$enroll?>" readonly>
-        </div>
-        <div class="form-group col-md-6">
-            <label for="candidatename">Full Name <span style="color:red">*</span></label>
-            <input type="text" name="candidatename" class="form-control" id="candidatename" required placeholder="Enter Full Name">
-        </div>
-    </div>
-    
-    <div class="form-row">
-        <div class="form-group col-md-4">
-            <label for="fathername">Father Name <span style="color:red">*</span></label>
-            <input type="text" name="fathername" class="form-control" id="fathername" required placeholder="Enter Father Name">
-        </div>
-        <div class="form-group col-md-4">
-            <label for="aadharnumber">Aadhar Number <span style="color:red">*</span></label>
-            <input type="text" name="aadharnumber" class="form-control" id="aadharnumber" required maxlength="12" placeholder="Enter Aadhar Number" oninput="validateInput(this, 12)">
-            <small id="aadharError" style="color:red; display:none;">Aadhar number must be exactly 12 digits.</small>
-        </div>
-        <div class="form-group col-md-4">
-            <label for="qualification">Qualification <span style="color:red">*</span></label>
-            <select name="qualification" id="qualification" class="form-control" required>
-                <option value="">Select Qualification</option>
-                <option value="Below SSC">Below SSC</option>
-                <option value="SSC">SSC</option>
-                <option value="Intermediate">Intermediate</option>
-                <option value="Graduation">Graduation</option>
-                <option value="Post Graduate">Post Graduate</option>
-            </select>
-        </div>
-    </div>
-    
-    <div class="form-row">
-        <div class="form-group col-md-4">
-            <label for="phonenumber">Phone Number <span style="color:red">*</span></label>
-            <input type="text" name="phonenumber" class="form-control" id="phonenumber" required maxlength="10" placeholder="Phone Number" oninput="validateInput(this, 10)">
-            <small id="phoneError" style="color:red; display:none;">Phone number must be exactly 10 digits.</small>
-        </div>
-        <div class="form-group col-md-4">
-            <label for="email">Email</label>
-            <input type="email" name="email" class="form-control" id="email" placeholder="Email">
-        </div>
-        <div class="form-group col-md-4">
-            <label for="dateofbirth">Date of Birth <span style="color:red">*</span></label>
-            <input type="text" name="dateofbirth" class="form-control" id="dateofbirth" required>
-        </div>
-    </div>
-    
-    <div class="form-row">
-        <div class="form-group col-md-4">
-            <label for="gender">Gender <span style="color:red">*</span></label>
-            <select id="gender" name="gender" class="form-control">
-                <option selected>Select</option>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Other</option>
-            </select>
-        </div>
-        <div class="form-group col-md-4">
-            <label for="maritalstatus">Marital Status <span style="color:red">*</span></label>
-            <select id="maritalstatus" name="maritalstatus" class="form-control" required>
-                <option selected>Select</option>
-                <option>Married</option>
-                <option>Unmarried</option>
-            </select>
-        </div>
-        <div class="form-group col-md-4">
-            <label for="religion">Religion <span style="color:red">*</span></label>
-            <select id="religion" name="religion" class="form-control" required>
-                <option selected>Select</option>
-                <option>Hindu</option>
-                <option>Muslim</option>
-                <option>Christian</option>
-                <option>Other</option>
-            </select>
-        </div>
-    </div>
-    
-    <div class="form-row">
-        <div class="form-group col-md-4">
-            <label for="village">Village <span style="color:red">*</span></label>
-            <input type="text" name="village" class="form-control" id="village" required placeholder="Village">
-        </div>
-        <div class="form-group col-md-4">
-            <label for="mandal">Mandal <span style="color:red">*</span></label>
-            <input type="text" name="mandal" class="form-control" id="mandal" required placeholder="Mandal">
-        </div>
-    </div>
-    
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="district">District <span style="color:red">*</span></label>
-            <select id="district" name="district" class="form-control" required>
-                <option selected>Select</option>
-                <option>Visakhapatnam</option>
-                <option>Guntur</option>
-                <option>Kurnool</option>
-            </select>
-        </div>
-        <div class="form-group col-md-4">
-            <label for="state">State <span style="color:red">*</span></label>
-            <select id="state" name="state" class="form-control" required>
-                <option selected>Select</option>
-                <option>Andhra Pradesh</option>
-                <option>Telangana</option>
-            </select>
-        </div>
-        <div class="form-group col-md-2">
-            <label for="pincode">Pin Code <span style="color:red">*</span></label>
-            <input type="number" name="pincode" class="form-control" id="pincode" required maxlength="6" placeholder="Pin Code">
-        </div>
-    </div>
-    
-    <div class="form-row">
-        <div class="form-group col-md-3">
-            <label for="candidatephoto">Upload Photo</label>
-            <input type="file" name="candidatephoto" class="form-control" id="candidatephoto">
-        </div>
-        <div class="form-group col-md-3">
-            <label for="aadhaarphoto">Upload Aadhaar</label>
-            <input type="file" name="aadhaarphoto" class="form-control" id="aadhaarphoto">
-        </div>
-        <div class="form-group col-md-3">
-            <label for="qualificationphoto">Upload Education</label>
-            <input type="file" name="qualificationphoto" class="form-control" id="qualificationphoto">
-        </div>
-        <div class="form-group col-md-3">
-            <label for="applicationphoto">Upload Application</label>
-            <input type="file" name="applicationphoto" class="form-control" id="applicationphoto">
-        </div>
-    </div>
-    
-    <button type="submit" name="submit" class="btn btn-primary">Register Candidate</button>
-</form>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="candidatename">Enrollment ID</label>
+                                            <input type="text" name="enrollmentid" class="form-control"
+                                                id="enrollmentid" required="required"
+                                                placeholder="Enrollment ID" value="<?=$enroll?>" readonly>
+                                        </div>
+                                        
+                                        <div class="form-group col-md-6">
+                                            <label for="candidatename">Full Name <span style="color:red">*</span></label>
+                                            <input type="text" name="candidatename" class="form-control"
+                                                id="candidatename" required="required"
+                                                placeholder="Enter Full Name">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-row">
+
+                                        <div class="form-group col-md-4">
+                                            <label for="fathername">Father Name <span style="color:red">*</span></label>
+                                            <input type="text" name="fathername" required="required"
+                                                class="form-control" id="fathername"
+                                                placeholder="Enter Father Name">
+                                        </div>
+                                    
+                        
+
+                                        <div class="form-group col-md-4">
+                                            <label for="aadharnumber">Aadhar Number <span style="color:red">*</span></label>
+                                            <input type="text" required name="aadharnumber" maxlength="12"
+                                                class="form-control" id="aadharnumber" placeholder="Enter Aadhar Number"
+                                                oninput="validateInput(this, 12)">
+                                            <small id="aadharError" style="color:red; display:none;">Aadhar number must be exactly 12 digits.</small>
+                                        </div>
+
+                                        <div class="form-group col-md-4">
+                                            <label for="qualification">Qualification <span style="color:red">*</span></label>
+                                            <select name="qualification" id="qualification" class="form-control" required>
+                                                <option value="">Select Qualification</option>
+                                                <option value="Below SSC">Below SSC</option>
+                                                <option value="SSC">SSC</option>
+                                                <option value="Intermediate">Intermediate</option>
+                                                <option value="Graduation">Graduation</option>
+                                                <option value="Post Graduate">Post Graduate</option>
+                                            </select>
+                                        </div>
+
+                                        
+
+
+                                    </div>
+
+                                    <div class="form-row">
+
+                                        <div class="form-group col-md-4">
+                                            <label for="phonenumber">Phone Number <span style="color:red">*</span></label>
+                                            <input type="text" required name="phonenumber" maxlength="10"
+                                                class="form-control" id="phonenumber" placeholder="Phone Number"
+                                                oninput="validateInput(this, 10)">
+                                            <small id="phoneError" style="color:red; display:none;">Phone number must be exactly 10 digits.</small>
+                                        </div>
+
+
+                                        <div class="form-group col-md-4">
+                                            <label for="email">Email</label>
+                                            <input type="email" name="email"
+                                                class="form-control" id="email"
+                                                placeholder="Email">
+                                        </div>
+                                    
+
+                                        <div class="form-group col-md-4">
+                                            <label for="dateofbirth">Date of Birth <span style="color:red">*</span></label>
+                                            <input type="text" name="dateofbirth" class="form-control"
+                                                id="dateofbirth" required>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-row">
+
+                                        <div class="form-group col-md-4">
+                                            <label for="gender">Gender <span style="color:red">*</span></label>
+                                            <select id="gender" name="gender" class="form-control">
+                                                <option selected>Select</option>
+                                                <option>Male</option>
+                                                <option>Female</option>
+                                                <option>Other</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="maritalstatus">Marital Status <span style="color:red">*</span></label>
+                                            <select id="maritalstatus" name="maritalstatus"
+                                                class="form-control" required>
+                                                <option selected>Select</option>
+                                                <option>Married</option>
+                                                <option>Un Married</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label for="religion">Religion <span style="color:red">*</span></label>
+                                            <select id="religion" name="religion" class="form-control" required>
+                                                <option selected>Select</option>
+                                                <option>Hindu</option>
+                                                <option>Muslim</option>
+                                                <option>Christian</option>
+                                                <option>Other</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group col-md-4">
+                                            <label for="category">Category</label>
+                                            <select id="category" name="category" class="form-control">
+                                                <option selected>Select</option>
+                                                <option>BC-A</option>
+                                                <option>BC-B</option>
+                                                <option>BC-C</option>
+                                                <option>BC-D</option>
+                                                <option>BC-E</option>
+                                                <option>EBC</option>
+                                                <option>Minorities</option>
+                                                <option>Other</option>
+                                                <option>OC</option>
+                                                <option>SC</option>
+                                                <option>ST</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label for="village">Village <span style="color:red">*</span></label>
+                                            <input type="text" name="village" class="form-control" id="village"
+                                                placeholder="Village" required>
+                                        </div>
+
+                                        <div class="form-group col-md-4">
+                                            <label for="mandal">Mandal <span style="color:red">*</span></label>
+                                            <input type="text" name="mandal" class="form-control" id="mandal"
+                                                placeholder="Mandal" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="district">District <span style="color:red">*</span></label>
+                                            <select id="district" name="district" class="form-control" required>
+                                                <option selected>Select</option>
+                                                <option>Alluri Sitharama Raju</option>
+                                                <option>Anakapalli</option>
+                                                <option>Anantapur</option>
+                                                <option>Annamayya</option>
+                                                <option>Bapatla</option>
+                                                <option>Chittoor</option>
+                                                <option>Dr. B. R. Ambedkar</option>
+                                                <option>East Godavari</option>
+                                                <option>Eluru</option>
+                                                <option>Guntur</option>
+                                                <option>Kakinada</option>
+                                                <option>Krishna</option>
+                                                <option>Kurnool</option>
+                                                <option>Nandyal</option>
+                                                <option>NTR</option>
+                                                <option>Palnadu</option>
+                                                <option>Parvathipuram Manyam</option>
+                                                <option>Prakasam</option>
+                                                <option>Sri Potti Sriramulu Nellore</option>
+                                                <option>Sri Sathya Sai</option>
+                                                <option>Srikakulam</option>
+                                                <option>Tirupati</option>
+                                                <option>Visakhapatnam</option>
+                                                <option>Vizianagaram</option>
+                                                <option>West Godavari</option>
+                                                <option>YSR (Kadapa)</option>
+                                            </select>
+
+                                        </div>
+
+                                        <div class="form-group col-md-4">
+                                            <label for="state">State <span style="color:red">*</span></label>
+                                            <select id="state" name="state" class="form-control" required>
+                                                <option selected>Select</option>
+                                                <option>Andhra Pradesh</option>
+                                                <option>Orissa</option>
+                                                <option>Telangana</option>
+                                                <option>Delhi</option>
+                                                <option>Jammu & Kashmir</option>
+                                                <option>Kerala</option>
+                                                <option>Arunachal Pradesh</option>
+                                                <option>Maharastra</option>
+                                                <option>Goa</option>
+                                                <option>Rajastan</option>
+                                                <option>Gujarat</option>
+                                                <option>Uttarakand</option>
+                                                <option>Uttar Pradesh</option>
+                                                <option>Assam</option>
+                                                <option>Tiruvanantapur</option>
+                                                <option>Meghalaya</option>
+                                                <option>Sikkim</option>
+
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group col-md-2">
+                                            <label for="pincode">Pin Code <span style="color:red">*</span></label>
+                                            <input type="number" name="pincode" class="form-control" id="pincode" placeholder="Pin Code" maxlength="6" oninput="this.value = this.value.slice(0, 6)" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-3">
+                                            <label for="candidatephoto">Upload Photo</label>
+                                            <input type="file" name="candidatephoto" class="form-control"
+                                                id="candidatephoto">
+                                        </div>
+
+                                        <div class="form-group col-md-3">
+                                            <label for="aadharnumber">Upload Aadhaar</label>
+                                            <input type="file" name="aadhaarphoto" class="form-control"
+                                                id="aadhar" placeholder="Enter Aadhar Number">
+                                        </div>
+
+                                        <div class="form-group col-md-3">
+                                            <label for="aadharnumber">Upload Education </label>
+                                            <input type="file" name="qualificationphoto" class="form-control"
+                                                id="qualificationphoto">
+                                        </div>
+
+
+                                        <div class="form-group col-md-3">
+                                            <label for="aadharnumber">Upload Application</label>
+                                            <input type="file" name="applicationphoto" class="form-control"
+                                                id="applicationphoto">
+                                        </div>
+
+                                    </div>
+
+                                    
+
+                                    <?php /*
+                                    <div class="form-row">
+
+                                        <div class="form-group col-md-12"><hr></div>
+
+                                        <div class="form-group col-md-12">
+                                            <div class="panel-title">
+                                                <h5>Job Information</h5>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-md-4">
+                                            <label for="training_center">Training Center</label>
+                                            <select id="training_center" name="training_center" class="form-control js-example-basic-single" required>
+                                                <option selected>Select</option>
+                                                <?php 
+                                                foreach ($result1 as $row1) { ?>
+                                                    <option value="<?=$row1['TrainingcenterId']; ?>"><?=$row1['trainingcentername']?></option>
+                                                <?php } ?>
+                                                
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group col-md-4">
+                                            <label for="scheme">Scheme</label>
+                                            <select id="scheme" name="scheme" class="form-control js-example-basic-single" required>
+                                                <option selected>Select</option>
+                                                <?php 
+                                                foreach ($result2 as $row2) { ?>
+                                                    <option value="<?=$row2['SchemeId']; ?>"><?=$row2['SchemeName']?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group col-md-4">
+                                            <label for="sector">Sector</label>
+                                            <select id="sector" name="sector" class="form-control js-example-basic-single" required>
+                                                <option selected>Select</option>
+                                                <?php 
+                                                foreach ($result3 as $row3) { ?>
+                                                    <option value="<?=$row3['SectorId']; ?>"><?=$row3['SectorName']?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group col-md-4">
+                                            <label for="job_roll">Job Roll</label>
+                                            <select id="job_roll" name="job_roll" class="form-control js-example-basic-single" required>
+                                                <option selected>Select</option>
+                                                <?php 
+                                                foreach ($result4 as $row4) { ?>
+                                                    <option value="<?=$row4['JobrollId']; ?>"><?=$row4['jobrollname']?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group col-md-4">
+                                            <label for="batch">Batch</label>
+                                            <!-- <select id="batch" name="batch" class="form-control js-example-basic-single" required>
+                                                <option selected>Select</option>
+                                                 
+                                            </select> -->
+                                            <select id="batch" name="batch" class="form-control js-example-basic-single" required>
+                                                <option selected disabled>Select Batch</option>
+                                            </select>
+                                        </div>
+
+
+                                    </div>
+
+                                    */ ?>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+
+                                            <button type="submit" name="submit" class="btn btn-primary">Register
+                                                Candidate</button>
+
+                                        </div>
+                                    </div>
+
+                                </form>
 
                             </div>
                         </div>
