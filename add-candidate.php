@@ -328,13 +328,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                     <div class="form-row">
 
 
-                                        <!-- <div class="form-group col-md-4">
-                                            <label for="phonenumber">Phone Number <span style="color:red">*</span></label>
-                                            <input type="number" required="required" name="phonenumber"
-                                                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                                maxlength="10" class="form-control" id="phonenumber"
-                                                placeholder="Phone Number">
-                                        </div> -->
+                                       
 
                                         <div class="form-group col-md-4">
                                             <label for="phonenumber">Phone Number <span style="color:red">*</span></label>
@@ -351,15 +345,17 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 class="form-control" id="email"
                                                 placeholder="Email">
                                         </div>
-                                    </div>
-
-                                    <div class="form-row">
+                                    
 
                                         <div class="form-group col-md-4">
                                             <label for="dateofbirth">Date of Birth <span style="color:red">*</span></label>
                                             <input type="text" name="dateofbirth" class="form-control"
                                                 id="dateofbirth" required>
                                         </div>
+
+                                    </div>
+
+                                    <div class="form-row">
 
                                         <div class="form-group col-md-4">
                                             <label for="gender">Gender <span style="color:red">*</span></label>
