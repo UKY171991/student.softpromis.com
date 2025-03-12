@@ -299,9 +299,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 class="form-control" id="fathername"
                                                 placeholder="Enter Father Name">
                                         </div>
-                                    </div>
-
-                                    <div class="form-row">
+                                    
                         
 
                                         <div class="form-group col-md-4">
@@ -325,7 +323,9 @@ if (strlen($_SESSION['alogin']) == "") {
                                         </div>
 
 
+                                    </div>
 
+                                    <div class="form-row">
 
 
                                         <!-- <div class="form-group col-md-4">
