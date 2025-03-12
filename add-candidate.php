@@ -318,18 +318,9 @@ if (strlen($_SESSION['alogin']) == "") {
                                         </div>
 
 
-                                        </div>
-
-                                    <div class="form-row">
+                                       
 
 
-                                        <!-- <div class="form-group col-md-4">
-                                            <label for="phonenumber">Phone Number <span style="color:red">*</span></label>
-                                            <input type="number" required="required" name="phonenumber"
-                                                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                                maxlength="10" class="form-control" id="phonenumber"
-                                                placeholder="Phone Number">
-                                        </div> -->
 
                                         <div class="form-group col-md-4">
                                             <label for="phonenumber">Phone Number <span style="color:red">*</span></label>
