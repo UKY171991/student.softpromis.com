@@ -386,6 +386,14 @@ if (strlen($_SESSION['alogin']) == "") {
                                                         <input type="hidden" name="" class="form-control" id="balance_total"
                                                         placeholder="Balance" value="<?=$Balance_val?>">
                                                 </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label for="payment_mode">Payment Mode</label>
+                                                    <select name="payment_mode" id="payment_mode" class="form-control">
+                                                        <option value="Online">Online</option>
+                                                        <option value="Cash">Cash</option>
+                                                    </select>
+                                                </div>
                                             </div>
 
                                             <div class="form-row">
