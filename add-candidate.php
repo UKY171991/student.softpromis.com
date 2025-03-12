@@ -326,7 +326,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                             <small id="phoneError" style="color:red; display:none;">Phone number must be exactly 10 digits.</small>
                                         </div>
 
-                                        </div>
+                                    </div>
 
                                     <div class="form-row">
 
