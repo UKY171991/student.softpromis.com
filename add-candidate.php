@@ -330,6 +330,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
                                     </div>
                                 </div>
+                                <div class="">
 
 
                                     <div class="form-row">
@@ -358,6 +359,8 @@ if (strlen($_SESSION['alogin']) == "") {
                                         </div>
 
                                     </div>
+                                </div>
+                                
 
                                     <div class="form-row">
 
