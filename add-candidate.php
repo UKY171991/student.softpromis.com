@@ -295,9 +295,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 class="form-control" id="fathername"
                                                 placeholder="Enter Father Name">
                                         </div>
-                                    </div>
-
-                                    <div class="form-row">
+                                    
                                         <!-- <div class="form-group col-md-6">
                                             <label for="aadharnumber">Aadhar Number <span style="color:red">*</span></label>
                                             <input type="number" required="required" name="aadharnumber"
