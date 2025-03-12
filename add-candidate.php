@@ -305,17 +305,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                             <small id="aadharError" style="color:red; display:none;">Aadhar number must be exactly 12 digits.</small>
                                         </div>
 
-                                        <div class="form-group col-md-4">
-                                            <label for="qualification">Qualification <span style="color:red">*</span></label>
-                                            <select name="qualification" id="qualification" class="form-control" required>
-                                                <option value="">Select Qualification</option>
-                                                <option value="Below SSC">Below SSC</option>
-                                                <option value="SSC">SSC</option>
-                                                <option value="Intermediate">Intermediate</option>
-                                                <option value="Graduation">Graduation</option>
-                                                <option value="Post Graduate">Post Graduate</option>
-                                            </select>
-                                        </div>
+                                       
 
 
                                         <div class="form-group col-md-4">
