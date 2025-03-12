@@ -296,13 +296,6 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 placeholder="Enter Father Name">
                                         </div>
                                     
-                                        <!-- <div class="form-group col-md-6">
-                                            <label for="aadharnumber">Aadhar Number <span style="color:red">*</span></label>
-                                            <input type="number" required="required" name="aadharnumber"
-                                                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                                maxlength="12" class="form-control" id="aadharnumber"
-                                                placeholder="Enter Aadhar Number">
-                                        </div> -->
 
                                         <div class="form-group col-md-4">
                                             <label for="aadharnumber">Aadhar Number <span style="color:red">*</span></label>
@@ -325,7 +318,9 @@ if (strlen($_SESSION['alogin']) == "") {
                                         </div>
 
 
+                                        </div>
 
+                                    <div class="form-row">
 
 
                                         <!-- <div class="form-group col-md-4">
