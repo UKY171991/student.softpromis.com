@@ -504,7 +504,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
             // emi table
             // Prepare and execute the query to fetch all records from the emi_list table
-            $sql = "SELECT id, candidate_id, paid, created,added_type,payment_mode] FROM emi_list where candidate_id = '$candidate_id'";
+            $sql = "SELECT id, candidate_id, paid, created,added_type,payment_mode FROM emi_list where candidate_id = '$candidate_id'";
             $stmt = $dbh->prepare($sql);
             $stmt->execute();
 
