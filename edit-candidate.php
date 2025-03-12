@@ -245,38 +245,25 @@ if (strlen($_SESSION['alogin']) == "") {
                                                     class="form-control" id="email"
                                                     value="<?php echo htmlentities($result->email); ?>">
                                                 </div>
-                                                <div class="col-md-4"></div>
-                                                <div class="col-md-4"></div>
-                                                <div class="col-md-4"></div>
-                                                <div class="col-md-4"></div>
-                                            </div>
-                                            
-
-
-                                            <div class="form-row">
+                                                <div class="col-md-4">
+                                                     <?php 
                                                 
-                                                <?php 
-                                                
-                                                    $dob = $result->dateofbirth; // Example input date in DD-MM-YY format
+                                                            $dob = $result->dateofbirth; // Example input date in DD-MM-YY format
 
-                                                    $dateInput = "21-01-2025"; // Example input date in DD-MM-YYYY format
-                                                    
-                                                    // Split the input date into parts using explode
-                                                    $dateParts = explode('-', $dob); // [21, 01, 2025]
-                                                    
-                                                    // Rearrange the parts to match YYYY-MM-DD format
-                                                    $correctedDate = implode('-', array_reverse($dateParts)); // [2025, 01, 21]
-                                                ?>
-                                                
-
-                                                <div class="form-group col-md-4">
+                                                            $dateInput = "21-01-2025"; // Example input date in DD-MM-YYYY format
+                                                            
+                                                            // Split the input date into parts using explode
+                                                            $dateParts = explode('-', $dob); // [21, 01, 2025]
+                                                            
+                                                            // Rearrange the parts to match YYYY-MM-DD format
+                                                            $correctedDate = implode('-', array_reverse($dateParts)); // [2025, 01, 21]
+                                                        ?>
                                                     <label for="dateofbirth">Date of Birth</label>
                                                     <input type="text" name="dateofbirth" class="form-control"
                                                         id="dateofbirth"
                                                         value="<?php echo $correctedDate ?>">
                                                 </div>
-
-                                                <div class="form-group col-md-4">
+                                                <div class="col-md-4">
                                                     <label for="gender">Gender</label>
                                                     <select id="gender" name="gender" class="form-control">
                                                         <option selected><?php echo htmlentities($result->gender); ?>
@@ -286,11 +273,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                         <option>Other</option>
                                                     </select>
                                                 </div>
-                                            </div>
-
-
-                                            <div class="form-row">
-                                                <div class="form-group col-md-4">
+                                                <div class="col-md-4">
                                                     <label for="maritalstatus">Marital Status</label>
                                                     <select id="maritalstatus" name="maritalstatus"
                                                         class="form-control">
@@ -300,7 +283,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                         <option>Un Married</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group col-md-4">
+                                                <div class="col-md-4">
                                                     <label for="religion">Religion</label>
                                                     <select id="religion" name="religion" class="form-control">
                                                         <option selected><?php echo htmlentities($result->religion); ?>
@@ -311,7 +294,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                         <option>Other</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group col-md-4">
+                                                <div class="col-md-4">
                                                     <label for="category">Category</label>
                                                     <select id="category" name="category" class="form-control">
                                                         <option selected><?php echo htmlentities($result->category); ?>
@@ -329,23 +312,17 @@ if (strlen($_SESSION['alogin']) == "") {
                                                         <option>ST</option>
                                                     </select>
                                                 </div>
-                                            </div>
-
-                                            <div class="form-row">
-                                                <div class="form-group col-md-4">
+                                                <div class="col-md-4">
                                                     <label for="village">Village</label>
                                                     <input type="text" name="village" class="form-control" id="village"
                                                         value="<?php echo htmlentities($result->village); ?>">
                                                 </div>
-                                                <div class="form-group col-md-4">
+                                                <div class="col-md-4">
                                                     <label for="mandal">Mandal</label>
                                                     <input type="text" name="mandal" class="form-control" id="mandal"
                                                         value="<?php echo htmlentities($result->mandal); ?>">
                                                 </div>
-                                            </div>
-
-                                            <div class="form-row">
-                                                <div class="form-group col-md-4">
+                                                <div class="col-md-4">
                                                     <label for="district">District</label>
                                                     <select id="district" name="district" class="form-control">
                                                         <option selected><?php echo htmlentities($result->district); ?>
@@ -378,8 +355,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                         <option>YSR (Kadapa)</option>
                                                     </select>
                                                 </div>
-
-                                                <div class="form-group col-md-4">
+                                                <div class="col-md-4">
                                                     <label for="state">State</label>
                                                     <select id="state" name="state" class="form-control">
                                                         <option selected><?php echo htmlentities($result->state); ?>
@@ -404,14 +380,15 @@ if (strlen($_SESSION['alogin']) == "") {
 
                                                     </select>
                                                 </div>
-                                                <div class="form-group col-md-4">
+                                                <div class="col-md-4">
                                                     <label for="pincode">Pin Code</label>
                                                     <input type="number" name="pincode" class="form-control" id="pincode" placeholder="Pin Code" maxlength="6" oninput="this.value = this.value.slice(0, 6)" value="<?php echo htmlentities($result->pincode); ?>" required>
                                                 </div>
-                                                
-
-                                                </div>
+                                                <div class="col-md-4"></div>
+                                                <div class="col-md-4"></div>
                                             </div>
+                                            
+                                         
 
 
                                             <?php }
