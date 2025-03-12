@@ -318,10 +318,6 @@ if (strlen($_SESSION['alogin']) == "") {
                                         </div>
 
 
-                                       
-
-
-
                                         <div class="form-group col-md-4">
                                             <label for="phonenumber">Phone Number <span style="color:red">*</span></label>
                                             <input type="text" required name="phonenumber" maxlength="10"
@@ -330,6 +326,10 @@ if (strlen($_SESSION['alogin']) == "") {
                                             <small id="phoneError" style="color:red; display:none;">Phone number must be exactly 10 digits.</small>
                                         </div>
 
+                                        </div>
+
+                                    <div class="form-row">
+
 
                                         <div class="form-group col-md-4">
                                             <label for="email">Email</label>
@@ -337,9 +337,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 class="form-control" id="email"
                                                 placeholder="Email">
                                         </div>
-                                    </div>
-
-                                    <div class="form-row">
+                                    
 
                                         <div class="form-group col-md-4">
                                             <label for="dateofbirth">Date of Birth <span style="color:red">*</span></label>
