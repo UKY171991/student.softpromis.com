@@ -225,11 +225,11 @@ if (strlen($_SESSION['alogin']) == "") {
                                                     <label for="qualification">Qualification <span style="color:red">*</span></label>
                                                     <select name="qualification" id="qualification" class="form-control" required>
                                                         <option value="">Select Qualification</option>
-                                                        <option value="Below SSC" <?php $result->qualification ? 'Below SSC':'' ?>>Below SSC</option>
-                                                        <option value="SSC" <?php $result->qualification ? 'SSC':'' ?>>SSC</option>
-                                                        <option value="Intermediate" <?php $result->qualification ? 'Intermediate':'' ?>>Intermediate</option>
-                                                        <option value="Graduation" <?php $result->qualification ? 'Graduation':'' ?>>Graduation</option>
-                                                        <option value="Post Graduate" <?php $result->qualification ? 'Post Graduate':'' ?>>Post Graduate</option>
+                                                        <option value="Below SSC" <?php $result->qualification== 'Below SSC'? 'selected':'' ?>>Below SSC</option>
+                                                        <option value="SSC" <?php $result->qualification=='SSC' ? 'selected':'' ?>>SSC</option>
+                                                        <option value="Intermediate" <?php $result->qualification=='Intermediate' ? 'selected':'' ?>>Intermediate</option>
+                                                        <option value="Graduation" <?php $result->qualification=='Graduation' ? 'selected':'' ?>>Graduation</option>
+                                                        <option value="Post Graduate" <?php $result->qualification=='Post Graduate' ? 'selected':'' ?>>Post Graduate</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-4">
