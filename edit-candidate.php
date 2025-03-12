@@ -38,11 +38,12 @@ if (strlen($_SESSION['alogin']) == "") {
         $sector = $_POST['sector'];
         $job_roll = $_POST['job_roll'];
         $batch = $_POST['batch'];
+        $tblbatch_id = $_POST['batch'];
 
         $status = 1;
 
         $sql = "UPDATE tblcandidate SET candidatename=:candidatename, fathername=:fathername, aadharnumber=:aadharnumber, phonenumber=:phonenumber, dateofbirth=:dateofbirth, gender=:gender, maritalstatus=:maritalstatus, religion=:religion, category=:category, village=:village,
-    mandal=:mandal, district=:district, state=:state, pincode=:pincode, training_center=:training_center, scheme=:scheme, sector=:sector, job_roll=:job_roll, batch=:batch
+    mandal=:mandal, district=:district, state=:state, pincode=:pincode, training_center=:training_center, scheme=:scheme, sector=:sector, job_roll=:job_roll, batch=:batch,tblbatch_id=:tblbatch_id
     WHERE CandidateId=:cid";
     $query = $dbh->prepare($sql);
 
@@ -65,6 +66,7 @@ if (strlen($_SESSION['alogin']) == "") {
     $query->bindParam(':sector', $sector, PDO::PARAM_INT);
     $query->bindParam(':job_roll', $job_roll, PDO::PARAM_INT);
     $query->bindParam(':batch', $batch, PDO::PARAM_INT);
+    $query->bindParam(':tblbatch_id', $tblbatch_id, PDO::PARAM_INT);
 
     // IMPORTANT FIX: Bind the candidate ID
     $query->bindParam(':cid', $cid, PDO::PARAM_INT);
