@@ -91,7 +91,7 @@ if (strlen($_SESSION['alogin']) == "") {
             $updateQuery = $dbh->prepare($updateSql);
 
             // Bind parameters
-            $updateQuery->bindParam(':payment_mode', $payment_mode, PDO::PARAM_STR); // Adjust type if needed
+            //$updateQuery->bindParam(':payment_mode', $payment_mode, PDO::PARAM_STR); // Adjust type if needed
             $updateQuery->bindParam(':discount', $discount, PDO::PARAM_STR); // Adjust type if needed
             $updateQuery->bindParam(':paid', $paid, PDO::PARAM_STR);
             $updateQuery->bindParam(':balance', $balance, PDO::PARAM_STR);
