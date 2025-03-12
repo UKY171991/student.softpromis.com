@@ -43,6 +43,7 @@ if (strlen($_SESSION['alogin']) == "") {
         $sector = $_POST['sector'];
         $job_roll = $_POST['job_roll'];
         $batch = $_POST['batch'];
+        $tblbatch_id = $_POST['batch'];
 
         $candidatephoto = ($_FILES['candidatephoto']['name']);
         $candidatephototarget = 'doc/' . basename($candidatephoto);
@@ -74,13 +75,13 @@ if (strlen($_SESSION['alogin']) == "") {
                 enrollmentid, candidatename, fathername, aadharnumber, phonenumber, email, dateofbirth, gender, maritalstatus, religion, category, village, 
                 mandal, district, state, pincode, candidatephoto, aadhaarphoto, 
                 qualificationphoto, applicationphoto, training_center, scheme, sector, 
-                job_roll, batch
+                job_roll, batch,tblbatch_id
             ) 
             VALUES (
                 :enrollmentid, :candidatename, :fathername, :aadharnumber, :phonenumber, :email, :dateofbirth, :gender, :maritalstatus, :religion, :category, :village, 
                 :mandal, :district, :state, :pincode, :candidatephoto, :aadhaarphoto, 
                 :qualificationphoto, :applicationphoto, :training_center, :scheme, :sector, 
-                :job_roll, :batch
+                :job_roll, :batch,:tblbatch_id
             )";
             $query = $dbh->prepare($sql);
 
@@ -111,6 +112,7 @@ if (strlen($_SESSION['alogin']) == "") {
             $query->bindParam(':sector', $sector, PDO::PARAM_INT);
             $query->bindParam(':job_roll', $job_roll, PDO::PARAM_INT);
             $query->bindParam(':batch', $batch, PDO::PARAM_INT);
+            $query->bindParam(':tblbatch_id', $tblbatch_id, PDO::PARAM_INT);
 
             $query->execute();
             move_uploaded_file($_FILES['candidatephoto']['tmp_name'], $candidatephototarget);
