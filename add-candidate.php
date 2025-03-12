@@ -416,21 +416,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 <option>YSR (Kadapa)</option>
                                             </select>
                                         </div>
-                                        <div class="col-md-4"></div>
-                                        <div class="col-md-4"></div>
-                                        <div class="col-md-4"></div>
-                                        <div class="col-md-4"></div>
-                                        <div class="col-md-4"></div>
-                                    </div>
-
-                                   
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            
-
-                                        </div>
-
-                                        <div class="form-group col-md-4">
+                                        <div class="col-md-4">
                                             <label for="state">State <span style="color:red">*</span></label>
                                             <select id="state" name="state" class="form-control" required>
                                                 <option selected>Select</option>
@@ -454,12 +440,15 @@ if (strlen($_SESSION['alogin']) == "") {
 
                                             </select>
                                         </div>
-
-                                        <div class="form-group col-md-2">
+                                        <div class="col-md-2">
                                             <label for="pincode">Pin Code <span style="color:red">*</span></label>
                                             <input type="number" name="pincode" class="form-control" id="pincode" placeholder="Pin Code" maxlength="6" oninput="this.value = this.value.slice(0, 6)" required>
                                         </div>
+                                        
                                     </div>
+
+                                   
+                                 
 
                                     <div class="form-row">
                                         <div class="form-group col-md-3">
