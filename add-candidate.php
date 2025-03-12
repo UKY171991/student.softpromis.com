@@ -329,16 +329,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                             <input type="text" name="dateofbirth" class="form-control"
                                                 id="dateofbirth" required>
                                         </div>
-                                        <div class="col-md-4"></div>
-                                        <div class="col-md-4"></div>
-                                        <div class="col-md-4"></div>
-                                    </div>
-
-                                   
-
-                                    <div class="form-row">
-
-                                        <div class="form-group col-md-4">
+                                        <div class="col-md-4">
                                             <label for="gender">Gender <span style="color:red">*</span></label>
                                             <select id="gender" name="gender" class="form-control">
                                                 <option selected>Select</option>
@@ -347,7 +338,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 <option>Other</option>
                                             </select>
                                         </div>
-                                        <div class="form-group col-md-4">
+                                        <div class="col-md-4">
                                             <label for="maritalstatus">Marital Status <span style="color:red">*</span></label>
                                             <select id="maritalstatus" name="maritalstatus"
                                                 class="form-control" required>
@@ -356,9 +347,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 <option>Un Married</option>
                                             </select>
                                         </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-4">
+                                        <div class="col-md-4">
                                             <label for="religion">Religion <span style="color:red">*</span></label>
                                             <select id="religion" name="religion" class="form-control" required>
                                                 <option selected>Select</option>
@@ -368,8 +357,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 <option>Other</option>
                                             </select>
                                         </div>
-
-                                        <div class="form-group col-md-4">
+                                        <div class="col-md-4">
                                             <label for="category">Category</label>
                                             <select id="category" name="category" class="form-control">
                                                 <option selected>Select</option>
@@ -386,23 +374,17 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 <option>ST</option>
                                             </select>
                                         </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-4">
+                                        <div class="col-md-4">
                                             <label for="village">Village <span style="color:red">*</span></label>
                                             <input type="text" name="village" class="form-control" id="village"
                                                 placeholder="Village" required>
                                         </div>
-
-                                        <div class="form-group col-md-4">
+                                        <div class="col-md-4">
                                             <label for="mandal">Mandal <span style="color:red">*</span></label>
                                             <input type="text" name="mandal" class="form-control" id="mandal"
                                                 placeholder="Mandal" required>
                                         </div>
-                                    </div>
-
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
+                                        <div class="col-md-6">
                                             <label for="district">District <span style="color:red">*</span></label>
                                             <select id="district" name="district" class="form-control" required>
                                                 <option selected>Select</option>
@@ -433,6 +415,18 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 <option>West Godavari</option>
                                                 <option>YSR (Kadapa)</option>
                                             </select>
+                                        </div>
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-4"></div>
+                                    </div>
+
+                                   
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            
 
                                         </div>
 
