@@ -881,7 +881,7 @@ if (strlen($_SESSION['alogin']) == "") {
         // });
 
 
-        $(document).ready(function () {
+        //$(document).ready(function () {
             $('#printButton').click(function (event) {
                 event.preventDefault(); // Prevent default behavior
 
@@ -907,7 +907,7 @@ if (strlen($_SESSION['alogin']) == "") {
                     printWindow.close();
                 }, 500);
             });
-        });
+        //});
 
 
 
