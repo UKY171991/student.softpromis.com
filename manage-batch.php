@@ -240,10 +240,12 @@ if (strlen($_SESSION['alogin']) == "") {
 <?php } ?>
 
 <script>
-//$(document).ready(function() {
+$(document).ready(function() {
 
     // Delete 
     $('.delete').click(function() {
+
+        alert();
         var el = this;
         var id = this.id;
         var splitid = id.split("_");
@@ -280,7 +282,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
     });
 
-//});
+});
 
 function all_data(id) {
     $("#c_data").html('Loading...');
