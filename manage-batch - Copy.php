@@ -240,7 +240,7 @@ if (strlen($_SESSION['alogin']) == "") {
 <?php } ?>
 
 <script>
-//$(document).ready(function() {
+$(document).ready(function() {
 
     // Delete 
     $('.delete').click(function() {
@@ -280,7 +280,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
     });
 
-//});
+});
 
 function all_data(id) {
     $("#c_data").html('Loading...');
