@@ -860,25 +860,57 @@ if (strlen($_SESSION['alogin']) == "") {
 
         <script>
 
+        // $(document).ready(function () {
+        //     $('#printButton').click(function () {
+        //         var printContents = $('#p_myModals').html();
+        //         var printWindow = window.open('', '', 'height=600,width=800');
+
+        //         // Add your CSS file(s) here
+        //         var cssLink = '<link rel="stylesheet" href="https://student.softpromis.com/css/bootstrap.min.css" />';
+
+        //         printWindow.document.write('<html><head><title>Print</title>' + cssLink + '</head><body>');
+        //         printWindow.document.write(printContents);
+        //         printWindow.document.write('</body></html>');
+        //         printWindow.document.close();
+
+        //         // Wait for the content to load, then trigger print
+        //         printWindow.onload = function() {
+        //             printWindow.print();
+        //         };
+        //     });
+        // });
+
+
         $(document).ready(function () {
-            $('#printButton').click(function () {
+            $('#printButton').click(function (event) {
+                event.preventDefault(); // Prevent default behavior
+
                 var printContents = $('#p_myModals').html();
                 var printWindow = window.open('', '', 'height=600,width=800');
 
-                // Add your CSS file(s) here
-                var cssLink = '<link rel="stylesheet" href="https://student.softpromis.com/css/bootstrap.min.css" />';
+                if (!printWindow) {
+                    alert("Popup blocked! Please allow popups for this site.");
+                    return;
+                }
 
+                var cssLink = '<link rel="stylesheet" href="https://student.softpromis.com/css/bootstrap.min.css" type="text/css" />';
+                
+                printWindow.document.open();
                 printWindow.document.write('<html><head><title>Print</title>' + cssLink + '</head><body>');
                 printWindow.document.write(printContents);
                 printWindow.document.write('</body></html>');
                 printWindow.document.close();
 
-                // Wait for the content to load, then trigger print
-                printWindow.onload = function() {
+                // Delay print to ensure content and styles are fully loaded
+                setTimeout(function () {
                     printWindow.print();
-                };
+                    printWindow.close();
+                }, 500);
             });
         });
+
+
+
 
 
 
