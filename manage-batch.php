@@ -253,7 +253,7 @@ $(document).ready(function() {
         // Delete id
         var deleteid = splitid[1];
         var action = "Delete batch"
-        // if(confirm("Are you sure want to delete this?")){
+         if(confirm("Are you sure want to delete this?")){
         // // AJAX Request
         // $.ajax({
         //     url: 'action.php',
@@ -276,9 +276,9 @@ $(document).ready(function() {
 
         //     }
         // });
-        // }else{
-        //     reurn false;
-        // }
+         }else{
+             reurn false;
+         }
 
     });
 
