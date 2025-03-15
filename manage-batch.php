@@ -245,7 +245,7 @@ $(document).ready(function() {
     // Delete 
     $('.delete').click(function() {
 
-        alert();
+
         var el = this;
         var id = this.id;
         var splitid = id.split("_");
@@ -276,8 +276,8 @@ $(document).ready(function() {
 
         //     }
         // });
-         }else{
-             reurn false;
+        // }else{
+        //     reurn false;
          }
 
     });
