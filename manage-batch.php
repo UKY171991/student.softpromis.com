@@ -253,32 +253,32 @@ $(document).ready(function() {
         // Delete id
         var deleteid = splitid[1];
         var action = "Delete batch"
-        if(confirm("Are you sure want to delete this?")){
-        // AJAX Request
-        $.ajax({
-            url: 'action.php',
-            type: 'POST',
-            data: {
-                id: deleteid,
-                action: action
-            },
-            success: function(response) {
+        // if(confirm("Are you sure want to delete this?")){
+        // // AJAX Request
+        // $.ajax({
+        //     url: 'action.php',
+        //     type: 'POST',
+        //     data: {
+        //         id: deleteid,
+        //         action: action
+        //     },
+        //     success: function(response) {
 
-                if (response == 4) {
-                    // Remove row from HTML Table
-                    $(el).closest('tr').css('background', 'tomato');
-                    $(el).closest('tr').fadeOut(800, function() {
-                        $(this).remove();
-                    });
-                } else {
-                    alert('Invalid ID.');
-                }
+        //         if (response == 4) {
+        //             // Remove row from HTML Table
+        //             $(el).closest('tr').css('background', 'tomato');
+        //             $(el).closest('tr').fadeOut(800, function() {
+        //                 $(this).remove();
+        //             });
+        //         } else {
+        //             alert('Invalid ID.');
+        //         }
 
-            }
-        });
-        }else{
-            reurn false;
-        }
+        //     }
+        // });
+        // }else{
+        //     reurn false;
+        // }
 
     });
 
