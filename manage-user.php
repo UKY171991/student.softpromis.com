@@ -16,7 +16,7 @@ if (strlen($_SESSION['alogin']) == "") {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SOFTPRO | ADMIN</title>
 
-    <?php /*
+    
 
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
@@ -26,7 +26,7 @@ if (strlen($_SESSION['alogin']) == "") {
     <link rel="stylesheet" href="css/prism/prism.css" media="screen">
     <link rel="stylesheet" href="css/select2/select2.min.css">
     <link rel="stylesheet" href="css/main.css" media="screen">
-
+<?php /*
     <link rel="stylesheet" type="text/css" href="js/DataTables/datatables.min.css" />
 
     <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
