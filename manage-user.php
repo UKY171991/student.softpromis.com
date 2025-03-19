@@ -170,8 +170,22 @@ if (strlen($_SESSION['alogin']) == "") {
   <script src="js/lobipanel/lobipanel.min.js"></script>
   <script src="js/iscroll/iscroll.js"></script>
   <script src="js/prism/prism.js"></script>
+
+  <script src="js/DataTables/datatables.min.js"></script>
+
+
+ <script src="https://adminlte.io/themes/v3/plugins/datatables/jquery.dataTables.min.js"></script> 
+<script src="https://adminlte.io/themes/v3/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://adminlte.io/themes/v3/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="https://adminlte.io/themes/v3/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="https://adminlte.io/themes/v3/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="https://adminlte.io/themes/v3/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="https://adminlte.io/themes/v3/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
   <script src="js/select2/select2.min.js"></script>
   <script src="js/main.js"></script>
+
+
 
     <script>
     $(document).ready(function() {
