@@ -144,7 +144,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                     </div>
                                                     <?php if(isset($_GET['batch'])){ ?>
                                                         <div class="col-sm-6 text-right">
-                                                            <a class="btn btn-success" href="add-candidate-to-batch.php">
+                                                            <a class="btn btn-success" href="add-candidate-to-particular-batch.php?batchid=<?=$_GET['batch']?>">
                                                                 <i class="fa fa-plus"></i> Add Candidate
                                                             </a>
                                                         </div>
