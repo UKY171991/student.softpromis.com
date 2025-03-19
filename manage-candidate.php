@@ -143,7 +143,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                         <h5>View Candidate Info</h5>
                                                     </div>
                                                     <?php if(isset($_GET['batch'])){ ?>
-                                                        <div class="col-sm-6 text-right mb-2">
+                                                        <div class="col-sm-6 text-right">
                                                             <a class="btn btn-success" href="add-candidate-to-batch.php">
                                                                 <i class="fa fa-plus"></i> Add Candidate
                                                             </a>
