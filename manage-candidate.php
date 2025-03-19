@@ -45,7 +45,6 @@ if (strlen($_SESSION['alogin']) == "") {
         .btn-action { padding: 5px 10px; margin: 0 2px; }
         .thead-dark { background: #212529; color: white; }
         .dataTables_wrapper .dataTables_length { margin-bottom: 15px; }
-        .dt-buttons { margin-bottom: 15px; }
     </style>
 </head>
 
