@@ -27,6 +27,7 @@ if (strlen($_SESSION['alogin']) == "") {
     <link rel="stylesheet" href="css/select2/select2.min.css">
     <link rel="stylesheet" href="css/main.css" media="screen">
 
+    <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
       <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
       
 
