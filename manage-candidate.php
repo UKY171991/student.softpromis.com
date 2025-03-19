@@ -142,11 +142,20 @@ if (strlen($_SESSION['alogin']) == "") {
                                                     <div class="col-sm-6">
                                                         <h1 class="m-0">Softpro Dashboard</h1>
                                                     </div>
-                                                    <div class="col-sm-6 text-right">
-                                                        <a class="btn btn-success" href="add-candidate.php">
-                                                            <i class="fa fa-plus"></i> Add Candidate
-                                                        </a>
-                                                    </div>
+                                                    <?php if(isset($_GET['batch'])){ ?>
+                                                        <div class="col-sm-6 text-right">
+                                                            <a class="btn btn-success" href="add-candidate-to-batch.php">
+                                                                <i class="fa fa-plus"></i> Add Candidate
+                                                            </a>
+                                                        </div>
+                                                    <?php }else{ ?>
+                                                        <div class="col-sm-6 text-right">
+                                                            <a class="btn btn-success" href="add-candidate.php">
+                                                                <i class="fa fa-plus"></i> Add Candidate
+                                                            </a>
+                                                        </div>
+                                                    <?php } ?>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
