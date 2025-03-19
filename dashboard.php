@@ -238,7 +238,7 @@ if (strlen($_SESSION['alogin']) == "") {
             </div>
             <!-- Sectors Card -->
             <div class="col-md-3">
-                <div class="dashboard-card bg-cyan text-white" onclick="location.href='manage-sector.php';">
+                <div class="dashboard-card bg-success text-white" onclick="location.href='manage-sector.php';">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             <?php
