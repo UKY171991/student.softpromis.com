@@ -24,6 +24,13 @@ if (strlen($_SESSION['alogin']) == "") {
     <link rel="stylesheet" href="css/prism/prism.css" media="screen">
     <link rel="stylesheet" href="css/select2/select2.min.css">
     <link rel="stylesheet" href="css/main.css" media="screen">
+
+    <link rel="stylesheet" type="text/css" href="js/DataTables/datatables.min.css" />
+
+    <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+      <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+      <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+      
     <link rel="stylesheet" href="css/mystyle.css"> 
     <script src="js/modernizr/modernizr.min.js"></script>
 
@@ -31,12 +38,6 @@ if (strlen($_SESSION['alogin']) == "") {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <link rel="stylesheet" type="text/css" href="js/DataTables/datatables.min.css" />
-
-    <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-      <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-      <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <link rel="stylesheet" href="includes/style.css">
     
     <style>
