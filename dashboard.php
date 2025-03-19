@@ -16,6 +16,23 @@ if (strlen($_SESSION['alogin']) == "") {
     <!-- Modern CSS Libraries -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
+    <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen">
+    <link rel="stylesheet" href="css/lobipanel/lobipanel.min.css" media="screen">
+    <link rel="stylesheet" href="css/prism/prism.css" media="screen"> <!-- USED FOR DEMO HELP - YOU CAN REMOVE IT -->
+
+    <link rel="stylesheet" type="text/css" href="js/DataTables/datatables.min.css" />
+
+    <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+      <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+      <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+
+    <link rel="stylesheet" href="css/main.css" media="screen">
+    <script src="js/modernizr/modernizr.min.js"></script>
     
     <style>
         :root {
@@ -131,6 +148,31 @@ if (strlen($_SESSION['alogin']) == "") {
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+<script src="js/jquery/jquery-2.2.4.min.js"></script>
+<script src="js/bootstrap/bootstrap.min.js"></script>
+<script src="js/pace/pace.min.js"></script>
+<script src="js/lobipanel/lobipanel.min.js"></script>
+<script src="js/iscroll/iscroll.js"></script>
+
+<!-- ========== PAGE JS FILES ========== -->
+<script src="js/prism/prism.js"></script>
+<script src="js/DataTables/datatables.min.js"></script>
+
+
+ <script src="https://adminlte.io/themes/v3/plugins/datatables/jquery.dataTables.min.js"></script> 
+<script src="https://adminlte.io/themes/v3/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://adminlte.io/themes/v3/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="https://adminlte.io/themes/v3/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="https://adminlte.io/themes/v3/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="https://adminlte.io/themes/v3/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="https://adminlte.io/themes/v3/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+
 </body>
 </html>
 <?php } ?>
