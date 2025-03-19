@@ -16,6 +16,8 @@ if (strlen($_SESSION['alogin']) == "") {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SOFTPRO | ADMIN</title>
 
+    <?php /*
+
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
     <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen">
@@ -27,7 +29,11 @@ if (strlen($_SESSION['alogin']) == "") {
 
     <link rel="stylesheet" type="text/css" href="js/DataTables/datatables.min.css" />
 
-    
+    <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+      <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+      <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+      
+
     <link rel="stylesheet" href="css/mystyle.css"> 
     <script src="js/modernizr/modernizr.min.js"></script>
 
@@ -36,6 +42,8 @@ if (strlen($_SESSION['alogin']) == "") {
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="includes/style.css">
+
+  */ ?>
     
     <style>
         .card {
