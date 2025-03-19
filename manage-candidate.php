@@ -13,38 +13,23 @@ if (strlen($_SESSION['alogin']) == "") {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SOFTPRO | ADMIN</title>
 
-    <!-- <link rel="stylesheet" href="css/bootstrap.min.css" media="screen"> -->
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
-    <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/lobipanel/lobipanel.min.css" media="screen">
-    <link rel="stylesheet" href="css/prism/prism.css" media="screen">
-    <link rel="stylesheet" href="css/select2/select2.min.css">
-<!-- DataTables CSS -->
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap5.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/main.css">
-
-    <link rel="stylesheet" href="css/mystyle.css"> 
-    <script src="js/modernizr/modernizr.min.js"></script>
-
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome 6 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="includes/style.css">
-
-    
     
     <style>
         .card { border: none; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-radius: 10px; }
         .table-responsive { border-radius: 10px; overflow: hidden; }
         .btn-action { padding: 5px 10px; margin: 0 2px; }
         .thead-dark { background: #212529; color: white; }
-/*        .dataTables_wrapper .dataTables_length { margin-bottom: 15px; }*/
+        .dt-buttons { margin-bottom: 15px; }
     </style>
 </head>
 
@@ -299,11 +284,8 @@ if (strlen($_SESSION['alogin']) == "") {
         </div>
     </div>
 
-   
-
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
@@ -317,13 +299,6 @@ if (strlen($_SESSION['alogin']) == "") {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-
-    <script src="js/pace/pace.min.js"></script>
-    <script src="js/lobipanel/lobipanel.min.js"></script>
-    <script src="js/iscroll/iscroll.js"></script>
-    <script src="js/prism/prism.js"></script>
-    <script src="js/select2/select2.min.js"></script>
-
     <script src="js/main.js"></script>
 
     <script>
@@ -336,19 +311,44 @@ if (strlen($_SESSION['alogin']) == "") {
             lengthMenu: [[10, 20, 30, 100, 500], [10, 20, 30, 100, 500]],
             order: [[19, 'desc']],
             buttons: [
-                'copy',
-                'csv',
-                'excel',
-                'pdf',
-                'print',
-                'colvis'
+                {
+                    extend: 'copy',
+                    exportOptions: {
+                        columns: ':visible' // Export only visible columns
+                    }
+                },
+                {
+                    extend: 'csv',
+                    exportOptions: {
+                        columns: ':visible' // Export only visible columns
+                    }
+                },
+                {
+                    extend: 'excel',
+                    exportOptions: {
+                        columns: ':visible' // Export only visible columns
+                    }
+                },
+                {
+                    extend: 'pdf',
+                    exportOptions: {
+                        columns: ':visible' // Export only visible columns
+                    }
+                },
+                {
+                    extend: 'print',
+                    exportOptions: {
+                        columns: ':visible' // Export only visible columns
+                    }
+                },
+                'colvis' // Column visibility button remains unchanged
             ],
             columnDefs: [
-                { targets: [0, 1, 2, 3, 4, 26, 27], visible: true },
-                { targets: '_all', visible: false },
-                { targets: -1, orderable: false, searchable: false }
+                { targets: [0, 1, 2, 3, 4, 26, 27], visible: true }, // Initially visible columns
+                { targets: '_all', visible: false }, // Hide all other columns by default
+                { targets: -1, orderable: false, searchable: false } // Disable sorting/searching for Action column
             ],
-            dom: 'Bfrtip' // This ensures buttons are displayed
+            dom: 'Bfrtip' // Buttons, filter, table, info, pagination
         });
 
         // Move buttons to the top
