@@ -314,39 +314,54 @@ if (strlen($_SESSION['alogin']) == "") {
                 {
                     extend: 'copy',
                     exportOptions: {
-                        columns: ':visible' // Export only visible columns
+                        columns: function (idx, data, node) {
+                            // Exclude the last column (Action)
+                            return idx !== table.columns().count() - 1 && table.column(idx).visible();
+                        }
                     }
                 },
                 {
                     extend: 'csv',
                     exportOptions: {
-                        columns: ':visible' // Export only visible columns
+                        columns: function (idx, data, node) {
+                            // Exclude the last column (Action)
+                            return idx !== table.columns().count() - 1 && table.column(idx).visible();
+                        }
                     }
                 },
                 {
                     extend: 'excel',
                     exportOptions: {
-                        columns: ':visible' // Export only visible columns
+                        columns: function (idx, data, node) {
+                            // Exclude the last column (Action)
+                            return idx !== table.columns().count() - 1 && table.column(idx).visible();
+                        }
                     }
                 },
                 {
                     extend: 'pdf',
                     exportOptions: {
-                        columns: ':visible' // Export only visible columns
+                        columns: function (idx, data, node) {
+                            // Exclude the last column (Action)
+                            return idx !== table.columns().count() - 1 && table.column(idx).visible();
+                        }
                     }
                 },
                 {
                     extend: 'print',
                     exportOptions: {
-                        columns: ':visible' // Export only visible columns
+                        columns: function (idx, data, node) {
+                            // Exclude the last column (Action)
+                            return idx !== table.columns().count() - 1 && table.column(idx).visible();
+                        }
                     }
                 },
-                'colvis' // Column visibility button remains unchanged
+                'colvis' // Column visibility button
             ],
             columnDefs: [
                 { targets: [0, 1, 2, 3, 4, 26, 27], visible: true }, // Initially visible columns
                 { targets: '_all', visible: false }, // Hide all other columns by default
-                { targets: -1, orderable: false, searchable: false } // Disable sorting/searching for Action column
+                { targets: -1, orderable: false, searchable: false } // Action column settings
             ],
             dom: 'Bfrtip' // Buttons, filter, table, info, pagination
         });
