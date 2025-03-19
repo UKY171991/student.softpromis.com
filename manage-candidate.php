@@ -144,7 +144,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                     </div>
                                                     <div class="col-sm-6 text-right">
                                                         <a class="btn btn-success" href="add-candidate.php">
-                                                            Add Candidate
+                                                            <i class="fa fa-plus"></i> Add Candidate
                                                         </a>
                                                     </div>
                                                 </div>
