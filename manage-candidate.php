@@ -27,7 +27,7 @@ if (strlen($_SESSION['alogin']) == "") {
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap5.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/main.css">
-    
+
     <link rel="stylesheet" href="css/mystyle.css"> 
     <script src="js/modernizr/modernizr.min.js"></script>
 
@@ -54,8 +54,8 @@ if (strlen($_SESSION['alogin']) == "") {
         <!-- Top Navbar -->
         <?php include('includes/topbar-new.php'); ?>
 
-        <div class="container-fluid py-4">
-            <div class="row gx-3">
+        <div class="container-fluid">
+            <div class="row">
                 <!-- Sidebar -->
                 <?php include('includes/left-sidebar-new.php'); ?>
                 <?php include('includes/leftbar.php'); ?>
@@ -103,7 +103,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                 </a>
                             <?php } ?>
                         </div>
-                        <div class="card-body p-0">
+                        <div class="card-body p-2">
                             <div class="table-responsive">
                                 <table id="example" class="table table-hover table-bordered" style="width:100%">
                                     <thead class="thead-dark">
