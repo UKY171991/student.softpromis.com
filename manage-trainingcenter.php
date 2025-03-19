@@ -16,7 +16,6 @@ if (strlen($_SESSION['alogin']) == "") {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SOFTPRO | ADMIN</title>
 
-    <!-- <link rel="stylesheet" href="css/bootstrap.min.css" media="screen"> -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
     <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen">
@@ -33,6 +32,12 @@ if (strlen($_SESSION['alogin']) == "") {
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="includes/style.css">
+
+    <!-- Bootstrap 5 CSS -->
+    
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/main.css">
     
     <style>
         .card {
@@ -56,8 +61,8 @@ if (strlen($_SESSION['alogin']) == "") {
         <!-- Top Navbar -->
         <?php include('includes/topbar-new.php'); ?>
 
-        <div class="container-fluid">
-            <div class="row">
+        <div class="container-fluid py-4">
+            <div class="row gx-3">
                 <!-- Sidebar -->
                 <?php include('includes/left-sidebar-new.php'); ?>
                 <?php include('includes/leftbar.php'); ?>
@@ -96,7 +101,7 @@ if (strlen($_SESSION['alogin']) == "") {
                         <div class="card-header bg-white py-3">
                             <h5 class="mb-0">Training Center Information</h5>
                         </div>
-                        <div class="card-body p-2">
+                        <div class="card-body p-0">
                             <div class="table-responsive">
                                 <table id="example" class="table table-hover table-bordered" style="width:100%">
                                     <thead class="table-light">
@@ -161,10 +166,11 @@ if (strlen($_SESSION['alogin']) == "") {
     </div>
 
     <!-- Bootstrap Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
 
   <script src="js/jquery/jquery-2.2.4.min.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/bootstrap/bootstrap.min.js"></script>
   <script src="js/pace/pace.min.js"></script>
   <script src="js/lobipanel/lobipanel.min.js"></script>
@@ -173,12 +179,9 @@ if (strlen($_SESSION['alogin']) == "") {
   <script src="js/select2/select2.min.js"></script>
 
     <!-- Scripts -->
-
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
     <script src="js/main.js"></script>
-
-
 
     <script>
     $(document).ready(function() {
