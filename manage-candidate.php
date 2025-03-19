@@ -322,21 +322,74 @@ if (strlen($_SESSION['alogin']) == "") {
     <script src="js/main.js"></script>
 
     <script>
+  $(function () {
+    $("#example").DataTable({
+      "responsive": true,
+      "lengthChange": true, // Enable length change dropdown
+      "autoWidth": false,
+      "pageLength": 10, // Default display will show 10 rows
+      "lengthMenu": [[10, 20, 30, 100, 500], [10, 20, 30, 100, 500]], // Dropdown options
+      "buttons": [
+        "copy",
+        {
+          extend: "csv",
+          text: "CSV",
+          exportOptions: {
+            columns: ":visible:not(:last-child)" // Exclude the last column (Action)
+          }
+        },
+        {
+          extend: "excel",
+          text: "Excel",
+          exportOptions: {
+            columns: ":visible:not(:last-child)" // Exclude the last column (Action)
+          }
+        },
+        {
+          extend: "pdf",
+          text: "PDF",
+          exportOptions: {
+            columns: ":visible:not(:last-child)" // Exclude the last column (Action)
+          }
+        },
+        {
+          extend: "print",
+          text: "Print",
+          exportOptions: {
+            columns: ":visible:not(:last-child)" // Exclude the last column (Action)
+          }
+        },
+        {
+          extend: 'colvis', // Column visibility button
+          columns: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27], // Allow toggling these columns
+          text: 'Select Columns' // Button label
+        }
+      ],
+      "columnDefs": [
+        { "targets": [0,1,2,3,4,26,27], "visible": true }, // Show specific columns
+        { "targets": -1, "orderable": false, "searchable": false }, // Disable sorting & searching for Action column
+        { "targets": "_all", "visible": false } // Hide all other columns by default
+      ]
+    }).buttons().container().appendTo('#example_wrapper .col-md-6:eq(0)');
+  });
+</script>
+
+    <script>
     $(document).ready(function() {
-        var table = $('#example').DataTable({
-            responsive: true,
-            lengthChange: true,
-            autoWidth: false,
-            pageLength: 10,
-            lengthMenu: [[10, 20, 30, 100, 500], [10, 20, 30, 100, 500]],
-            order: [[19, 'desc']], // Sort by Date Created
-            buttons: ['copy', 'csv', 'excel', 'pdf', 'print', 'colvis'],
-            columnDefs: [
-                { targets: [0, 1, 2, 3, 4, 26, 27], visible: true },
-                { targets: '_all', visible: false },
-                { targets: -1, orderable: false, searchable: false }
-            ]
-        }).buttons().container().appendTo('#example_wrapper .col-md-6:eq(0)');
+        // var table = $('#example').DataTable({
+        //     responsive: true,
+        //     lengthChange: true,
+        //     autoWidth: false,
+        //     pageLength: 10,
+        //     lengthMenu: [[10, 20, 30, 100, 500], [10, 20, 30, 100, 500]],
+        //     order: [[19, 'desc']], // Sort by Date Created
+        //     buttons: ['copy', 'csv', 'excel', 'pdf', 'print', 'colvis'],
+        //     columnDefs: [
+        //         { targets: [0, 1, 2, 3, 4, 26, 27], visible: true },
+        //         { targets: '_all', visible: false },
+        //         { targets: -1, orderable: false, searchable: false }
+        //     ]
+        // }).buttons().container().appendTo('#example_wrapper .col-md-6:eq(0)');
 
         // Select All
         $('#selectAll').on('click', function() {
