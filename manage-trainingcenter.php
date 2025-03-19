@@ -96,7 +96,7 @@ if (strlen($_SESSION['alogin']) == "") {
                         <div class="card-header bg-white py-3">
                             <h5 class="mb-0">Training Center Information</h5>
                         </div>
-                        <div class="card-body p-0">
+                        <div class="card-body p-2">
                             <div class="table-responsive">
                                 <table id="example" class="table table-hover table-bordered" style="width:100%">
                                     <thead class="table-light">
