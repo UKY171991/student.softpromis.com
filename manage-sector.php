@@ -203,7 +203,7 @@ if (strlen($_SESSION['alogin']) == "") {
                     extend: 'print',
                     exportOptions: { columns: [0, 1, 2] }
                 },
-                'colvis'
+                //'colvis'
             ],
             dom: 'Bfrtip'
         });
