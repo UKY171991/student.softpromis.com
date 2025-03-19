@@ -6,289 +6,131 @@ if (strlen($_SESSION['alogin']) == "") {
     header("Location: index.php");
 } else {
 ?>
-<!DOCTYPE html> 
-<html lang="en"> 
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SOFTPRO | ADMIN | Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOFTPRO | Admin Dashboard</title>
+    
+    <!-- Modern CSS Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0066ff;
+            --secondary: #6c757d;
+            --success: #28a745;
+            --info: #17a2b8;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --purple: #6f42c1;
+            --teal: #20c997;
+            --pink: #e83e8c;
+        }
 
-  <!-- <link rel="stylesheet" href="css/bootstrap.min.css" media="screen"> -->
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
-    <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/lobipanel/lobipanel.min.css" media="screen">
-    <link rel="stylesheet" href="css/prism/prism.css" media="screen">
-    <link rel="stylesheet" href="css/select2/select2.min.css">
-    <link rel="stylesheet" href="css/main.css" media="screen">
-    <link rel="stylesheet" href="css/mystyle.css"> 
-    <script src="js/modernizr/modernizr.min.js"></script>
+        body {
+            background: #f5f7fa;
+            font-family: 'Segoe UI', sans-serif;
+        }
 
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome 6 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="includes/style.css">
+        .dashboard-card {
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            height: 100%;
+            background: #fff;
+        }
 
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .dashboard-card .icon {
+            font-size: 2.5rem;
+            opacity: 0.2;
+        }
+
+        .dashboard-card h3 {
+            font-weight: 700;
+            margin-bottom: 5px;
+            font-size: 2rem;
+        }
+
+        .dashboard-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            padding: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-card {
+                margin-bottom: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Top Navbar -->
-  <?php include('includes/topbar-new.php'); ?>
-  
-  <div class="container-fluid">
-    <div class="row">
-      <!-- Sidebar -->
+    <?php include('includes/topbar-new.php'); ?>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <?php include('includes/left-sidebar-new.php'); ?>
 
-      <?php include('includes/left-sidebar-new.php'); ?>
-       <?php include('includes/leftbar.php'); ?>
+            <main class="col-md-9 ms-sm-auto col-lg-10 main-content">
+                <h2 class="mb-4 fw-bold">Softpro Dashboard</h2>
+                
+                <div class="row g-4">
+                    <!-- Card Template -->
+                    <?php
+                    $cards = [
+                        ['title' => 'Regd Candidates', 'count' => $totalstudents, 'icon' => 'users', 'color' => 'primary', 'link' => 'manage-candidate.php'],
+                        ['title' => 'Trained Candidates', 'count' => $totalTrained, 'icon' => 'ticket', 'color' => 'success', 'link' => 'trained-candidate.php'],
+                        ['title' => 'Ongoing Candidates', 'count' => $ongoingCandidates, 'icon' => 'spinner', 'color' => 'warning', 'link' => 'ongoing-candidate.php'],
+                        ['title' => 'Passed Candidates', 'count' => $totalPassed, 'icon' => 'check', 'color' => 'info', 'link' => 'passed-candidate.php'],
+                        ['title' => 'Total Batches', 'count' => $totalBatches, 'icon' => 'layer-group', 'color' => 'danger', 'link' => 'manage-batch.php'],
+                        ['title' => 'Ongoing Batches', 'count' => $ongoingBatches, 'icon' => 'spinner', 'color' => 'teal', 'link' => 'ongoing-batches.php'],
+                        ['title' => 'Assed Batches', 'count' => $assedBatches, 'icon' => 'check-circle', 'color' => 'purple', 'link' => 'assed-batches.php'],
+                        ['title' => 'Batch Results', 'count' => $totalResults, 'icon' => 'chart-line', 'color' => 'warning', 'link' => 'manage-subjects.php'],
+                        ['title' => 'Training Centers', 'count' => $totalTC, 'icon' => 'school', 'color' => 'secondary', 'link' => 'manage-trainingcenter.php'],
+                        ['title' => 'Schemes', 'count' => $totalSchemes, 'icon' => 'clipboard-list', 'color' => 'pink', 'link' => 'manage-scheme.php'],
+                        ['title' => 'Sectors', 'count' => $totalSectors, 'icon' => 'industry', 'color' => 'success', 'link' => 'manage-sector.php'],
+                        ['title' => 'Job Rolls', 'count' => $totalJobroll, 'icon' => 'briefcase', 'color' => 'dark', 'link' => 'manage-jobroll.php']
+                    ];
 
+                    foreach ($cards as $card) {
+                    ?>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="dashboard-card text-<?php echo $card['color']; ?>" 
+                                 onclick="location.href='<?php echo $card['link']; ?>'">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h3><?php echo htmlentities($card['count']); ?></h3>
+                                        <p><?php echo $card['title']; ?></p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="fa-solid fa-<?php echo $card['icon']; ?>"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
+            </main>
+        </div>
+    </div>
 
-      <!-- Main Content -->
-      <main class="col-lg-10 col-md-9 p-4">
-        <h2 class="mb-4">Softpro Dashboard</h2>
-        <div class="row g-3">
-            <!-- Regd Candidates Card -->
-            <div class="col-md-3">
-                <div class="dashboard-card bg-primary text-white" onclick="location.href='manage-candidate.php';">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <?php
-                            $sql1 = "SELECT CandidateId FROM tblcandidate";
-                            $query1 = $dbh->prepare($sql1);
-                            $query1->execute();
-                            $totalstudents = $query1->rowCount();
-                            ?>
-                            <h3><?php echo $totalstudents; ?></h3>
-                            <p>Regd Candidates</p>
-                        </div>
-                        <div class="icon"><i class="fa-solid fa-users"></i></div>
-                    </div>
-                </div>
-            </div>
-            <!-- Trained Candidates Card -->
-            <div class="col-md-3">
-                <div class="dashboard-card bg-success text-white" onclick="location.href='trained-candidate.php';">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <?php
-                            $sql = "SELECT CandidateId FROM tblcandidate 
-                                    JOIN tblbatch ON tblcandidate.tblbatch_id = tblbatch.id 
-                                    AND tblbatch.end_date < CURRENT_DATE()";
-                            $query = $dbh->prepare($sql);
-                            $query->execute();
-                            $totalTrained = $query->rowCount();
-                            ?>
-                            <h3><?php echo htmlentities($totalTrained); ?></h3>
-                            <p>Trained Candidates</p>
-                        </div>
-                        <div class="icon"><i class="fa-solid fa-ticket"></i></div>
-                    </div>
-                </div>
-            </div>
-            <!-- Ongoing Candidates Card -->
-            <div class="col-md-3">
-                <div class="dashboard-card bg-warning text-dark" onclick="location.href='ongoing-candidate.php';">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <?php
-                            $sql2 = "SELECT CandidateId FROM tblcandidate 
-                                     JOIN tblbatch ON tblcandidate.tblbatch_id = tblbatch.id 
-                                     AND tblbatch.end_date > CURRENT_DATE()";
-                            $query2 = $dbh->prepare($sql2);
-                            $query2->execute();
-                            $ongoingCandidates = $query2->rowCount();
-                            ?>
-                            <h3><?php echo htmlentities($ongoingCandidates); ?></h3>
-                            <p>Ongoing Candidates</p>
-                        </div>
-                        <div class="icon"><i class="fa-solid fa-spinner"></i></div>
-                    </div>
-                </div>
-            </div>
-            <!-- Passed Candidates Card -->
-            <div class="col-md-3">
-                <div class="dashboard-card bg-info text-white" onclick="location.href='passed-candidate.php';">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <?php
-                            $sql3 = "SELECT tblcandidate.CandidateId, tblcandidateresults.* FROM tblcandidate 
-                                     INNER JOIN tblcandidateresults ON tblcandidate.CandidateId = tblcandidateresults.candidate_id 
-                                     AND tblcandidateresults.result = 'Pass'";
-                            $query3 = $dbh->prepare($sql3);
-                            $query3->execute();
-                            $totalPassed = $query3->rowCount();
-                            ?>
-                            <h3><?php echo htmlentities($totalPassed); ?></h3>
-                            <p>Passed Candidates</p>
-                        </div>
-                        <div class="icon"><i class="fa-solid fa-check"></i></div>
-                    </div>
-                </div>
-            </div>
-            <!-- Total Batches Card -->
-            <div class="col-md-3">
-                <div class="dashboard-card bg-danger text-white" onclick="location.href='manage-batch.php';">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <?php
-                            $sqlBatch = "SELECT DISTINCT batch_name FROM tblbatch";
-                            $queryBatch = $dbh->prepare($sqlBatch);
-                            $queryBatch->execute();
-                            $totalBatches = $queryBatch->rowCount();
-                            ?>
-                            <h3><?php echo htmlentities($totalBatches); ?></h3>
-                            <p>Total Batches</p>
-                        </div>
-                        <div class="icon"><i class="fa-solid fa-layer-group"></i></div>
-                    </div>
-                </div>
-            </div>
-            <!-- Ongoing Batches Card -->
-            <div class="col-md-3">
-                <div class="dashboard-card bg-teal text-white" onclick="location.href='ongoing-batches.php';">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <?php
-                            $sqlOngoingBatch = "SELECT id FROM tblbatch WHERE end_date > CURRENT_DATE()";
-                            $queryOngoingBatch = $dbh->prepare($sqlOngoingBatch);
-                            $queryOngoingBatch->execute();
-                            $ongoingBatches = $queryOngoingBatch->rowCount();
-                            ?>
-                            <h3><?php echo htmlentities($ongoingBatches); ?></h3>
-                            <p>Ongoing Batches</p>
-                        </div>
-                        <div class="icon"><i class="fa-solid fa-spinner"></i></div>
-                    </div>
-                </div>
-            </div>
-            <!-- Assed Batches Card -->
-            <div class="col-md-3">
-                <div class="dashboard-card bg-purple text-white" onclick="location.href='assed-batches.php';">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <?php
-                            $sqlAssed = "SELECT id FROM tblbatch WHERE end_date < CURRENT_DATE()";
-                            $queryAssed = $dbh->prepare($sqlAssed);
-                            $queryAssed->execute();
-                            $assedBatches = $queryAssed->rowCount();
-                            ?>
-                            <h3><?php echo htmlentities($assedBatches); ?></h3>
-                            <p>Assed Batches</p>
-                        </div>
-                        <div class="icon"><i class="fa-solid fa-check-circle"></i></div>
-                    </div>
-                </div>
-            </div>
-            <!-- Batch Results Card -->
-            <div class="col-md-3">
-                <div class="dashboard-card bg-orange text-white" onclick="location.href='manage-subjects.php';">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <?php
-                            $sqlResults = "SELECT DISTINCT tblcandidate.CandidateId, tblcandidateresults.batch_id 
-                                           FROM tblcandidate 
-                                           INNER JOIN tblcandidateresults ON tblcandidate.CandidateId = tblcandidateresults.candidate_id";
-                            $queryResults = $dbh->prepare($sqlResults);
-                            $queryResults->execute();
-                            $totalResults = $queryResults->rowCount();
-                            ?>
-                            <h3><?php echo htmlentities($totalResults); ?></h3>
-                            <p>Batch Results</p>
-                        </div>
-                        <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
-                    </div>
-                </div>
-            </div>
-            <!-- Training Centers Card -->
-            <div class="col-md-3">
-                <div class="dashboard-card bg-secondary text-white" onclick="location.href='manage-trainingcenter.php';">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <?php
-                            $sqlTC = "SELECT TrainingcenterId FROM tbltrainingcenter";
-                            $queryTC = $dbh->prepare($sqlTC);
-                            $queryTC->execute();
-                            $totalTC = $queryTC->rowCount();
-                            ?>
-                            <h3><?php echo htmlentities($totalTC); ?></h3>
-                            <p>Training Centers</p>
-                        </div>
-                        <div class="icon"><i class="fa-solid fa-school"></i></div>
-                    </div>
-                </div>
-            </div>
-            <!-- Schemes Card -->
-            <div class="col-md-3">
-                <div class="dashboard-card bg-pink text-white" onclick="location.href='manage-scheme.php';">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <?php
-                            $sqlScheme = "SELECT Schemeid FROM tblscheme";
-                            $queryScheme = $dbh->prepare($sqlScheme);
-                            $queryScheme->execute();
-                            $totalSchemes = $queryScheme->rowCount();
-                            ?>
-                            <h3><?php echo htmlentities($totalSchemes); ?></h3>
-                            <p>Schemes</p>
-                        </div>
-                        <div class="icon"><i class="fa-solid fa-clipboard-list"></i></div>
-                    </div>
-                </div>
-            </div>
-            <!-- Sectors Card -->
-            <div class="col-md-3">
-                <div class="dashboard-card bg-success text-white" onclick="location.href='manage-sector.php';">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <?php
-                            $sqlSector = "SELECT SectorId FROM tblsector";
-                            $querySector = $dbh->prepare($sqlSector);
-                            $querySector->execute();
-                            $totalSectors = $querySector->rowCount();
-                            ?>
-                            <h3><?php echo htmlentities($totalSectors); ?></h3>
-                            <p>Sectors</p>
-                        </div>
-                        <div class="icon"><i class="fa-solid fa-industry"></i></div>
-                    </div>
-                </div>
-            </div>
-            <!-- Job Rolls Card -->
-            <div class="col-md-3">
-                <div class="dashboard-card bg-dark text-white" onclick="location.href='manage-jobroll.php';">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <?php
-                            $sqlJobroll = "SELECT JobrollId FROM tbljobroll";
-                            $queryJobroll = $dbh->prepare($sqlJobroll);
-                            $queryJobroll->execute();
-                            $totalJobroll = $queryJobroll->rowCount();
-                            ?>
-                            <h3><?php echo htmlentities($totalJobroll); ?></h3>
-                            <p>Job Rolls</p>
-                        </div>
-                        <div class="icon"><i class="fa-solid fa-briefcase"></i></div>
-                    </div>
-                </div>
-            </div>
-        </div><!-- /.row -->
-    </main>
-    </div><!-- /.row -->
-  </div><!-- /.container-fluid -->
-
-  <!-- Bootstrap Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script src="js/jquery/jquery-2.2.4.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
-  <script src="js/bootstrap/bootstrap.min.js"></script>
-  <script src="js/pace/pace.min.js"></script>
-  <script src="js/lobipanel/lobipanel.min.js"></script>
-  <script src="js/iscroll/iscroll.js"></script>
-  <script src="js/prism/prism.js"></script>
-  <script src="js/select2/select2.min.js"></script>
-  <script src="js/main.js"></script>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </body>
 </html>
 <?php } ?>
