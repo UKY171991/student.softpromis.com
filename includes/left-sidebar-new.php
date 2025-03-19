@@ -67,7 +67,7 @@
             <ul class="nav flex-column ps-3">
                 <li class="nav-item"><a class="nav-link" href="create-scheme.php"><i class="fa fa-plus me-2"></i>Create Scheme</a></li>
                 <li class="nav-item"><a class="nav-link" href="manage-scheme.php"><i class="fa fa-cogs me-2"></i>Manage Scheme</a></li>
-                <li class="nav-item"><a class="nav-link" href="assign-scheme.php"><i class="fa fa-handshake me-2"></i>Assign Scheme</a></li>
+                <li class="nav-item"><a class="nav-link" href="asign-scheme.php"><i class="fa fa-handshake me-2"></i>Assign Scheme</a></li>
             </ul>
         </div>
     </li>
