@@ -143,14 +143,14 @@ if (strlen($_SESSION['alogin']) == "") {
                                                         <h1 class="m-0">Softpro Dashboard</h1>
                                                     </div>
                                                     <div class="col-sm-6 text-right">
-                                                        <button class="btn btn-primary" onclick="alert('Button clicked!')">
-                                                            <i class="fas fa-plus"></i> Add New
-                                                        </button>
+                                                        <a class="btn btn-success" href="add-candidate.php">
+                                                            <i class="fas fa-plus"></i> Add Candidate
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-        
+
                                         <div style="overflow: auto;">
                                             <table id="example" class="table table-stripped table-bordered table-hover table-full-width table-grey table-responsive-lg table custom-bordered">
                                                 <thead>
