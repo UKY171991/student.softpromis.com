@@ -53,7 +53,7 @@ if (strlen($_SESSION['alogin']) == "") {
 <body class="bg-light">
     <div class="main-wrapper">
         <!-- Top Navbar -->
-        <?php include('includes/topbar.php'); ?>
+        <?php include('includes/topbar-new.php'); ?>
 
         <div class="container-fluid py-4">
             <div class="row gx-3">
