@@ -322,6 +322,7 @@ if (strlen($_SESSION['alogin']) == "") {
     <script src="js/main.js"></script>
 
     <script>
+        /*
   $(function () {
     $("#example").DataTable({
       "responsive": true,
@@ -372,24 +373,25 @@ if (strlen($_SESSION['alogin']) == "") {
       ]
     }).buttons().container().appendTo('#example_wrapper .col-md-6:eq(0)');
   });
+  */
 </script>
 
     <script>
     $(document).ready(function() {
-        // var table = $('#example').DataTable({
-        //     responsive: true,
-        //     lengthChange: true,
-        //     autoWidth: false,
-        //     pageLength: 10,
-        //     lengthMenu: [[10, 20, 30, 100, 500], [10, 20, 30, 100, 500]],
-        //     order: [[19, 'desc']], // Sort by Date Created
-        //     buttons: ['copy', 'csv', 'excel', 'pdf', 'print', 'colvis'],
-        //     columnDefs: [
-        //         { targets: [0, 1, 2, 3, 4, 26, 27], visible: true },
-        //         { targets: '_all', visible: false },
-        //         { targets: -1, orderable: false, searchable: false }
-        //     ]
-        // }).buttons().container().appendTo('#example_wrapper .col-md-6:eq(0)');
+        var table = $('#example').DataTable({
+            responsive: true,
+            lengthChange: true,
+            autoWidth: false,
+            pageLength: 10,
+            lengthMenu: [[10, 20, 30, 100, 500], [10, 20, 30, 100, 500]],
+            order: [[19, 'desc']], // Sort by Date Created
+            buttons: ['copy', 'csv', 'excel', 'pdf', 'print', 'colvis'],
+            columnDefs: [
+                { targets: [0, 1, 2, 3, 4, 26, 27], visible: true },
+                { targets: '_all', visible: false },
+                { targets: -1, orderable: false, searchable: false }
+            ]
+        }).buttons().container().appendTo('#example_wrapper .col-md-6:eq(0)');
 
         // Select All
         $('#selectAll').on('click', function() {
