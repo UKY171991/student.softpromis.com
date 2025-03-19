@@ -122,11 +122,11 @@ if (strlen($_SESSION['alogin']) == "") {
                                 <div class="col-md-12">
 
                                     <div class="panel">
-                                        <div class="panel-heading">
+                                        <!-- <div class="panel-heading">
                                             <div class="panel-title">
                                                 <h5>View Candidate Info</h5>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <?php if ($msg) { ?>
                                         <div class="alert alert-success left-icon-alert" role="alert">
                                             <strong>Well done!</strong><?php echo htmlentities($msg); ?>
@@ -140,7 +140,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                             <div class="container-fluid">
                                                 <div class="row mb-2">
                                                     <div class="col-sm-6">
-                                                        <!-- <h1 class="m-0">Softpro Dashboard</h1> -->
+                                                        <h5>View Candidate Info</h5>
                                                     </div>
                                                     <?php if(isset($_GET['batch'])){ ?>
                                                         <div class="col-sm-6 text-right mb-2">
