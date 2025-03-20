@@ -19,7 +19,7 @@ if (strlen($_SESSION['alogin']) == "") {
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap5.min.css">
-    
+
     <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -53,8 +53,8 @@ if (strlen($_SESSION['alogin']) == "") {
         <!-- Top Navbar -->
         <?php include('includes/topbar-new.php'); ?>
 
-        <div class="container-fluid py-4">
-            <div class="row gx-3">
+        <div class="container-fluid">
+            <div class="row">
                 <!-- Sidebar -->
                 <?php include('includes/left-sidebar-new.php'); ?>
                 <?php include('includes/leftbar.php'); ?>
