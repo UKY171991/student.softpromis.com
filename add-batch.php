@@ -130,81 +130,100 @@ if (strlen($_SESSION['alogin']) == "") {
                         </div>
                         <div class="card-body">
                             <form method="post">
-                                <div class="mb-3">
-                                    <label for="trainingcenterid" class="form-label">Training Center</label>
-                                    <select name="trainingcenterid" class="form-select" id="trainingcenterid" required>
-                                        <option value="">Select Training Center</option>
-                                        <?php 
-                                        $sql = "SELECT * FROM tbltrainingcenter";
-                                        $query = $dbh->prepare($sql);
-                                        $query->execute();
-                                        $trainings = $query->fetchAll(PDO::FETCH_OBJ);
-                                        if ($query->rowCount() > 0) {
-                                            foreach ($trainings as $training) { ?>
-                                                <option value="<?php echo htmlentities($training->TrainingcenterId); ?>">
-                                                    <?php echo htmlentities($training->trainingcentername); ?>
-                                                </option>
-                                        <?php }
-                                        } ?>
-                                    </select>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="trainingcenterid" class="form-label">Training Center</label>
+                                            <select name="trainingcenterid" class="form-select" id="trainingcenterid" required>
+                                                <option value="">Select Training Center</option>
+                                                <?php 
+                                                $sql = "SELECT * FROM tbltrainingcenter";
+                                                $query = $dbh->prepare($sql);
+                                                $query->execute();
+                                                $trainings = $query->fetchAll(PDO::FETCH_OBJ);
+                                                if ($query->rowCount() > 0) {
+                                                    foreach ($trainings as $training) { ?>
+                                                        <option value="<?php echo htmlentities($training->TrainingcenterId); ?>">
+                                                            <?php echo htmlentities($training->trainingcentername); ?>
+                                                        </option>
+                                                <?php }
+                                                } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="schemeid" class="form-label">Scheme</label>
+                                            <select name="schemeid" class="form-select" id="schemeid" required>
+                                                <option value="">Select Scheme</option>
+                                                <?php 
+                                                $sql = "SELECT * FROM tblscheme";
+                                                $query = $dbh->prepare($sql);
+                                                $query->execute();
+                                                $schemes = $query->fetchAll(PDO::FETCH_OBJ);
+                                                if ($query->rowCount() > 0) {
+                                                    foreach ($schemes as $scheme) { ?>
+                                                        <option value="<?php echo htmlentities($scheme->SchemeId); ?>">
+                                                            <?php echo htmlentities($scheme->SchemeName); ?>
+                                                        </option>
+                                                <?php }
+                                                } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="sectorid" class="form-label">Sector</label>
+                                            <select name="sectorid" class="form-select" id="sectorid" required>
+                                                <option value="">Select Sector</option>
+                                                <?php 
+                                                $sql = "SELECT * FROM tblsector";
+                                                $query = $dbh->prepare($sql);
+                                                $query->execute();
+                                                $sectors = $query->fetchAll(PDO::FETCH_OBJ);
+                                                if ($query->rowCount() > 0) {
+                                                    foreach ($sectors as $sector) { ?>
+                                                        <option value="<?php echo htmlentities($sector->SectorId); ?>">
+                                                            <?php echo htmlentities($sector->SectorName); ?>
+                                                        </option>
+                                                <?php }
+                                                } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="jobrollid" class="form-label">Job Roll</label>
+                                            <select name="jobrollid" class="form-select" id="jobrollid" required>
+                                                <option value="">Select Job Roll</option>
+                                                <?php 
+                                                $sql = "SELECT * FROM tbljobroll";
+                                                $query = $dbh->prepare($sql);
+                                                $query->execute();
+                                                $jobrolls = $query->fetchAll(PDO::FETCH_OBJ);
+                                                if ($query->rowCount() > 0) {
+                                                    foreach ($jobrolls as $jobroll) { ?>
+                                                        <option value="<?php echo htmlentities($jobroll->JobrollId); ?>">
+                                                            <?php echo htmlentities($jobroll->jobrollname); ?>
+                                                        </option>
+                                                <?php }
+                                                } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-md-6"></div>
+                                    <div class="col-md-6"></div>
+                                    <div class="col-md-6"></div>
+                                    <div class="col-md-6"></div>
+                                    <div class="col-md-6"></div> -->
                                 </div>
+                                
 
-                                <div class="mb-3">
-                                    <label for="schemeid" class="form-label">Scheme</label>
-                                    <select name="schemeid" class="form-select" id="schemeid" required>
-                                        <option value="">Select Scheme</option>
-                                        <?php 
-                                        $sql = "SELECT * FROM tblscheme";
-                                        $query = $dbh->prepare($sql);
-                                        $query->execute();
-                                        $schemes = $query->fetchAll(PDO::FETCH_OBJ);
-                                        if ($query->rowCount() > 0) {
-                                            foreach ($schemes as $scheme) { ?>
-                                                <option value="<?php echo htmlentities($scheme->SchemeId); ?>">
-                                                    <?php echo htmlentities($scheme->SchemeName); ?>
-                                                </option>
-                                        <?php }
-                                        } ?>
-                                    </select>
-                                </div>
+                                
 
-                                <div class="mb-3">
-                                    <label for="sectorid" class="form-label">Sector</label>
-                                    <select name="sectorid" class="form-select" id="sectorid" required>
-                                        <option value="">Select Sector</option>
-                                        <?php 
-                                        $sql = "SELECT * FROM tblsector";
-                                        $query = $dbh->prepare($sql);
-                                        $query->execute();
-                                        $sectors = $query->fetchAll(PDO::FETCH_OBJ);
-                                        if ($query->rowCount() > 0) {
-                                            foreach ($sectors as $sector) { ?>
-                                                <option value="<?php echo htmlentities($sector->SectorId); ?>">
-                                                    <?php echo htmlentities($sector->SectorName); ?>
-                                                </option>
-                                        <?php }
-                                        } ?>
-                                    </select>
-                                </div>
+                                
 
-                                <div class="mb-3">
-                                    <label for="jobrollid" class="form-label">Job Roll</label>
-                                    <select name="jobrollid" class="form-select" id="jobrollid" required>
-                                        <option value="">Select Job Roll</option>
-                                        <?php 
-                                        $sql = "SELECT * FROM tbljobroll";
-                                        $query = $dbh->prepare($sql);
-                                        $query->execute();
-                                        $jobrolls = $query->fetchAll(PDO::FETCH_OBJ);
-                                        if ($query->rowCount() > 0) {
-                                            foreach ($jobrolls as $jobroll) { ?>
-                                                <option value="<?php echo htmlentities($jobroll->JobrollId); ?>">
-                                                    <?php echo htmlentities($jobroll->jobrollname); ?>
-                                                </option>
-                                        <?php }
-                                        } ?>
-                                    </select>
-                                </div>
+                                
 
                                 <div class="mb-3">
                                     <label for="batchname" class="form-label">Batch Name</label>
