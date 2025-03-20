@@ -128,7 +128,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                     <td><?php echo htmlentities($cnt); ?></td>
                                                     <td>
                                                         <a href="manage-candidate.php?batch=<?php echo htmlentities($result->id); ?>" 
-                                                           class="btn btn-info btn-xs" target="_blank">
+                                                           class="btn btn-info btn-sm" target="_blank">
                                                             <?php echo htmlentities($result->batch_name); ?>
                                                         </a>
                                                     </td>
@@ -142,10 +142,10 @@ if (strlen($_SESSION['alogin']) == "") {
                                                     <td><?php echo htmlentities($result->end_time); ?></td>
                                                     <td>
                                                         <a href="edit-batch.php?batchid=<?php echo htmlentities($result->id); ?>" 
-                                                           class="btn btn-info btn-xs btn-action" title="Edit">
+                                                           class="btn btn-info btn-sm btn-action" title="Edit">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
-                                                        <button class="btn btn-danger btn-xs btn-action delete" 
+                                                        <button class="btn btn-danger btn-sm btn-action delete" 
                                                                 id="del_<?php echo htmlentities($result->id); ?>" 
                                                                 title="Delete">
                                                             <i class="fas fa-trash"></i>
