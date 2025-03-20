@@ -211,23 +211,12 @@ if (strlen($_SESSION['alogin']) == "") {
                                             </select>
                                         </div>
                                     </div>
-                                    <!-- <div class="col-md-6"></div>
-                                    <div class="col-md-6"></div>
-                                    <div class="col-md-6"></div>
-                                    <div class="col-md-6"></div>
-                                    <div class="col-md-6"></div> -->
-                                </div>
-                                
-
-                                
-
-                                
-
-                                
-
-                                <div class="mb-3">
-                                    <label for="batchname" class="form-label">Batch Name</label>
-                                    <input type="text" name="batchname" class="form-control" id="batchname" required>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="batchname" class="form-label">Batch Name</label>
+                                            <input type="text" name="batchname" class="form-control" id="batchname" required>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="row mb-3">
