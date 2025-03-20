@@ -42,6 +42,11 @@ if (strlen($_SESSION['alogin']) == "") {
         .btn-action { padding: 5px 10px; margin: 0 2px; }
         .thead-dark { background: #212529; color: white; }
 /*        .dt-buttons { margin-bottom: 15px; }*/
+        .dt-button-collection {
+            max-height: 300px; /* Adjust height as needed */
+            overflow-y: auto !important;
+        }
+
     </style>
 </head>
 
