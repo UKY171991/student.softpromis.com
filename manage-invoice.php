@@ -201,6 +201,7 @@ if (strlen($_SESSION['alogin']) == "") {
             pageLength: 10,
             lengthMenu: [[10, 20, 30, 100], [10, 20, 30, 100]],
             order: [[2, 'desc']], // Order by Invoice Date
+            /*
             buttons: [
                 {
                     extend: 'copy',
@@ -224,6 +225,7 @@ if (strlen($_SESSION['alogin']) == "") {
                 },
                 //'colvis'
             ],
+            */
             dom: 'Bfrtip'
         });
 
