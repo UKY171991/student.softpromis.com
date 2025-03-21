@@ -1,48 +1,36 @@
 <?php
 session_start();
 error_reporting(0);
+$batchid = $_GET['batchid'];
 include('includes/config.php');
+$sql = "SELECT tblcandidateresults.*,tblcandidate.*,tblbatch.* from tblcandidateresults JOIN tblcandidate JOIN tblbatch ON tblcandidateresults.candidate_id=tblcandidate.CandidateId AND tblcandidateresults.batch_id=tblbatch.id";
+$query = $dbh->prepare($sql);
+$query->execute();
+$results = $query->fetchAll(PDO::FETCH_OBJ);
+$candidatecount = $query->rowCount();
 if (strlen($_SESSION['alogin']) == "") {
     header("Location: index.php");
 } else {
-    $batchid = isset($_GET['batchid']) ? intval($_GET['batchid']) : 0;
-
-    // Fetch results for the specific batch
-    $sql = "SELECT tblcandidateresults.*, tblcandidate.*, tblbatch.* 
-            FROM tblcandidateresults 
-            JOIN tblcandidate ON tblcandidateresults.candidate_id = tblcandidate.CandidateId 
-            JOIN tblbatch ON tblcandidateresults.batch_id = tblbatch.id 
-            WHERE tblcandidateresults.batch_id = :batchid";
-    $query = $dbh->prepare($sql);
-    $query->bindParam(':batchid', $batchid, PDO::PARAM_INT);
-    $query->execute();
-    $results = $query->fetchAll(PDO::FETCH_OBJ);
-    $candidatecount = $query->rowCount();
-
     if (isset($_POST['submit'])) {
-        $date = $_POST['date'];
-        $candidateids = $_POST['candidateid'];
+        $date  = mysqli_real_escape_string($dbh, $_POST['date']);
+        $candidateid     = $_POST['candidateid'];
+        $batchid = $_POST['batchid'];
         $candidateresults = $_POST['result'];
 
-        $success = true;
-        for ($i = 0; $i < count($candidateids); $i++) {
-            $sql = "UPDATE tblcandidateresults 
-                    SET result = :result, date = :date 
-                    WHERE candidate_id = :candidateid AND batch_id = :batchid";
+        //INSERT
+        for ($i = 0; $i <= $candidatecount; $i++) {
+            # code...
+            $sql = "UPDATE tblcandidate SET result=:result WHERE CandidateId=:candidateid ";
             $query = $dbh->prepare($sql);
             $query->bindParam(':result', $candidateresults[$i], PDO::PARAM_STR);
-            $query->bindParam(':date', $date, PDO::PARAM_STR);
-            $query->bindParam(':candidateid', $candidateids[$i], PDO::PARAM_INT);
-            $query->bindParam(':batchid', $batchid, PDO::PARAM_INT);
-            if (!$query->execute()) {
-                $success = false;
-            }
+            $query->bindParam(':candidateid', $candidateid[$i], PDO::PARAM_STR);
+            $query->execute();
+            // echo $result;
         }
-
-        if ($success) {
-            $msg = "Results updated successfully";
-        } else {
-            $error = "Failed to update some results";
+        if ($query->execute()) {
+            $msg = "student added to particular batch";
+        } {
+            $error = "student failed to add to particular batch";
         }
     }
 ?>
@@ -74,7 +62,8 @@ if (strlen($_SESSION['alogin']) == "") {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="includes/style.css">
 
-
+    
+    
     
     <style>
         .card { border: none; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-radius: 10px; }
@@ -127,15 +116,11 @@ if (strlen($_SESSION['alogin']) == "") {
                     <!-- Results Table -->
                     <div class="card">
                         <div class="card-header bg-white py-3">
-                            <h5 class="mb-0">Batch Results</h5>
+                            <h5 class="mb-0">Manage Result</h5>
                         </div>
                         <div class="card-body p-2">
-                            <form method="post">
-                                <div class="mb-3">
-                                    <label for="date" class="form-label">Result Date</label>
-                                    <input type="date" name="date" id="date" class="form-control" required>
-                                </div>
-                                <div class="table-responsive">
+                            <div class="table-responsive">
+                                <form method="post" action="">
                                     <table id="example" class="table table-hover table-bordered" style="width:100%">
                                         <thead class="thead-dark">
                                             <tr>
@@ -151,11 +136,25 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 <th>Result</th>
                                             </tr>
                                         </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Candidate Name</th>
+                                                <th>Father Name</th>
+                                                <th>Aadhar Number</th>
+                                                <th>Phone Number</th>
+                                                <th>Qualification</th>
+                                                <th>Date of Birth</th>
+                                                <th>Gender</th>
+                                                <th>Batch</th>
+                                                <th>Result</th>
+                                            </tr>
+                                        </tfoot>
                                         <tbody>
-                                            <?php 
+                                            <?php $batch = "";
+                                            $cnt = 1;
                                             if ($candidatecount > 0) {
-                                                $cnt = 1;
-                                                foreach ($results as $result) { ?>
+                                                foreach ($results as $result) {   ?>
                                                     <tr>
                                                         <td><?php echo htmlentities($cnt); ?></td>
                                                         <td><?php echo htmlentities($result->candidatename); ?></td>
@@ -166,34 +165,15 @@ if (strlen($_SESSION['alogin']) == "") {
                                                         <td><?php echo htmlentities($result->dateofbirth); ?></td>
                                                         <td><?php echo htmlentities($result->gender); ?></td>
                                                         <td><?php echo htmlentities($result->batch_name); ?></td>
-                                                        <td>
-                                                            <input type="hidden" name="candidateid[]" value="<?php echo htmlentities($result->CandidateId); ?>">
-                                                            <input type="hidden" name="batchid" value="<?php echo htmlentities($result->batch_id); ?>">
-                                                            <select name="result[]" class="form-select" required>
-                                                                <option value="<?php echo htmlentities($result->result); ?>" selected>
-                                                                    <?php echo htmlentities($result->result); ?>
-                                                                </option>
-                                                                <option value="Pass">Pass</option>
-                                                                <option value="Fail">Fail</option>
-                                                                <option value="Pending">Pending</option>
-                                                            </select>
-                                                        </td>
+                                                        <td><?php echo htmlentities($result->result); ?></td>
                                                     </tr>
-                                            <?php $cnt++; }
-                                            } else { ?>
-                                                <tr>
-                                                    <td colspan="10" class="text-center">No candidates found for this batch</td>
-                                                </tr>
-                                            <?php } ?>
+                                            <?php $cnt = $cnt + 1;
+                                                }
+                                            } ?>
                                         </tbody>
                                     </table>
-                                </div>
-                                <?php if ($candidatecount > 0) { ?>
-                                    <button type="submit" name="submit" class="btn btn-primary mt-3">
-                                        <i class="fas fa-check me-2"></i>Update Results
-                                    </button>
-                                <?php } ?>
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </main>
@@ -201,36 +181,32 @@ if (strlen($_SESSION['alogin']) == "") {
         </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- ========== COMMON JS FILES ========== -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.4.1/js/responsive.bootstrap5.min.js"></script>
+    <script src="js/bootstrap/bootstrap.min.js"></script>
     <script src="js/pace/pace.min.js"></script>
-      <script src="js/lobipanel/lobipanel.min.js"></script>
-      <script src="js/iscroll/iscroll.js"></script>
-      <script src="js/prism/prism.js"></script>
-      <script src="js/select2/select2.min.js"></script>
+    <script src="js/lobipanel/lobipanel.min.js"></script>
+    <script src="js/iscroll/iscroll.js"></script>
+
+    <!-- ========== PAGE JS FILES ========== -->
+    <script src="js/prism/prism.js"></script>
+    <script src="js/DataTables/datatables.min.js"></script>
+
+
+    <!-- ========== THEME JS ========== -->
     <script src="js/main.js"></script>
-
-
-
-
-
     <script>
-    $(document).ready(function() {
-        $('#example').DataTable({
-            responsive: true,
-            lengthChange: true,
-            autoWidth: false,
-            pageLength: 10,
-            ordering: false, // Disable sorting to keep form inputs stable
-            searching: true,
-            paging: true
+    $(function($) {
+        $('#example').DataTable();
+
+        $('#example2').DataTable({
+            "scrollY": "300px",
+            "scrollCollapse": true,
+            "paging": false
         });
+
+        $('#example3').DataTable();
     });
     </script>
 </body>
