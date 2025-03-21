@@ -128,10 +128,10 @@ if (strlen($_SESSION['alogin']) == "") {
                         </div>
                         <div class="card-body p-2">
                             <form method="post">
-                                <div class="mb-3">
+                                <!-- <div class="mb-3">
                                     <label for="date" class="form-label">Result Date</label>
                                     <input type="date" name="date" id="date" class="form-control" required>
-                                </div>
+                                </div> -->
                                 <div class="table-responsive">
                                     <table id="example" class="table table-hover table-bordered" style="width:100%">
                                         <thead class="thead-dark">
