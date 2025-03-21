@@ -226,7 +226,7 @@ if (strlen($_SESSION['alogin']) == "") {
                 //'colvis'
             ],
             */
-            dom: 'Bfrtip'
+            //dom: 'Bfrtip'
         });
 
         table.buttons().container().appendTo('#example_wrapper .col-md-6:eq(0)');
