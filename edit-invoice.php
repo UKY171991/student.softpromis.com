@@ -153,36 +153,37 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 <input type="date" name="invoice_date" class="form-control" id="invoice_date" 
                                                        value="<?php echo htmlentities($result->invoiceDate); ?>" required>
                                             </div>
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="manual_batch_id" class="form-label">Manual Batch ID</label>
-                                            <input type="text" name="manual_batch_id" class="form-control" id="manual_batch_id" 
-                                                   value="<?php echo htmlentities($result->manualbatchID); ?>" required>
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="trainingcenterid" class="form-label">Training Center</label>
-                                            <select name="trainingcenterid" class="form-select" id="trainingcenterid" required>
-                                                <option value="<?php echo htmlentities($result->TrainingcenterId); ?>">
-                                                    <?php echo htmlentities($result->trainingcentername); ?>
-                                                </option>
-                                                <?php 
-                                                $sql = "SELECT * FROM tbltrainingcenter";
-                                                $query = $dbh->prepare($sql);
-                                                $query->execute();
-                                                $trainings = $query->fetchAll(PDO::FETCH_OBJ);
-                                                if ($query->rowCount() > 0) {
-                                                    foreach ($trainings as $training) { ?>
-                                                        <option value="<?php echo htmlentities($training->TrainingcenterId); ?>">
-                                                            <?php echo htmlentities($training->trainingcentername); ?>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="manual_batch_id" class="form-label">Manual Batch ID</label>
+                                                    <input type="text" name="manual_batch_id" class="form-control" id="manual_batch_id" 
+                                                           value="<?php echo htmlentities($result->manualbatchID); ?>" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="trainingcenterid" class="form-label">Training Center</label>
+                                                    <select name="trainingcenterid" class="form-select" id="trainingcenterid" required>
+                                                        <option value="<?php echo htmlentities($result->TrainingcenterId); ?>">
+                                                            <?php echo htmlentities($result->trainingcentername); ?>
                                                         </option>
-                                                <?php }
-                                                } ?>
-                                            </select>
-                                        </div>
-
-                                        <div class="mb-3">
+                                                        <?php 
+                                                        $sql = "SELECT * FROM tbltrainingcenter";
+                                                        $query = $dbh->prepare($sql);
+                                                        $query->execute();
+                                                        $trainings = $query->fetchAll(PDO::FETCH_OBJ);
+                                                        if ($query->rowCount() > 0) {
+                                                            foreach ($trainings as $training) { ?>
+                                                                <option value="<?php echo htmlentities($training->TrainingcenterId); ?>">
+                                                                    <?php echo htmlentities($training->trainingcentername); ?>
+                                                                </option>
+                                                        <?php }
+                                                        } ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
                                             <label for="schemeid" class="form-label">Scheme</label>
                                             <select name="schemeid" class="form-select" id="schemeid" required>
                                                 <option value="<?php echo htmlentities($result->SchemeId); ?>">
@@ -190,51 +191,60 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 </option>
                                             </select>
                                         </div>
-
-                                        <div class="mb-3">
-                                            <label for="sectorid" class="form-label">Sector</label>
-                                            <select name="sectorid" class="form-select" id="sectorid" required>
-                                                <option value="<?php echo htmlentities($result->SectorId); ?>">
-                                                    <?php echo htmlentities($result->SectorName); ?>
-                                                </option>
-                                            </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="sectorid" class="form-label">Sector</label>
+                                                    <select name="sectorid" class="form-select" id="sectorid" required>
+                                                        <option value="<?php echo htmlentities($result->SectorId); ?>">
+                                                            <?php echo htmlentities($result->SectorName); ?>
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="jobroll_id" class="form-label">Job Roll</label>
+                                                    <select name="jobroll_id" class="form-select" id="jobroll_id" required>
+                                                        <option value="<?php echo htmlentities($result->JobrollId); ?>">
+                                                            <?php echo htmlentities($result->jobrollname); ?>
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="batchid" class="form-label">Batch</label>
+                                                    <select name="batchid" class="form-select" id="batchid" required>
+                                                        <option value="<?php echo htmlentities($result->id); ?>">
+                                                            <?php echo htmlentities($result->batch_name); ?>
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="tranche" class="form-label">Tranche</label>
+                                                    <select name="tranche" class="form-select" required>
+                                                        <option value="<?php echo htmlentities($result->tranche); ?>">
+                                                            <?php echo htmlentities($result->tranche); ?>
+                                                        </option>
+                                                        <option value="1ST">1ST</option>
+                                                        <option value="2ND">2ND</option>
+                                                        <option value="3RD">3RD</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="amount" class="form-label">Invoice Amount</label>
+                                                    <input type="number" name="amount" class="form-control" id="amount" 
+                                                           value="<?php echo htmlentities($result->invoiceAmount); ?>" step="0.01" required>
+                                                </div>
+                                            </div>
                                         </div>
 
-                                        <div class="mb-3">
-                                            <label for="jobroll_id" class="form-label">Job Roll</label>
-                                            <select name="jobroll_id" class="form-select" id="jobroll_id" required>
-                                                <option value="<?php echo htmlentities($result->JobrollId); ?>">
-                                                    <?php echo htmlentities($result->jobrollname); ?>
-                                                </option>
-                                            </select>
-                                        </div>
 
-                                        <div class="mb-3">
-                                            <label for="batchid" class="form-label">Batch</label>
-                                            <select name="batchid" class="form-select" id="batchid" required>
-                                                <option value="<?php echo htmlentities($result->id); ?>">
-                                                    <?php echo htmlentities($result->batch_name); ?>
-                                                </option>
-                                            </select>
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="tranche" class="form-label">Tranche</label>
-                                            <select name="tranche" class="form-select" required>
-                                                <option value="<?php echo htmlentities($result->tranche); ?>">
-                                                    <?php echo htmlentities($result->tranche); ?>
-                                                </option>
-                                                <option value="1ST">1ST</option>
-                                                <option value="2ND">2ND</option>
-                                                <option value="3RD">3RD</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="amount" class="form-label">Invoice Amount</label>
-                                            <input type="number" name="amount" class="form-control" id="amount" 
-                                                   value="<?php echo htmlentities($result->invoiceAmount); ?>" step="0.01" required>
-                                        </div>
 
                                         <button type="submit" name="submit" class="btn btn-primary">
                                             <i class="fas fa-check me-2"></i>Update Invoice
