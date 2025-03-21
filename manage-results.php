@@ -50,28 +50,66 @@ if (strlen($_SESSION['alogin']) == "") {
     <link rel="stylesheet" href="css/prism/prism.css" media="screen">
     <link rel="stylesheet" href="css/select2/select2.min.css">
     <link rel="stylesheet" href="css/main.css" media="screen">
-    
     <link rel="stylesheet" href="css/mystyle.css"> 
     <script src="js/modernizr/modernizr.min.js"></script>
 
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome 6 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap5.min.css">
-    
+
+
   <link rel="stylesheet" href="includes/style.css">
 
-    
-    
+  
     
     <style>
         .card { border: none; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-radius: 10px; }
         .table-responsive { border-radius: 10px; overflow: hidden; }
         .thead-dark { background: #212529; color: white; }
         .dt-buttons { margin-bottom: 15px; }
+        
+        /* Enhanced Pagination Styling */
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            margin: 0 2px;
+            padding: 5px 10px;
+            background: #fff;
+            color: #007bff;
+            transition: all 0.3s ease;
+        }
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+            background: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+            background: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+        .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
+            color: #6c757d;
+            background: #f8f9fa;
+            border-color: #dee2e6;
+            cursor: not-allowed;
+        }
+        .dataTables_wrapper .dataTables_length, 
+        .dataTables_wrapper .dataTables_filter,
+        .dataTables_wrapper .dataTables_info,
+        .dataTables_wrapper .dataTables_paginate {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        .dataTables_wrapper .dataTables_paginate {
+            display: flex;
+            justify-content: flex-end;
+        }
     </style>
 </head>
 
@@ -80,8 +118,8 @@ if (strlen($_SESSION['alogin']) == "") {
         <!-- Top Navbar -->
         <?php include('includes/topbar-new.php'); ?>
 
-        <div class="container-fluid">
-            <div class="row">
+        <div class="container-fluid py-4">
+            <div class="row gx-3">
                 <!-- Sidebar -->
                 <?php include('includes/left-sidebar-new.php'); ?>
                 <?php include('includes/leftbar.php'); ?>
@@ -185,7 +223,6 @@ if (strlen($_SESSION['alogin']) == "") {
 
     <!-- ========== COMMON JS FILES ========== -->
     <script src="js/jquery/jquery-2.2.4.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
     <script src="js/bootstrap/bootstrap.min.js"></script>
     <script src="js/pace/pace.min.js"></script>
     <script src="js/lobipanel/lobipanel.min.js"></script>
@@ -194,7 +231,6 @@ if (strlen($_SESSION['alogin']) == "") {
     <!-- ========== PAGE JS FILES ========== -->
     <script src="js/prism/prism.js"></script>
     <script src="js/DataTables/datatables.min.js"></script>
-
 
     <!-- ========== THEME JS ========== -->
     <script src="js/main.js"></script>
