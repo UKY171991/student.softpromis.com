@@ -144,73 +144,81 @@ if (strlen($_SESSION['alogin']) == "") {
                                         <label for="invoice_date" class="form-label">Invoice Date</label>
                                         <input type="date" name="invoice_date" class="form-control" id="invoice_date" required>
                                     </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="manual_batch_id" class="form-label">Manual Batch ID</label>
-                                    <input type="text" name="manual_batch_id" class="form-control" id="manual_batch_id" required>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="trainingcenterid" class="form-label">Training Center</label>
-                                    <select name="trainingcenterid" class="form-select" id="trainingcenterid" required>
-                                        <option value="">Select Training Center</option>
-                                        <?php 
-                                        $sql = "SELECT * FROM tbltrainingcenter";
-                                        $query = $dbh->prepare($sql);
-                                        $query->execute();
-                                        $trainings = $query->fetchAll(PDO::FETCH_OBJ);
-                                        if ($query->rowCount() > 0) {
-                                            foreach ($trainings as $training) { ?>
-                                                <option value="<?php echo htmlentities($training->TrainingcenterId); ?>">
-                                                    <?php echo htmlentities($training->trainingcentername); ?>
-                                                </option>
-                                        <?php }
-                                        } ?>
-                                    </select>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="schemeid" class="form-label">Scheme</label>
-                                    <select name="schemeid" class="form-select" id="schemeid" required>
-                                        <option value="">Select Scheme</option>
-                                    </select>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="sectorid" class="form-label">Sector</label>
-                                    <select name="sectorid" class="form-select" id="sectorid" required>
-                                        <option value="">Select Sector</option>
-                                    </select>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="jobroll_id" class="form-label">Job Roll</label>
-                                    <select name="jobroll_id" class="form-select" id="jobroll_id" required>
-                                        <option value="">Select Job Roll</option>
-                                    </select>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="batchid" class="form-label">Batch</label>
-                                    <select name="batchid" class="form-select" id="batchid" required>
-                                        <option value="">Select Batch</option>
-                                    </select>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="tranche" class="form-label">Tranche</label>
-                                    <select name="tranche" class="form-select" required>
-                                        <option value="">Select Tranche</option>
-                                        <option value="1ST">1ST</option>
-                                        <option value="2ND">2ND</option>
-                                        <option value="3RD">3RD</option>
-                                    </select>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="amount" class="form-label">Invoice Amount</label>
-                                    <input type="number" name="amount" class="form-control" id="amount" step="0.01" required>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="manual_batch_id" class="form-label">Manual Batch ID</label>
+                                            <input type="text" name="manual_batch_id" class="form-control" id="manual_batch_id" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="trainingcenterid" class="form-label">Training Center</label>
+                                            <select name="trainingcenterid" class="form-select" id="trainingcenterid" required>
+                                                <option value="">Select Training Center</option>
+                                                <?php 
+                                                $sql = "SELECT * FROM tbltrainingcenter";
+                                                $query = $dbh->prepare($sql);
+                                                $query->execute();
+                                                $trainings = $query->fetchAll(PDO::FETCH_OBJ);
+                                                if ($query->rowCount() > 0) {
+                                                    foreach ($trainings as $training) { ?>
+                                                        <option value="<?php echo htmlentities($training->TrainingcenterId); ?>">
+                                                            <?php echo htmlentities($training->trainingcentername); ?>
+                                                        </option>
+                                                <?php }
+                                                } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="schemeid" class="form-label">Scheme</label>
+                                            <select name="schemeid" class="form-select" id="schemeid" required>
+                                                <option value="">Select Scheme</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="sectorid" class="form-label">Sector</label>
+                                            <select name="sectorid" class="form-select" id="sectorid" required>
+                                                <option value="">Select Sector</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="jobroll_id" class="form-label">Job Roll</label>
+                                            <select name="jobroll_id" class="form-select" id="jobroll_id" required>
+                                                <option value="">Select Job Roll</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="batchid" class="form-label">Batch</label>
+                                            <select name="batchid" class="form-select" id="batchid" required>
+                                                <option value="">Select Batch</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="tranche" class="form-label">Tranche</label>
+                                            <select name="tranche" class="form-select" required>
+                                                <option value="">Select Tranche</option>
+                                                <option value="1ST">1ST</option>
+                                                <option value="2ND">2ND</option>
+                                                <option value="3RD">3RD</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="amount" class="form-label">Invoice Amount</label>
+                                            <input type="number" name="amount" class="form-control" id="amount" step="0.01" required>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <button type="submit" name="submit" class="btn btn-primary">
