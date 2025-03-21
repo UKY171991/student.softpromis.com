@@ -223,6 +223,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
     <!-- ========== COMMON JS FILES ========== -->
     <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
     <script src="js/bootstrap/bootstrap.min.js"></script>
     <script src="js/pace/pace.min.js"></script>
     <script src="js/lobipanel/lobipanel.min.js"></script>
@@ -231,6 +232,7 @@ if (strlen($_SESSION['alogin']) == "") {
     <!-- ========== PAGE JS FILES ========== -->
     <script src="js/prism/prism.js"></script>
     <script src="js/DataTables/datatables.min.js"></script>
+
 
     <!-- ========== THEME JS ========== -->
     <script src="js/main.js"></script>
