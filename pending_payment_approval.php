@@ -82,21 +82,7 @@ if (strlen($_SESSION['alogin']) == "") {
                     </div>
                     <!-- /.container-fluid -->
 
-                    <section class="section">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-12">
-
-                                    <div class="panel">
-                                        
-                                    </div>
-                                </div>
-                                <!-- /.col-md-6 -->
-
-
-                            </div>
-                            <!-- /.col-md-12 -->
-                        </div>
+                   
                 </div>
                 <!-- /.panel -->
             </div>
@@ -200,143 +186,143 @@ if (strlen($_SESSION['alogin']) == "") {
 
       <div class="card">
             <div class="card-header bg-white py-3">
-                <h5 class="mb-0">Create Sector</h5>
+                <h5 class="mb-0">Pending Approval</h5>
             </div>
             <div class="card-body">
                 <div class="panel-heading">
-                                            <div class="panel-title" style="display: flex;">
-                                                <?php
-                                                $sqls = "SELECT SUM(paid) as total_paid FROM emi_list WHERE added_type = 2";
-                                                $querys = $dbh->prepare($sqls);
-                                                $querys->execute();
-                                                $res = $querys->fetch(PDO::FETCH_OBJ); 
+                    <div class="panel-title" style="display: flex;">
+                        <?php
+                        $sqls = "SELECT SUM(paid) as total_paid FROM emi_list WHERE added_type = 2";
+                        $querys = $dbh->prepare($sqls);
+                        $querys->execute();
+                        $res = $querys->fetch(PDO::FETCH_OBJ); 
 
-                                                //print_r($res->total_paid);
-                                                ?>
+                        //print_r($res->total_paid);
+                        ?>
 
-                                                <!-- <h5>Pending Payment Approval : <?=$res->total_paid?></h5> -->
-                                                <h5>Total Pending Amount : <?=$res->total_paid?></h5>
-                                            </div>
-                                        </div>
-                                        <?php if ($msg) { ?>
-                                        <div class="alert alert-success left-icon-alert" role="alert">
-                                            <strong>Well done!</strong>
-                                            <?php echo htmlentities($msg); ?>
-                                        </div>
-                                        <?php } else if ($error) { ?>
-                                        <div class="alert alert-danger left-icon-alert" role="alert">
-                                            <strong>Oh snap!</strong>
-                                            <?php echo htmlentities($error); ?>
-                                        </div>
-                                        <?php } ?>
-                                        <div class="panel-body p-20" style="overflow: scroll;">
-                                            <table id="example"
-                                                class="table table-stripped table-bordered table-hover table-full-width table-grey table-responsive-lg"
-                                                cellspacing="0" width="100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>Enrollment id</th>
-                                                        <th>Name</th>
-                                                        <th>Total fee</th>
-                                                        <th>Paid</th>
-                                                        <th>Balance</th>
-                                                        <th>Last Paid</th>
-                                                        <th>Updated Date</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>Enrollment id</th>
-                                                        <th>Name</th>
-                                                        <th>Total fee</th>
-                                                        <th>Paid</th>
-                                                        <th>Balance</th>
-                                                        <th>Last Paid</th>
-                                                        <th>Updated Date</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </tfoot>
-                                                <tbody>
-                                                    <?php
-                                                     $sql = "SELECT * from emi_list where added_type= 2";
-                                                        $query = $dbh->prepare($sql);
-                                                        $query->execute();
-                                                        $results = $query->fetchAll(PDO::FETCH_OBJ);
-                                                        $cnt = 1;
-
-
-
-                                                        if ($query->rowCount() > 0) {
-                                                            foreach ($results as $result) { 
-                                                                $candidate_id = $result->candidate_id;
+                        <!-- <h5>Pending Payment Approval : <?=$res->total_paid?></h5> -->
+                        <h5>Total Pending Amount : <?=$res->total_paid?></h5>
+                    </div>
+                </div>
+                <?php if ($msg) { ?>
+                <div class="alert alert-success left-icon-alert" role="alert">
+                    <strong>Well done!</strong>
+                    <?php echo htmlentities($msg); ?>
+                </div>
+                <?php } else if ($error) { ?>
+                <div class="alert alert-danger left-icon-alert" role="alert">
+                    <strong>Oh snap!</strong>
+                    <?php echo htmlentities($error); ?>
+                </div>
+                <?php } ?>
+                <div class="panel-body p-20" style="overflow: scroll;">
+                    <table id="example"
+                        class="table table-stripped table-bordered table-hover table-full-width table-grey table-responsive-lg"
+                        cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Enrollment id</th>
+                                <th>Name</th>
+                                <th>Total fee</th>
+                                <th>Paid</th>
+                                <th>Balance</th>
+                                <th>Last Paid</th>
+                                <th>Updated Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>#</th>
+                                <th>Enrollment id</th>
+                                <th>Name</th>
+                                <th>Total fee</th>
+                                <th>Paid</th>
+                                <th>Balance</th>
+                                <th>Last Paid</th>
+                                <th>Updated Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <?php
+                             $sql = "SELECT * from emi_list where added_type= 2";
+                                $query = $dbh->prepare($sql);
+                                $query->execute();
+                                $results = $query->fetchAll(PDO::FETCH_OBJ);
+                                $cnt = 1;
 
 
-                                                                 $sql_p = "SELECT * from payment where added_type= 2";
-                                                                 $query_p = $dbh->prepare($sql_p);
-                                                                 $query_p->execute();
-                                                                 $results_p = $query_p->fetchAll(PDO::FETCH_OBJ);
 
-                                                            
-
-                                                                $sql_c = "SELECT * from tblcandidate where CandidateId= '$candidate_id'";
-                                                                $query_c = $dbh->prepare($sql_c);
-                                                                $query_c->execute();
-                                                                $results_c = $query_c->fetchAll(PDO::FETCH_OBJ);
-
-                                                        ?>
-                                                    <tr>
-                                                        <td>
-                                                            <?php echo htmlentities($cnt); ?>
-                                                        </td>
-                                                        <td>
-                                                            <?php echo htmlentities($results_c[0]->enrollmentid); ?>
-                                                        </td>
-                                                        <td>
-                                                            <?php echo htmlentities($results_c[0]->candidatename); ?>
-                                                        </td>
-                                                        <td>
-                                                            <?php echo htmlentities($results_p[0]->total_fee); ?>
-                                                        </td>
-
-                                                        <td>
-                                                            <?php echo htmlentities($results_p[0]->paid); ?>
-                                                        </td>
-                                                        <td>
-                                                            <?php echo htmlentities($results_p[0]->balance); ?>
-                                                        </td>
-
-                                                        <td>
-                                                            <?php echo htmlentities($result->paid); ?>
-                                                        </td>
-                                                        
-                                                        <td>
-                                                            <?php echo date("d M Y h:i:s A", strtotime($result->created)); ?>
-                                                        </td>
-                                                        <td>
-                                                            <?php
-                                                             if($_SESSION['user_type']!=1){
-                                                                echo "Pending Approval";
-                                                             }else{
-                                                                echo '<a class="badge badge-info" href="#" onclick="updateStatus( '. htmlentities($result->candidate_id) .', '. htmlentities($result->id) .')">Approve</a>';
-                                                             } 
-                                                             ?>
-                                                            
-                                                        </td>
-                                                    </tr>
-                                                    <?php $cnt = $cnt + 1;
-                                                            }
-                                                        } ?>
+                                if ($query->rowCount() > 0) {
+                                    foreach ($results as $result) { 
+                                        $candidate_id = $result->candidate_id;
 
 
-                                                </tbody>
-                                            </table>
+                                         $sql_p = "SELECT * from payment where added_type= 2";
+                                         $query_p = $dbh->prepare($sql_p);
+                                         $query_p->execute();
+                                         $results_p = $query_p->fetchAll(PDO::FETCH_OBJ);
+
+                                    
+
+                                        $sql_c = "SELECT * from tblcandidate where CandidateId= '$candidate_id'";
+                                        $query_c = $dbh->prepare($sql_c);
+                                        $query_c->execute();
+                                        $results_c = $query_c->fetchAll(PDO::FETCH_OBJ);
+
+                                ?>
+                            <tr>
+                                <td>
+                                    <?php echo htmlentities($cnt); ?>
+                                </td>
+                                <td>
+                                    <?php echo htmlentities($results_c[0]->enrollmentid); ?>
+                                </td>
+                                <td>
+                                    <?php echo htmlentities($results_c[0]->candidatename); ?>
+                                </td>
+                                <td>
+                                    <?php echo htmlentities($results_p[0]->total_fee); ?>
+                                </td>
+
+                                <td>
+                                    <?php echo htmlentities($results_p[0]->paid); ?>
+                                </td>
+                                <td>
+                                    <?php echo htmlentities($results_p[0]->balance); ?>
+                                </td>
+
+                                <td>
+                                    <?php echo htmlentities($result->paid); ?>
+                                </td>
+                                
+                                <td>
+                                    <?php echo date("d M Y h:i:s A", strtotime($result->created)); ?>
+                                </td>
+                                <td>
+                                    <?php
+                                     if($_SESSION['user_type']!=1){
+                                        echo "Pending Approval";
+                                     }else{
+                                        echo '<a class="badge badge-info" href="#" onclick="updateStatus( '. htmlentities($result->candidate_id) .', '. htmlentities($result->id) .')">Approve</a>';
+                                     } 
+                                     ?>
+                                    
+                                </td>
+                            </tr>
+                            <?php $cnt = $cnt + 1;
+                                    }
+                                } ?>
 
 
-                                            <!-- /.col-md-12 -->
-                                        </div>
+                        </tbody>
+                    </table>
+
+
+                    <!-- /.col-md-12 -->
+                </div>
             </div>
         </div>
 
