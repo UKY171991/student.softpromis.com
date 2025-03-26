@@ -18,7 +18,6 @@ if (strlen($_SESSION['alogin']) == "") {
     <link rel="stylesheet" href="css/lobipanel/lobipanel.min.css" media="screen">
     <link rel="stylesheet" href="css/prism/prism.css" media="screen"> <!-- USED FOR DEMO HELP - YOU CAN REMOVE IT -->
     <link rel="stylesheet" type="text/css" href="js/DataTables/datatables.min.css" />
-    <link rel="stylesheet" href="css/main.css" media="screen">
 
   <!-- <link rel="stylesheet" href="css/bootstrap.min.css" media="screen"> -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
