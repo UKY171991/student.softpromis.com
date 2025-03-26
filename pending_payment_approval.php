@@ -372,6 +372,25 @@ if (strlen($_SESSION['alogin']) == "") {
       <main class="col-lg-10 col-md-9 p-4">
         <h2 class="mb-4">Softpro Dashboard</h2>
       
+
+      <div class="card">
+            <div class="card-header bg-white py-3">
+                <h5 class="mb-0">Create Sector</h5>
+            </div>
+            <div class="card-body">
+                <form method="post" action="create-sector.php">
+                    <div class="mb-3">
+                        <label for="sectorname" class="form-label">Sector Name</label>
+                        <input type="text" name="sectorname" class="form-control" id="sectorname" required="">
+                        <div class="form-text help-block">Enter the sector name here</div>
+                    </div>
+                    <button type="submit" name="submit" class="btn btn-success">
+                        <i class="fas fa-check me-2"></i>Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+                    
     </main>
     </div><!-- /.row -->
   </div><!-- /.container-fluid -->
