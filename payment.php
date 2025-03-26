@@ -255,17 +255,7 @@ if (strlen($_SESSION['alogin']) == "") {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SOFTPRO | ADMIN </title>
-    <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
-    <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
-    <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/lobipanel/lobipanel.min.css" media="screen">
-    <link rel="stylesheet" href="css/prism/prism.css" media="screen">
-    <link rel="stylesheet" href="css/select2/select2.min.css">
-    <link rel="stylesheet" href="css/main.css" media="screen">
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="css/mystyle.css">
-    <script src="js/modernizr/modernizr.min.js"></script>
+    
 
 </head>
 
@@ -976,6 +966,19 @@ if (strlen($_SESSION['alogin']) == "") {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SOFTPRO | ADMIN | Dashboard</title>
+
+
+    
+    <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/lobipanel/lobipanel.min.css" media="screen">
+    <link rel="stylesheet" href="css/prism/prism.css" media="screen">
+    <link rel="stylesheet" href="css/select2/select2.min.css">
+    <link rel="stylesheet" href="css/main.css" media="screen">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="css/mystyle.css">
+    <script src="js/modernizr/modernizr.min.js"></script>
+
 
   <!-- <link rel="stylesheet" href="css/bootstrap.min.css" media="screen"> -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
