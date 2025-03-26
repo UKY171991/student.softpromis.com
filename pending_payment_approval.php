@@ -44,11 +44,6 @@ if (strlen($_SESSION['alogin']) == "") {
        <?php include('includes/leftbar.php'); ?>
 
 
-      <!-- Main Content -->
-      <main class="col-lg-10 col-md-9 p-4">
-        <h2 class="mb-4">Softpro Dashboard</h2>
-        <div class="row g-3">
-            <!-- Regd Candidates Card -->
 
 
                     <div class="container-fluid">
@@ -224,11 +219,6 @@ if (strlen($_SESSION['alogin']) == "") {
                             <!-- /.col-md-12 -->
                         </div>
 
-
-         
-            
-        </div><!-- /.row -->
-    </main>
     </div><!-- /.row -->
   </div><!-- /.container-fluid -->
 
