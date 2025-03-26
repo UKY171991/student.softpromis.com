@@ -50,7 +50,7 @@ if (strlen($_SESSION['alogin']) == "") {
         <div class="row g-3">
             <!-- Regd Candidates Card -->
 
-            <div class="main-page">
+
                     <div class="container-fluid">
                         <div class="row page-title-div">
                             <div class="col-md-6">
@@ -223,7 +223,6 @@ if (strlen($_SESSION['alogin']) == "") {
                             </div>
                             <!-- /.col-md-12 -->
                         </div>
-                </div>
 
 
          
