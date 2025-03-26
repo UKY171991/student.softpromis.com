@@ -136,53 +136,11 @@ if (strlen($_SESSION['alogin']) == "") {
 
     <!-- ========== THEME JS ========== -->
     <script src="js/main.js"></script>
-    <script>
-    $(function($) {
-        $('#example').DataTable();
-
-        $('#example2').DataTable({
-            "scrollY": "300px",
-            "scrollCollapse": true,
-            "paging": false
-        });
-
-        $('#example3').DataTable();
-    });
-    </script>
+    
 </body>
 
 </html>
 <?php } ?>
-
-<script>
-
-function updateStatus(candidateId,id) {
-    // Ask for confirmation
-    if (confirm("Are you sure you want to update the status?")) {
-        $.ajax({
-            url: 'appve_ajax.php',  // Path to the PHP backend file
-            type: 'POST',
-            data: { candidate_id: candidateId,id:id },
-            dataType: 'json',
-            success: function(response) {
-                if(response.status === 'success'){
-                    alert('Status updated successfully!');
-                     window.location.reload();
-                    // Optionally, update the UI here (e.g., change a label or reload a section)
-                } else {
-                    alert('Update failed: ' + response.message);
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error('AJAX Error:', error);
-                alert('An error occurred while updating the status.');
-            }
-        });
-    }
-}
-
-
-</script>
 
 
 
@@ -381,7 +339,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                         </div>
             </div>
         </div>
-                    
+
     </main>
     </div><!-- /.row -->
   </div><!-- /.container-fluid -->
@@ -398,6 +356,50 @@ if (strlen($_SESSION['alogin']) == "") {
   <script src="js/prism/prism.js"></script>
   <script src="js/select2/select2.min.js"></script>
   <script src="js/main.js"></script>
+  <script>
+    $(function($) {
+        $('#example').DataTable();
+
+        $('#example2').DataTable({
+            "scrollY": "300px",
+            "scrollCollapse": true,
+            "paging": false
+        });
+
+        $('#example3').DataTable();
+    });
+    </script>
 </body>
 </html>
 <?php } ?>
+
+
+<script>
+
+function updateStatus(candidateId,id) {
+    // Ask for confirmation
+    if (confirm("Are you sure you want to update the status?")) {
+        $.ajax({
+            url: 'appve_ajax.php',  // Path to the PHP backend file
+            type: 'POST',
+            data: { candidate_id: candidateId,id:id },
+            dataType: 'json',
+            success: function(response) {
+                if(response.status === 'success'){
+                    alert('Status updated successfully!');
+                     window.location.reload();
+                    // Optionally, update the UI here (e.g., change a label or reload a section)
+                } else {
+                    alert('Update failed: ' + response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('AJAX Error:', error);
+                alert('An error occurred while updating the status.');
+            }
+        });
+    }
+}
+
+
+</script>
