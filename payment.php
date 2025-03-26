@@ -263,13 +263,13 @@ if (strlen($_SESSION['alogin']) == "") {
     <div class="main-wrapper">
 
         <!-- ========== TOP NAVBAR ========== -->
-        <?php include('includes/topbar.php'); ?>
+        <?php // include('includes/topbar.php'); ?>
         <!-- ========== WRAPPER FOR BOTH SIDEBARS & MAIN CONTENT ========== -->
         <div class="content-wrapper">
             <div class="content-container">
 
                 <!-- ========== LEFT SIDEBAR ========== -->
-                <?php include('includes/leftbar.php'); ?>
+                <?php // include('includes/leftbar.php'); ?>
                 <!-- /.left-sidebar -->
 
                 <div class="main-page">
