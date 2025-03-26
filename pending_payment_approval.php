@@ -13,9 +13,8 @@ if (strlen($_SESSION['alogin']) == "") {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SOFTPRO | ADMIN | Dashboard</title>
 
-      <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
-    <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
-    <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen">
+
+
     <link rel="stylesheet" href="css/lobipanel/lobipanel.min.css" media="screen">
     <link rel="stylesheet" href="css/prism/prism.css" media="screen"> <!-- USED FOR DEMO HELP - YOU CAN REMOVE IT -->
     <link rel="stylesheet" type="text/css" href="js/DataTables/datatables.min.css" />
