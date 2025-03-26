@@ -96,19 +96,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
     <!-- ========== THEME JS ========== -->
     <script src="js/main.js"></script>
-    <script>
-    $(function($) {
-        $('#example').DataTable();
-
-        $('#example2').DataTable({
-            "scrollY": "300px",
-            "scrollCollapse": true,
-            "paging": false
-        });
-
-        $('#example3').DataTable();
-    });
-    </script>
+    
 </body>
 
 </html>
@@ -375,7 +363,7 @@ if (strlen($_SESSION['alogin']) == "") {
                         </div>
                 </div>
 
-                
+
             <div class="col-md-3">
                 <div class="dashboard-card bg-primary text-white" onclick="location.href='manage-candidate.php';">
                     <div class="d-flex justify-content-between align-items-center">
@@ -616,6 +604,19 @@ if (strlen($_SESSION['alogin']) == "") {
   <script src="js/prism/prism.js"></script>
   <script src="js/select2/select2.min.js"></script>
   <script src="js/main.js"></script>
+  <script>
+    $(function($) {
+        $('#example').DataTable();
+
+        $('#example2').DataTable({
+            "scrollY": "300px",
+            "scrollCollapse": true,
+            "paging": false
+        });
+
+        $('#example3').DataTable();
+    });
+    </script>
 </body>
 </html>
 <?php } ?>
