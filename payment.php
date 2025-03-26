@@ -967,10 +967,6 @@ if (strlen($_SESSION['alogin']) == "") {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SOFTPRO | ADMIN | Dashboard</title>
 
-
-    
-    <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/lobipanel/lobipanel.min.css" media="screen">
     <link rel="stylesheet" href="css/prism/prism.css" media="screen">
     <link rel="stylesheet" href="css/select2/select2.min.css">
