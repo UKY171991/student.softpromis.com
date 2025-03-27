@@ -219,27 +219,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                     </div>
                                 </div>
 
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <label for="start_date" class="form-label">Start Date</label>
-                                        <input type="date" name="start_date" class="form-control" id="start_date" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="end_date" class="form-label">End Date</label>
-                                        <input type="date" name="end_date" class="form-control" id="end_date" required>
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <label for="start_time" class="form-label">Start Time</label>
-                                        <input type="time" name="start_time" class="form-control" id="start_time" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="end_time" class="form-label">End Time</label>
-                                        <input type="time" name="end_time" class="form-control" id="end_time" required>
-                                    </div>
-                                </div>
+                              
 
                                 <button type="submit" name="submit" class="btn btn-primary">
                                     <i class="fas fa-check me-2"></i>Add Batch
