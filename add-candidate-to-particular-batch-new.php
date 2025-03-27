@@ -99,34 +99,23 @@ if (strlen($_SESSION['alogin']) == "") {
                 <main class="col-md-9 col-lg-10 px-md-4">
                     <!-- Page Title -->
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-                        <h1 class="h2">Add Batch</h1>
+                        <h1 class="h2">Add candidate to particular batch</h1>
                     </div>
 
                     <!-- Breadcrumb -->
                     <nav aria-label="breadcrumb" class="mb-4">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="dashboard.php"><i class="fas fa-home"></i> Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Add Batch</li>
+                            <li class="breadcrumb-item active" aria-current="page">Add candidate to particular batch</li>
                         </ol>
                     </nav>
 
-                    <!-- Messages -->
-                    <?php if ($msg) { ?>
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong>Well done!</strong> <?php echo htmlentities($msg); ?>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    <?php } else if ($error) { ?>
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Oh snap!</strong> <?php echo htmlentities($error); ?>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    <?php } ?>
+                    
 
                     <!-- Form -->
                     <div class="card">
                         <div class="card-header bg-white py-3">
-                            <h5 class="mb-0">Add New Batch</h5>
+                            <h5 class="mb-0">Add candidate to particular batch</h5>
                         </div>
                         <div class="card-body">
                             <form method="post">
