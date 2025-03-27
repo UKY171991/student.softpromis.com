@@ -123,9 +123,9 @@ if (strlen($_SESSION['alogin']) == "") {
                 <!-- Main Content -->
                 <main class="col-md-9 col-lg-10 px-md-4">
                     <!-- Page Title -->
-                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                   <!--  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                         <h1 class="h2">Add candidate to particular batch</h1>
-                    </div>
+                    </div> -->
 
                     <!-- Breadcrumb -->
                     <nav aria-label="breadcrumb" class="mb-4">
