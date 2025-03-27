@@ -62,6 +62,57 @@ if (strlen($_SESSION['alogin']) == "") {
   <link rel="stylesheet" href="includes/style.css">
 
 
+    <script>
+    function getStudent(val) {
+        $.ajax({
+            type: "POST",
+            url: "get_student.php",
+            data: 'trainingid=' + val,
+            success: function(data) {
+                $("#studentid").html(data); 
+
+            }
+        });
+    }
+
+    function getsector(val) {
+        $.ajax({
+            type: "POST",
+            url: "get_student.php",
+            data: 'schemeid=' + val,
+            success: function(data) {
+                $("#sectorid").html(data);
+
+            }
+        });
+    }
+
+    function getjobroll(val) {
+        $.ajax({
+            type: "POST",
+            url: "get_student.php",
+            data: 'sectorid=' + val,
+            success: function(data) {
+                $("#jobrollid").html(data);
+
+            }
+        });
+    }
+
+    function getbatch(val) {
+        $.ajax({
+            type: "POST",
+            url: "get_student.php",
+            data: 'jobrollid=' + val,
+            success: function(data) {
+                $("#batchid").html(data);
+
+            }
+        });
+    }
+    </script>
+
+
     
     
     <style>
@@ -181,55 +232,12 @@ if (strlen($_SESSION['alogin']) == "") {
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="jobrollid" class="form-label">Job Roll</label>
-                                            <select name="jobrollid" class="form-select" id="jobrollid" required>
-                                                <option value="">Select Job Roll</option>
-                                                <?php 
-                                                $sql = "SELECT * FROM tbljobroll";
-                                                $query = $dbh->prepare($sql);
-                                                $query->execute();
-                                                $jobrolls = $query->fetchAll(PDO::FETCH_OBJ);
-                                                if ($query->rowCount() > 0) {
-                                                    foreach ($jobrolls as $jobroll) { ?>
-                                                        <option value="<?php echo htmlentities($jobroll->JobrollId); ?>">
-                                                            <?php echo htmlentities($jobroll->jobrollname); ?>
-                                                        </option>
-                                                <?php }
-                                                } ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="batchname" class="form-label">Batch Name</label>
-                                            <input type="text" name="batchname" class="form-control" id="batchname" required>
-                                        </div>
-                                    </div>
+                                  
+                                   
                                 </div>
 
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <label for="start_date" class="form-label">Start Date</label>
-                                        <input type="date" name="start_date" class="form-control" id="start_date" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="end_date" class="form-label">End Date</label>
-                                        <input type="date" name="end_date" class="form-control" id="end_date" required>
-                                    </div>
-                                </div>
+                               
 
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <label for="start_time" class="form-label">Start Time</label>
-                                        <input type="time" name="start_time" class="form-control" id="start_time" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="end_time" class="form-label">End Time</label>
-                                        <input type="time" name="end_time" class="form-control" id="end_time" required>
-                                    </div>
-                                </div>
 
                                 <button type="submit" name="submit" class="btn btn-primary">
                                     <i class="fas fa-check me-2"></i>Add Batch
@@ -271,63 +279,7 @@ if (strlen($_SESSION['alogin']) == "") {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SOFTPRO | ADMIN </title>
-    <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
-    <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
-    <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen">
-    <link rel="stylesheet" href="css/lobipanel/lobipanel.min.css" media="screen">
-    <link rel="stylesheet" href="css/prism/prism.css" media="screen">
-    <link rel="stylesheet" href="css/select2/select2.min.css">
-    <link rel="stylesheet" href="css/main.css" media="screen">
-    <script src="js/modernizr/modernizr.min.js"></script>
-    <script>
-    function getStudent(val) {
-        $.ajax({
-            type: "POST",
-            url: "get_student.php",
-            data: 'trainingid=' + val,
-            success: function(data) {
-                $("#studentid").html(data); 
-
-            }
-        });
-    }
-
-    function getsector(val) {
-        $.ajax({
-            type: "POST",
-            url: "get_student.php",
-            data: 'schemeid=' + val,
-            success: function(data) {
-                $("#sectorid").html(data);
-
-            }
-        });
-    }
-
-    function getjobroll(val) {
-        $.ajax({
-            type: "POST",
-            url: "get_student.php",
-            data: 'sectorid=' + val,
-            success: function(data) {
-                $("#jobrollid").html(data);
-
-            }
-        });
-    }
-
-    function getbatch(val) {
-        $.ajax({
-            type: "POST",
-            url: "get_student.php",
-            data: 'jobrollid=' + val,
-            success: function(data) {
-                $("#batchid").html(data);
-
-            }
-        });
-    }
-    </script>
+    
 </head>
 
 <body class="top-navbar-fixed">
