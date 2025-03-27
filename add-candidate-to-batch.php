@@ -166,9 +166,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
                     <!-- Form -->
                     <div class="card">
-                        <div class="card-header bg-white py-3">
-                            <h5 class="mb-0">Add New Batch</h5>
-                        </div>
+                        
                         <div class="card-body">
                            
                             <div class="row">
