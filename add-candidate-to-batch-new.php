@@ -262,6 +262,19 @@ if (strlen($_SESSION['alogin']) == "") {
   <script src="js/prism/prism.js"></script>
   <script src="js/main.js"></script>
 
+    <script>
+    $(function($) {
+        $(".js-states").select2();
+        $(".js-states-limit").select2({
+            maximumSelectionLength: 2
+        });
+        $(".js-states-hide").select2({
+            minimumResultsForSearch: Infinity
+        });
+    });
+    </script>
+
+
 </body>
 </html>
 
@@ -445,25 +458,7 @@ if (strlen($_SESSION['alogin']) == "") {
     <!-- /.content-wrapper -->
     </div>
     <!-- /.main-wrapper -->
-    <script src="js/jquery/jquery-2.2.4.min.js"></script>
-    <script src="js/bootstrap/bootstrap.min.js"></script>
-    <script src="js/pace/pace.min.js"></script>
-    <script src="js/lobipanel/lobipanel.min.js"></script>
-    <script src="js/iscroll/iscroll.js"></script>
-    <script src="js/prism/prism.js"></script>
-    <script src="js/select2/select2.min.js"></script>
-    <script src="js/main.js"></script>
-    <script>
-    $(function($) {
-        $(".js-states").select2();
-        $(".js-states-limit").select2({
-            maximumSelectionLength: 2
-        });
-        $(".js-states-hide").select2({
-            minimumResultsForSearch: Infinity
-        });
-    });
-    </script>
+    
 </body>
 
 </html>
