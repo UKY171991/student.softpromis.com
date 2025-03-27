@@ -188,7 +188,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                             <?php } ?>
                                             <form class="form-horizontal" method="post">
                                                 <div class="form-group">
-                                                    <div class="row">
+                                                    <div class="row mt-2 mb-2">
                                                         <div class="col-md-6">
                                                             <label for="default" class="col-sm-2 control-label">Training
                                                         Center</label>
