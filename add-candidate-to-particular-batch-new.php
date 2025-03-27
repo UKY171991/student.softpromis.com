@@ -303,3 +303,5 @@ if (strlen($_SESSION['alogin']) == "") {
    
 </body>
 </html>
+
+<?php } ?>
