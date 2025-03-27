@@ -232,7 +232,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-6 mb-5">
                                                             <div class="form-group">
                                                                 <label for="default" class="col-sm-2 control-label">Jobroll Name</label>
                                                                 <div class="col-sm-10">
