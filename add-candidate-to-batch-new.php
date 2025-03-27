@@ -147,7 +147,7 @@ if (strlen($_SESSION['alogin']) == "") {
                     <nav aria-label="breadcrumb" class="mb-4">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="dashboard.php"><i class="fas fa-home"></i> Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Add Batch</li>
+                            <li class="breadcrumb-item active" aria-current="page">Add Candidate to batch</li>
                         </ol>
                     </nav>
 
@@ -170,79 +170,127 @@ if (strlen($_SESSION['alogin']) == "") {
                             <h5 class="mb-0">Add New Batch</h5>
                         </div>
                         <div class="card-body">
-                            <form method="post">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="trainingcenterid" class="form-label">Training Center</label>
-                                            <select name="trainingcenterid" class="form-select" id="trainingcenterid" required>
-                                                <option value="">Select Training Center</option>
-                                                <?php 
-                                                $sql = "SELECT * FROM tbltrainingcenter";
-                                                $query = $dbh->prepare($sql);
-                                                $query->execute();
-                                                $trainings = $query->fetchAll(PDO::FETCH_OBJ);
-                                                if ($query->rowCount() > 0) {
-                                                    foreach ($trainings as $training) { ?>
-                                                        <option value="<?php echo htmlentities($training->TrainingcenterId); ?>">
-                                                            <?php echo htmlentities($training->trainingcentername); ?>
-                                                        </option>
-                                                <?php }
-                                                } ?>
-                                            </select>
+                           
+                            <div class="row">
+                                 <div class="col-md-12">
+                                    <div class="panel">
+                                        <div class="panel-body">
+                                            <?php if ($msg) { ?>
+                                            <div class="alert alert-success left-icon-alert" role="alert">
+                                                <strong>Well done!</strong>
+                                                <?php echo htmlentities($msg); ?>
+                                            </div>
+                                            <?php } else if ($error) { ?>
+                                            <div class="alert alert-danger left-icon-alert" role="alert">
+                                                <strong>Oh snap!</strong>
+                                                <?php echo htmlentities($error); ?>
+                                            </div>
+                                            <?php } ?>
+                                            <form class="form-horizontal" method="post">
+                                                <div class="form-group">
+                                                    <label for="default" class="col-sm-2 control-label">Training
+                                                        Center</label>
+                                                    <div class="col-sm-10">
+                                                        <select name="trainingcenterid" class="form-control clid"
+                                                            id="classid" onChange="getStudent(this.value);"
+                                                            required="required">
+                                                            <option value="">Select Training Center Name</option>
+                                                            <?php $sql = "SELECT * from tbltrainingcenter";
+                                                            $query = $dbh->prepare($sql);
+                                                            $query->execute();
+                                                            $trainings = $query->fetchAll(PDO::FETCH_OBJ);
+                                                            if ($query->rowCount() > 0) {
+                                                                foreach ($trainings as $training) {   ?>
+                                                            <option
+                                                                value="<?php echo htmlentities($training->TrainingcenterId); ?>">
+                                                                <?php echo htmlentities($training->trainingcentername); ?>&nbsp;
+                                                            </option>
+                                                            <?php }
+                                                            } ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="date" class="col-sm-2 control-label ">Scheme Name</label>
+                                                    <div class="col-sm-10">
+                                                        <select name="schemeid" class="form-control stid" id="studentid"
+                                                            required="required" onChange="getsector(this.value);">
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="default" class="col-sm-2 control-label">Sector Name</label>
+                                                    <div class="col-sm-10">
+                                                        <select name="sectorid" class="form-control stid" id="sectorid"
+                                                            required="required" onChange="getjobroll(this.value);">
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="default" class="col-sm-2 control-label">Jobroll Name</label>
+                                                    <div class="col-sm-10">
+                                                        <select name="jobrollid" class="form-control stid" id="jobrollid"
+                                                            required="required" onChange="getbatch(this.value);">
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="schemeid" class="form-label">Scheme</label>
-                                            <select name="schemeid" class="form-select" id="schemeid" required>
-                                                <option value="">Select Scheme</option>
-                                                <?php 
-                                                $sql = "SELECT * FROM tblscheme";
-                                                $query = $dbh->prepare($sql);
-                                                $query->execute();
-                                                $schemes = $query->fetchAll(PDO::FETCH_OBJ);
-                                                if ($query->rowCount() > 0) {
-                                                    foreach ($schemes as $scheme) { ?>
-                                                        <option value="<?php echo htmlentities($scheme->SchemeId); ?>">
-                                                            <?php echo htmlentities($scheme->SchemeName); ?>
-                                                        </option>
-                                                <?php }
-                                                } ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="sectorid" class="form-label">Sector</label>
-                                            <select name="sectorid" class="form-select" id="sectorid" required>
-                                                <option value="">Select Sector</option>
-                                                <?php 
-                                                $sql = "SELECT * FROM tblsector";
-                                                $query = $dbh->prepare($sql);
-                                                $query->execute();
-                                                $sectors = $query->fetchAll(PDO::FETCH_OBJ);
-                                                if ($query->rowCount() > 0) {
-                                                    foreach ($sectors as $sector) { ?>
-                                                        <option value="<?php echo htmlentities($sector->SectorId); ?>">
-                                                            <?php echo htmlentities($sector->SectorName); ?>
-                                                        </option>
-                                                <?php }
-                                                } ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                  
-                                   
                                 </div>
+                                <!-- /.col-md-12 -->
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="panel">
+                                        <div class="panel-body p-20">
+                                            <table id="example" class="display table table-striped table-bordered"
+                                                cellspacing="0" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Batch Name</th>
+                                                        <th>Jobroll</th>
+                                                        <th>Sector</th>
+                                                        <th>Scheme</th>
+                                                        <th>Training Center</th>
+                                                        <th>Start Date</th>
+                                                        <th>End Date</th>
+                                                        <th>Start Time</th>
+                                                        <th>End Time</th>
+                                                        <th>Action</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Batch Name</th>
+                                                        <th>Jobroll</th>
+                                                        <th>Sector</th>
+                                                        <th>Scheme</th>
+                                                        <th>Training Center</th>
+                                                        <th>Start Date</th>
+                                                        <th>End Date</th>
+                                                        <th>Start Time</th>
+                                                        <th>End Time</th>
+                                                        <th>Action</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </tfoot>
+                                                <tbody id="batchid">
 
-                               
+                                                </tbody>
+                                            </table>
+                                            <!-- /.col-md-12 -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.col-md-6 -->
+                            </div>
 
 
-                                <button type="submit" name="submit" class="btn btn-primary">
-                                    <i class="fas fa-check me-2"></i>Add Batch
-                                </button>
-                            </form>
                         </div>
                     </div>
                 </main>
@@ -325,123 +373,7 @@ if (strlen($_SESSION['alogin']) == "") {
                         <!-- /.row -->
                     </div>
                     <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="panel">
-                                    <div class="panel-body">
-                                        <?php if ($msg) { ?>
-                                        <div class="alert alert-success left-icon-alert" role="alert">
-                                            <strong>Well done!</strong>
-                                            <?php echo htmlentities($msg); ?>
-                                        </div>
-                                        <?php } else if ($error) { ?>
-                                        <div class="alert alert-danger left-icon-alert" role="alert">
-                                            <strong>Oh snap!</strong>
-                                            <?php echo htmlentities($error); ?>
-                                        </div>
-                                        <?php } ?>
-                                        <form class="form-horizontal" method="post">
-                                            <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">Training
-                                                    Center</label>
-                                                <div class="col-sm-10">
-                                                    <select name="trainingcenterid" class="form-control clid"
-                                                        id="classid" onChange="getStudent(this.value);"
-                                                        required="required">
-                                                        <option value="">Select Training Center Name</option>
-                                                        <?php $sql = "SELECT * from tbltrainingcenter";
-                                                        $query = $dbh->prepare($sql);
-                                                        $query->execute();
-                                                        $trainings = $query->fetchAll(PDO::FETCH_OBJ);
-                                                        if ($query->rowCount() > 0) {
-                                                            foreach ($trainings as $training) {   ?>
-                                                        <option
-                                                            value="<?php echo htmlentities($training->TrainingcenterId); ?>">
-                                                            <?php echo htmlentities($training->trainingcentername); ?>&nbsp;
-                                                        </option>
-                                                        <?php }
-                                                        } ?>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="date" class="col-sm-2 control-label ">Scheme Name</label>
-                                                <div class="col-sm-10">
-                                                    <select name="schemeid" class="form-control stid" id="studentid"
-                                                        required="required" onChange="getsector(this.value);">
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">Sector Name</label>
-                                                <div class="col-sm-10">
-                                                    <select name="sectorid" class="form-control stid" id="sectorid"
-                                                        required="required" onChange="getjobroll(this.value);">
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">Jobroll Name</label>
-                                                <div class="col-sm-10">
-                                                    <select name="jobrollid" class="form-control stid" id="jobrollid"
-                                                        required="required" onChange="getbatch(this.value);">
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.col-md-12 -->
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="panel">
-                                    <div class="panel-body p-20">
-                                        <table id="example" class="display table table-striped table-bordered"
-                                            cellspacing="0" width="100%">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Batch Name</th>
-                                                    <th>Jobroll</th>
-                                                    <th>Sector</th>
-                                                    <th>Scheme</th>
-                                                    <th>Training Center</th>
-                                                    <th>Start Date</th>
-                                                    <th>End Date</th>
-                                                    <th>Start Time</th>
-                                                    <th>End Time</th>
-                                                    <th>Action</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Batch Name</th>
-                                                    <th>Jobroll</th>
-                                                    <th>Sector</th>
-                                                    <th>Scheme</th>
-                                                    <th>Training Center</th>
-                                                    <th>Start Date</th>
-                                                    <th>End Date</th>
-                                                    <th>Start Time</th>
-                                                    <th>End Time</th>
-                                                    <th>Action</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </tfoot>
-                                            <tbody id="batchid">
 
-                                            </tbody>
-                                        </table>
-                                        <!-- /.col-md-12 -->
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.col-md-6 -->
-                        </div>
                         <!-- /.col-md-12 -->
                     </div>
                 </div>
