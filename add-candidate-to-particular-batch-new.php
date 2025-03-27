@@ -81,6 +81,7 @@ if (strlen($_SESSION['alogin']) == "") {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/lobipanel/lobipanel.min.css" media="screen">
     <link rel="stylesheet" href="css/prism/prism.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="js/DataTables/datatables.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
     <link rel="stylesheet" href="css/main.css" media="screen">
     <link rel="stylesheet" href="css/mystyle.css"> 
@@ -93,7 +94,6 @@ if (strlen($_SESSION['alogin']) == "") {
   <link rel="stylesheet" href="includes/style.css">
 
 
-    
     
     <style>
         .card { border: none; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-radius: 10px; }
@@ -187,14 +187,7 @@ if (strlen($_SESSION['alogin']) == "") {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SOFTPRO | ADMIN</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
-    <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
-    <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen">
-    <link rel="stylesheet" href="css/lobipanel/lobipanel.min.css" media="screen">
-    <link rel="stylesheet" href="css/prism/prism.css" media="screen"> <!-- USED FOR DEMO HELP - YOU CAN REMOVE IT -->
-    <link rel="stylesheet" type="text/css" href="js/DataTables/datatables.min.css" />
-    <link rel="stylesheet" href="css/main.css" media="screen">
-    <script src="js/modernizr/modernizr.min.js"></script>
+    
     <style>
     .errorWrap {
         padding: 10px;
