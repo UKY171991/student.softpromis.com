@@ -265,56 +265,7 @@ if (strlen($_SESSION['alogin']) == "") {
   <script src="js/main.js"></script>
 
 
-    <script>
-    $(document).ready(function() {
-        $('#trainingcenterid, #schemeid, #sectorid, #jobrollid').select2({
-            placeholder: $(this).find('option:first').text(),
-            allowClear: true
-        });
-
-        // Dynamic loading functions (requires backend implementation in get_student.php)
-        $('#trainingcenterid').on('change', function() {
-            var val = $(this).val();
-            $.ajax({
-                type: "POST",
-                url: "get_student.php",
-                data: 'trainingid=' + val,
-                success: function(data) {
-                    $("#schemeid").html(data);
-                }
-            });
-        });
-
-        $('#schemeid').on('change', function() {
-            var val = $(this).val();
-            $.ajax({
-                type: "POST",
-                url: "get_student.php",
-                data: 'schemeid=' + val,
-                success: function(data) {
-                    $("#sectorid").html(data);
-                }
-            });
-        });
-
-        $('#sectorid').on('change', function() {
-            var val = $(this).val();
-            $.ajax({
-                type: "POST",
-                url: "get_student.php",
-                data: 'sectorid=' + val,
-                success: function(data) {
-                    $("#jobrollid").html(data);
-                }
-            });
-        });
-
-        // Auto-hide error alerts after 5 seconds
-        setTimeout(function() {
-            $('.alert-danger').fadeOut('slow');
-        }, 5000);
-    });
-    </script>
+   
 </body>
 </html>
 
