@@ -188,52 +188,66 @@ if (strlen($_SESSION['alogin']) == "") {
                                             <?php } ?>
                                             <form class="form-horizontal" method="post">
                                                 <div class="form-group">
-                                                    <label for="default" class="col-sm-2 control-label">Training
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label for="default" class="col-sm-2 control-label">Training
                                                         Center</label>
-                                                    <div class="col-sm-10">
-                                                        <select name="trainingcenterid" class="form-control clid"
-                                                            id="classid" onChange="getStudent(this.value);"
-                                                            required="required">
-                                                            <option value="">Select Training Center Name</option>
-                                                            <?php $sql = "SELECT * from tbltrainingcenter";
-                                                            $query = $dbh->prepare($sql);
-                                                            $query->execute();
-                                                            $trainings = $query->fetchAll(PDO::FETCH_OBJ);
-                                                            if ($query->rowCount() > 0) {
-                                                                foreach ($trainings as $training) {   ?>
-                                                            <option
-                                                                value="<?php echo htmlentities($training->TrainingcenterId); ?>">
-                                                                <?php echo htmlentities($training->trainingcentername); ?>&nbsp;
-                                                            </option>
-                                                            <?php }
-                                                            } ?>
-                                                        </select>
+                                                            <div class="col-sm-10">
+                                                                <select name="trainingcenterid" class="form-control clid"
+                                                                    id="classid" onChange="getStudent(this.value);"
+                                                                    required="required">
+                                                                    <option value="">Select Training Center Name</option>
+                                                                    <?php $sql = "SELECT * from tbltrainingcenter";
+                                                                    $query = $dbh->prepare($sql);
+                                                                    $query->execute();
+                                                                    $trainings = $query->fetchAll(PDO::FETCH_OBJ);
+                                                                    if ($query->rowCount() > 0) {
+                                                                        foreach ($trainings as $training) {   ?>
+                                                                    <option
+                                                                        value="<?php echo htmlentities($training->TrainingcenterId); ?>">
+                                                                        <?php echo htmlentities($training->trainingcentername); ?>&nbsp;
+                                                                    </option>
+                                                                    <?php }
+                                                                    } ?>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="date" class="col-sm-2 control-label ">Scheme Name</label>
+                                                                <div class="col-sm-10">
+                                                                    <select name="schemeid" class="form-control stid" id="studentid"
+                                                                        required="required" onChange="getsector(this.value);">
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="default" class="col-sm-2 control-label">Sector Name</label>
+                                                                <div class="col-sm-10">
+                                                                    <select name="sectorid" class="form-control stid" id="sectorid"
+                                                                        required="required" onChange="getjobroll(this.value);">
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="default" class="col-sm-2 control-label">Jobroll Name</label>
+                                                                <div class="col-sm-10">
+                                                                    <select name="jobrollid" class="form-control stid" id="jobrollid"
+                                                                        required="required" onChange="getbatch(this.value);">
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
+                                                    
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="date" class="col-sm-2 control-label ">Scheme Name</label>
-                                                    <div class="col-sm-10">
-                                                        <select name="schemeid" class="form-control stid" id="studentid"
-                                                            required="required" onChange="getsector(this.value);">
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="default" class="col-sm-2 control-label">Sector Name</label>
-                                                    <div class="col-sm-10">
-                                                        <select name="sectorid" class="form-control stid" id="sectorid"
-                                                            required="required" onChange="getjobroll(this.value);">
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="default" class="col-sm-2 control-label">Jobroll Name</label>
-                                                    <div class="col-sm-10">
-                                                        <select name="jobrollid" class="form-control stid" id="jobrollid"
-                                                            required="required" onChange="getbatch(this.value);">
-                                                        </select>
-                                                    </div>
-                                                </div>
+                                                
+                                                
+                                                
                                             </form>
                                         </div>
                                     </div>
