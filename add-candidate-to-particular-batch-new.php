@@ -64,17 +64,7 @@
                     </nav>
 
                     <!-- Messages -->
-                    <?php if ($msg) { ?>
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong>Well done!</strong> <?php echo htmlentities($msg); ?>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    <?php } else if ($error) { ?>
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Oh snap!</strong> <?php echo htmlentities($error); ?>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    <?php } ?>
+                   
 
                     <!-- Form -->
                     <div class="card">
