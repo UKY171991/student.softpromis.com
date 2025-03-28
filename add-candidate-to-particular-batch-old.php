@@ -67,80 +67,82 @@ if (strlen($_SESSION['alogin']) == "") {
         }
     }
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SOFTPRO | ADMIN</title>
-
-    <!-- <link rel="stylesheet" href="css/bootstrap.min.css" media="screen"> -->
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
     <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
     <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/lobipanel/lobipanel.min.css" media="screen">
-    <link rel="stylesheet" href="css/prism/prism.css" media="screen">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
-
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.bootstrap5.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap5.min.css">
-
+    <link rel="stylesheet" href="css/prism/prism.css" media="screen"> <!-- USED FOR DEMO HELP - YOU CAN REMOVE IT -->
+    <link rel="stylesheet" type="text/css" href="js/DataTables/datatables.min.css" />
     <link rel="stylesheet" href="css/main.css" media="screen">
-    <link rel="stylesheet" href="css/mystyle.css"> 
     <script src="js/modernizr/modernizr.min.js"></script>
-
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome 6 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="includes/style.css">
-
-
-    
     <style>
-        .card { border: none; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-radius: 10px; }
-        .form-control:focus, .select2-container--default .select2-selection--single:focus { 
-            border-color: #007bff; 
-            box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25); 
-        }
-        .select2-container { width: 100% !important; }
+    .errorWrap {
+        padding: 10px;
+        margin: 0 0 20px 0;
+        background: #fff;
+        border-left: 4px solid #dd3d36;
+        -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+    }
+
+    .succWrap {
+        padding: 10px;
+        margin: 0 0 20px 0;
+        background: #fff;
+        border-left: 4px solid #5cb85c;
+        -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+    }
     </style>
 </head>
 
-<body class="bg-light">
+<body class="top-navbar-fixed">
     <div class="main-wrapper">
-        <!-- Top Navbar -->
-        <?php include('includes/topbar-new.php'); ?>
 
-        <div class="container-fluid">
-            <div class="row">
-                <!-- Sidebar -->
-                <?php include('includes/left-sidebar-new.php'); ?>
+        <!-- ========== TOP NAVBAR ========== -->
+        <?php include('includes/topbar.php'); ?>
+        <!-- ========== WRAPPER FOR BOTH SIDEBARS & MAIN CONTENT ========== -->
+        <div class="content-wrapper">
+            <div class="content-container">
                 <?php include('includes/leftbar.php'); ?>
 
-                <!-- Main Content -->
-                <main class="col-md-9 col-lg-10 px-md-4 mt-3">
-                    <!-- Page Title -->
-                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-                        <h1 class="h2">Add candidate to particular batch</h1>
+                <div class="main-page">
+                    <div class="container-fluid">
+                        <div class="row page-title-div">
+                            <div class="col-md-6">
+                                <h2 class="title">Add candidate to particular batch</h2>
+                            </div>
+
+                            <!-- /.col-md-6 text-right -->
+                        </div>
+                        <!-- /.row -->
+                        <div class="row breadcrumb-div">
+                            <div class="col-md-6">
+                                <ul class="breadcrumb">
+                                    <li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
+                                    <li> Training Center</li>
+                                    <li class="active">Add candidate to particular batch</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <!-- /.row -->
                     </div>
+                    <!-- /.container-fluid -->
 
-                    <!-- Breadcrumb -->
-                    <nav aria-label="breadcrumb" class="mb-4">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="dashboard.php"><i class="fas fa-home"></i> Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Add candidate to particular batch</li>
-                        </ol>
-                    </nav>
+                    <section class="section">
+                        <div class="container-fluid">
 
-                    
 
-                    <!-- Form -->
-                    <div class="card">
-                        <div class="card-body">
-                            
+
                             <div class="row">
                                 <div class="col-md-12">
 
@@ -262,39 +264,45 @@ if (strlen($_SESSION['alogin']) == "") {
                                 </div>
                                 <!-- /.col-md-12 -->
                             </div>
-
                         </div>
-                    </div>
-                </main>
+                        <!-- /.panel -->
+                </div>
+                <!-- /.col-md-6 -->
+
             </div>
+            <!-- /.row -->
+
         </div>
+        <!-- /.container-fluid -->
+        </section>
+        <!-- /.section -->
+
     </div>
-
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
-  <script src="js/pace/pace.min.js"></script>
-  <script src="js/lobipanel/lobipanel.min.js"></script>
-  <script src="js/iscroll/iscroll.js"></script>
-  <script src="js/prism/prism.js"></script>
-  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.bootstrap5.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.4.1/js/responsive.bootstrap5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.colVis.min.js"></script>
-
-  <script src="js/main.js"></script>
+    <!-- /.main-page -->
 
 
-    
 
+    </div>
+    <!-- /.content-container -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    </div>
+    <!-- /.main-wrapper -->
+
+    <!-- ========== COMMON JS FILES ========== -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <script src="js/pace/pace.min.js"></script>
+    <script src="js/lobipanel/lobipanel.min.js"></script>
+    <script src="js/iscroll/iscroll.js"></script>
+
+    <!-- ========== PAGE JS FILES ========== -->
+    <script src="js/prism/prism.js"></script>
+    <script src="js/DataTables/datatables.min.js"></script>
+
+    <!-- ========== THEME JS ========== -->
+    <script src="js/main.js"></script>
     <script>
     $(function($) {
         $('#example').DataTable();
@@ -308,10 +316,7 @@ if (strlen($_SESSION['alogin']) == "") {
         $('#example3').DataTable();
     });
     </script>
-
-
-   
 </body>
-</html>
 
+</html>
 <?php } ?>
