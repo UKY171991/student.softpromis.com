@@ -856,6 +856,7 @@ if (strlen($_SESSION['alogin']) == "") {
     <script src="js/select2/select2.min.js"></script>
     <script src="js/main.js"></script>
 
+
     <script>
         $(function($) {
             $(".js-states").select2();
@@ -924,10 +925,6 @@ if (strlen($_SESSION['alogin']) == "") {
     </script>
 
 
-      <!-- jQuery and jQuery UI -->
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <!-- jQuery Timepicker Addon -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.css">
@@ -980,5 +977,92 @@ if (strlen($_SESSION['alogin']) == "") {
 
 
 
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SOFTPRO | ADMIN </title>
+
+
+</head>
+
+<body class="top-navbar-fixed">
+    <div class="main-wrapper">
+
+        <!-- ========== TOP NAVBAR ========== -->
+        <?php include('includes/topbar.php'); ?>
+        <!-- ========== WRAPPER FOR BOTH SIDEBARS & MAIN CONTENT ========== -->
+        <div class="content-wrapper">
+            <div class="content-container">
+
+                <!-- ========== LEFT SIDEBAR ========== -->
+                <?php include('includes/leftbar.php'); ?>
+                <!-- /.left-sidebar -->
+
+                <div class="main-page">
+
+                    <div class="container-fluid">
+                        <div class="row page-title-div">
+                            <div class="col-md-6">
+                                <h2 class="title">Candidate Payment</h2>
+
+                            </div>
+
+                            <!-- /.col-md-6 text-right -->
+                        </div>
+                        <!-- /.row -->
+                        <div class="row breadcrumb-div">
+                            <div class="col-md-6">
+                                <ul class="breadcrumb">
+                                    <li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
+
+                                    <li class="active">Candidate Payment</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <div class="container-fluid">
+                        <?php // print_r($results);?>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel">
+                                    <div class="panel-heading">
+                                        <div class="panel-title">
+                                            <h5>Fill the Payment info</h5>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        
+                                        
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.col-md-12 -->
+                        </div>
+                    </div>
+                </div>
+                <!-- /.content-container -->
+            </div>
+            <!-- /.content-wrapper -->
+        </div>
+
+
+        
+
+
+        <!-- /.main-wrapper -->
+
+        
+
+
+
+</body>
+
+</html>
 <?PHP } ?>
