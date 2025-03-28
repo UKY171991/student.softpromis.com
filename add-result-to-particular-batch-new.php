@@ -231,12 +231,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                 </form>
 
 
-
-
-
-
                             </div>
-                            <button type="button" id="deleteBtn" class="btn btn-danger mt-3">Delete Selected</button>
                         </div>
                     </div>
                 </main>
@@ -270,9 +265,22 @@ if (strlen($_SESSION['alogin']) == "") {
     <script src="js/prism/prism.js"></script>
     <script src="js/select2/select2.min.js"></script>
     <script src="js/main.js"></script>
+    <script>
+    $(function($) {
+        $('#example').DataTable();
 
+        $('#example2').DataTable({
+            "scrollY": "300px",
+            "scrollCollapse": true,
+            "paging": false
+        });
+
+        $('#example3').DataTable();
+    });
+    </script>
     
 </body>
 </html>
+
 
 <?php } ?>
