@@ -88,12 +88,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
                     <!-- Batches Table -->
                     <div class="card">
-                        <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0">Batch Information</h5>
-                            <a href="add-batch.php" class="btn btn-success">
-                                <i class="fas fa-plus"></i> Add Batch
-                            </a>
-                        </div>
+                        
 
 
                         
