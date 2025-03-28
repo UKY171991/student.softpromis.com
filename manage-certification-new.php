@@ -230,7 +230,6 @@ if (strlen($_SESSION['alogin']) == "") {
                                 </form>
 
                             </div>
-                            <button type="button" id="deleteBtn" class="btn btn-danger mt-3">Delete Selected</button>
                         </div>
                     </div>
                 </main>
