@@ -856,7 +856,6 @@ if (strlen($_SESSION['alogin']) == "") {
     <script src="js/select2/select2.min.js"></script>
     <script src="js/main.js"></script>
 
-
     <script>
         $(function($) {
             $(".js-states").select2();
@@ -925,6 +924,10 @@ if (strlen($_SESSION['alogin']) == "") {
     </script>
 
 
+      <!-- jQuery and jQuery UI -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <!-- jQuery Timepicker Addon -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.css">
@@ -1057,7 +1060,16 @@ if (strlen($_SESSION['alogin']) == "") {
 
 
         <!-- /.main-wrapper -->
+        <script src="js/jquery/jquery-2.2.4.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
 
+        <script src="js/bootstrap/bootstrap.min.js"></script>
+        <script src="js/pace/pace.min.js"></script>
+        <script src="js/lobipanel/lobipanel.min.js"></script>
+        <script src="js/iscroll/iscroll.js"></script>
+        <script src="js/prism/prism.js"></script>
+        <script src="js/select2/select2.min.js"></script>
+        <script src="js/main.js"></script>
         
 
 
