@@ -139,29 +139,39 @@ if (strlen($_SESSION['alogin']) == "") {
                                         </div>
                                         <?php } ?>
                                         <form class="form-horizontal" method="post">
-                                            <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">Training
-                                                    Center</label>
-                                                <div class="col-sm-10">
-                                                    <select name="trainingcenterid" class="form-control clid"
-                                                        id="classid" onChange="getStudent(this.value);"
-                                                        required="required">
-                                                        <option value="">Select Training Center Name</option>
-                                                        <?php $sql = "SELECT * from tbltrainingcenter";
-                                                            $query = $dbh->prepare($sql);
-                                                            $query->execute();
-                                                            $trainings = $query->fetchAll(PDO::FETCH_OBJ);
-                                                            if ($query->rowCount() > 0) {
-                                                                foreach ($trainings as $training) {   ?>
-                                                        <option
-                                                            value="<?php echo htmlentities($training->TrainingcenterId); ?>">
-                                                            <?php echo htmlentities($training->trainingcentername); ?>&nbsp;
-                                                        </option>
-                                                        <?php }
-                                                            } ?>
-                                                    </select>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                
+                                                        <label for="default" class="control-label">Training
+                                                            Center</label>
+                                        
+                                                        <select name="trainingcenterid" class="form-control clid"
+                                                            id="classid" onChange="getStudent(this.value);"
+                                                            required="required">
+                                                            <option value="">Select Training Center Name</option>
+                                                            <?php $sql = "SELECT * from tbltrainingcenter";
+                                                                $query = $dbh->prepare($sql);
+                                                                $query->execute();
+                                                                $trainings = $query->fetchAll(PDO::FETCH_OBJ);
+                                                                if ($query->rowCount() > 0) {
+                                                                    foreach ($trainings as $training) {   ?>
+                                                            <option
+                                                                value="<?php echo htmlentities($training->TrainingcenterId); ?>">
+                                                                <?php echo htmlentities($training->trainingcentername); ?>&nbsp;
+                                                            </option>
+                                                            <?php }
+                                                                } ?>
+                                                        </select>
+                                                    
+                                                    </div>
                                                 </div>
+                                                <div class="col-md-6"></div>
+                                                <div class="col-md-6"></div>
+                                                <div class="col-md-6"></div>
                                             </div>
+
+                                            
                                             <div class="form-group">
                                                 <label for="date" class="col-sm-2 control-label ">Scheme Name</label>
                                                 <div class="col-sm-10">
