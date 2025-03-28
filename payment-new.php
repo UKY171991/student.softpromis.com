@@ -10,7 +10,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
 
 
-    $candidate_id = $last_id; 
+    $candidate_id = $last_id;
 
 
 
