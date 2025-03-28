@@ -63,7 +63,7 @@ if (strlen($_SESSION['alogin']) == "") {
                 <main class="col-md-9 col-lg-10 px-md-4">
                     <!-- Page Title -->
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-                        <h1 class="h2">Manage placement</h1>
+                        <h1 class="h2">View Job Roll Info</h1>
                     </div>
 
                     <!-- Breadcrumb -->
