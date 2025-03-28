@@ -94,16 +94,16 @@ if (strlen($_SESSION['alogin']) == "") {
                 <!-- Main Content -->
                 <main class="col-md-9 col-lg-10 px-md-4">
                     <!-- Page Title -->
-                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-                        <h1 class="h2">Manage Candidates</h1>
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom mt-3">
+                        <h1 class="h2">Manage Result</h1>
                     </div>
 
                     <!-- Breadcrumb -->
                     <nav aria-label="breadcrumb" class="mb-4">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="dashboard.php"><i class="fas fa-home"></i> Home</a></li>
-                            <li class="breadcrumb-item">Candidate</li>
-                            <li class="breadcrumb-item active" aria-current="page">Manage Candidates</li>
+                            <li class="breadcrumb-item">Result</li>
+                            <li class="breadcrumb-item active" aria-current="page">Manage Result</li>
                         </ol>
                     </nav>
 
