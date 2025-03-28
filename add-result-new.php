@@ -166,36 +166,39 @@ if (strlen($_SESSION['alogin']) == "") {
                                                     
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6"></div>
-                                                <div class="col-md-6"></div>
-                                                <div class="col-md-6"></div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="date" class="control-label ">Scheme Name</label>
+                                         
+                                                        <select name="schemeid" class="form-control stid" id="studentid"
+                                                            required="required" onChange="getsector(this.value);">
+                                                        </select>
+                                                        
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="default" class="control-label">Sector Name</label>
+                                                        
+                                                        <select name="sectorid" class="form-control stid" id="sectorid"
+                                                            required="required" onChange="getjobroll(this.value);">
+                                                        </select>
+                                                        
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="default" class="control-label">Jobroll Name</label>
+                                                       
+                                                        <select name="jobrollid" class="form-control stid" id="jobrollid"
+                                                            required="required" onChange="getbatch(this.value);">
+                                                        </select>
+                                                        
+                                                    </div>
+                                                </div>
                                             </div>
 
                                             
-                                            <div class="form-group">
-                                                <label for="date" class="col-sm-2 control-label ">Scheme Name</label>
-                                                <div class="col-sm-10">
-                                                    <select name="schemeid" class="form-control stid" id="studentid"
-                                                        required="required" onChange="getsector(this.value);">
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">Sector Name</label>
-                                                <div class="col-sm-10">
-                                                    <select name="sectorid" class="form-control stid" id="sectorid"
-                                                        required="required" onChange="getjobroll(this.value);">
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">Jobroll Name</label>
-                                                <div class="col-sm-10">
-                                                    <select name="jobrollid" class="form-control stid" id="jobrollid"
-                                                        required="required" onChange="getbatch(this.value);">
-                                                    </select>
-                                                </div>
-                                            </div>
                                         </form>
                                     </div>
                                 </div>
