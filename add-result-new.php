@@ -121,113 +121,9 @@ if (strlen($_SESSION['alogin']) == "") {
                         </ol>
                     </nav>
 
-                   
-
-                    <!-- Form -->
-                    <div class="card">
-                        <div class="card-header bg-white py-3">
-                            <h5 class="mb-0">Add New Batch</h5>
-                        </div>
-                        <div class="card-body">
-                            <form method="post">
-                               
-                               
-
-                                <button type="submit" name="submit" class="btn btn-primary">
-                                    <i class="fas fa-check me-2"></i>Add Batch
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </main>
-            </div>
-        </div>
-    </div>
-
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
-  <script src="js/pace/pace.min.js"></script>
-  <script src="js/lobipanel/lobipanel.min.js"></script>
-  <script src="js/iscroll/iscroll.js"></script>
-  <script src="js/prism/prism.js"></script>
-  <script src="js/main.js"></script>
 
 
-    <script>
-    $(function($) {
-        $(".js-states").select2();
-        $(".js-states-limit").select2({
-            maximumSelectionLength: 2
-        });
-        $(".js-states-hide").select2({
-            minimumResultsForSearch: Infinity
-        });
-    });
-    </script>
-
-
-   
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SOFTPRO | ADMIN </title>
-    
-</head>
-
-<body class="top-navbar-fixed">
-    <div class="main-wrapper">
-        <!-- ========== TOP NAVBAR ========== -->
-        <?php include('includes/topbar.php'); ?>
-        <!-- ========== WRAPPER FOR BOTH SIDEBARS & MAIN CONTENT ========== -->
-        <div class="content-wrapper">
-            <div class="content-container">
-                <!-- ========== LEFT SIDEBAR ========== -->
-                <?php include('includes/leftbar.php'); ?>
-                <!-- /.left-sidebar -->
-                <div class="main-page">
-                    <div class="container-fluid">
-                        <div class="row page-title-div">
-                            <div class="col-md-6">
-                                <h2 class="title">Add result to batch</h2>
-                            </div>
-                            <!-- /.col-md-6 text-right -->
-                        </div>
-                        <!-- /.row -->
-                        <div class="row breadcrumb-div">
-                            <div class="col-md-6">
-                                <ul class="breadcrumb">
-                                    <li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
-                                    <li class="active">Add result to batch</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- /.row -->
-                    </div>
-                    <div class="container-fluid">
-                        <div class="row">
+                    <div class="row">
                             <div class="col-md-12">
                                 <div class="panel">
                                     <div class="panel-body">
@@ -343,6 +239,100 @@ if (strlen($_SESSION['alogin']) == "") {
                             </div>
                             <!-- /.col-md-6 -->
                         </div>
+                        
+
+                   
+
+                   
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+  <script src="js/pace/pace.min.js"></script>
+  <script src="js/lobipanel/lobipanel.min.js"></script>
+  <script src="js/iscroll/iscroll.js"></script>
+  <script src="js/prism/prism.js"></script>
+  <script src="js/main.js"></script>
+
+
+    <script>
+    $(function($) {
+        $(".js-states").select2();
+        $(".js-states-limit").select2({
+            maximumSelectionLength: 2
+        });
+        $(".js-states-hide").select2({
+            minimumResultsForSearch: Infinity
+        });
+    });
+    </script>
+
+
+   
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SOFTPRO | ADMIN </title>
+    
+</head>
+
+<body class="top-navbar-fixed">
+    <div class="main-wrapper">
+        <!-- ========== TOP NAVBAR ========== -->
+        <?php include('includes/topbar.php'); ?>
+        <!-- ========== WRAPPER FOR BOTH SIDEBARS & MAIN CONTENT ========== -->
+        <div class="content-wrapper">
+            <div class="content-container">
+                <!-- ========== LEFT SIDEBAR ========== -->
+                <?php include('includes/leftbar.php'); ?>
+                <!-- /.left-sidebar -->
+                <div class="main-page">
+                    <div class="container-fluid">
+                        <div class="row page-title-div">
+                            <div class="col-md-6">
+                                <h2 class="title">Add result to batch</h2>
+                            </div>
+                            <!-- /.col-md-6 text-right -->
+                        </div>
+                        <!-- /.row -->
+                        <div class="row breadcrumb-div">
+                            <div class="col-md-6">
+                                <ul class="breadcrumb">
+                                    <li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
+                                    <li class="active">Add result to batch</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <div class="container-fluid">
+                        
                         <!-- /.col-md-12 -->
                     </div>
                 </div>
