@@ -125,7 +125,7 @@ if (strlen($_SESSION['alogin']) == "") {
                             <h5 class="mb-0">Add New Batch</h5>
                         </div>
                         <div class="card-body">
-                            <form class="form-horizontal" method="post">
+                            <form class="form-horizontal mb-3" method="post">
                                 <div class="form-group">
                                     <label for="default" class="col-sm-2 control-label">Training
                                         Center</label>
