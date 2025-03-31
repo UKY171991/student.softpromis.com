@@ -192,7 +192,7 @@ if (strlen($_SESSION['alogin']) == "") {
             lengthChange: true,
             autoWidth: false,
             pageLength: 10,
-            lengthMenu: [[10, 20, 30, 100], [10, 20, 30, 100]],
+            lengthMenu: [[10, 20, 50, 100, 500], [10, 20, 50, 100, 500]],
             order: [[9, 'desc']], // Sort by Date Created descending
             dom:
               "<'row'<'col-sm-6'l><'col-sm-6'f>>" +
