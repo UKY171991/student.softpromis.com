@@ -53,8 +53,8 @@ if (strlen($_SESSION['alogin']) == "") {
         <!-- Top Navbar -->
         <?php include('includes/topbar-new.php'); ?>
 
-        <div class="container-fluid py-4">
-            <div class="row gx-3">
+        <div class="container-fluid">
+            <div class="row">
                 <!-- Sidebar -->
                 <?php include('includes/left-sidebar-new.php'); ?>
                 <?php include('includes/leftbar.php'); ?>
@@ -187,7 +187,7 @@ if (strlen($_SESSION['alogin']) == "") {
             buttons: [
                 {
                     extend: 'copy',
-                    exportOptions: { columns: [0, 1, 2, 3, 4] } // Exclude Action column
+                    exportOptions: { columns: [0, 1, 2, 3, 4] }
                 },
                 {
                     extend: 'csv',
@@ -204,13 +204,17 @@ if (strlen($_SESSION['alogin']) == "") {
                 {
                     extend: 'print',
                     exportOptions: { columns: [0, 1, 2, 3, 4] }
-                },
-                //'colvis'
+                }
             ],
-            dom: 'Bfrtip'
+            dom:
+                "<'row'<'col-sm-6'B><'col-sm-3'l><'col-sm-3'f>>" +
+                "<'row'<'col-sm-12'tr>>" +
+                "<'row'<'col-sm-5'i><'col-sm-7'p>>",
         });
 
-        table.buttons().container().appendTo('#example_wrapper .col-md-6:eq(0)');
+        // Move buttons to the correct position explicitly
+        table.buttons().container().appendTo('#example_wrapper .col-sm-6:eq(0)');
+
 
         // Delete functionality
         $('#example tbody').on('click', '.delete', function() {
