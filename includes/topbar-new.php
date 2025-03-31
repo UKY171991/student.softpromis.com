@@ -1,7 +1,8 @@
 <!-- Top Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
     <div class="container-fluid">
-      <a class="navbar-brand fw-bold" href="#">SOFTPRO Admin</a>
+      <a class="navbar-brand fw-bold" href="#">SOFTPRO <?= ($_SESSION['user_type'] == 1) ? 'Admin' : (($_SESSION['user_type'] == 2) ? 'MIS' : 'Training') ?>
+</a>
       
 
       <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
