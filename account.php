@@ -50,6 +50,28 @@ if (strlen($_SESSION['alogin']) == "") {
   .dashboard-card p {
     margin: 0;
   }
+
+   /* Sidebar styling */
+    .sidebar {
+      background-color: #343a40;
+      min-height: 100vh;
+    }
+    .sidebar .nav-link {
+      color: #adb5bd;
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+    }
+    .sidebar .nav-link:hover, .sidebar .nav-link.active {
+      color: #fff;
+      background-color: #495057;
+      border-radius: 0.25rem;
+    }
+    .sidebar .sidebar-header {
+      padding: 1.5rem;
+      text-align: center;
+      color: #fff;
+    }
+    
 </style>
 </head>
 <body>
