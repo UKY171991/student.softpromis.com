@@ -216,7 +216,7 @@ if (strlen($_SESSION['alogin']) == "") {
         }
 
     } else {
-        echo "No payment record found for JobrollId: " . htmlspecialchars($jobid);
+       // echo "No payment record found for JobrollId: " . htmlspecialchars($jobid);
     }
 
 
