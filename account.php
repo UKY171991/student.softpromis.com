@@ -145,33 +145,7 @@ if (strlen($_SESSION['alogin']) == "") {
             </div>
           </div>
 
-          
-
-          
-
-          <!-- Card 2: Total Fees Current Year -->
-          <div class="col-md-3">
-            <div class="dashboard-card bg-orange">
-              <div class="d-flex justify-content-between align-items-center">
-                <div>
-                  <?php
-                    $currentYear = date("Y");
-                    $sql = "SELECT SUM(total_fee) AS total_collection FROM payment WHERE YEAR(created_at) = :currentYear";
-                    $query = $dbh->prepare($sql);
-                    $query->bindParam(':currentYear', $currentYear, PDO::PARAM_INT);
-                    $query->execute();
-                    $result = $query->fetch(PDO::FETCH_ASSOC);
-                    $totalCollection = $result['total_collection'] ?? 0;
-                  ?>
-                  <h3><?php echo number_format($totalCollection, 2); ?></h3>
-                  <p>Total Fees (<?php echo $currentYear; ?>)</p>
-                </div>
-                <div class="icon"><i class="fa-solid fa-coins"></i></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 3: Total Fees Current Month -->
+          <!-- Card 2: Total Fees Current Month -->
           <div class="col-md-3">
             <div class="dashboard-card bg-darkblue">
               <div class="d-flex justify-content-between align-items-center">
@@ -194,6 +168,32 @@ if (strlen($_SESSION['alogin']) == "") {
               </div>
             </div>
           </div>
+
+          
+
+          <!-- Card 3: Total Fees Current Year -->
+          <div class="col-md-3">
+            <div class="dashboard-card bg-orange">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <?php
+                    $currentYear = date("Y");
+                    $sql = "SELECT SUM(total_fee) AS total_collection FROM payment WHERE YEAR(created_at) = :currentYear";
+                    $query = $dbh->prepare($sql);
+                    $query->bindParam(':currentYear', $currentYear, PDO::PARAM_INT);
+                    $query->execute();
+                    $result = $query->fetch(PDO::FETCH_ASSOC);
+                    $totalCollection = $result['total_collection'] ?? 0;
+                  ?>
+                  <h3><?php echo number_format($totalCollection, 2); ?></h3>
+                  <p>Total Fees (<?php echo $currentYear; ?>)</p>
+                </div>
+                <div class="icon"><i class="fa-solid fa-coins"></i></div>
+              </div>
+            </div>
+          </div>
+
+          
 
 
 
