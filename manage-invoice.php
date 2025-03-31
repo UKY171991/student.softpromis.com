@@ -199,9 +199,35 @@ if (strlen($_SESSION['alogin']) == "") {
             lengthChange: true,
             autoWidth: false,
             pageLength: 10,
-            lengthMenu: [[10, 20, 50, 100, 500], [10, 20, 50, 100, 500]],
+            lengthMenu: [[10, 20, 30, 100], [10, 20, 30, 100]],
             order: [[2, 'desc']], // Order by Invoice Date
-            
+            /*
+            buttons: [
+                {
+                    extend: 'copy',
+                    exportOptions: { columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] } // Exclude Actions column
+                },
+                {
+                    extend: 'csv',
+                    exportOptions: { columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] }
+                },
+                {
+                    extend: 'excel',
+                    exportOptions: { columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] }
+                },
+                {
+                    extend: 'pdf',
+                    exportOptions: { columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] }
+                },
+                {
+                    extend: 'print',
+                    exportOptions: { columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] }
+                },
+                //'colvis'
+            ],
+            */
+            //dom: 'Bfrtip'
+        });
 
         table.buttons().container().appendTo('#example_wrapper .col-md-6:eq(0)');
 
