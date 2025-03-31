@@ -109,7 +109,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                 <table id="example" class="table table-hover table-bordered" style="width:100%">
                                     <thead class="thead-dark">
                                         <tr>
-                                            <th><input type="checkbox" id="selectAll">#</th>
+                                            <th><input type="checkbox" class="checkbox_list" id="selectAll">#</th>
                                             <th>Enrollment ID</th>
                                             <th>Name</th>
                                             <th>Phone</th>
@@ -196,7 +196,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                     '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank" class="btn btn-danger btn-xs">Unpaid</a>';
                                         ?>
                                             <tr>
-                                                <td><input type="checkbox" class="deleteCheckbox" value="<?php echo htmlentities($result->CandidateId); ?>"><?php echo htmlentities($cnt); ?></td>
+                                                <td><input type="checkbox" class="deleteCheckbox checkbox_list" value="<?php echo htmlentities($result->CandidateId); ?>"><?php echo htmlentities($cnt); ?></td>
                                                 <td><button class="btn btn-info btn-xs" onclick="all_data(<?php echo htmlentities($result->CandidateId); ?>)" data-bs-toggle="modal" data-bs-target="#c_myModal"><?php echo htmlentities($result->enrollmentid); ?></button></td>
                                                 <td><?php echo htmlentities($result->candidatename); ?></td>
                                                 <td><?php echo htmlentities($result->phonenumber); ?></td>
@@ -395,7 +395,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
 
 
-        
+
         // Select All
         $('#selectAll').on('click', function() {
             $('.deleteCheckbox').prop('checked', this.checked);
