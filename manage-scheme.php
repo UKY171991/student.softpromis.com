@@ -190,32 +190,20 @@ if (strlen($_SESSION['alogin']) == "") {
             lengthMenu: [[10, 20, 30, 100], [10, 20, 30, 100]],
             order: [[2, 'desc']], // Order by Creation Date
             buttons: [
-                {
-                    extend: 'copy',
-                    exportOptions: { columns: [0, 1, 2, 3] } // Exclude Action column
-                },
-                {
-                    extend: 'csv',
-                    exportOptions: { columns: [0, 1, 2, 3] }
-                },
-                {
-                    extend: 'excel',
-                    exportOptions: { columns: [0, 1, 2, 3] }
-                },
-                {
-                    extend: 'pdf',
-                    exportOptions: { columns: [0, 1, 2, 3] }
-                },
-                {
-                    extend: 'print',
-                    exportOptions: { columns: [0, 1, 2, 3] }
-                },
-                //'colvis'
+                { extend: 'copy', exportOptions: { columns: [0, 1, 2, 3] } },
+                { extend: 'csv', exportOptions: { columns: [0, 1, 2, 3] } },
+                { extend: 'excel', exportOptions: { columns: [0, 1, 2, 3] } },
+                { extend: 'pdf', exportOptions: { columns: [0, 1, 2, 3] } },
+                { extend: 'print', exportOptions: { columns: [0, 1, 2, 3] } },
             ],
-            dom: 'Bfrtip'
+            dom: "<'row'<'col-sm-6'B><'col-sm-3'l><'col-sm-3'f>>" +
+                 "<'row'<'col-sm-12'tr>>" +
+                 "<'row'<'col-sm-5'i><'col-sm-7'p>>",
         });
 
-        table.buttons().container().appendTo('#example_wrapper .col-md-6:eq(0)');
+        // Properly position buttons explicitly
+        table.buttons().container().appendTo('#example_wrapper .col-sm-6:eq(0)');
+
 
         // Delete functionality
         $('#example tbody').on('click', '.delete', function() {
