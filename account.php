@@ -182,7 +182,7 @@ if (strlen($_SESSION['alogin']) == "") {
                     $currentYear = date('Y');
 
                     // SQL query to get total fees paid in the current month
-                    $sql = "SELECT SUM(paid) AS total_fee FROM tblfee WHERE MONTH(created_at) = :month AND YEAR(created_at) = :year";
+                    $sql = "SELECT SUM(paid) AS total_fee FROM payment WHERE MONTH(created_at) = :month AND YEAR(created_at) = :year";
                     $query = $dbh->prepare($sql);
                     $query->bindParam(':month', $currentMonth, PDO::PARAM_INT);
                     $query->bindParam(':year', $currentYear, PDO::PARAM_INT);
