@@ -10,12 +10,13 @@
                 <i class="fa-solid fa-tachometer-alt me-2"></i>Dashboard
             </a>
         </li>
-
+        <?php if($_SESSION['user_type'] == 1) { ?>
         <li class="nav-item">
             <a href="account.php" class="nav-link">
                 <i class="fa fa fa-server"></i> <span>Account</span>
             </a>
         </li>
+        <?php } ?>
         
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#candidateSubmenu" role="button" aria-expanded="false" aria-controls="candidateSubmenu">
