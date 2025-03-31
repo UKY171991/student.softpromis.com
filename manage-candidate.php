@@ -331,71 +331,68 @@ if (strlen($_SESSION['alogin']) == "") {
     <script>
     $(document).ready(function() {
         var table = $('#example').DataTable({
-            responsive: true,
-            lengthChange: true,
-            autoWidth: false,
-            pageLength: 10,
-            lengthMenu: [[10, 20, 30, 100, 500], [10, 20, 30, 100, 500]],
-            order: [[19, 'desc']],
-            buttons: [
-                {
-                    extend: 'copy',
-                    exportOptions: {
-                        columns: function (idx, data, node) {
-                            // Exclude the last column (Action)
-                            return idx !== table.columns().count() - 1 && table.column(idx).visible();
-                        }
+        responsive: true,
+        lengthChange: true,
+        autoWidth: false,
+        pageLength: 10,
+        lengthMenu: [[10, 20, 50, 100, 500], [10, 20, 50, 100, 500]],
+        order: [[19, 'desc']],
+        buttons: [
+            {
+                extend: 'copy',
+                exportOptions: {
+                    columns: function (idx, data, node) {
+                        return idx !== table.columns().count() - 1 && table.column(idx).visible();
                     }
-                },
-                {
-                    extend: 'csv',
-                    exportOptions: {
-                        columns: function (idx, data, node) {
-                            // Exclude the last column (Action)
-                            return idx !== table.columns().count() - 1 && table.column(idx).visible();
-                        }
+                }
+            },
+            {
+                extend: 'csv',
+                exportOptions: {
+                    columns: function (idx, data, node) {
+                        return idx !== table.columns().count() - 1 && table.column(idx).visible();
                     }
-                },
-                {
-                    extend: 'excel',
-                    exportOptions: {
-                        columns: function (idx, data, node) {
-                            // Exclude the last column (Action)
-                            return idx !== table.columns().count() - 1 && table.column(idx).visible();
-                        }
+                }
+            },
+            {
+                extend: 'excel',
+                exportOptions: {
+                    columns: function (idx, data, node) {
+                        return idx !== table.columns().count() - 1 && table.column(idx).visible();
                     }
-                },
-                {
-                    extend: 'pdf',
-                    exportOptions: {
-                        columns: function (idx, data, node) {
-                            // Exclude the last column (Action)
-                            return idx !== table.columns().count() - 1 && table.column(idx).visible();
-                        }
+                }
+            },
+            {
+                extend: 'pdf',
+                exportOptions: {
+                    columns: function (idx, data, node) {
+                        return idx !== table.columns().count() - 1 && table.column(idx).visible();
                     }
-                },
-                {
-                    extend: 'print',
-                    exportOptions: {
-                        columns: function (idx, data, node) {
-                            // Exclude the last column (Action)
-                            return idx !== table.columns().count() - 1 && table.column(idx).visible();
-                        }
+                }
+            },
+            {
+                extend: 'print',
+                exportOptions: {
+                    columns: function (idx, data, node) {
+                        return idx !== table.columns().count() - 1 && table.column(idx).visible();
                     }
-                },
-                'colvis' // Column visibility button
-            ],
-            columnDefs: [
-                { targets: [0, 1, 2, 3, 4, 26, 27], visible: true }, // Initially visible columns
-                { targets: '_all', visible: false }, // Hide all other columns by default
-                { targets: -1, orderable: false, searchable: false } // Action column settings
-            ],
-            dom: 'Bftip' // Buttons, filter, table, info, pagination
-        });
+                }
+            },
+            'colvis'
+        ],
+        columnDefs: [
+            { targets: [0, 1, 2, 3, 4, 26, 27], visible: true },
+            { targets: '_all', visible: false },
+            { targets: -1, orderable: false, searchable: false }
+        ],
+        dom: 'Blfrtip' // Added length menu explicitly
+    });
 
-        // Move buttons to the top
-        table.buttons().container().appendTo('#example_wrapper .col-md-6:eq(0)');
+    // Move buttons to the top
+    table.buttons().container().appendTo('#example_wrapper .col-md-6:eq(0)');
 
+
+        
         // Select All
         $('#selectAll').on('click', function() {
             $('.deleteCheckbox').prop('checked', this.checked);
@@ -420,6 +417,11 @@ if (strlen($_SESSION['alogin']) == "") {
                 });
             }
         });
+
+
+
+
+
 
         // Bulk Delete
         $('#deleteBtn').on('click', function() {
@@ -446,6 +448,7 @@ if (strlen($_SESSION['alogin']) == "") {
             }
         });
     });
+
 
     function payment_status(id) {
         $("#c_id").html('Loading...');
