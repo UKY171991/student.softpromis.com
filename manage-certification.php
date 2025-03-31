@@ -266,7 +266,10 @@ if (strlen($_SESSION['alogin']) == "") {
 
     <script>
     $(function($) {
-        $('#example').DataTable();
+        $('#example').DataTable({
+            lengthMenu: [[10, 20, 50, 100, 500], [10, 20, 50, 100, 500]]
+        });
+
 
         $('#example2').DataTable({
             "scrollY": "300px",
