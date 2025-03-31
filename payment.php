@@ -730,7 +730,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 </div>
                                                 <div class="receipt-details">
                                                     <div class="column">
-                                                        <p><strong>EF. No:</strong> <?=$c_result[0]['enrollmentid']?></p>
+                                                        <p><strong>Enrollment. No:</strong> <?=$c_result[0]['enrollmentid']?></p>
                                                         <p><strong>Student:</strong> <?=$c_result[0]['candidatename']?></p>
                                                         <p><strong>Training Center:</strong> <?=$t_result[0]['trainingcentername']?></p>
                                                         <p><strong>Scheme:</strong> <?=$scheme_result[0]['SchemeName']?></p>
