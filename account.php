@@ -80,46 +80,13 @@ if (strlen($_SESSION['alogin']) == "") {
 </head>
 <body>
   <!-- Top Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-    <div class="container-fluid">
-      <a class="navbar-brand fw-bold" href="#">SOFTPRO Admin</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarContent">
-        <ul class="navbar-nav ms-auto align-items-center">
-          <li class="nav-item me-3">
-            <a class="nav-link" href="#"><i class="fa-solid fa-user"></i></a>
-          </li>
-          <li class="nav-item me-3">
-            <a class="nav-link" href="#"><i class="fa-solid fa-arrows-alt"></i></a>
-          </li>
-          <?php
-            $sql = "SELECT COUNT(*) AS count FROM emi_list WHERE added_type = 2";
-            $stmt = $dbh->prepare($sql);
-            $stmt->execute();
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            $count = $result['count'];
-          ?>
-          <li class="nav-item me-3">
-            <a class="nav-link text-danger" href="pending_payment_approval.php">
-              <i class="fa-solid fa-credit-card"></i> Pending Approval (<?=$count?>)
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-danger" href="logout.php">
-              <i class="fa-solid fa-sign-out-alt"></i> Logout
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <?php include('includes/topbar-new.php'); ?>
   
   <div class="container-fluid">
     <div class="row">
       <!-- Sidebar -->
       <?php include('includes/left-sidebar-new.php'); ?>
+      <?php include('includes/leftbar.php'); ?>
 
       <!-- Main Content -->
       <main class="col-lg-10 col-md-9 p-4">
