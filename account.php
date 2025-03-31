@@ -314,19 +314,27 @@ if (strlen($_SESSION['alogin']) == "") {
               <div class="d-flex justify-content-between align-items-center">
                 <div>
                   <?php
-                    $sql = "SELECT COUNT(DISTINCT batch) AS total FROM tblcandidate WHERE batch IS NOT NULL";
+                    // Get the current year
+                    $currentYear = date('Y');
+
+                    // SQL query to sum pending fees for the current year
+                    $sql = "SELECT SUM(total_fee - paid) AS pending_amount FROM payment
+                            WHERE paid < total_fee AND YEAR(payment_date) = :year";
                     $query = $dbh->prepare($sql);
+                    $query->bindParam(':year', $currentYear, PDO::PARAM_INT);
                     $query->execute();
                     $result = $query->fetch(PDO::FETCH_ASSOC);
-                    $activeBatches = $result['total'] ?? 0;
+                    $totalPendingFeesYearly = $result['pending_amount'] ?? 0;
                   ?>
-                  <h3><?php echo $activeBatches; ?></h3>
-                  <p>Active Batches</p>
+                  <h3>₹ <?php echo number_format($totalPendingFeesYearly, 2); ?></h3>
+                  <p>Fee Pending (<?=date('Y');?>)</p>
                 </div>
-                <div class="icon"><i class="fa-solid fa-chalkboard-teacher"></i></div>
+                <div class="icon"><i class="fa-solid fa-wallet"></i></div>
               </div>
             </div>
           </div>
+
+
         </div><!-- /.row -->
 
         <!-- Charts and Data Table -->
