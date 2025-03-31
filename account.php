@@ -177,19 +177,27 @@ if (strlen($_SESSION['alogin']) == "") {
               <div class="d-flex justify-content-between align-items-center">
                 <div>
                   <?php
-                    $sql = "SELECT COUNT(CandidateId) AS total FROM tblcandidate";
+                    // Get the current month and year
+                    $currentMonth = date('m');
+                    $currentYear = date('Y');
+
+                    // SQL query to get total fees paid in the current month
+                    $sql = "SELECT SUM(PaidAmount) AS total_fee FROM tblfee WHERE MONTH(PaymentDate) = :month AND YEAR(PaymentDate) = :year";
                     $query = $dbh->prepare($sql);
+                    $query->bindParam(':month', $currentMonth, PDO::PARAM_INT);
+                    $query->bindParam(':year', $currentYear, PDO::PARAM_INT);
                     $query->execute();
                     $result = $query->fetch(PDO::FETCH_ASSOC);
-                    $totalCandidates = $result['total'] ?? 0;
+                    $totalFee = $result['total_fee'] ?? 0;
                   ?>
-                  <h3><?php echo $totalCandidates; ?></h3>
-                  <p>Total Candidates All Time</p>
+                  <h3>₹ <?php echo number_format($totalFee, 2); ?></h3>
+                  <p>Total Fees Paid (<?=date('M Y');?>)</p>
                 </div>
-                <div class="icon"><i class="fa-solid fa-users"></i></div>
+                <div class="icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
               </div>
             </div>
           </div>
+
 
           
 
