@@ -188,12 +188,18 @@ if (strlen($_SESSION['alogin']) == "") {
     $(document).ready(function() {
         // Initialize DataTable
         $('#example').DataTable({
-            "responsive": true,
-            "lengthChange": true,
-            "autoWidth": false,
-            "pageLength": 10,
-            "order": [[9, 'desc']] // Sort by Date Created descending
+            responsive: true,
+            lengthChange: true,
+            autoWidth: false,
+            pageLength: 10,
+            lengthMenu: [[10, 20, 30, 100], [10, 20, 30, 100]],
+            order: [[9, 'desc']], // Sort by Date Created descending
+            dom:
+              "<'row'<'col-sm-6'l><'col-sm-6'f>>" +
+              "<'row'<'col-sm-12'tr>>" +
+              "<'row'<'col-sm-5'i><'col-sm-7'p>>"
         });
+
 
         // Delete functionality
         $('.delete').click(function() {
