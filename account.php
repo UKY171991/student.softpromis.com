@@ -182,7 +182,7 @@ if (strlen($_SESSION['alogin']) == "") {
                     $currentYear = date('Y');
 
                     // SQL query to get total fees paid in the current month
-                    $sql = "SELECT SUM(PaidAmount) AS total_fee FROM tblfee WHERE MONTH(PaymentDate) = :month AND YEAR(PaymentDate) = :year";
+                    $sql = "SELECT SUM(PaidAmount) AS total_fee FROM tblfee WHERE MONTH(created_at) = :month AND YEAR(created_at) = :year";
                     $query = $dbh->prepare($sql);
                     $query->bindParam(':month', $currentMonth, PDO::PARAM_INT);
                     $query->bindParam(':year', $currentYear, PDO::PARAM_INT);
@@ -217,8 +217,8 @@ if (strlen($_SESSION['alogin']) == "") {
                     // SQL query to count pending payments for current month
                     $sql = "SELECT COUNT(*) AS count FROM payment 
                             WHERE paid < total_fee 
-                            AND MONTH(payment_date) = :month 
-                            AND YEAR(payment_date) = :year";
+                            AND MONTH(created_at) = :month 
+                            AND YEAR(created_at) = :year";
                     $query = $dbh->prepare($sql);
                     $query->bindParam(':month', $currentMonth, PDO::PARAM_INT);
                     $query->bindParam(':year', $currentYear, PDO::PARAM_INT);
@@ -291,7 +291,7 @@ if (strlen($_SESSION['alogin']) == "") {
                     $currentYear = date('Y');
 
                     // SQL query to calculate total fees for current year
-                    $sql = "SELECT SUM(total_fee) AS total FROM payment WHERE YEAR(payment_date) = :year";
+                    $sql = "SELECT SUM(total_fee) AS total FROM payment WHERE YEAR(created_at) = :year";
                     $query = $dbh->prepare($sql);
                     $query->bindParam(':year', $currentYear, PDO::PARAM_INT);
                     $query->execute();
@@ -319,7 +319,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
                     // SQL query to sum pending fees for the current year
                     $sql = "SELECT SUM(total_fee - paid) AS pending_amount FROM payment
-                            WHERE paid < total_fee AND YEAR(payment_date) = :year";
+                            WHERE paid < total_fee AND YEAR(created_at) = :year";
                     $query = $dbh->prepare($sql);
                     $query->bindParam(':year', $currentYear, PDO::PARAM_INT);
                     $query->execute();
