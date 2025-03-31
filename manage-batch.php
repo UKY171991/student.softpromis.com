@@ -198,35 +198,38 @@ if (strlen($_SESSION['alogin']) == "") {
             lengthChange: true,
             autoWidth: false,
             pageLength: 10,
-            lengthMenu: [[10, 20, 30, 100], [10, 20, 30, 100]],
+            lengthMenu: [[10, 20, 50, 100], [10, 20, 50, 100]],
             order: [[6, 'desc']], // Order by Start Date
             buttons: [
                 {
                     extend: 'copy',
-                    exportOptions: { columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] } // Exclude Actions column
+                    exportOptions: { columns: [0,1,2,3,4,5,6,7,8,9] }
                 },
                 {
                     extend: 'csv',
-                    exportOptions: { columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] }
+                    exportOptions: { columns: [0,1,2,3,4,5,6,7,8,9] }
                 },
                 {
                     extend: 'excel',
-                    exportOptions: { columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] }
+                    exportOptions: { columns: [0,1,2,3,4,5,6,7,8,9] }
                 },
                 {
                     extend: 'pdf',
-                    exportOptions: { columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] }
+                    exportOptions: { columns: [0,1,2,3,4,5,6,7,8,9] }
                 },
                 {
                     extend: 'print',
-                    exportOptions: { columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] }
-                },
-                //'colvis'
+                    exportOptions: { columns: [0,1,2,3,4,5,6,7,8,9] }
+                }
             ],
-            dom: 'Bfrtip'
+            dom: "<'row'<'col-sm-6'B><'col-sm-3'l><'col-sm-3'f>>" +
+                 "<'row'<'col-sm-12'tr>>" +
+                 "<'row'<'col-sm-5'i><'col-sm-7'p>>",
         });
 
-        table.buttons().container().appendTo('#example_wrapper .col-md-6:eq(0)');
+        // Explicitly place buttons container at the top-left
+        table.buttons().container().appendTo('#example_wrapper .col-sm-6:eq(0)');
+
 
         // Delete functionality
         $('#example tbody').on('click', '.delete', function() {
