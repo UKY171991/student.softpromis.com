@@ -210,19 +210,31 @@ if (strlen($_SESSION['alogin']) == "") {
               <div class="d-flex justify-content-between align-items-center">
                 <div>
                   <?php
-                    $sql = "SELECT COUNT(*) AS count FROM payment WHERE paid < total_fee";
+                    // Get the current month and year
+                    $currentMonth = date('m');
+                    $currentYear = date('Y');
+
+                    // SQL query to count pending payments for current month
+                    $sql = "SELECT COUNT(*) AS count FROM payment 
+                            WHERE paid < total_fee 
+                            AND MONTH(payment_date) = :month 
+                            AND YEAR(payment_date) = :year";
                     $query = $dbh->prepare($sql);
+                    $query->bindParam(':month', $currentMonth, PDO::PARAM_INT);
+                    $query->bindParam(':year', $currentYear, PDO::PARAM_INT);
                     $query->execute();
                     $result = $query->fetch(PDO::FETCH_ASSOC);
-                    $pendingPayments = $result['count'] ?? 0;
+                    $pendingPaymentsMonthly = $result['count'] ?? 0;
                   ?>
-                  <h3><?php echo $pendingPayments; ?></h3>
-                  <p>Pending Payments</p>
+                  <h3><?php echo $pendingPaymentsMonthly; ?></h3>
+                  <p>Pending Payments (<?=date('M Y');?>)</p>
                 </div>
                 <div class="icon"><i class="fa-solid fa-credit-card"></i></div>
               </div>
             </div>
           </div>
+
+
 
           <!-- Card 5: Regd Candidates Current Year -->
           <div class="col-md-3">
