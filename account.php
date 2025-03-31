@@ -138,7 +138,7 @@ if (strlen($_SESSION['alogin']) == "") {
                     $totalstudentsMonth = $query1->rowCount();
                   ?>
                   <h3><?php echo $totalstudentsMonth; ?></h3>
-                  <p>Regd Candidates in <?=date('F');?></p>
+                  <p>Regd Candidates (<?php echo date("F Y"); ?>)</p>
                 </div>
                 <div class="icon"><i class="fa-solid fa-users"></i></div>
               </div>
@@ -230,7 +230,7 @@ if (strlen($_SESSION['alogin']) == "") {
                     $totalstudents = $query1->rowCount();
                   ?>
                   <h3><?php echo $totalstudents; ?></h3>
-                  <p>Regd Candidates in <?=date('Y');?></p>
+                  <p>Regd Candidates (<?php echo $currentYear; ?>)</p>
                 </div>
                 <div class="icon"><i class="fa-solid fa-users"></i></div>
               </div>
