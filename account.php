@@ -145,30 +145,11 @@ if (strlen($_SESSION['alogin']) == "") {
             </div>
           </div>
 
-          <!-- Card 2: Regd Candidates Current Year -->
-          <div class="col-md-3">
-            <div class="dashboard-card bg-teal">
-              <div class="d-flex justify-content-between align-items-center">
-                <div>
-                  <?php
-                    $currentYear = date("Y");
-                    $sql1 = "SELECT CandidateId FROM tblcandidate WHERE YEAR(DateCreated) = :currentYear";
-                    $query1 = $dbh->prepare($sql1);
-                    $query1->bindParam(':currentYear', $currentYear, PDO::PARAM_INT);
-                    $query1->execute();
-                    $totalstudents = $query1->rowCount();
-                  ?>
-                  <h3><?php echo $totalstudents; ?></h3>
-                  <p>Regd Candidates Current Year</p>
-                </div>
-                <div class="icon"><i class="fa-solid fa-users"></i></div>
-              </div>
-            </div>
-          </div>
+          
 
           
 
-          <!-- Card 3: Total Fees Current Year -->
+          <!-- Card 2: Total Fees Current Year -->
           <div class="col-md-3">
             <div class="dashboard-card bg-orange">
               <div class="d-flex justify-content-between align-items-center">
@@ -190,7 +171,7 @@ if (strlen($_SESSION['alogin']) == "") {
             </div>
           </div>
 
-          <!-- Card 4: Total Fees Current Month -->
+          <!-- Card 3: Total Fees Current Month -->
           <div class="col-md-3">
             <div class="dashboard-card bg-darkblue">
               <div class="d-flex justify-content-between align-items-center">
@@ -214,7 +195,10 @@ if (strlen($_SESSION['alogin']) == "") {
             </div>
           </div>
 
-          <!-- Card 5: Pending Payments -->
+
+
+
+          <!-- Card 4: Pending Payments -->
           <div class="col-md-3">
             <div class="dashboard-card bg-pink">
               <div class="d-flex justify-content-between align-items-center">
@@ -230,6 +214,27 @@ if (strlen($_SESSION['alogin']) == "") {
                   <p>Pending Payments</p>
                 </div>
                 <div class="icon"><i class="fa-solid fa-credit-card"></i></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5: Regd Candidates Current Year -->
+          <div class="col-md-3">
+            <div class="dashboard-card bg-teal">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <?php
+                    $currentYear = date("Y");
+                    $sql1 = "SELECT CandidateId FROM tblcandidate WHERE YEAR(DateCreated) = :currentYear";
+                    $query1 = $dbh->prepare($sql1);
+                    $query1->bindParam(':currentYear', $currentYear, PDO::PARAM_INT);
+                    $query1->execute();
+                    $totalstudents = $query1->rowCount();
+                  ?>
+                  <h3><?php echo $totalstudents; ?></h3>
+                  <p>Regd Candidates Current Year</p>
+                </div>
+                <div class="icon"><i class="fa-solid fa-users"></i></div>
               </div>
             </div>
           </div>
