@@ -204,18 +204,18 @@ if (strlen($_SESSION['alogin']) == "") {
 
 
 
-          <!-- Card 4: Pending Payments -->
+          <!-- Card 4: Current Month Total Fee Pending -->
           <div class="col-md-3">
             <div class="dashboard-card bg-pink">
               <div class="d-flex justify-content-between align-items-center">
                 <div>
                   <?php
-                    // Get the current month and year
+                    // Get current month and year
                     $currentMonth = date('m');
                     $currentYear = date('Y');
 
-                    // SQL query to count pending payments for current month
-                    $sql = "SELECT COUNT(*) AS count FROM payment 
+                    // SQL query to sum total pending fee amount for current month
+                    $sql = "SELECT SUM(total_fee - paid) AS pending_amount FROM payment
                             WHERE paid < total_fee 
                             AND MONTH(created_at) = :month 
                             AND YEAR(created_at) = :year";
@@ -224,15 +224,16 @@ if (strlen($_SESSION['alogin']) == "") {
                     $query->bindParam(':year', $currentYear, PDO::PARAM_INT);
                     $query->execute();
                     $result = $query->fetch(PDO::FETCH_ASSOC);
-                    $pendingPaymentsMonthly = $result['count'] ?? 0;
+                    $totalPendingFeeMonthly = $result['pending_amount'] ?? 0;
                   ?>
-                  <h3><?php echo $pendingPaymentsMonthly; ?></h3>
-                  <p>Pending Payments (<?=date('M Y');?>)</p>
+                  <h3>₹ <?php echo number_format($totalPendingFeeMonthly, 2); ?></h3>
+                  <p>Pending Fees (<?=date('M Y');?>)</p>
                 </div>
                 <div class="icon"><i class="fa-solid fa-credit-card"></i></div>
               </div>
             </div>
           </div>
+
 
 
 
