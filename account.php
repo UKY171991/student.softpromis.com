@@ -292,7 +292,7 @@ if (strlen($_SESSION['alogin']) == "") {
                     $currentYear = date('Y');
 
                     // SQL query to calculate total fees for current year
-                    $sql = "SELECT SUM(total_fee) AS total FROM payment WHERE YEAR(created_at) = :year";
+                    $sql = "SELECT SUM(paid) AS total FROM payment WHERE YEAR(created_at) = :year";
                     $query = $dbh->prepare($sql);
                     $query->bindParam(':year', $currentYear, PDO::PARAM_INT);
                     $query->execute();
