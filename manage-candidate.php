@@ -390,7 +390,7 @@ if (strlen($_SESSION['alogin']) == "") {
                 { targets: '_all', visible: false }, // Hide all other columns by default
                 { targets: -1, orderable: false, searchable: false } // Action column settings
             ],
-            dom: 'Bfrtip' // Buttons, filter, table, info, pagination
+            dom: 'Bftip' // Buttons, filter, table, info, pagination
         });
 
         // Move buttons to the top
