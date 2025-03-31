@@ -275,19 +275,26 @@ if (strlen($_SESSION['alogin']) == "") {
               <div class="d-flex justify-content-between align-items-center">
                 <div>
                   <?php
-                    $sql = "SELECT SUM(total_fee) AS total FROM payment";
+                    // Get the current year
+                    $currentYear = date('Y');
+
+                    // SQL query to calculate total fees for current year
+                    $sql = "SELECT SUM(total_fee) AS total FROM payment WHERE YEAR(payment_date) = :year";
                     $query = $dbh->prepare($sql);
+                    $query->bindParam(':year', $currentYear, PDO::PARAM_INT);
                     $query->execute();
                     $result = $query->fetch(PDO::FETCH_ASSOC);
-                    $totalFeesAllTime = $result['total'] ?? 0;
+                    $totalFeesYearly = $result['total'] ?? 0;
                   ?>
-                  <h3><?php echo number_format($totalFeesAllTime, 2); ?></h3>
-                  <p>Total Fees All Time</p>
+                  <h3>₹ <?php echo number_format($totalFeesYearly, 2); ?></h3>
+                  <p>Total Fees (<?=date('Y');?>)</p>
                 </div>
                 <div class="icon"><i class="fa-solid fa-coins"></i></div>
               </div>
             </div>
           </div>
+
+
 
           <!-- Card 8: Active Batches -->
           <div class="col-md-3">
