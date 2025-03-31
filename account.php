@@ -171,24 +171,22 @@ if (strlen($_SESSION['alogin']) == "") {
 
           
 
-          <!-- Card 3: Total Fees Current Year -->
+          <!-- Card 3: Total Candidates All Time -->
           <div class="col-md-3">
-            <div class="dashboard-card bg-orange">
+            <div class="dashboard-card bg-indigo">
               <div class="d-flex justify-content-between align-items-center">
                 <div>
                   <?php
-                    $currentYear = date("Y");
-                    $sql = "SELECT SUM(total_fee) AS total_collection FROM payment WHERE YEAR(created_at) = :currentYear";
+                    $sql = "SELECT COUNT(CandidateId) AS total FROM tblcandidate";
                     $query = $dbh->prepare($sql);
-                    $query->bindParam(':currentYear', $currentYear, PDO::PARAM_INT);
                     $query->execute();
                     $result = $query->fetch(PDO::FETCH_ASSOC);
-                    $totalCollection = $result['total_collection'] ?? 0;
+                    $totalCandidates = $result['total'] ?? 0;
                   ?>
-                  <h3><?php echo number_format($totalCollection, 2); ?></h3>
-                  <p>Total Fees (<?php echo $currentYear; ?>)</p>
+                  <h3><?php echo $totalCandidates; ?></h3>
+                  <p>Total Candidates All Time</p>
                 </div>
-                <div class="icon"><i class="fa-solid fa-coins"></i></div>
+                <div class="icon"><i class="fa-solid fa-users"></i></div>
               </div>
             </div>
           </div>
@@ -239,25 +237,29 @@ if (strlen($_SESSION['alogin']) == "") {
             </div>
           </div>
 
-          <!-- Card 6: Total Candidates All Time -->
+          <!-- Card 6: Total Fees Current Year -->
           <div class="col-md-3">
-            <div class="dashboard-card bg-indigo">
+            <div class="dashboard-card bg-orange">
               <div class="d-flex justify-content-between align-items-center">
                 <div>
                   <?php
-                    $sql = "SELECT COUNT(CandidateId) AS total FROM tblcandidate";
+                    $currentYear = date("Y");
+                    $sql = "SELECT SUM(total_fee) AS total_collection FROM payment WHERE YEAR(created_at) = :currentYear";
                     $query = $dbh->prepare($sql);
+                    $query->bindParam(':currentYear', $currentYear, PDO::PARAM_INT);
                     $query->execute();
                     $result = $query->fetch(PDO::FETCH_ASSOC);
-                    $totalCandidates = $result['total'] ?? 0;
+                    $totalCollection = $result['total_collection'] ?? 0;
                   ?>
-                  <h3><?php echo $totalCandidates; ?></h3>
-                  <p>Total Candidates All Time</p>
+                  <h3><?php echo number_format($totalCollection, 2); ?></h3>
+                  <p>Total Fees (<?php echo $currentYear; ?>)</p>
                 </div>
-                <div class="icon"><i class="fa-solid fa-users"></i></div>
+                <div class="icon"><i class="fa-solid fa-coins"></i></div>
               </div>
             </div>
           </div>
+
+          
 
           <!-- Card 7: Total Fees All Time -->
           <div class="col-md-3">
