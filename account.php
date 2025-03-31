@@ -5,6 +5,10 @@ include('includes/config.php');
 if (strlen($_SESSION['alogin']) == "") {
     header("Location: index.php");
 } else {
+
+  if($_SESSION['user_type'] !== 1){
+    header("Location: index.php");
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
