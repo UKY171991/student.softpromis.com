@@ -2,7 +2,7 @@
     <div class="sidebar-header">
         <img src="images/logo.jpg" alt="Profile" class="rounded-circle mb-2" width="80">
         <h6>Rajesh G</h6>
-        <small>Softpro Admin</small>
+        <small>Softpro <?= ($_SESSION['user_type'] == 1) ? 'Admin' : (($_SESSION['user_type'] == 2) ? 'MIS' : 'Training') ?></small>
     </div>
     <ul class="nav flex-column">
         <li class="nav-item">
