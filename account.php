@@ -108,7 +108,7 @@ if (strlen($_SESSION['alogin']) == "") {
         <div class="row g-3">
 
           <!-- Card 1: Regd Candidates Current Month -->
-          <div class="col-md-3">
+          <div class="col-md-4">
             <div class="dashboard-card bg-purple">
               <div class="d-flex justify-content-between align-items-center">
                 <div>
@@ -131,7 +131,7 @@ if (strlen($_SESSION['alogin']) == "") {
           </div>
 
           <!-- Card 2: Regd Candidates Current Year -->
-          <div class="col-md-3">
+          <div class="col-md-4">
             <div class="dashboard-card bg-teal">
               <div class="d-flex justify-content-between align-items-center">
                 <div>
@@ -152,8 +152,8 @@ if (strlen($_SESSION['alogin']) == "") {
           </div>
 
 
-          <!-- Card 6: Total Registered Candidates -->
-          <div class="col-md-3">
+          <!-- Card 3: Total Registered Candidates -->
+          <div class="col-md-4">
             <div class="dashboard-card bg-info">
               <div class="d-flex justify-content-between align-items-center">
                 <div>
@@ -166,39 +166,13 @@ if (strlen($_SESSION['alogin']) == "") {
                     $totalCandidates = $result['total_candidates'] ?? 0;
                   ?>
                   <h3><?php echo $totalCandidates; ?></h3>
-                  <p>Registered Candidates</p>
+                  <p>Total Registered Candidates</p>
                 </div>
                 <div class="icon"><i class="fa-solid fa-users"></i></div>
               </div>
             </div>
           </div>
 
-
-          <!-- Card 3: Total Fees Current Month -->
-          <div class="col-md-3">
-            <div class="dashboard-card bg-darkblue">
-              <div class="d-flex justify-content-between align-items-center">
-                <div>
-                  <?php
-                    $currentYear = date("Y");
-                    $currentMonth = date("m");
-                    $sql = "SELECT SUM(total_fee) AS total_collection FROM payment WHERE YEAR(created_at) = :currentYear AND MONTH(created_at) = :currentMonth";
-                    $query = $dbh->prepare($sql);
-                    $query->bindParam(':currentYear', $currentYear, PDO::PARAM_INT);
-                    $query->bindParam(':currentMonth', $currentMonth, PDO::PARAM_INT);
-                    $query->execute();
-                    $result = $query->fetch(PDO::FETCH_ASSOC);
-                    $totalCollection = $result['total_collection'] ?? 0;
-                  ?>
-                  <h3><?php echo number_format($totalCollection, 2); ?></h3>
-                  <p>Total Fees (<?php echo date("F Y"); ?>)</p>
-                </div>
-                <div class="icon"><i class="fa-solid fa-coins"></i></div>
-              </div>
-            </div>
-          </div>
-
-          
 
           <!-- Card 4: Total Candidates All Time -->
           <div class="col-md-3">
