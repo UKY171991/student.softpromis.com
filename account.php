@@ -175,7 +175,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
 
           <!-- Card 4: Total Candidates All Time -->
-          <div class="col-md-3">
+          <div class="col-md-4">
             <div class="dashboard-card bg-indigo">
               <div class="d-flex justify-content-between align-items-center">
                 <div>
