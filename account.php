@@ -234,7 +234,7 @@ if (strlen($_SESSION['alogin']) == "") {
                     $totalPending = $result['total_pending'] ?? 0;
                     $totalFees = $totalPaid + $totalPending;
                   ?>
-                  <h4>₹ <?php echo number_format($totalFees, 2); ?></h4>
+                  <h3>₹ <?php echo number_format($totalFees, 2); ?></h3>
                   <p>Total Fees Summary (All Time)</p>
                 </div>
                 <div class="icon"><i class="fa-solid fa-scale-balanced"></i></div>
