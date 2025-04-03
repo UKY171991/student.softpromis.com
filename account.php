@@ -398,9 +398,8 @@ if (strlen($_SESSION['alogin']) == "") {
                         </tr>
                         <?php
                               }
-                              
+                              $cnt++;
                             }
-                            $cnt++;
                           } else {
                         ?>
                         <tr>
