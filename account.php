@@ -546,13 +546,13 @@ if (strlen($_SESSION['alogin']) == "") {
           {
             label: 'Registered Candidates',
             data: <?php echo json_encode($monthlyData); ?>,
-            backgroundColor: 'rgba(54, 162, 235, 0.7)',
+            backgroundColor: 'blue',
             yAxisID: 'y1'
           },
           {
             label: 'Monthly Fees Collected (₹)',
             data: <?php echo json_encode($monthlyFeesData); ?>,
-            backgroundColor: 'red',
+            backgroundColor: 'green',
             yAxisID: 'y2'
           }
         ]
