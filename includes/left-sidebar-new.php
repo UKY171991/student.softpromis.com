@@ -86,16 +86,16 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
     <!-- Sector Sub-menu -->
     <li class="nav-item">
-        <a class="nav-link <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'active mt-1 mb-1'; ?>" data-bs-toggle="collapse" href="#sectorSubmenu" role="button" aria-expanded="false" aria-controls="sectorSubmenu">
+        <a class="nav-link <?php if ($currentPage == 'assign-sector.php' OR $currentPage == 'manage-sector.php' OR $currentPage == 'create-sector.php') echo 'active mt-1 mb-1'; ?>" data-bs-toggle="collapse" href="#sectorSubmenu" role="button" aria-expanded="false" aria-controls="sectorSubmenu">
             <i class="fa fa-building me-2"></i>Sector <i class="fa-solid fa-chevron-down float-end"></i>
         </a>
-        <div class="collapse <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'show'; ?>" id="sectorSubmenu">
+        <div class="collapse <?php if ($currentPage == 'assign-sector.php' OR $currentPage == 'manage-sector.php' OR $currentPage == 'create-sector.php') echo 'show'; ?>" id="sectorSubmenu">
             <ul class="nav flex-column ps-3">
                 <li class="nav-item">
                     <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="create-sector.php"><i class="fa fa-plus me-2"></i>Create Sector</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="manage-sector.php"><i class="fa fa-cogs me-2"></i>Manage Sector</a>
+                    <a class="nav-link <?php if ($currentPage == 'manage-sector.php') echo 'active mt-1 mb-1'; ?>" href="manage-sector.php"><i class="fa fa-cogs me-2"></i>Manage Sector</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link <?php if ($currentPage == 'assign-sector.php') echo 'active mt-1 mb-1'; ?>" href="assign-sector.php"><i class="fa fa-check-circle me-2"></i>Assign Sector</a>
