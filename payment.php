@@ -941,6 +941,8 @@ if (strlen($_SESSION['alogin']) == "") {
 
             var balance = total_fee - discount - paid;
 
+            console.log(balance);
+
             if(total_fee < balance){
 
 
