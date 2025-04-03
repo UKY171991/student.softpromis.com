@@ -11,32 +11,32 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     </div>
     <ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link <?php if ($currentPage == 'dashboard.php') echo 'active m-1'; ?>" href="dashboard.php">
+            <a class="nav-link <?php if ($currentPage == 'dashboard.php') echo 'active mt-1 mb-1'; ?>" href="dashboard.php">
                 <i class="fa-solid fa-tachometer-alt me-2"></i>Dashboard
             </a>
         </li>
         <?php if($_SESSION['user_type'] == 1) { ?>
         <li class="nav-item">
-            <a href="account.php" class="nav-link <?php if ($currentPage == 'account.php') echo 'active m-1'; ?>">
+            <a href="account.php" class="nav-link <?php if ($currentPage == 'account.php') echo 'active mt-1 mb-1'; ?>">
                 <i class="fa fa fa-server"></i> <span>Account</span>
             </a>
         </li>
         <?php } ?>
         
         <li class="nav-item">
-            <a class="nav-link <?php if ($currentPage == 'edit-candidate.php' OR $currentPage == 'add-candidate.php' OR $currentPage == 'candidate-bulk-upload.php' OR $currentPage == 'manage-candidate.php') echo 'active'; ?>" data-bs-toggle="collapse" href="#candidateSubmenu" role="button" aria-expanded="false" aria-controls="candidateSubmenu">
+            <a class="nav-link <?php if ($currentPage == 'edit-candidate.php' OR $currentPage == 'add-candidate.php' OR $currentPage == 'candidate-bulk-upload.php' OR $currentPage == 'manage-candidate.php') echo 'active mt-1 mb-1'; ?>" data-bs-toggle="collapse" href="#candidateSubmenu" role="button" aria-expanded="false" aria-controls="candidateSubmenu">
                 <i class="fa-solid fa-users me-2"></i>Candidate <i class="fa-solid fa-chevron-down float-end"></i>
             </a>
             <div class="collapse <?php if ($currentPage == 'edit-candidate.php' OR $currentPage == 'add-candidate.php' OR $currentPage == 'candidate-bulk-upload.php' OR $currentPage == 'manage-candidate.php') echo 'show'; ?>" id="candidateSubmenu">
                 <ul class="nav flex-column ps-3">
-                    <li class="nav-item m-1">
-                        <a class="nav-link <?php if ($currentPage == 'add-candidate.php') echo 'active'; ?>" href="add-candidate.php"><i class="fa fa-user-plus me-2"></i>Register Candidate</a>
+                    <li class="nav-item">
+                        <a class="nav-link <?php if ($currentPage == 'add-candidate.php') echo 'active mt-1 mb-1'; ?>" href="add-candidate.php"><i class="fa fa-user-plus me-2"></i>Register Candidate</a>
                     </li>
-                    <li class="nav-item m-1">
-                        <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active'; ?>" href="candidate-bulk-upload.php"><i class="fa fa-upload me-2"></i>Bulk Upload</a>
+                    <li class="nav-item">
+                        <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="candidate-bulk-upload.php"><i class="fa fa-upload me-2"></i>Bulk Upload</a>
                     </li>
-                    <li class="nav-item m-1">
-                        <a class="nav-link <?php if ($currentPage == 'manage-candidate.php') echo 'active'; ?>" href="manage-candidate.php"><i class="fa fa-users me-2"></i>Manage Candidates</a>
+                    <li class="nav-item">
+                        <a class="nav-link <?php if ($currentPage == 'manage-candidate.php') echo 'active mt-1 mb-1'; ?>" href="manage-candidate.php"><i class="fa fa-users me-2"></i>Manage Candidates</a>
                     </li>
                 </ul>
             </div>
@@ -47,16 +47,16 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
         <?php if($_SESSION['user_type'] == 1) { ?>
             <li class="nav-item">
-                <a class="nav-link <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'active'; ?>" data-bs-toggle="collapse" href="#trainingCenterSubmenu" role="button" aria-expanded="false" aria-controls="trainingCenterSubmenu">
+                <a class="nav-link <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'active mt-1 mb-1'; ?>" data-bs-toggle="collapse" href="#trainingCenterSubmenu" role="button" aria-expanded="false" aria-controls="trainingCenterSubmenu">
                     <i class="fa fa-users me-2"></i>Training Center <i class="fa-solid fa-chevron-down float-end"></i>
                 </a>
                 <div class="collapse <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'show'; ?>" id="trainingCenterSubmenu">
                     <ul class="nav flex-column ps-3">
                         <li class="nav-item">
-                            <a class="nav-link <?php if ($currentPage == 'create-trainingcenter.php') echo 'active m-1'; ?>" href="create-trainingcenter.php"><i class="fa fa-plus me-2"></i>Create Training Center</a>
+                            <a class="nav-link <?php if ($currentPage == 'create-trainingcenter.php') echo 'active mt-1 mb-1'; ?>" href="create-trainingcenter.php"><i class="fa fa-plus me-2"></i>Create Training Center</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?php if ($currentPage == 'manage-trainingcenter.php') echo 'active m-1'; ?>" href="manage-trainingcenter.php"><i class="fa fa-cogs me-2"></i>Manage Training Center</a>
+                            <a class="nav-link <?php if ($currentPage == 'manage-trainingcenter.php') echo 'active mt-1 mb-1'; ?>" href="manage-trainingcenter.php"><i class="fa fa-cogs me-2"></i>Manage Training Center</a>
                         </li>
                     </ul>
                 </div>
