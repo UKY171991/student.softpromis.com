@@ -284,6 +284,7 @@ if (strlen($_SESSION['alogin']) == "") {
                           <th>Candidate Name</th>
                           <th>Phone Number</th>
                           <th>Job Roll</th>
+                          <th>Pending Ammount</th>
                           <th>Payment Status</th>
                           <th>Action</th>
                         </tr>
@@ -295,6 +296,7 @@ if (strlen($_SESSION['alogin']) == "") {
                           <th>Candidate Name</th>
                           <th>Phone Number</th>
                           <th>Job Roll</th>
+                          <th>Pending Ammount</th>
                           <th>Payment Status</th>
                           <th>Action</th>
                         </tr>
@@ -337,6 +339,7 @@ if (strlen($_SESSION['alogin']) == "") {
                           </td>
                           <td><?php echo htmlentities($result->candidatename); ?></td>
                           <td><?php echo htmlentities($result->phonenumber); ?></td>
+                          <td><?php echo $jobrollname; ?></td>
                           <td><?php echo $jobrollname; ?></td>
                           <td>
                             <?php
