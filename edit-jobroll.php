@@ -55,8 +55,8 @@ if (strlen($_SESSION['alogin']) == "") {
         <!-- Top Navbar -->
         <?php include('includes/topbar-new.php'); ?>
 
-        <div class="container-fluid py-4">
-            <div class="row gx-3">
+        <div class="container-fluid">
+            <div class="row">
                 <!-- Sidebar -->
                 <?php include('includes/left-sidebar-new.php'); ?>
                 <?php include('includes/leftbar.php'); ?>
