@@ -47,16 +47,16 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
         <?php if($_SESSION['user_type'] == 1) { ?>
             <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="collapse" href="#trainingCenterSubmenu" role="button" aria-expanded="false" aria-controls="trainingCenterSubmenu">
+                <a class="nav-link <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'active'; ?>" data-bs-toggle="collapse" href="#trainingCenterSubmenu" role="button" aria-expanded="false" aria-controls="trainingCenterSubmenu">
                     <i class="fa fa-users me-2"></i>Training Center <i class="fa-solid fa-chevron-down float-end"></i>
                 </a>
-                <div class="collapse" id="trainingCenterSubmenu">
+                <div class="collapse <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'show'; ?>" id="trainingCenterSubmenu">
                     <ul class="nav flex-column ps-3">
                         <li class="nav-item">
-                            <a class="nav-link" href="create-trainingcenter.php"><i class="fa fa-plus me-2"></i>Create Training Center</a>
+                            <a class="nav-link <?php if ($currentPage == 'create-trainingcenter.php') echo 'active'; ?>" href="create-trainingcenter.php"><i class="fa fa-plus me-2"></i>Create Training Center</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="manage-trainingcenter.php"><i class="fa fa-cogs me-2"></i>Manage Training Center</a>
+                            <a class="nav-link <?php if ($currentPage == 'manage-trainingcenter.php') echo 'active'; ?>" href="manage-trainingcenter.php"><i class="fa fa-cogs me-2"></i>Manage Training Center</a>
                         </li>
                     </ul>
                 </div>
