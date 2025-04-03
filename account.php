@@ -223,7 +223,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
           <!-- Card 6: Total Fees Pending (All Time) -->
           <div class="col-md-4">
-            <div class="dashboard-card bg-gold">
+            <div class="dashboard-card bg-maroon">
               <div class="d-flex justify-content-between align-items-center">
                 <div>
                   <?php
