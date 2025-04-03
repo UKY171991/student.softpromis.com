@@ -973,12 +973,8 @@ if (strlen($_SESSION['alogin']) == "") {
 <!-- Date & Time Picker Initialization -->
 <script>
   $(function() {
-    $("#datepicker").datetimepicker({
-      dateFormat: "dd-mm-yy",  // Format for the date
-      //timeFormat: "HH:mm:ss",  // 24-hour time format
-      controlType: 'select',   // Dropdown selection for time
-      oneLine: true,           // Displays date & time in one line
-      timezone: "+05:30"       // Set to IST (Indian Standard Time)
+    $("#datepicker").datepicker({
+      dateFormat: "dd-mm-yy" // Date only in dd-mm-yy format
     });
   });
 </script>
