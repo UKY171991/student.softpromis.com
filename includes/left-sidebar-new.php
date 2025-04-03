@@ -66,19 +66,19 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         <?php if($_SESSION['user_type']==1){ ?>
     <!-- Scheme Sub-menu -->
     <li class="nav-item">
-        <a class="nav-link <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'active mt-1 mb-1'; ?>" data-bs-toggle="collapse" href="#schemeSubmenu" role="button" aria-expanded="false" aria-controls="schemeSubmenu">
+        <a class="nav-link <?php if ($currentPage == 'asign-scheme.php' OR $currentPage == 'manage-scheme.php' OR $currentPage == 'create-scheme.php') echo 'active mt-1 mb-1'; ?>" data-bs-toggle="collapse" href="#schemeSubmenu" role="button" aria-expanded="false" aria-controls="schemeSubmenu">
             <i class="fa fa-bandcamp me-2"></i>Scheme <i class="fa-solid fa-chevron-down float-end"></i>
         </a>
-        <div class="collapse <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'show'; ?>" id="schemeSubmenu">
+        <div class="collapse <?php if ($currentPage == 'asign-scheme.php' OR $currentPage == 'manage-scheme.php' OR $currentPage == 'create-scheme.php') echo 'show'; ?>" id="schemeSubmenu">
             <ul class="nav flex-column ps-3">
                 <li class="nav-item">
                     <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="create-scheme.php"><i class="fa fa-plus me-2"></i>Create Scheme</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="manage-scheme.php"><i class="fa fa-cogs me-2"></i>Manage Scheme</a>
+                    <a class="nav-link <?php if ($currentPage == 'manage-scheme.php') echo 'active mt-1 mb-1'; ?>" href="manage-scheme.php"><i class="fa fa-cogs me-2"></i>Manage Scheme</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="asign-scheme.php"><i class="fa fa-handshake me-2"></i>Assign Scheme</a>
+                    <a class="nav-link <?php if ($currentPage == 'asign-scheme.php') echo 'active mt-1 mb-1'; ?>" href="asign-scheme.php"><i class="fa fa-handshake me-2"></i>Assign Scheme</a>
                 </li>
             </ul>
         </div>
