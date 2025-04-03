@@ -946,8 +946,10 @@ if (strlen($_SESSION['alogin']) == "") {
             if(balance < 0){
 
                 $('.error_message').html("Paying amount cannot be more than the balance amount!");
+                $('#submit_btn').prop('disabled', true); // disable the button
             }else{
                 $('.error_message').html("");
+                $('#submit_btn').prop('disabled', false); // enable the button
             }
         });
     </script>
