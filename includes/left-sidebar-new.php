@@ -6,13 +6,13 @@
     </div>
     <ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link <?php if ($currentPage == 'dashboard.php') echo 'active'; ?>" href="dashboard.php">
+            <a class="nav-link active" href="dashboard.php">
                 <i class="fa-solid fa-tachometer-alt me-2"></i>Dashboard
             </a>
         </li>
         <?php if($_SESSION['user_type'] == 1) { ?>
         <li class="nav-item">
-            <a href="account.php" class="nav-link <?php if ($currentPage == 'account.php') echo 'active'; ?>">
+            <a href="account.php" class="nav-link">
                 <i class="fa fa fa-server"></i> <span>Account</span>
             </a>
         </li>
