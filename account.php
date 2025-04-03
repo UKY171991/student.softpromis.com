@@ -221,32 +221,29 @@ if (strlen($_SESSION['alogin']) == "") {
 
 
 
-          <!-- Card 4: Total Candidates All Time -->
+          <!-- Card 6: Total Fees Paid & Pending (All Time) -->
           <div class="col-md-4">
             <div class="dashboard-card bg-indigo">
               <div class="d-flex justify-content-between align-items-center">
                 <div>
                   <?php
-                    // Get the current month and year
-                    $currentMonth = date('m');
-                    $currentYear = date('Y');
-
-                    // SQL query to get total fees paid in the current month
-                    $sql = "SELECT SUM(paid) AS total_fee FROM payment WHERE MONTH(created_at) = :month AND YEAR(created_at) = :year";
+                    // Fetch both total paid and total pending fees
+                    $sql = "SELECT SUM(paid) AS total_paid, SUM(total_fee - paid) AS total_pending FROM payment WHERE total_fee > 0";
                     $query = $dbh->prepare($sql);
-                    $query->bindParam(':month', $currentMonth, PDO::PARAM_INT);
-                    $query->bindParam(':year', $currentYear, PDO::PARAM_INT);
                     $query->execute();
                     $result = $query->fetch(PDO::FETCH_ASSOC);
-                    $totalFee = $result['total_fee'] ?? 0;
+                    $totalPaid = $result['total_paid'] ?? 0;
+                    $totalPending = $result['total_pending'] ?? 0;
                   ?>
-                  <h3>₹ <?php echo number_format($totalFee, 2); ?></h3>
-                  <p>Total Fees Paid (<?=date('M Y');?>)</p>
+                  <h4>Paid: ₹ <?php echo number_format($totalPaid, 2); ?></h4>
+                  <h4>Pending: ₹ <?php echo number_format($totalPending, 2); ?></h4>
+                  <p>Total Fees Summary (All Time)</p>
                 </div>
-                <div class="icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                <div class="icon"><i class="fa-solid fa-scale-balanced"></i></div>
               </div>
             </div>
           </div>
+
 
 
           
