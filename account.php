@@ -174,6 +174,29 @@ if (strlen($_SESSION['alogin']) == "") {
           </div>
 
 
+          <!-- Card 8: Total Fees Pending (All Time) -->
+          <div class="col-md-3">
+            <div class="dashboard-card bg-gold">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <?php
+                    // SQL query to sum all pending fees without time filter
+                    $sql = "SELECT SUM(total_fee - paid) AS pending_amount FROM payment WHERE paid < total_fee";
+                    $query = $dbh->prepare($sql);
+                    $query->execute();
+                    $result = $query->fetch(PDO::FETCH_ASSOC);
+                    $totalPendingFeesAllTime = $result['pending_amount'] ?? 0;
+                  ?>
+                  <h3>₹ <?php echo number_format($totalPendingFeesAllTime, 2); ?></h3>
+                  <p>Total Fees Pending</p>
+                </div>
+                <div class="icon"><i class="fa-solid fa-wallet"></i></div>
+              </div>
+            </div>
+          </div>
+
+
+
           <!-- Card 4: Total Candidates All Time -->
           <div class="col-md-4">
             <div class="dashboard-card bg-indigo">
@@ -287,34 +310,6 @@ if (strlen($_SESSION['alogin']) == "") {
                   <p>Total Fees (<?=date('Y');?>)</p>
                 </div>
                 <div class="icon"><i class="fa-solid fa-coins"></i></div>
-              </div>
-            </div>
-          </div>
-
-
-
-          <!-- Card 8: Active Batches -->
-          <div class="col-md-3">
-            <div class="dashboard-card bg-gold">
-              <div class="d-flex justify-content-between align-items-center">
-                <div>
-                  <?php
-                    // Get the current year
-                    $currentYear = date('Y');
-
-                    // SQL query to sum pending fees for the current year
-                    $sql = "SELECT SUM(total_fee - paid) AS pending_amount FROM payment
-                            WHERE paid < total_fee AND YEAR(created_at) = :year";
-                    $query = $dbh->prepare($sql);
-                    $query->bindParam(':year', $currentYear, PDO::PARAM_INT);
-                    $query->execute();
-                    $result = $query->fetch(PDO::FETCH_ASSOC);
-                    $totalPendingFeesYearly = $result['pending_amount'] ?? 0;
-                  ?>
-                  <h3>₹ <?php echo number_format($totalPendingFeesYearly, 2); ?></h3>
-                  <p>Fee Pending (<?=date('Y');?>)</p>
-                </div>
-                <div class="icon"><i class="fa-solid fa-wallet"></i></div>
               </div>
             </div>
           </div>
