@@ -199,7 +199,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
           <!-- Card 5: Total Fees Paid (All Time) -->
           <div class="col-md-4">
-            <div class="dashboard-card bg-indigo">
+            <div class="dashboard-card bg-pink">
               <div class="d-flex justify-content-between align-items-center">
                 <div>
                   <?php
@@ -244,72 +244,6 @@ if (strlen($_SESSION['alogin']) == "") {
 
           
 
-
-
-
-          
-
-
-
-
-          <!-- Card 5: Current Month Total Fee Pending -->
-          <div class="col-md-3">
-            <div class="dashboard-card bg-pink">
-              <div class="d-flex justify-content-between align-items-center">
-                <div>
-                  <?php
-                    // Get current month and year
-                    $currentMonth = date('m');
-                    $currentYear = date('Y');
-
-                    // SQL query to sum total pending fee amount for current month
-                    $sql = "SELECT SUM(total_fee - paid) AS pending_amount FROM payment
-                            WHERE paid < total_fee 
-                            AND MONTH(created_at) = :month 
-                            AND YEAR(created_at) = :year";
-                    $query = $dbh->prepare($sql);
-                    $query->bindParam(':month', $currentMonth, PDO::PARAM_INT);
-                    $query->bindParam(':year', $currentYear, PDO::PARAM_INT);
-                    $query->execute();
-                    $result = $query->fetch(PDO::FETCH_ASSOC);
-                    $totalPendingFeeMonthly = $result['pending_amount'] ?? 0;
-                  ?>
-                  <h3>₹ <?php echo number_format($totalPendingFeeMonthly, 2); ?></h3>
-                  <p>Pending Fees Pending(<?=date('M Y');?>)</p>
-                </div>
-                <div class="icon"><i class="fa-solid fa-credit-card"></i></div>
-              </div>
-            </div>
-          </div>
-
-
-
-
-          
-
-          <!-- Card 6: Total Fees Current Year -->
-          <div class="col-md-3">
-            <div class="dashboard-card bg-orange">
-              <div class="d-flex justify-content-between align-items-center">
-                <div>
-                  <?php
-                    $currentYear = date("Y");
-                    $sql = "SELECT SUM(total_fee) AS total_collection FROM payment WHERE YEAR(created_at) = :currentYear";
-                    $query = $dbh->prepare($sql);
-                    $query->bindParam(':currentYear', $currentYear, PDO::PARAM_INT);
-                    $query->execute();
-                    $result = $query->fetch(PDO::FETCH_ASSOC);
-                    $totalCollection = $result['total_collection'] ?? 0;
-                  ?>
-                  <h3><?php echo number_format($totalCollection, 2); ?></h3>
-                  <p>Total Fees (<?php echo $currentYear; ?>)</p>
-                </div>
-                <div class="icon"><i class="fa-solid fa-coins"></i></div>
-              </div>
-            </div>
-          </div>
-
-          
 
           <!-- Card 7: Total Fees All Time -->
           <div class="col-md-3">
