@@ -330,8 +330,9 @@ if (strlen($_SESSION['alogin']) == "") {
                           $query = $dbh->prepare($sql);
                           $query->execute();
                           $results = $query->fetchAll(PDO::FETCH_OBJ);
-                          $cnt = 1;
+                          
                           if ($query->rowCount() > 0) {
+                            $cnt = 1;
                             foreach ($results as $result) {
                               $jobrollname = '';
                               $candidate_id = $result->CandidateId;
@@ -370,7 +371,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
 
                         <tr>
-                          <td><?php echo $cnt++; ?></td>
+                          <td><?php echo $cnt; ?></td>
                           <td>
                             <button type="button" class="btn btn-info btn-xs" onClick='all_data(<?php echo htmlentities($result->CandidateId); ?>)' data-toggle="modal" data-target="#c_myModal"><?php echo htmlentities($result->enrollmentid); ?></button>
                           </td>
