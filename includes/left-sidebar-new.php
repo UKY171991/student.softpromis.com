@@ -106,10 +106,10 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
     <!-- Job Roll Sub-menu -->
     <li class="nav-item">
-        <a class="nav-link <?php if ($currentPage == 'assign-jobroll.php' OR $currentPage == 'manage-jobroll.php' OR $currentPage == 'create-jobroll.php') echo 'active mt-1 mb-1'; ?>" data-bs-toggle="collapse" href="#jobRollSubmenu" role="button" aria-expanded="false" aria-controls="jobRollSubmenu">
+        <a class="nav-link <?php if ($currentPage == 'assign-jobroll.php' OR $currentPage == 'manage-jobroll.php' OR $currentPage == 'create-jobroll.php'  OR $currentPage == 'edit-jobroll.php'  OR $currentPage == 'assign-jobroll.php') echo 'active mt-1 mb-1'; ?>" data-bs-toggle="collapse" href="#jobRollSubmenu" role="button" aria-expanded="false" aria-controls="jobRollSubmenu">
             <i class="fa fa-briefcase me-2"></i>Job Roll <i class="fa-solid fa-chevron-down float-end"></i>
         </a>
-        <div class="collapse <?php if ($currentPage == 'assign-jobroll.php' OR $currentPage == 'manage-jobroll.php' OR $currentPage == 'create-jobroll.php') echo 'show'; ?>" id="jobRollSubmenu">
+        <div class="collapse <?php if ($currentPage == 'assign-jobroll.php' OR $currentPage == 'manage-jobroll.php' OR $currentPage == 'create-jobroll.php' OR $currentPage == 'edit-jobroll.php' OR $currentPage == 'assign-jobroll.php') echo 'show'; ?>" id="jobRollSubmenu">
             <ul class="nav flex-column ps-3">
                 <li class="nav-item">
                     <a class="nav-link <?php if ($currentPage == 'create-jobroll.php') echo 'active mt-1 mb-1'; ?>" href="create-jobroll.php"><i class="fa fa-plus me-2"></i>Create Job Roll</a>
