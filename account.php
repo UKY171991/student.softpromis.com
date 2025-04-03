@@ -9,7 +9,7 @@ if (strlen($_SESSION['alogin']) == "") {
   if($_SESSION['user_type'] != 1){
     header("Location: index.php");
   }
-?>
+?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
