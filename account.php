@@ -219,8 +219,6 @@ if (strlen($_SESSION['alogin']) == "") {
             </div>
           </div>
 
-
-
           <!-- Card 6: Total Fees Paid & Pending (All Time) -->
           <div class="col-md-4">
             <div class="dashboard-card bg-indigo">
@@ -234,14 +232,16 @@ if (strlen($_SESSION['alogin']) == "") {
                     $result = $query->fetch(PDO::FETCH_ASSOC);
                     $totalPaid = $result['total_paid'] ?? 0;
                     $totalPending = $result['total_pending'] ?? 0;
+                    $totalFees = $totalPaid + $totalPending;
                   ?>
-                  <h4>₹ <?php echo (($totalPaid + $totalPending), 2); ?></h4>
+                  <h4>₹ <?php echo number_format($totalFees, 2); ?></h4>
                   <p>Total Fees Summary (All Time)</p>
                 </div>
                 <div class="icon"><i class="fa-solid fa-scale-balanced"></i></div>
               </div>
             </div>
           </div>
+
 
 
 
