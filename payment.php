@@ -947,7 +947,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
             console.log(balance);
 
-            if(total_fee < balance){
+            if(balance < 0){
 
 
 
