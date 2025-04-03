@@ -66,42 +66,60 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         <?php if($_SESSION['user_type']==1){ ?>
     <!-- Scheme Sub-menu -->
     <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#schemeSubmenu" role="button" aria-expanded="false" aria-controls="schemeSubmenu">
+        <a class="nav-link <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'active mt-1 mb-1'; ?>" data-bs-toggle="collapse" href="#schemeSubmenu" role="button" aria-expanded="false" aria-controls="schemeSubmenu">
             <i class="fa fa-bandcamp me-2"></i>Scheme <i class="fa-solid fa-chevron-down float-end"></i>
         </a>
-        <div class="collapse" id="schemeSubmenu">
+        <div class="collapse <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'show'; ?>" id="schemeSubmenu">
             <ul class="nav flex-column ps-3">
-                <li class="nav-item"><a class="nav-link" href="create-scheme.php"><i class="fa fa-plus me-2"></i>Create Scheme</a></li>
-                <li class="nav-item"><a class="nav-link" href="manage-scheme.php"><i class="fa fa-cogs me-2"></i>Manage Scheme</a></li>
-                <li class="nav-item"><a class="nav-link" href="asign-scheme.php"><i class="fa fa-handshake me-2"></i>Assign Scheme</a></li>
+                <li class="nav-item">
+                    <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="create-scheme.php"><i class="fa fa-plus me-2"></i>Create Scheme</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="manage-scheme.php"><i class="fa fa-cogs me-2"></i>Manage Scheme</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="asign-scheme.php"><i class="fa fa-handshake me-2"></i>Assign Scheme</a>
+                </li>
             </ul>
         </div>
     </li>
 
     <!-- Sector Sub-menu -->
     <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#sectorSubmenu" role="button" aria-expanded="false" aria-controls="sectorSubmenu">
+        <a class="nav-link <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'active mt-1 mb-1'; ?>" data-bs-toggle="collapse" href="#sectorSubmenu" role="button" aria-expanded="false" aria-controls="sectorSubmenu">
             <i class="fa fa-building me-2"></i>Sector <i class="fa-solid fa-chevron-down float-end"></i>
         </a>
-        <div class="collapse" id="sectorSubmenu">
+        <div class="collapse <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'show'; ?>" id="sectorSubmenu">
             <ul class="nav flex-column ps-3">
-                <li class="nav-item"><a class="nav-link" href="create-sector.php"><i class="fa fa-plus me-2"></i>Create Sector</a></li>
-                <li class="nav-item"><a class="nav-link" href="manage-sector.php"><i class="fa fa-cogs me-2"></i>Manage Sector</a></li>
-                <li class="nav-item"><a class="nav-link" href="assign-sector.php"><i class="fa fa-check-circle me-2"></i>Assign Sector</a></li>
+                <li class="nav-item">
+                    <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="create-sector.php"><i class="fa fa-plus me-2"></i>Create Sector</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="manage-sector.php"><i class="fa fa-cogs me-2"></i>Manage Sector</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="assign-sector.php"><i class="fa fa-check-circle me-2"></i>Assign Sector</a>
+                </li>
             </ul>
         </div>
     </li>
 
     <!-- Job Roll Sub-menu -->
     <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#jobRollSubmenu" role="button" aria-expanded="false" aria-controls="jobRollSubmenu">
+        <a class="nav-link <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'active mt-1 mb-1'; ?>" data-bs-toggle="collapse" href="#jobRollSubmenu" role="button" aria-expanded="false" aria-controls="jobRollSubmenu">
             <i class="fa fa-briefcase me-2"></i>Job Roll <i class="fa-solid fa-chevron-down float-end"></i>
         </a>
-        <div class="collapse" id="jobRollSubmenu">
+        <div class="collapse <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'show'; ?>" id="jobRollSubmenu">
             <ul class="nav flex-column ps-3">
-                <li class="nav-item"><a class="nav-link" href="create-jobroll.php"><i class="fa fa-plus me-2"></i>Create Job Roll</a></li>
-                <li class="nav-item"><a class="nav-link" href="manage-jobroll.php"><i class="fa fa-cogs me-2"></i>Manage Job Roll</a></li>
-                <li class="nav-item"><a class="nav-link" href="assign-jobroll.php"><i class="fa fa-check-circle me-2"></i>Assign Job Roll</a></li>
+                <li class="nav-item">
+                    <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="create-jobroll.php"><i class="fa fa-plus me-2"></i>Create Job Roll</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="manage-jobroll.php"><i class="fa fa-cogs me-2"></i>Manage Job Roll</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="assign-jobroll.php"><i class="fa fa-check-circle me-2"></i>Assign Job Roll</a>
+                </li>
             </ul>
         </div>
     </li>
@@ -109,27 +127,37 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
     <!-- Batch Sub-menu -->
     <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#batchSubmenu" role="button" aria-expanded="false" aria-controls="batchSubmenu">
+        <a class="nav-link <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'active mt-1 mb-1'; ?>" data-bs-toggle="collapse" href="#batchSubmenu" role="button" aria-expanded="false" aria-controls="batchSubmenu">
             <i class="fa fa-users me-2"></i>Batch <i class="fa-solid fa-chevron-down float-end"></i>
         </a>
-        <div class="collapse" id="batchSubmenu">
+        <div class="collapse <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'show'; ?>" id="batchSubmenu">
             <ul class="nav flex-column ps-3">
-                <li class="nav-item"><a class="nav-link" href="add-batch.php"><i class="fa fa-plus me-2"></i>Add Batch</a></li>
-                <li class="nav-item"><a class="nav-link" href="manage-batch.php"><i class="fa fa-cogs me-2"></i>Manage Batch</a></li>
-                <li class="nav-item"><a class="nav-link" href="add-candidate-to-batch.php"><i class="fa fa-user-plus me-2"></i>Add Candidate to Batch</a></li>
+                <li class="nav-item">
+                    <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="add-batch.php"><i class="fa fa-plus me-2"></i>Add Batch</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="manage-batch.php"><i class="fa fa-cogs me-2"></i>Manage Batch</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="add-candidate-to-batch.php"><i class="fa fa-user-plus me-2"></i>Add Candidate to Batch</a>
+                </li>
             </ul>
         </div>
     </li>
 
         <!-- Result Sub-menu -->
         <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#resultSubmenu" role="button" aria-expanded="false" aria-controls="resultSubmenu">
+            <a class="nav-link <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'active mt-1 mb-1'; ?>" data-bs-toggle="collapse" href="#resultSubmenu" role="button" aria-expanded="false" aria-controls="resultSubmenu">
                 <i class="fa fa-rocket me-2"></i>Result <i class="fa-solid fa-chevron-down float-end"></i>
             </a>
-            <div class="collapse" id="resultSubmenu">
+            <div class="collapse <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'show'; ?>" id="resultSubmenu">
                 <ul class="nav flex-column ps-3">
-                    <li class="nav-item"><a class="nav-link" href="add-result.php"><i class="fa fa-plus me-2"></i>Add Result</a></li>
-                    <li class="nav-item"><a class="nav-link" href="manage-results.php"><i class="fa fa-cogs me-2"></i>Manage Results</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="add-result.php"><i class="fa fa-plus me-2"></i>Add Result</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="manage-results.php"><i class="fa fa-cogs me-2"></i>Manage Results</a>
+                    </li>
                 </ul>
             </div>
         </li>
@@ -143,26 +171,34 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
         <!-- Certification Sub-menu -->
         <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#certificationSubmenu" role="button" aria-expanded="false" aria-controls="certificationSubmenu">
+            <a class="nav-link <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'active mt-1 mb-1'; ?>" data-bs-toggle="collapse" href="#certificationSubmenu" role="button" aria-expanded="false" aria-controls="certificationSubmenu">
                 <i class="fa fa-certificate me-2"></i>Certification <i class="fa-solid fa-chevron-down float-end"></i>
             </a>
-            <div class="collapse" id="certificationSubmenu">
+            <div class="collapse <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'show'; ?>" id="certificationSubmenu">
                 <ul class="nav flex-column ps-3">
-                    <li class="nav-item"><a class="nav-link" href="add-certification.php"><i class="fa fa-plus me-2"></i>Add Certificate</a></li>
-                    <li class="nav-item"><a class="nav-link" href="manage-certification.php"><i class="fa fa-cogs me-2"></i>Manage Certificate</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="add-certification.php"><i class="fa fa-plus me-2"></i>Add Certificate</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="manage-certification.php"><i class="fa fa-cogs me-2"></i>Manage Certificate</a>
+                    </li>
                 </ul>
             </div>
         </li>
 
         <!-- Invoice Sub-menu -->
         <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#invoiceSubmenu" role="button" aria-expanded="false" aria-controls="invoiceSubmenu">
+            <a class="nav-link <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'active mt-1 mb-1'; ?>" data-bs-toggle="collapse" href="#invoiceSubmenu" role="button" aria-expanded="false" aria-controls="invoiceSubmenu">
                 <i class="fa fa-file-invoice me-2"></i>Invoice <i class="fa-solid fa-chevron-down float-end"></i>
             </a>
-            <div class="collapse" id="invoiceSubmenu">
+            <div class="collapse <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'show'; ?>" id="invoiceSubmenu">
                 <ul class="nav flex-column ps-3">
-                    <li class="nav-item"><a class="nav-link" href="add-invoice.php"><i class="fa fa-plus me-2"></i>Add Invoice</a></li>
-                    <li class="nav-item"><a class="nav-link" href="manage-invoice.php"><i class="fa fa-cogs me-2"></i>Manage Invoice</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="add-invoice.php"><i class="fa fa-plus me-2"></i>Add Invoice</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="manage-invoice.php"><i class="fa fa-cogs me-2"></i>Manage Invoice</a>
+                    </li>
                 </ul>
             </div>
         </li>
@@ -170,13 +206,17 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         <?php if($_SESSION['user_type']==1){ ?>
             <!-- Admin Control Sub-menu -->
             <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="collapse" href="#adminSubmenu" role="button" aria-expanded="false" aria-controls="adminSubmenu">
+                <a class="nav-link <?php if ($currentPage == 'manage-user.php' OR $currentPage == 'create-user.php' OR $currentPage == 'edit-user.php') echo 'active mt-1 mb-1'; ?>" data-bs-toggle="collapse" href="#adminSubmenu" role="button" aria-expanded="false" aria-controls="adminSubmenu">
                     <i class="fa fa-lock me-2"></i>Admin Control <i class="fa-solid fa-chevron-down float-end"></i>
                 </a>
-                <div class="collapse" id="adminSubmenu">
+                <div class="collapse <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'show'; ?>" id="adminSubmenu">
                     <ul class="nav flex-column ps-3">
-                        <li class="nav-item"><a class="nav-link" href="create-user.php"><i class="fa fa-user-plus me-2"></i>Create User</a></li>
-                        <li class="nav-item"><a class="nav-link" href="manage-user.php"><i class="fa fa-cogs me-2"></i>Manage User</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link <?php if ($currentPage == 'create-user.php') echo 'active mt-1 mb-1'; ?>" href="create-user.php"><i class="fa fa-user-plus me-2"></i>Create User</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link <?php if ($currentPage == 'manage-user.php') echo 'active mt-1 mb-1'; ?>" href="manage-user.php"><i class="fa fa-cogs me-2"></i>Manage User</a>
+                        </li>
                     </ul>
                 </div>
             </li>
