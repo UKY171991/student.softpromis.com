@@ -506,6 +506,67 @@ if (strlen($_SESSION['alogin']) == "") {
     });
   });
   </script>
+
+
+
+
+  <canvas id="combinedChart"></canvas>
+
+<script>
+const ctx = document.getElementById('combinedChart').getContext('2d');
+const chart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Jan 2025', 'Feb 2025', 'Mar 2025', 'Apr 2025'],
+    datasets: [
+      {
+        label: 'Registered Candidates',
+        data: [0, 0, 6, 7],
+        backgroundColor: 'rgba(54, 162, 235, 0.7)',
+        yAxisID: 'y1'
+      },
+      {
+        label: 'Monthly Fees Collected (₹)',
+        data: [0, 0, 8500, 12000],
+        backgroundColor: 'rgba(75, 192, 192, 0.7)',
+        yAxisID: 'y2'
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    interaction: {
+      mode: 'index',
+      intersect: false
+    },
+    stacked: false,
+    scales: {
+      y1: {
+        type: 'linear',
+        position: 'left',
+        title: {
+          display: true,
+          text: 'Candidates'
+        },
+        beginAtZero: true
+      },
+      y2: {
+        type: 'linear',
+        position: 'right',
+        title: {
+          display: true,
+          text: 'Fees Collected (₹)'
+        },
+        beginAtZero: true,
+        grid: {
+          drawOnChartArea: false
+        }
+      }
+    }
+  }
+});
+</script>
+
 </body>
 </html>
 <?php } ?>
