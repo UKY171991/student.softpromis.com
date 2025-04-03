@@ -32,6 +32,7 @@ if (strlen($_SESSION['alogin']) == "") {
   <link rel="stylesheet" href="css/main.css" media="screen">
   <link rel="stylesheet" href="css/mystyle.css"> 
   <script src="js/modernizr/modernizr.min.js"></script>
+    <link rel="stylesheet" href="includes/style.css">
 <style>
   body {
     background-color: #e9ecef;
