@@ -9,7 +9,14 @@ if (strlen($_SESSION['alogin']) == "") {
   if($_SESSION['user_type'] != 1){
     header("Location: index.php");
   }
-?> 
+
+?>
+
+<?php
+// Get current file name without query string
+echo $currentPage = basename($_SERVER['PHP_SELF']);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
