@@ -934,15 +934,17 @@ if (strlen($_SESSION['alogin']) == "") {
 
         $('#discount,#paid').on('input',function(){
             var total_fee = $('#balance_total').val();
-            var balance = $('#balance').val();
+            
             var discount = $('#discount').val();
             var paid = $('#paid').val();
             $('#balance').val(total_fee - discount - paid);
 
+            var balance = total_fee - discount - paid;
 
+            alert("Hello");
 
             if(total_fee < balance){
-                alert("Hello");
+
                 $('.error_message').html("Paying amount cannot be more than the balance amount!");
             }else{
                 $('.error_message').html("");
