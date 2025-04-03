@@ -397,10 +397,10 @@ if (strlen($_SESSION['alogin']) == "") {
                           </td>
                         </tr>
                         <?php
-                        $cnt++;
                               }
                               
                             }
+                            $cnt++;
                           } else {
                         ?>
                         <tr>
