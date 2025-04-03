@@ -413,6 +413,10 @@ if (strlen($_SESSION['alogin']) == "") {
                                     </div>
 
                                     <div class="form-row">
+                                        <div class="form-group col-md-12 error_message text-danger"></div>
+                                    </div>
+
+                                    <div class="form-row">
                                         <div class="form-group col-md-12">
 
                                             <button type="submit" name="submit" class="btn btn-primary">Make Payment</button>
@@ -930,9 +934,16 @@ if (strlen($_SESSION['alogin']) == "") {
 
         $('#discount,#paid').on('input',function(){
             var total_fee = $('#balance_total').val();
+            var balance = $('#balance').val();
             var discount = $('#discount').val();
             var paid = $('#paid').val();
             $('#balance').val(total_fee - discount - paid);
+
+            if(total_fee < balance){
+                $('.error_message').html("Paying amount cannot be more than the balance amount!");
+            }else{
+                $('.error_message').html("");
+            }
         });
     </script>
 
