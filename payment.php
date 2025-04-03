@@ -350,7 +350,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                             <label for="created_at">Created Date</label>
                                             <input type="text" name="created_at" class="form-control"
                                                 id="datepicker" required="required"
-                                                placeholder="Created Date" value="<?=date('Y-m-d h:i:s'); ?>">
+                                                placeholder="Created Date" value="<?=date('d-m-Y'); ?>">
                                         </div>
                                         
                                         <div class="form-group col-md-6">
