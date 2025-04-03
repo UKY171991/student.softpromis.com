@@ -274,9 +274,17 @@ if (strlen($_SESSION['alogin']) == "") {
             </div>
           </div>  -->
 
-          <!-- Fix the chart height here -->
-          <div style="position: relative; height: 400px; max-height: 400px;">
-            <canvas id="combinedChart"></canvas>
+          <div class="row mt-5">
+            <div class="col-xl-12">
+              <div class="card">
+                <div class="card-body">
+                  <!-- Fix the chart height here -->
+                  <div style="position: relative; height: 400px; max-height: 400px;" class="mt-5">
+                    <canvas id="combinedChart"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
 
