@@ -12,7 +12,7 @@
         </li>
         <?php if($_SESSION['user_type'] == 1) { ?>
         <li class="nav-item">
-            <a href="account.php" class="nav-link">
+            <a href="account.php" class="nav-link <?php if ($currentPage == 'account.php') echo 'active'; ?>">
                 <i class="fa fa fa-server"></i> <span>Account</span>
             </a>
         </li>
