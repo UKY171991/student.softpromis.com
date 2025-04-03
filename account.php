@@ -230,7 +230,7 @@ if (strlen($_SESSION['alogin']) == "") {
                     $totalPendingFeeMonthly = $result['pending_amount'] ?? 0;
                   ?>
                   <h3>₹ <?php echo number_format($totalPendingFeeMonthly, 2); ?></h3>
-                  <p>Pending Fees (<?=date('M Y');?>)</p>
+                  <p>Pending Fees Pending(<?=date('M Y');?>)</p>
                 </div>
                 <div class="icon"><i class="fa-solid fa-credit-card"></i></div>
               </div>
