@@ -173,8 +173,31 @@ if (strlen($_SESSION['alogin']) == "") {
             </div>
           </div>
 
+          <!-- Card 4: Total Fees Paid & Pending (All Time) -->
+          <div class="col-md-4">
+            <div class="dashboard-card bg-indigo">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <?php
+                    // Fetch both total paid and total pending fees
+                    $sql = "SELECT SUM(paid) AS total_paid, SUM(total_fee - paid) AS total_pending FROM payment WHERE total_fee > 0";
+                    $query = $dbh->prepare($sql);
+                    $query->execute();
+                    $result = $query->fetch(PDO::FETCH_ASSOC);
+                    $totalPaid = $result['total_paid'] ?? 0;
+                    $totalPending = $result['total_pending'] ?? 0;
+                    $totalFees = $totalPaid + $totalPending;
+                  ?>
+                  <h3>₹ <?php echo number_format($totalFees, 2); ?></h3>
+                  <p>Total Fees Summary (All Time)</p>
+                </div>
+                <div class="icon"><i class="fa-solid fa-scale-balanced"></i></div>
+              </div>
+            </div>
+          </div>
 
-          <!-- Card 4: Total Fees Paid (All Time) -->
+
+          <!-- Card 5: Total Fees Paid (All Time) -->
           <div class="col-md-4">
             <div class="dashboard-card bg-indigo">
               <div class="d-flex justify-content-between align-items-center">
@@ -198,7 +221,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
 
 
-          <!-- Card 5: Total Fees Pending (All Time) -->
+          <!-- Card 6: Total Fees Pending (All Time) -->
           <div class="col-md-4">
             <div class="dashboard-card bg-gold">
               <div class="d-flex justify-content-between align-items-center">
@@ -219,28 +242,7 @@ if (strlen($_SESSION['alogin']) == "") {
             </div>
           </div>
 
-          <!-- Card 6: Total Fees Paid & Pending (All Time) -->
-          <div class="col-md-4">
-            <div class="dashboard-card bg-indigo">
-              <div class="d-flex justify-content-between align-items-center">
-                <div>
-                  <?php
-                    // Fetch both total paid and total pending fees
-                    $sql = "SELECT SUM(paid) AS total_paid, SUM(total_fee - paid) AS total_pending FROM payment WHERE total_fee > 0";
-                    $query = $dbh->prepare($sql);
-                    $query->execute();
-                    $result = $query->fetch(PDO::FETCH_ASSOC);
-                    $totalPaid = $result['total_paid'] ?? 0;
-                    $totalPending = $result['total_pending'] ?? 0;
-                    $totalFees = $totalPaid + $totalPending;
-                  ?>
-                  <h3>₹ <?php echo number_format($totalFees, 2); ?></h3>
-                  <p>Total Fees Summary (All Time)</p>
-                </div>
-                <div class="icon"><i class="fa-solid fa-scale-balanced"></i></div>
-              </div>
-            </div>
-          </div>
+          
 
 
 
