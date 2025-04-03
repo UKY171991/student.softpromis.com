@@ -419,7 +419,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                     <div class="form-row">
                                         <div class="form-group col-md-12">
 
-                                            <button type="submit" name="submit" class="btn btn-primary">Make Payment</button>
+                                            <button type="submit" name="submit" class="btn btn-primary" id="submit_btn">Make Payment</button>
                                             <a href="manage-candidate.php" class="btn btn-danger">Skip</a>
 
                                             <button type="button" class="btn btn-success" onClick='p_all_data(<?php echo $last_id; ?>)' data-toggle="modal" data-target="#p_myModal">Print</td></button>
