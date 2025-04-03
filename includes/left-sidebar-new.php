@@ -1,3 +1,8 @@
+<?php
+// Get current file name without query string
+$currentPage = basename($_SERVER['PHP_SELF']);
+?>
+
 <nav class="col-lg-2 col-md-3 d-none d-md-block sidebar p-0 sidebar-nav sidebarnew">
     <div class="sidebar-header">
         <img src="images/logo.jpg" alt="Profile" class="rounded-circle mb-2" width="80">
