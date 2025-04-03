@@ -66,10 +66,10 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         <?php if($_SESSION['user_type']==1){ ?>
     <!-- Scheme Sub-menu -->
     <li class="nav-item">
-        <a class="nav-link <?php if ($currentPage == 'asign-scheme.php' OR $currentPage == 'manage-scheme.php' OR $currentPage == 'create-scheme.php') echo 'active mt-1 mb-1'; ?>" data-bs-toggle="collapse" href="#schemeSubmenu" role="button" aria-expanded="false" aria-controls="schemeSubmenu">
+        <a class="nav-link <?php if ($currentPage == 'asign-scheme.php' OR $currentPage == 'manage-scheme.php' OR $currentPage == 'create-scheme.php' OR $currentPage == 'edit-scheme.php') echo 'active mt-1 mb-1'; ?>" data-bs-toggle="collapse" href="#schemeSubmenu" role="button" aria-expanded="false" aria-controls="schemeSubmenu">
             <i class="fa fa-bandcamp me-2"></i>Scheme <i class="fa-solid fa-chevron-down float-end"></i>
         </a>
-        <div class="collapse <?php if ($currentPage == 'asign-scheme.php' OR $currentPage == 'manage-scheme.php' OR $currentPage == 'create-scheme.php') echo 'show'; ?>" id="schemeSubmenu">
+        <div class="collapse <?php if ($currentPage == 'asign-scheme.php' OR $currentPage == 'manage-scheme.php' OR $currentPage == 'create-scheme.php' OR $currentPage == 'edit-scheme.php') echo 'show'; ?>" id="schemeSubmenu">
             <ul class="nav flex-column ps-3">
                 <li class="nav-item">
                     <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="create-scheme.php"><i class="fa fa-plus me-2"></i>Create Scheme</a>
