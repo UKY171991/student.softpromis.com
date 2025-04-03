@@ -513,7 +513,10 @@ if (strlen($_SESSION['alogin']) == "") {
 
 
 
+<!-- Fix the chart height here -->
+<div style="position: relative; height: 400px; max-height: 400px;">
   <canvas id="combinedChart"></canvas>
+</div>
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
