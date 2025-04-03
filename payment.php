@@ -58,7 +58,12 @@ if (strlen($_SESSION['alogin']) == "") {
     $balance = $_POST['balance'];
     $total_fee = $_POST['total_fee'];
     $payment_mode = $_POST['payment_mode'];
-    $created_at = date("Y-m-d H:i:s"); // Current timestamp
+    $created_date = $_POST['created_at'];
+
+    $date = DateTime::createFromFormat('d-m-Y', $created_date);
+    $created_at = $date ? $date->format('Y-m-d') : null;
+
+    //$created_at = date("Y-m-d H:i:s"); // Current timestamp
 
 
     try {
