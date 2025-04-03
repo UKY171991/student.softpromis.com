@@ -274,7 +274,7 @@ if (strlen($_SESSION['alogin']) == "") {
             </div>
           </div>  -->
 
-          <div class="row mt-5">
+          <div class="row mt-5 pt-5">
             <div class="col-xl-12">
               <div class="card">
                 <div class="card-body">
