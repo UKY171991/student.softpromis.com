@@ -98,7 +98,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="manage-sector.php"><i class="fa fa-cogs me-2"></i>Manage Sector</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="assign-sector.php"><i class="fa fa-check-circle me-2"></i>Assign Sector</a>
+                    <a class="nav-link <?php if ($currentPage == 'assign-sector.php') echo 'active mt-1 mb-1'; ?>" href="assign-sector.php"><i class="fa fa-check-circle me-2"></i>Assign Sector</a>
                 </li>
             </ul>
         </div>
