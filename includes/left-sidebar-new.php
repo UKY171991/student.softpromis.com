@@ -136,7 +136,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
         <!-- Placement Sub-menu -->
         <li class="nav-item">
-            <a class="nav-link" href="manage-placement.php">
+            <a class="nav-link <?php if ($currentPage == 'manage-placement.php') echo 'active'; ?>" href="manage-placement.php">
                 <i class="fa fa-handshake me-2"></i>Placement
             </a>
         </li>
