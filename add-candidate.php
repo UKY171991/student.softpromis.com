@@ -232,7 +232,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
 
         <!-- <link rel="stylesheet" href="css/font-awesome.min.css" media="screen"> -->
-    <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen">
+    <!-- <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/lobipanel/lobipanel.min.css" media="screen">
     <link rel="stylesheet" href="css/prism/prism.css" media="screen">
