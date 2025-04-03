@@ -458,6 +458,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
 
   <script>
+    /*
   document.addEventListener("DOMContentLoaded", function() {
     var ctx = document.getElementById('barChart').getContext('2d');
     if (window.myBarChart instanceof Chart) {
@@ -505,6 +506,8 @@ if (strlen($_SESSION['alogin']) == "") {
       }
     });
   });
+
+  */
   </script>
 
 
