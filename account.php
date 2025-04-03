@@ -151,6 +151,29 @@ if (strlen($_SESSION['alogin']) == "") {
             </div>
           </div>
 
+
+          <!-- Card 6: Total Registered Candidates -->
+          <div class="col-md-3">
+            <div class="dashboard-card bg-info">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <?php
+                    // SQL query to count total registered candidates
+                    $sql = "SELECT COUNT(*) AS total_candidates FROM tblcandidate";
+                    $query = $dbh->prepare($sql);
+                    $query->execute();
+                    $result = $query->fetch(PDO::FETCH_ASSOC);
+                    $totalCandidates = $result['total_candidates'] ?? 0;
+                  ?>
+                  <h3><?php echo $totalCandidates; ?></h3>
+                  <p>Registered Candidates</p>
+                </div>
+                <div class="icon"><i class="fa-solid fa-users"></i></div>
+              </div>
+            </div>
+          </div>
+
+
           <!-- Card 3: Total Fees Current Month -->
           <div class="col-md-3">
             <div class="dashboard-card bg-darkblue">
