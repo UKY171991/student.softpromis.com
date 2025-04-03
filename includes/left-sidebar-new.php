@@ -188,16 +188,16 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
         <!-- Invoice Sub-menu -->
         <li class="nav-item">
-            <a class="nav-link <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'active mt-1 mb-1'; ?>" data-bs-toggle="collapse" href="#invoiceSubmenu" role="button" aria-expanded="false" aria-controls="invoiceSubmenu">
+            <a class="nav-link <?php if ($currentPage == 'manage-invoice.php' OR $currentPage == 'add-invoice.php' OR $currentPage == 'edit-trainingcenter.php') echo 'active mt-1 mb-1'; ?>" data-bs-toggle="collapse" href="#invoiceSubmenu" role="button" aria-expanded="false" aria-controls="invoiceSubmenu">
                 <i class="fa fa-file-invoice me-2"></i>Invoice <i class="fa-solid fa-chevron-down float-end"></i>
             </a>
-            <div class="collapse <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'show'; ?>" id="invoiceSubmenu">
+            <div class="collapse <?php if ($currentPage == 'manage-invoice.php' OR $currentPage == 'add-invoice.php' OR $currentPage == 'edit-trainingcenter.php') echo 'show'; ?>" id="invoiceSubmenu">
                 <ul class="nav flex-column ps-3">
                     <li class="nav-item">
-                        <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="add-invoice.php"><i class="fa fa-plus me-2"></i>Add Invoice</a>
+                        <a class="nav-link <?php if ($currentPage == 'add-invoice.php') echo 'active mt-1 mb-1'; ?>" href="add-invoice.php"><i class="fa fa-plus me-2"></i>Add Invoice</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="manage-invoice.php"><i class="fa fa-cogs me-2"></i>Manage Invoice</a>
+                        <a class="nav-link <?php if ($currentPage == 'manage-invoice.php') echo 'active mt-1 mb-1'; ?>" href="manage-invoice.php"><i class="fa fa-cogs me-2"></i>Manage Invoice</a>
                     </li>
                 </ul>
             </div>
