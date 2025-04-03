@@ -385,7 +385,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                         <div class="form-group col-md-6">
                                             <label for="discount">Discount</label>
                                             <input type="number" name="discount" class="form-control" id="discount"
-                                                placeholder="Discount" value="0" <?php if($payment_val != $Balance_val){ echo "readonly" } ?> >
+                                                placeholder="Discount" value="0" <?php if($payment_val != $Balance_val) { echo 'readonly'; } ?> >
                                         </div>
 
                                         <div class="form-group col-md-6">
