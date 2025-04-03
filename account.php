@@ -359,7 +359,7 @@ if (strlen($_SESSION['alogin']) == "") {
                           <td><?php echo htmlentities($result->candidatename); ?></td>
                           <td><?php echo htmlentities($result->phonenumber); ?></td>
                           <td><?php echo $jobrollname; ?></td>
-                          <td><h4>₹ <?php echo number_format($totalPendingAmount, 2); ?></h4></td>
+                          <td>₹ <?php echo number_format($totalPendingAmount, 2); ?></td>
                           <td>
                             <?php
                               $status = '';
