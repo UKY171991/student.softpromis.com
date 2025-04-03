@@ -24,7 +24,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         <?php } ?>
         
         <li class="nav-item">
-            <a class="nav-link <?php if ($currentPage == 'add-candidate.php' OR $currentPage == 'candidate-bulk-upload.php' OR $currentPage == 'manage-candidate.php') echo 'active'; ?>" data-bs-toggle="collapse" href="#candidateSubmenu" role="button" aria-expanded="false" aria-controls="candidateSubmenu">
+            <a class="nav-link <?php if ($currentPage == 'edit-candidate.php' OR $currentPage == 'add-candidate.php' OR $currentPage == 'candidate-bulk-upload.php' OR $currentPage == 'manage-candidate.php') echo 'active'; ?>" data-bs-toggle="collapse" href="#candidateSubmenu" role="button" aria-expanded="false" aria-controls="candidateSubmenu">
                 <i class="fa-solid fa-users me-2"></i>Candidate <i class="fa-solid fa-chevron-down float-end"></i>
             </a>
             <div class="collapse <?php if ($currentPage == 'add-candidate.php' OR $currentPage == 'candidate-bulk-upload.php' OR $currentPage == 'manage-candidate.php') echo 'show'; ?>" id="candidateSubmenu">
