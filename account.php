@@ -14,7 +14,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
 <?php
 // Get current file name without query string
-echo $currentPage = basename($_SERVER['PHP_SELF']);
+$currentPage = basename($_SERVER['PHP_SELF']);
 ?>
 
 <!DOCTYPE html>
