@@ -6,7 +6,7 @@
     </div>
     <ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link active" href="dashboard.php">
+            <a class="nav-link <?php if ($currentPage == 'dashboard.php') echo 'active'; ?>" href="dashboard.php">
                 <i class="fa-solid fa-tachometer-alt me-2"></i>Dashboard
             </a>
         </li>
