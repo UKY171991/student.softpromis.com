@@ -939,7 +939,7 @@ if (strlen($_SESSION['alogin']) == "") {
             var paid = $('#paid').val();
             $('#balance').val(total_fee - discount - paid);
 
-            var balance = 0;//total_fee - discount - paid;
+            var balance = total_fee - discount - paid;
 
             if(total_fee < balance){
 
