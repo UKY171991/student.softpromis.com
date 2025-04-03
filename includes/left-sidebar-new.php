@@ -171,16 +171,16 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
         <!-- Certification Sub-menu -->
         <li class="nav-item">
-            <a class="nav-link <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'active mt-1 mb-1'; ?>" data-bs-toggle="collapse" href="#certificationSubmenu" role="button" aria-expanded="false" aria-controls="certificationSubmenu">
+            <a class="nav-link <?php if ($currentPage == 'manage-certification.php' OR $currentPage == 'add-certification.php' OR $currentPage == 'add-certification-document.php') echo 'active mt-1 mb-1'; ?>" data-bs-toggle="collapse" href="#certificationSubmenu" role="button" aria-expanded="false" aria-controls="certificationSubmenu">
                 <i class="fa fa-certificate me-2"></i>Certification <i class="fa-solid fa-chevron-down float-end"></i>
             </a>
-            <div class="collapse <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'show'; ?>" id="certificationSubmenu">
+            <div class="collapse <?php if ($currentPage == 'manage-certification.php' OR $currentPage == 'add-certification.php' OR $currentPage == 'add-certification-document.php') echo 'show'; ?>" id="certificationSubmenu">
                 <ul class="nav flex-column ps-3">
                     <li class="nav-item">
-                        <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="add-certification.php"><i class="fa fa-plus me-2"></i>Add Certificate</a>
+                        <a class="nav-link <?php if ($currentPage == 'add-certification.php') echo 'active mt-1 mb-1'; ?>" href="add-certification.php"><i class="fa fa-plus me-2"></i>Add Certificate</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="manage-certification.php"><i class="fa fa-cogs me-2"></i>Manage Certificate</a>
+                        <a class="nav-link <?php if ($currentPage == 'manage-certification.php') echo 'active mt-1 mb-1'; ?>" href="manage-certification.php"><i class="fa fa-cogs me-2"></i>Manage Certificate</a>
                     </li>
                 </ul>
             </div>
