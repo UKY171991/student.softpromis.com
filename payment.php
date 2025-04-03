@@ -933,18 +933,17 @@ if (strlen($_SESSION['alogin']) == "") {
 
 
         $('#discount,#paid').on('input',function(){
-
-            var total_fee = parseFloat(document.getElementById("total_fee").value) || 0;
-            var discount = parseFloat(document.getElementById("discount").value) || 0;
-            var paid = parseFloat(document.getElementById("paid").value) || 0;
-
-            //var total_fee = $('#balance_total').val();
+            var total_fee = $('#balance_total').val();
             
-            //var discount = $('#discount').val();
-            //var paid = $('#paid').val();
+            var discount = $('#discount').val();
+            var paid = $('#paid').val();
             $('#balance').val(total_fee - discount - paid);
 
             var balance = total_fee - discount - paid;
+
+            
+
+            var balance = (total_fee - discount - paid).toFixed(2);
 
             console.log(balance);
 
