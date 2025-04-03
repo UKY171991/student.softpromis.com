@@ -209,7 +209,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 <a class="nav-link <?php if ($currentPage == 'manage-user.php' OR $currentPage == 'create-user.php' OR $currentPage == 'edit-user.php') echo 'active mt-1 mb-1'; ?>" data-bs-toggle="collapse" href="#adminSubmenu" role="button" aria-expanded="false" aria-controls="adminSubmenu">
                     <i class="fa fa-lock me-2"></i>Admin Control <i class="fa-solid fa-chevron-down float-end"></i>
                 </a>
-                <div class="collapse <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'show'; ?>" id="adminSubmenu">
+                <div class="collapse <?php if ($currentPage == 'manage-user.php' OR $currentPage == 'create-user.php' OR $currentPage == 'edit-user.php') echo 'show'; ?>" id="adminSubmenu">
                     <ul class="nav flex-column ps-3">
                         <li class="nav-item">
                             <a class="nav-link <?php if ($currentPage == 'create-user.php') echo 'active mt-1 mb-1'; ?>" href="create-user.php"><i class="fa fa-user-plus me-2"></i>Create User</a>
