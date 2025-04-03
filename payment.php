@@ -939,6 +939,8 @@ if (strlen($_SESSION['alogin']) == "") {
             var paid = $('#paid').val();
             $('#balance').val(total_fee - discount - paid);
 
+            alert("Hello");
+
             if(total_fee < balance){
                 $('.error_message').html("Paying amount cannot be more than the balance amount!");
             }else{
