@@ -29,14 +29,14 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             </a>
             <div class="collapse <?php if ($currentPage == 'add-candidate.php' OR $currentPage == 'candidate-bulk-upload.php' OR $currentPage == 'manage-candidate.php') echo 'show'; ?>" id="candidateSubmenu">
                 <ul class="nav flex-column ps-3">
-                    <li class="nav-item">
-                        <a class="nav-link" href="add-candidate.php"><i class="fa fa-user-plus me-2"></i>Register Candidate</a>
+                    <li class="nav-item m-1">
+                        <a class="nav-link <?php if ($currentPage == 'add-candidate.php') echo 'active'; ?>" href="add-candidate.php"><i class="fa fa-user-plus me-2"></i>Register Candidate</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="candidate-bulk-upload.php"><i class="fa fa-upload me-2"></i>Bulk Upload</a>
+                    <li class="nav-item m-1">
+                        <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active'; ?>" href="candidate-bulk-upload.php"><i class="fa fa-upload me-2"></i>Bulk Upload</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="manage-candidate.php"><i class="fa fa-users me-2"></i>Manage Candidates</a>
+                    <li class="nav-item m-1">
+                        <a class="nav-link <?php if ($currentPage == 'manage-candidate.php') echo 'active'; ?>" href="manage-candidate.php"><i class="fa fa-users me-2"></i>Manage Candidates</a>
                     </li>
                 </ul>
             </div>
