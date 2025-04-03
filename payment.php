@@ -406,7 +406,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                         <div class="form-group col-md-6">
                                             <label for="payment_mode">Payment Mode</label>
                                             <select name="payment_mode" id="payment_mode" class="form-control" required>
-                                                <option value="">Payment Mode</option>
+                                                <option value="">Select Payment Mode</option>
                                                 <option value="Online">Online</option>
                                                 <option value="Cash">Cash</option>
                                             </select>
