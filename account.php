@@ -251,7 +251,7 @@ if (strlen($_SESSION['alogin']) == "") {
         </div><!-- /.row -->
 
         <!-- Charts and Data Table -->
-        <div class="container-fluid mt-5">
+        <!-- <div class="container-fluid mt-5">
           <div class="row">
             <div class="col-xl-12">
               <div class="card">
@@ -272,7 +272,13 @@ if (strlen($_SESSION['alogin']) == "") {
                 </div>
               </div>
             </div>
+          </div>  -->
+
+          <!-- Fix the chart height here -->
+          <div style="position: relative; height: 400px; max-height: 400px;">
+            <canvas id="combinedChart"></canvas>
           </div>
+
 
           <div class="row mt-5">
             <div class="col-lg-12">
@@ -513,10 +519,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
 
 
-<!-- Fix the chart height here -->
-<div style="position: relative; height: 400px; max-height: 400px;">
-  <canvas id="combinedChart"></canvas>
-</div>
+
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
