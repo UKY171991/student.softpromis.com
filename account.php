@@ -580,7 +580,7 @@ if (strlen($_SESSION['alogin']) == "") {
             position: 'right',
             title: {
               display: true,
-              text: 'Fees Collected (₹)'
+              text: 'Fees Collected'
             },
             beginAtZero: true,
             grid: {
