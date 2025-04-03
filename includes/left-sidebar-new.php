@@ -127,10 +127,10 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
     <!-- Batch Sub-menu -->
     <li class="nav-item">
-        <a class="nav-link <?php if ($currentPage == 'add-candidate-to-batch.php' OR $currentPage == 'manage-batch.php' OR $currentPage == 'add-batch.php'  OR $currentPage == 'edit-batch.php' ) echo 'active mt-1 mb-1'; ?>" data-bs-toggle="collapse" href="#batchSubmenu" role="button" aria-expanded="false" aria-controls="batchSubmenu">
+        <a class="nav-link <?php if ($currentPage == 'add-candidate-to-batch.php' OR $currentPage == 'manage-batch.php' OR $currentPage == 'add-batch.php'  OR $currentPage == 'edit-batch.php' OR $currentPage == 'add-candidate-to-particular-batch.php' ) echo 'active mt-1 mb-1'; ?>" data-bs-toggle="collapse" href="#batchSubmenu" role="button" aria-expanded="false" aria-controls="batchSubmenu">
             <i class="fa fa-users me-2"></i>Batch <i class="fa-solid fa-chevron-down float-end"></i>
         </a>
-        <div class="collapse <?php if ($currentPage == 'add-candidate-to-batch.php' OR $currentPage == 'manage-batch.php' OR $currentPage == 'add-batch.php' OR $currentPage == 'edit-batch.php') echo 'show'; ?>" id="batchSubmenu">
+        <div class="collapse <?php if ($currentPage == 'add-candidate-to-batch.php' OR $currentPage == 'manage-batch.php' OR $currentPage == 'add-batch.php' OR $currentPage == 'edit-batch.php' OR $currentPage == 'add-candidate-to-particular-batch.php') echo 'show'; ?>" id="batchSubmenu">
             <ul class="nav flex-column ps-3">
                 <li class="nav-item">
                     <a class="nav-link <?php if ($currentPage == 'add-batch.php') echo 'active mt-1 mb-1'; ?>" href="add-batch.php"><i class="fa fa-plus me-2"></i>Add Batch</a>
