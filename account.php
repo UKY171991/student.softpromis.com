@@ -63,6 +63,7 @@ if (strlen($_SESSION['alogin']) == "") {
   .dashboard-card h3 {
     margin: 0;
     font-size: 1.2rem;
+    color: white;
   }
   .dashboard-card p {
     margin: 0;
