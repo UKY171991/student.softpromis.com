@@ -552,7 +552,7 @@ if (strlen($_SESSION['alogin']) == "") {
           {
             label: 'Monthly Fees Collected (₹)',
             data: <?php echo json_encode($monthlyFeesData); ?>,
-            backgroundColor: 'rgba(75, 192, 192, 0.7)',
+            backgroundColor: 'red',
             yAxisID: 'y2'
           }
         ]
