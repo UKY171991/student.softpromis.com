@@ -370,7 +370,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
 
                         <tr>
-                          <td><?php echo htmlentities($cnt); ?></td>
+                          <td><?php echo $cnt++; ?></td>
                           <td>
                             <button type="button" class="btn btn-info btn-xs" onClick='all_data(<?php echo htmlentities($result->CandidateId); ?>)' data-toggle="modal" data-target="#c_myModal"><?php echo htmlentities($result->enrollmentid); ?></button>
                           </td>
