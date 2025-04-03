@@ -62,6 +62,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
     $date = DateTime::createFromFormat('d-m-Y', $created_date);
     $created_at = $date ? $date->format('Y-m-d') : null;
+    $created = $date ? $date->format('Y-m-d') : null;
 
     //$created_at = date("Y-m-d H:i:s"); // Current timestamp
 
