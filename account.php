@@ -332,6 +332,25 @@ if (strlen($_SESSION['alogin']) == "") {
 
                               if (count($p_result) == 0 || $p_result[0]['paid'] != $p_result[0]['total_fee']) {
                         ?>
+
+
+                        <?php
+                          $p_checkSql = "SELECT total_fee, paid FROM payment WHERE candidate_id = :candidate_id";
+                          $p_checkQuery = $dbh->prepare($p_checkSql);
+                          $p_checkQuery->bindParam(':candidate_id', $candidate_id, PDO::PARAM_INT);
+                          $p_checkQuery->execute();
+                          $p_result = $p_checkQuery->fetchAll(PDO::FETCH_ASSOC);
+
+                          $totalPendingAmount = 0;
+                          foreach ($p_result as $row) {
+                              $pending = ($row['total_fee'] ?? 0) - ($row['paid'] ?? 0);
+                              if ($pending > 0) {
+                                  $totalPendingAmount += $pending;
+                              }
+                          }
+                          ?>
+
+
                         <tr>
                           <td><?php echo htmlentities($cnt); ?></td>
                           <td>
@@ -340,7 +359,7 @@ if (strlen($_SESSION['alogin']) == "") {
                           <td><?php echo htmlentities($result->candidatename); ?></td>
                           <td><?php echo htmlentities($result->phonenumber); ?></td>
                           <td><?php echo $jobrollname; ?></td>
-                          <td><?php echo $jobrollname; ?></td>
+                          <td><h4>₹ <?php echo number_format($totalPendingAmount, 2); ?></h4></td>
                           <td>
                             <?php
                               $status = '';
