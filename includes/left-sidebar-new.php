@@ -52,10 +52,10 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 </a>
                 <div class="collapse <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'show'; ?>" id="trainingCenterSubmenu">
                     <ul class="nav flex-column ps-3">
-                        <li class="nav-item">
+                        <li class="nav-item m-1">
                             <a class="nav-link <?php if ($currentPage == 'create-trainingcenter.php') echo 'active'; ?>" href="create-trainingcenter.php"><i class="fa fa-plus me-2"></i>Create Training Center</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item m-1">
                             <a class="nav-link <?php if ($currentPage == 'manage-trainingcenter.php') echo 'active'; ?>" href="manage-trainingcenter.php"><i class="fa fa-cogs me-2"></i>Manage Training Center</a>
                         </li>
                     </ul>
