@@ -939,11 +939,13 @@ if (strlen($_SESSION['alogin']) == "") {
             var paid = $('#paid').val();
             $('#balance').val(total_fee - discount - paid);
 
-            var balance = total_fee - discount - paid;
-
-            alert("Hello");
+           // var balance = total_fee - discount - paid;
 
             if(total_fee < balance){
+
+
+
+            alert("Hello");
 
                 $('.error_message').html("Paying amount cannot be more than the balance amount!");
             }else{
