@@ -89,7 +89,11 @@ if (strlen($_SESSION['alogin']) == "") {
       text-align: center;
       color: #fff;
     }
-    
+
+    .table-bordered th {
+        text-align: center;
+    }
+        
 </style>
 </head>
 <body>
