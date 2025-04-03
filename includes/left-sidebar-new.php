@@ -147,16 +147,16 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
         <!-- Result Sub-menu -->
         <li class="nav-item">
-            <a class="nav-link <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'active mt-1 mb-1'; ?>" data-bs-toggle="collapse" href="#resultSubmenu" role="button" aria-expanded="false" aria-controls="resultSubmenu">
+            <a class="nav-link <?php if ($currentPage == 'manage-results.php' OR $currentPage == 'add-result.php') echo 'active mt-1 mb-1'; ?>" data-bs-toggle="collapse" href="#resultSubmenu" role="button" aria-expanded="false" aria-controls="resultSubmenu">
                 <i class="fa fa-rocket me-2"></i>Result <i class="fa-solid fa-chevron-down float-end"></i>
             </a>
-            <div class="collapse <?php if ($currentPage == 'create-trainingcenter.php' OR $currentPage == 'manage-trainingcenter.php' OR $currentPage == 'edit-trainingcenter.php') echo 'show'; ?>" id="resultSubmenu">
+            <div class="collapse <?php if ($currentPage == 'manage-results.php' OR $currentPage == 'add-result.php') echo 'show'; ?>" id="resultSubmenu">
                 <ul class="nav flex-column ps-3">
                     <li class="nav-item">
-                        <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="add-result.php"><i class="fa fa-plus me-2"></i>Add Result</a>
+                        <a class="nav-link <?php if ($currentPage == 'add-result.php') echo 'active mt-1 mb-1'; ?>" href="add-result.php"><i class="fa fa-plus me-2"></i>Add Result</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php if ($currentPage == 'candidate-bulk-upload.php') echo 'active mt-1 mb-1'; ?>" href="manage-results.php"><i class="fa fa-cogs me-2"></i>Manage Results</a>
+                        <a class="nav-link <?php if ($currentPage == 'manage-results.php') echo 'active mt-1 mb-1'; ?>" href="manage-results.php"><i class="fa fa-cogs me-2"></i>Manage Results</a>
                     </li>
                 </ul>
             </div>
