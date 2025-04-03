@@ -974,8 +974,8 @@ if (strlen($_SESSION['alogin']) == "") {
 <script>
   $(function() {
     $("#datepicker").datetimepicker({
-      dateFormat: "yy-mm-dd",  // Format for the date
-      timeFormat: "HH:mm:ss",  // 24-hour time format
+      dateFormat: "dd-mm-yy",  // Format for the date
+      //timeFormat: "HH:mm:ss",  // 24-hour time format
       controlType: 'select',   // Dropdown selection for time
       oneLine: true,           // Displays date & time in one line
       timezone: "+05:30"       // Set to IST (Indian Standard Time)
