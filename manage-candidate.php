@@ -118,7 +118,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                 <table id="example" class="table table-hover table-bordered" style="width:100%">
                                     <thead class="thead-dark">
                                         <tr>
-                                            <th class="num_list"><input type="checkbox" class="checkbox_list" id="selectAll">#</th>
+                                            <th class="num_list"><input type="checkbox" class="checkbox_list" id="selectAll"></th>
                                             <th>Enrollment ID</th>
                                             <th>Name</th>
                                             <th>Phone</th>
