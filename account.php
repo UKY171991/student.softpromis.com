@@ -602,7 +602,7 @@ if (strlen($_SESSION['alogin']) == "") {
   });
 </script>
 
-<!-- Add this script to initialize the DataTable -->
+<!-- Add this script to initialize the DataTables -->
 <script>
   $(document).ready(function() {
     $('#datatable').DataTable({
