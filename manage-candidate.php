@@ -47,6 +47,10 @@ if (strlen($_SESSION['alogin']) == "") {
             overflow-y: auto !important;
         }
 
+        th.num_list,td.num_list {
+            text-align: end;
+        }
+
     </style>
 </head>
 
