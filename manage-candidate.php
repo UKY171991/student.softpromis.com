@@ -51,6 +51,11 @@ if (strlen($_SESSION['alogin']) == "") {
             text-align: end;
         }
 
+        input.checkbox_list {
+            text-align: left !important;
+            float: inline-start;
+        }
+
     </style>
 </head>
 
