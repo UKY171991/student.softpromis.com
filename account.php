@@ -602,6 +602,33 @@ if (strlen($_SESSION['alogin']) == "") {
   });
 </script>
 
+<!-- Add this script to initialize the DataTable -->
+<script>
+  $(document).ready(function() {
+    $('#datatable').DataTable({
+      responsive: true,
+      paging: true,
+      searching: true,
+      ordering: true,
+      info: true,
+      lengthChange: true,
+      pageLength: 10,
+      language: {
+        search: "Search:",
+        lengthMenu: "Show _MENU_ entries",
+        info: "Showing _START_ to _END_ of _TOTAL_ entries",
+        infoEmpty: "No entries available",
+        infoFiltered: "(filtered from _MAX_ total entries)",
+        paginate: {
+          first: "First",
+          last: "Last",
+          next: "Next",
+          previous: "Previous"
+        }
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
