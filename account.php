@@ -300,7 +300,7 @@ if (strlen($_SESSION['alogin']) == "") {
             <div class="col-lg-12">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title mb-4">Data List</h4>
+                  <h4 class="card-title mb-4">Pending List</h4>
                   <div class="table-responsive">
                     <table id="datatable" class="table table-bordered dt-responsive nowrap w-100">
                       <thead>
