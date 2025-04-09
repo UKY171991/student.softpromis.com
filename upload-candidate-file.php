@@ -103,15 +103,15 @@ if (strlen($_SESSION['alogin']) == "") {
 
                     <!-- Messages -->
                     <?php if ($msg) { ?>
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong>Well done!</strong> <?php echo htmlentities($msg); ?>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
+                    <div class="alert alert-success left-icon-alert" role="alert">
+                        <strong>Well done!</strong>
+                        <?php echo htmlentities($msg); ?>
+                    </div>
                     <?php } else if ($error) { ?>
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Oh snap!</strong> <?php echo htmlentities($error); ?>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
+                    <div class="alert alert-danger left-icon-alert" role="alert">
+                        <strong>Oh snap!</strong>
+                        <?php echo htmlentities($error); ?>
+                    </div>
                     <?php } ?>
 
                     <!-- Form -->
@@ -120,17 +120,7 @@ if (strlen($_SESSION['alogin']) == "") {
                             <h5 class="mb-0">Update Candidate Document</h5>
                         </div>
                         <div class="card-body">
-                        <?php if ($msg) { ?>
-                            <div class="alert alert-success left-icon-alert" role="alert">
-                                <strong>Well done!</strong>
-                                <?php echo htmlentities($msg); ?>
-                            </div>
-                            <?php } else if ($error) { ?>
-                            <div class="alert alert-danger left-icon-alert" role="alert">
-                                <strong>Oh snap!</strong>
-                                <?php echo htmlentities($error); ?>
-                            </div>
-                            <?php } ?>
+                        
                             <form method="post" enctype="multipart/form-data">
                                 <?php
                                     $cid = intval($_GET['candidateid']);
