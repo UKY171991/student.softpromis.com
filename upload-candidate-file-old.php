@@ -315,19 +315,22 @@ if (strlen($_SESSION['alogin']) == "") {
 
                             if ($query->rowCount() > 0) { ?>
                                 <!-- Candidate Photo -->
-                                <form method="post" enctype="multipart/form-data">
-                                    <input type="hidden" name="candidateid" value="<?php echo $cid; ?>">
-                                    <div class="form-group">
-                                        <label for="candidatephoto">Upload Candidate Photo</label>
-                                        <input type="file" name="candidatephoto" class="form-control">
-                                        <?php if (!empty($result->candidatephoto)) { ?>
-                                            <p>Current File: <a href="doc/<?php echo htmlentities($result->candidatephoto); ?>" target="_blank"><?php echo htmlentities($result->candidatephoto); ?></a></p>
-                                            
-                                        <?php } ?>
-                                    </div>
-                                    <button type="submit" name="updatePhoto" class="btn btn-primary">Upload Photo</button>
-                                    <button type="submit" name="deletePhoto" class="btn btn-danger">Delete Photo</button>
-                                </form>
+                                <div class="card">
+                                    <form method="post" enctype="multipart/form-data">
+                                        <input type="hidden" name="candidateid" value="<?php echo $cid; ?>">
+                                        <div class="form-group">
+                                            <label for="candidatephoto">Upload Candidate Photo</label>
+                                            <input type="file" name="candidatephoto" class="form-control">
+                                            <?php if (!empty($result->candidatephoto)) { ?>
+                                                <p>Current File: <a href="doc/<?php echo htmlentities($result->candidatephoto); ?>" target="_blank"><?php echo htmlentities($result->candidatephoto); ?></a></p>
+                                                
+                                            <?php } ?>
+                                        </div>
+                                        <button type="submit" name="updatePhoto" class="btn btn-primary">Upload Photo</button>
+                                        <button type="submit" name="deletePhoto" class="btn btn-danger">Delete Photo</button>
+                                    </form>
+                                </div>
+                                
                                 <hr>
 
                                 <!-- Aadhaar Photo -->
