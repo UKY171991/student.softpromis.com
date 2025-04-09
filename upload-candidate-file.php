@@ -136,15 +136,17 @@ if (strlen($_SESSION['alogin']) == "") {
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label for="candidatename">Full Name</label>
-                                        <?php echo htmlentities($result->candidatename); ?>
+                                        <label for="candidatename">Full Name</label> : <?php echo htmlentities($result->candidatename); ?>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="fathername">Father Name</label>
-                                        <?php echo htmlentities($result->fathername); ?>
+                                        <label for="fathername">Father Name</label> : <?php echo htmlentities($result->fathername); ?>
                                     </div>
-                                    <div class="col-md-6"></div>
-                                    <div class="col-md-6"></div>
+                                    <div class="col-md-6">
+                                        <label for="aadharnumber">Aadhar Number</label> : <?php echo htmlentities($result->aadharnumber); ?>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="aadharnumber">Phone Number</label> : <?php echo htmlentities($result->phonenumber); ?>
+                                    </div>
                                     <div class="col-md-6"></div>
                                     <div class="col-md-6"></div>
                                     <div class="col-md-6"></div>
@@ -155,27 +157,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                     
                                 </div>
                                 
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        
-                                    </div>
-
-                                    <div class="form-group col-md-6">
-                                        
-                                    </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="aadharnumber">Aadhar Number</label>
-                                        <?php echo htmlentities($result->aadharnumber); ?>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="aadharnumber">Phone Number</label>
-                                        <?php echo htmlentities($result->phonenumber); ?>
-                                    </div>
-                                </div>
-                                    
+                                
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="candidatephoto">Upload Photo</label>
