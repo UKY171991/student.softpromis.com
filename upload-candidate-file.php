@@ -11,6 +11,10 @@ if (strlen($_SESSION['alogin']) == "") {
         $maxFileSize = 1048576; // 1 MB in bytes
         $error = "";
 
+        // Initialize variables for SQL update
+        $updateFields = [];
+        $updateParams = [':cid' => $cid];
+
         // Check and process candidate photo
         if (!empty($_FILES['candidatephoto']['name'])) {
             if ($_FILES['candidatephoto']['size'] > $maxFileSize) {
@@ -18,7 +22,12 @@ if (strlen($_SESSION['alogin']) == "") {
             } else {
                 $candidatephoto = ($_FILES['candidatephoto']['name']);
                 $candidatephototarget = 'doc/' . basename($candidatephoto);
-                move_uploaded_file($_FILES['candidatephoto']['tmp_name'], $candidatephototarget);
+                if (move_uploaded_file($_FILES['candidatephoto']['tmp_name'], $candidatephototarget)) {
+                    $updateFields[] = "candidatephoto = :candidatephoto";
+                    $updateParams[':candidatephoto'] = $candidatephoto;
+                } else {
+                    $error .= "Failed to upload candidate photo.<br>";
+                }
             }
         }
 
@@ -29,7 +38,12 @@ if (strlen($_SESSION['alogin']) == "") {
             } else {
                 $aadhaarphoto = ($_FILES['aadhaarphoto']['name']);
                 $aadhaarphototarget = 'doc/' . basename($aadhaarphoto);
-                move_uploaded_file($_FILES['aadhaarphoto']['tmp_name'], $aadhaarphototarget);
+                if (move_uploaded_file($_FILES['aadhaarphoto']['tmp_name'], $aadhaarphototarget)) {
+                    $updateFields[] = "aadhaarphoto = :aadhaarphoto";
+                    $updateParams[':aadhaarphoto'] = $aadhaarphoto;
+                } else {
+                    $error .= "Failed to upload Aadhaar photo.<br>";
+                }
             }
         }
 
@@ -40,7 +54,12 @@ if (strlen($_SESSION['alogin']) == "") {
             } else {
                 $qualificationphoto = ($_FILES['qualificationphoto']['name']);
                 $qualificationphototarget = 'doc/' . basename($qualificationphoto);
-                move_uploaded_file($_FILES['qualificationphoto']['tmp_name'], $qualificationphototarget);
+                if (move_uploaded_file($_FILES['qualificationphoto']['tmp_name'], $qualificationphototarget)) {
+                    $updateFields[] = "qualificationphoto = :qualificationphoto";
+                    $updateParams[':qualificationphoto'] = $qualificationphoto;
+                } else {
+                    $error .= "Failed to upload qualification photo.<br>";
+                }
             }
         }
 
@@ -51,27 +70,26 @@ if (strlen($_SESSION['alogin']) == "") {
             } else {
                 $applicationphoto = ($_FILES['applicationphoto']['name']);
                 $applicationphototarget = 'doc/' . basename($applicationphoto);
-                move_uploaded_file($_FILES['applicationphoto']['tmp_name'], $applicationphototarget);
+                if (move_uploaded_file($_FILES['applicationphoto']['tmp_name'], $applicationphototarget)) {
+                    $updateFields[] = "applicationphoto = :applicationphoto";
+                    $updateParams[':applicationphoto'] = $applicationphoto;
+                } else {
+                    $error .= "Failed to upload application photo.<br>";
+                }
             }
         }
 
-        // Update database only if there are no errors
-        if (empty($error)) {
-            $sql = "UPDATE tblcandidate SET 
-                candidatephoto=:candidatephoto, 
-                aadhaarphoto=:aadhaarphoto, 
-                qualificationphoto=:qualificationphoto, 
-                applicationphoto=:applicationphoto
-                WHERE CandidateId=:cid";
+        // Update the database only if there are fields to update
+        if (!empty($updateFields)) {
+            $sql = "UPDATE tblcandidate SET " . implode(", ", $updateFields) . " WHERE CandidateId = :cid";
             $query = $dbh->prepare($sql);
-            $query->bindParam(':candidatephoto', $candidatephoto, PDO::PARAM_STR);
-            $query->bindParam(':aadhaarphoto', $aadhaarphoto, PDO::PARAM_STR);
-            $query->bindParam(':qualificationphoto', $qualificationphoto, PDO::PARAM_STR);
-            $query->bindParam(':applicationphoto', $applicationphoto, PDO::PARAM_STR);
-            $query->bindParam(':cid', $cid, PDO::PARAM_STR);
+            foreach ($updateParams as $param => $value) {
+                $query->bindParam($param, $value, PDO::PARAM_STR);
+            }
             $query->execute();
-
             $msg = "Data has been updated successfully.";
+        } else {
+            $msg = "No files were uploaded.";
         }
     }
 ?>
