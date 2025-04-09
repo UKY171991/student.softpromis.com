@@ -147,10 +147,26 @@ if (strlen($_SESSION['alogin']) == "") {
                                     <div class="col-md-6 mb-3">
                                         <label for="aadharnumber">Phone Number</label> : <?php echo htmlentities($result->phonenumber); ?>
                                     </div>
-                                    <div class="col-md-6"></div>
-                                    <div class="col-md-6"></div>
-                                    <div class="col-md-6"></div>
-                                    <div class="col-md-6"></div>
+                                    <div class="col-md-6">
+                                        <label for="candidatephoto">Upload Photo</label>
+                                        <input type="file" name="candidatephoto" class="form-control" value="<?php echo htmlentities($result->candidatephoto); ?>"
+                                                id="candidatephoto">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="aadharnumber">Upload Aadhaar </label>
+                                        <input type="file" name="aadhaarphoto" class="form-control"
+                                                id="aadhar">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="aadharnumber">Upload Education</label>
+                                        <input type="file" name="qualificationphoto"
+                                                class="form-control" id="qualificationphoto">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="aadharnumber">Upload Application</label>
+                                        <input type="file" name="applicationphoto"
+                                                    class="form-control" id="applicationphoto">
+                                    </div>
                                     <div class="col-md-6"></div>
                                     <div class="col-md-6"></div>                
                                     <div class="col-md-6"></div>
@@ -158,36 +174,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                 </div>
                                 
                                 
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="candidatephoto">Upload Photo</label>
-                                            <input type="file" name="candidatephoto" class="form-control" value="<?php echo htmlentities($result->candidatephoto); ?>"
-                                                id="candidatephoto">
-                                        </div>
-
-                                        <div class="form-group col-md-6">
-                                            <label for="aadharnumber">Upload Aadhaar </label>
-                                            <input type="file" name="aadhaarphoto" class="form-control"
-                                                id="aadhar">
-                                        </div>
-
-                                        <div class="form-group col-md-6">
-                                            <label for="aadharnumber">Upload Education</label>
-                                            <input type="file" name="qualificationphoto"
-                                                class="form-control" id="qualificationphoto">
-                                        </div>
-
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="aadharnumber">Upload Application</label>
-                                                <input type="file" name="applicationphoto"
-                                                    class="form-control" id="applicationphoto">
-                                            </div>
-                                            
-                                        </div>
-
-
-                                    </div>
+                                    
                                 </div>
 
 
