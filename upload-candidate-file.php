@@ -6,84 +6,39 @@ if (strlen($_SESSION['alogin']) == "") {
     header("Location: index.php");
 } else {
     if (isset($_POST['update'])) {
+
         $cid = ($_POST['candidateid']);
 
-        // Define max file size (1 MB = 1048576 bytes)
-        $maxFileSize = 1048576;
+        $candidatephoto = ($_FILES['candidatephoto']['name']);
+        $candidatephototarget = 'doc/' . basename($candidatephoto);
 
-        // Initialize variables for SQL update
-        $updateFields = [];
-        $updateParams = [':cid' => $cid];
+        $aadhaarphoto = ($_FILES['aadhaarphoto']['name']);
+        $aadhaarphototarget = 'doc/' . basename($aadhaarphoto);
 
-        // Check and process candidate photo
-        if (!empty($_FILES['candidatephoto']['name'])) {
-            if ($_FILES['candidatephoto']['size'] > $maxFileSize) {
-                $error = "Candidate photo must be less than 1 MB.";
-            } else {
-                $candidatephoto = ($_FILES['candidatephoto']['name']);
-                $candidatephototarget = 'doc/' . basename($candidatephoto);
+        $qualificationphoto = ($_FILES['qualificationphoto']['name']);
+        $qualificationphototarget = 'doc/' . basename($qualificationphoto);
 
-                // Debugging: Check if the file is being uploaded
-                if (move_uploaded_file($_FILES['candidatephoto']['tmp_name'], $candidatephototarget)) {
-                    $updateFields[] = "candidatephoto = :candidatephoto";
-                    $updateParams[':candidatephoto'] = $candidatephoto;
-                } else {
-                    $error = "Failed to upload candidate photo.";
-                }
-            }
-        }
+        $applicationphoto = ($_FILES['applicationphoto']['name']);
+        $applicationphototarget = 'doc/' . basename($applicationphoto);
+        $status = 1;
 
-        // Check and process Aadhaar photo
-        if (!empty($_FILES['aadhaarphoto']['name'])) {
-            if ($_FILES['aadhaarphoto']['size'] > $maxFileSize) {
-                $error = "Aadhaar photo must be less than 1 MB.";
-            } else {
-                $aadhaarphoto = ($_FILES['aadhaarphoto']['name']);
-                $aadhaarphototarget = 'doc/' . basename($aadhaarphoto);
-                move_uploaded_file($_FILES['aadhaarphoto']['tmp_name'], $aadhaarphototarget);
-                $updateFields[] = "aadhaarphoto = :aadhaarphoto";
-                $updateParams[':aadhaarphoto'] = $aadhaarphoto;
-            }
-        }
+        $sql = "update  tblcandidate set candidatephoto=:candidatephoto,aadhaarphoto=:aadhaarphoto,qualificationphoto=:qualificationphoto,applicationphoto=:applicationphoto
+        where CandidateId=:cid ";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':candidatephoto', $candidatephoto, PDO::PARAM_STR);
+        $query->bindParam(':aadhaarphoto', $aadhaarphoto, PDO::PARAM_STR);
+        $query->bindParam(':qualificationphoto', $qualificationphoto, PDO::PARAM_STR);
+        $query->bindParam(':applicationphoto', $applicationphoto, PDO::PARAM_STR);
+        $query->bindParam(':cid', $cid, PDO::PARAM_STR);
 
-        // Check and process qualification photo
-        if (!empty($_FILES['qualificationphoto']['name'])) {
-            if ($_FILES['qualificationphoto']['size'] > $maxFileSize) {
-                $error = "Qualification photo must be less than 1 MB.";
-            } else {
-                $qualificationphoto = ($_FILES['qualificationphoto']['name']);
-                $qualificationphototarget = 'doc/' . basename($qualificationphoto);
-                move_uploaded_file($_FILES['qualificationphoto']['tmp_name'], $qualificationphototarget);
-                $updateFields[] = "qualificationphoto = :qualificationphoto";
-                $updateParams[':qualificationphoto'] = $qualificationphoto;
-            }
-        }
 
-        // Check and process application photo
-        if (!empty($_FILES['applicationphoto']['name'])) {
-            if ($_FILES['applicationphoto']['size'] > $maxFileSize) {
-                $error = "Application photo must be less than 1 MB.";
-            } else {
-                $applicationphoto = ($_FILES['applicationphoto']['name']);
-                $applicationphototarget = 'doc/' . basename($applicationphoto);
-                move_uploaded_file($_FILES['applicationphoto']['tmp_name'], $applicationphototarget);
-                $updateFields[] = "applicationphoto = :applicationphoto";
-                $updateParams[':applicationphoto'] = $applicationphoto;
-            }
-        }
+        $query->execute();
+        move_uploaded_file($_FILES['candidatephoto']['tmp_name'], $candidatephototarget);
+        move_uploaded_file($_FILES['aadhaarphoto']['tmp_name'], $aadhaarphototarget);
+        move_uploaded_file($_FILES['qualificationphoto']['tmp_name'], $qualificationphototarget);
+        move_uploaded_file($_FILES['applicationphoto']['tmp_name'], $applicationphototarget);
 
-        // Update the database only if there are fields to update
-        if (!empty($updateFields)) {
-            $sql = "UPDATE tblcandidate SET " . implode(", ", $updateFields) . " WHERE CandidateId = :cid";
-            $query = $dbh->prepare($sql);
-            foreach ($updateParams as $param => $value) {
-                $query->bindParam($param, $value, PDO::PARAM_STR);
-            }
-            $query->execute();
-            $msg = "Data has been updated successfully.";
-        } else {
-            $msg = "No files were uploaded.";
-        }
+        $msg = "Data has been updated successfully";
     }
 ?>
 <!DOCTYPE html>
@@ -157,7 +112,8 @@ if (strlen($_SESSION['alogin']) == "") {
                                         </div>
                                         <?php } else if ($error) { ?>
                                         <div class="alert alert-danger left-icon-alert" role="alert">
-                                            <strong>Error!</strong> <?php echo htmlentities($error); ?>
+                                            <strong>Oh snap!</strong>
+                                            <?php echo htmlentities($error); ?>
                                         </div>
                                         <?php } ?>
                                         <form method="post" enctype="multipart/form-data">
@@ -195,41 +151,38 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 </div>
                                             </div>
                                                 
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="candidatephoto">Upload Photo</label>
-                                                    <input type="file" name="candidatephoto" class="form-control" id="candidatephoto">
-                                                    <?php if (!empty($result->candidatephoto)) { ?>
-                                                        <p>Uploaded File: <a href="doc/<?php echo htmlentities($result->candidatephoto); ?>" target="_blank">View File</a></p>
-                                                    <?php } ?>
-                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="candidatephoto">Upload Photo</label>
+                                                        <input type="file" name="candidatephoto" class="form-control" value="<?php echo htmlentities($result->candidatephoto); ?>"
+                                                            id="candidatephoto">
+                                                    </div>
 
-                                                <div class="form-group col-md-6">
-                                                    <label for="aadhaarphoto">Upload Aadhaar</label>
-                                                    <input type="file" name="aadhaarphoto" class="form-control" id="aadhaarphoto">
-                                                    <?php if (!empty($result->aadhaarphoto)) { ?>
-                                                        <p>Uploaded File: <a href="doc/<?php echo htmlentities($result->aadhaarphoto); ?>" target="_blank">View File</a></p>
-                                                    <?php } ?>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="aadharnumber">Upload Aadhaar </label>
+                                                        <input type="file" name="aadhaarphoto" class="form-control"
+                                                            id="aadhar">
+                                                    </div>
+
+                                                    <div class="form-group col-md-6">
+                                                        <label for="aadharnumber">Upload Education</label>
+                                                        <input type="file" name="qualificationphoto"
+                                                            class="form-control" id="qualificationphoto">
+                                                    </div>
+
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <label for="aadharnumber">Upload Application</label>
+                                                            <input type="file" name="applicationphoto"
+                                                                class="form-control" id="applicationphoto">
+                                                        </div>
+                                                        
+                                                    </div>
+
+
                                                 </div>
                                             </div>
 
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="qualificationphoto">Upload Education</label>
-                                                    <input type="file" name="qualificationphoto" class="form-control" id="qualificationphoto">
-                                                    <?php if (!empty($result->qualificationphoto)) { ?>
-                                                        <p>Uploaded File: <a href="doc/<?php echo htmlentities($result->qualificationphoto); ?>" target="_blank">View File</a></p>
-                                                    <?php } ?>
-                                                </div>
-
-                                                <div class="form-group col-md-6">
-                                                    <label for="applicationphoto">Upload Application</label>
-                                                    <input type="file" name="applicationphoto" class="form-control" id="applicationphoto">
-                                                    <?php if (!empty($result->applicationphoto)) { ?>
-                                                        <p>Uploaded File: <a href="doc/<?php echo htmlentities($result->applicationphoto); ?>" target="_blank">View File</a></p>
-                                                    <?php } ?>
-                                                </div>
-                                            </div>
 
                                             <?php }
                                                 } ?>
