@@ -290,7 +290,7 @@ if (strlen($_SESSION['alogin']) == "") {
                             $query->execute();
                             $result = $query->fetch(PDO::FETCH_OBJ);
                             
-                            print_r($result);
+                            //print_r($result);
                             ?>
 
                             <div class="col-md-6 mb-3">
