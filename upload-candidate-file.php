@@ -8,49 +8,38 @@ if (strlen($_SESSION['alogin']) == "") {
     if (isset($_POST['update'])) {
 
         $cid = ($_POST['candidateid']);
-        $maxFileSize = 1048576; // 1 MB
-        $error = "";
-        $fieldsToUpdate = [];
-        $params = [':cid' => $cid];
-    
-        // Helper function to handle uploads
-        function handleFileUpload($fieldName, $label, $maxFileSize, &$fieldsToUpdate, &$params, &$error) {
-            if (!empty($_FILES[$fieldName]['name'])) {
-                if ($_FILES[$fieldName]['size'] > $maxFileSize) {
-                    $error .= "$label must be less than 1 MB.<br>";
-                } else {
-                    $filename = basename($_FILES[$fieldName]['name']);
-                    $targetPath = "doc/" . $filename;
-                    if (move_uploaded_file($_FILES[$fieldName]['tmp_name'], $targetPath)) {
-                        $fieldsToUpdate[] = "$fieldName = :$fieldName";
-                        $params[":$fieldName"] = $filename;
-                    } else {
-                        $error .= "Failed to upload $label.<br>";
-                    }
-                }
-            }
-        }
-    
-        // Check each file field
-        handleFileUpload('candidatephoto', 'Candidate Photo', $maxFileSize, $fieldsToUpdate, $params, $error);
-        handleFileUpload('aadhaarphoto', 'Aadhaar Photo', $maxFileSize, $fieldsToUpdate, $params, $error);
-        handleFileUpload('qualificationphoto', 'Qualification Photo', $maxFileSize, $fieldsToUpdate, $params, $error);
-        handleFileUpload('applicationphoto', 'Application Photo', $maxFileSize, $fieldsToUpdate, $params, $error);
-    
-        // Update only if there are fields to update and no error
-        if (empty($error) && count($fieldsToUpdate) > 0) {
-            $sql = "UPDATE tblcandidate SET " . implode(', ', $fieldsToUpdate) . " WHERE CandidateId = :cid";
-            $query = $dbh->prepare($sql);
-            foreach ($params as $key => $value) {
-                $query->bindParam($key, $value, PDO::PARAM_STR);
-            }
-            $query->execute();
-            $msg = "Document(s) updated successfully.";
-        } elseif (count($fieldsToUpdate) == 0) {
-            $msg = "No new file selected. Nothing updated.";
-        }
+
+        $candidatephoto = ($_FILES['candidatephoto']['name']);
+        $candidatephototarget = 'doc/' . basename($candidatephoto);
+
+        $aadhaarphoto = ($_FILES['aadhaarphoto']['name']);
+        $aadhaarphototarget = 'doc/' . basename($aadhaarphoto);
+
+        $qualificationphoto = ($_FILES['qualificationphoto']['name']);
+        $qualificationphototarget = 'doc/' . basename($qualificationphoto);
+
+        $applicationphoto = ($_FILES['applicationphoto']['name']);
+        $applicationphototarget = 'doc/' . basename($applicationphoto);
+        $status = 1;
+
+        $sql = "update  tblcandidate set candidatephoto=:candidatephoto,aadhaarphoto=:aadhaarphoto,qualificationphoto=:qualificationphoto,applicationphoto=:applicationphoto
+        where CandidateId=:cid ";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':candidatephoto', $candidatephoto, PDO::PARAM_STR);
+        $query->bindParam(':aadhaarphoto', $aadhaarphoto, PDO::PARAM_STR);
+        $query->bindParam(':qualificationphoto', $qualificationphoto, PDO::PARAM_STR);
+        $query->bindParam(':applicationphoto', $applicationphoto, PDO::PARAM_STR);
+        $query->bindParam(':cid', $cid, PDO::PARAM_STR);
+
+
+        $query->execute();
+        move_uploaded_file($_FILES['candidatephoto']['tmp_name'], $candidatephototarget);
+        move_uploaded_file($_FILES['aadhaarphoto']['tmp_name'], $aadhaarphototarget);
+        move_uploaded_file($_FILES['qualificationphoto']['tmp_name'], $qualificationphototarget);
+        move_uploaded_file($_FILES['applicationphoto']['tmp_name'], $applicationphototarget);
+
+        $msg = "Data has been updated successfully";
     }
-    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -116,14 +105,15 @@ if (strlen($_SESSION['alogin']) == "") {
                                                                                 ?></h5>
                                             </div>
                                         </div>
-                                        <?php if (!empty($error)) { ?>
-                                        <div class="alert alert-danger">
-                                            <strong>Error!</strong> <?php echo $error; ?>
+                                        <?php if ($msg) { ?>
+                                        <div class="alert alert-success left-icon-alert" role="alert">
+                                            <strong>Well done!</strong>
+                                            <?php echo htmlentities($msg); ?>
                                         </div>
-                                        <?php } ?>
-                                        <?php if (!empty($msg)) { ?>
-                                        <div class="alert alert-success">
-                                            <strong>Success!</strong> <?php echo $msg; ?>
+                                        <?php } else if ($error) { ?>
+                                        <div class="alert alert-danger left-icon-alert" role="alert">
+                                            <strong>Oh snap!</strong>
+                                            <?php echo htmlentities($error); ?>
                                         </div>
                                         <?php } ?>
                                         <form method="post" enctype="multipart/form-data">
