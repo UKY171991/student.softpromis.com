@@ -310,6 +310,8 @@ if (strlen($_SESSION['alogin']) == "") {
                                     <label for="aadharnumber">Phone Number</label> : <?php echo htmlentities($result->phonenumber); ?>
                                 </div>
 
+                            
+
                             </div>
 
                             
