@@ -124,6 +124,83 @@ if (strlen($_SESSION['alogin']) == "") {
             $error = "No file selected for upload.";
         }
     }
+
+    // Handle Candidate Photo Deletion
+    if (isset($_POST['deletePhoto'])) {
+        $cid = $_POST['candidateid'];
+        $sql = "SELECT candidatephoto FROM tblcandidate WHERE CandidateId=:cid";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':cid', $cid, PDO::PARAM_STR);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_OBJ);
+
+        if (!empty($result->candidatephoto) && file_exists('doc/' . $result->candidatephoto)) {
+            unlink('doc/' . $result->candidatephoto); // Delete the file from the server
+        }
+
+        $sql = "UPDATE tblcandidate SET candidatephoto=NULL WHERE CandidateId=:cid";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':cid', $cid, PDO::PARAM_STR);
+        $query->execute();
+        $msg = "Candidate photo deleted successfully.";
+    }
+
+    // Handle Aadhaar Photo Deletion
+    if (isset($_POST['deleteAadhaar'])) {
+        $cid = $_POST['candidateid'];
+        $sql = "SELECT aadhaarphoto FROM tblcandidate WHERE CandidateId=:cid";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':cid', $cid, PDO::PARAM_STR);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_OBJ);
+
+        if (!empty($result->aadhaarphoto) && file_exists('doc/' . $result->aadhaarphoto)) {
+            unlink('doc/' . $result->aadhaarphoto); // Delete the file from the server
+        }
+
+        $sql = "UPDATE tblcandidate SET aadhaarphoto=NULL WHERE CandidateId=:cid";
+        $query = $dbh->prepare($sql);
+        $query->execute();
+        $msg = "Aadhaar photo deleted successfully.";
+    }
+
+    // Handle Qualification Photo Deletion
+    if (isset($_POST['deleteQualification'])) {
+        $cid = $_POST['candidateid'];
+        $sql = "SELECT qualificationphoto FROM tblcandidate WHERE CandidateId=:cid";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':cid', $cid, PDO::PARAM_STR);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_OBJ);
+
+        if (!empty($result->qualificationphoto) && file_exists('doc/' . $result->qualificationphoto)) {
+            unlink('doc/' . $result->qualificationphoto); // Delete the file from the server
+        }
+
+        $sql = "UPDATE tblcandidate SET qualificationphoto=NULL WHERE CandidateId=:cid";
+        $query = $dbh->prepare($sql);
+        $query->execute();
+        $msg = "Qualification photo deleted successfully.";
+    }
+
+    // Handle Application Photo Deletion
+    if (isset($_POST['deleteApplication'])) {
+        $cid = $_POST['candidateid'];
+        $sql = "SELECT applicationphoto FROM tblcandidate WHERE CandidateId=:cid";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':cid', $cid, PDO::PARAM_STR);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_OBJ);
+
+        if (!empty($result->applicationphoto) && file_exists('doc/' . $result->applicationphoto)) {
+            unlink('doc/' . $result->applicationphoto); // Delete the file from the server
+        }
+
+        $sql = "UPDATE tblcandidate SET applicationphoto=NULL WHERE CandidateId=:cid";
+        $query = $dbh->prepare($sql);
+        $query->execute();
+        $msg = "Application photo deleted successfully.";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -213,38 +290,61 @@ if (strlen($_SESSION['alogin']) == "") {
                             $result = $query->fetch(PDO::FETCH_OBJ);
 
                             if ($query->rowCount() > 0) { ?>
+                                <!-- Candidate Photo -->
                                 <form method="post" enctype="multipart/form-data">
                                     <input type="hidden" name="candidateid" value="<?php echo $cid; ?>">
                                     <div class="form-group">
                                         <label for="candidatephoto">Upload Candidate Photo</label>
                                         <input type="file" name="candidatephoto" class="form-control">
+                                        <?php if (!empty($result->candidatephoto)) { ?>
+                                            <p>Current File: <a href="doc/<?php echo htmlentities($result->candidatephoto); ?>" target="_blank"><?php echo htmlentities($result->candidatephoto); ?></a></p>
+                                            <button type="submit" name="deletePhoto" class="btn btn-danger">Delete Photo</button>
+                                        <?php } ?>
                                     </div>
                                     <button type="submit" name="updatePhoto" class="btn btn-primary">Upload Photo</button>
                                 </form>
                                 <hr>
+
+                                <!-- Aadhaar Photo -->
                                 <form method="post" enctype="multipart/form-data">
                                     <input type="hidden" name="candidateid" value="<?php echo $cid; ?>">
                                     <div class="form-group">
                                         <label for="aadhaarphoto">Upload Aadhaar Photo</label>
                                         <input type="file" name="aadhaarphoto" class="form-control">
+                                        <?php if (!empty($result->aadhaarphoto)) { ?>
+                                            <p>Current File: <a href="doc/<?php echo htmlentities($result->aadhaarphoto); ?>" target="_blank"><?php echo htmlentities($result->aadhaarphoto); ?></a></p>
+                                            <button type="submit" name="deleteAadhaar" class="btn btn-danger">Delete Aadhaar</button>
+                                        <?php } ?>
                                     </div>
                                     <button type="submit" name="updateAadhaar" class="btn btn-primary">Upload Aadhaar</button>
                                 </form>
                                 <hr>
+
+                                <!-- Qualification Photo -->
                                 <form method="post" enctype="multipart/form-data">
                                     <input type="hidden" name="candidateid" value="<?php echo $cid; ?>">
                                     <div class="form-group">
-                                        <label for="qualificationphoto">Upload Qualification</label>
+                                        <label for="qualificationphoto">Upload Qualification Photo</label>
                                         <input type="file" name="qualificationphoto" class="form-control">
+                                        <?php if (!empty($result->qualificationphoto)) { ?>
+                                            <p>Current File: <a href="doc/<?php echo htmlentities($result->qualificationphoto); ?>" target="_blank"><?php echo htmlentities($result->qualificationphoto); ?></a></p>
+                                            <button type="submit" name="deleteQualification" class="btn btn-danger">Delete Qualification</button>
+                                        <?php } ?>
                                     </div>
                                     <button type="submit" name="updateQualification" class="btn btn-primary">Upload Qualification</button>
                                 </form>
                                 <hr>
+
+                                <!-- Application Photo -->
                                 <form method="post" enctype="multipart/form-data">
                                     <input type="hidden" name="candidateid" value="<?php echo $cid; ?>">
                                     <div class="form-group">
-                                        <label for="applicationphoto">Upload Application</label>
+                                        <label for="applicationphoto">Upload Application Photo</label>
                                         <input type="file" name="applicationphoto" class="form-control">
+                                        <?php if (!empty($result->applicationphoto)) { ?>
+                                            <p>Current File: <a href="doc/<?php echo htmlentities($result->applicationphoto); ?>" target="_blank"><?php echo htmlentities($result->applicationphoto); ?></a></p>
+                                            <button type="submit" name="deleteApplication" class="btn btn-danger">Delete Application</button>
+                                        <?php } ?>
                                     </div>
                                     <button type="submit" name="updateApplication" class="btn btn-primary">Upload Application</button>
                                 </form>
