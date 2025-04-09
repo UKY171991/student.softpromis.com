@@ -2,45 +2,209 @@
 session_start();
 error_reporting(0);
 include('includes/config.php');
+
 if (strlen($_SESSION['alogin']) == "") {
     header("Location: index.php");
 } else {
-    if (isset($_POST['update'])) {
+    $maxFileSize = 1048576; // 1 MB in bytes
+    $allowedFileTypes = ['image/jpeg', 'image/png', 'application/pdf']; // Allowed file types
 
-        $cid = ($_POST['candidateid']);
+    // Handle Candidate Photo Upload
+    if (isset($_POST['updatePhoto'])) {
+        if (!empty($_FILES['candidatephoto']['name'])) {
+            $candidatephoto = $_FILES['candidatephoto']['name'];
+            $candidatephototarget = 'doc/' . basename($candidatephoto);
+            $fileType = $_FILES['candidatephoto']['type'];
+            $fileSize = $_FILES['candidatephoto']['size'];
 
-        $candidatephoto = ($_FILES['candidatephoto']['name']);
-        $candidatephototarget = 'doc/' . basename($candidatephoto);
-
-        $aadhaarphoto = ($_FILES['aadhaarphoto']['name']);
-        $aadhaarphototarget = 'doc/' . basename($aadhaarphoto);
-
-        $qualificationphoto = ($_FILES['qualificationphoto']['name']);
-        $qualificationphototarget = 'doc/' . basename($qualificationphoto);
-
-        $applicationphoto = ($_FILES['applicationphoto']['name']);
-        $applicationphototarget = 'doc/' . basename($applicationphoto);
-        $status = 1;
-
-        $sql = "update  tblcandidate set candidatephoto=:candidatephoto,aadhaarphoto=:aadhaarphoto,qualificationphoto=:qualificationphoto,applicationphoto=:applicationphoto
-        where CandidateId=:cid ";
-        $query = $dbh->prepare($sql);
-        $query->bindParam(':candidatephoto', $candidatephoto, PDO::PARAM_STR);
-        $query->bindParam(':aadhaarphoto', $aadhaarphoto, PDO::PARAM_STR);
-        $query->bindParam(':qualificationphoto', $qualificationphoto, PDO::PARAM_STR);
-        $query->bindParam(':applicationphoto', $applicationphoto, PDO::PARAM_STR);
-        $query->bindParam(':cid', $cid, PDO::PARAM_STR);
-
-
-        $query->execute();
-        move_uploaded_file($_FILES['candidatephoto']['tmp_name'], $candidatephototarget);
-        move_uploaded_file($_FILES['aadhaarphoto']['tmp_name'], $aadhaarphototarget);
-        move_uploaded_file($_FILES['qualificationphoto']['tmp_name'], $qualificationphototarget);
-        move_uploaded_file($_FILES['applicationphoto']['tmp_name'], $applicationphototarget);
-
-        $msg = "Data has been updated successfully";
+            if ($fileSize > $maxFileSize) {
+                $error = "Candidate photo must be less than 1 MB.";
+            } elseif (!in_array($fileType, $allowedFileTypes)) {
+                $error = "Invalid file type. Only JPG, PNG, and PDF files are allowed.";
+            } else {
+                if (move_uploaded_file($_FILES['candidatephoto']['tmp_name'], $candidatephototarget)) {
+                    $sql = "UPDATE tblcandidate SET candidatephoto=:candidatephoto WHERE CandidateId=:cid";
+                    $query = $dbh->prepare($sql);
+                    $query->bindParam(':candidatephoto', $candidatephoto, PDO::PARAM_STR);
+                    $query->bindParam(':cid', $_POST['candidateid'], PDO::PARAM_STR);
+                    $query->execute();
+                    $msg = "Candidate photo updated successfully.";
+                } else {
+                    $error = "Failed to upload candidate photo. Check directory permissions.";
+                }
+            }
+        } else {
+            $error = "No file selected for upload.";
+        }
     }
- ?>
+
+    // Handle Aadhaar Photo Upload
+    if (isset($_POST['updateAadhaar'])) {
+        if (!empty($_FILES['aadhaarphoto']['name'])) {
+            $aadhaarphoto = $_FILES['aadhaarphoto']['name'];
+            $aadhaarphototarget = 'doc/' . basename($aadhaarphoto);
+            $fileType = $_FILES['aadhaarphoto']['type'];
+            $fileSize = $_FILES['aadhaarphoto']['size'];
+
+            if ($fileSize > $maxFileSize) {
+                $error = "Aadhaar photo must be less than 1 MB.";
+            } elseif (!in_array($fileType, $allowedFileTypes)) {
+                $error = "Invalid file type. Only JPG, PNG, and PDF files are allowed.";
+            } else {
+                if (move_uploaded_file($_FILES['aadhaarphoto']['tmp_name'], $aadhaarphototarget)) {
+                    $sql = "UPDATE tblcandidate SET aadhaarphoto=:aadhaarphoto WHERE CandidateId=:cid";
+                    $query = $dbh->prepare($sql);
+                    $query->bindParam(':aadhaarphoto', $aadhaarphoto, PDO::PARAM_STR);
+                    $query->bindParam(':cid', $_POST['candidateid'], PDO::PARAM_STR);
+                    $query->execute();
+                    $msg = "Aadhaar photo updated successfully.";
+                } else {
+                    $error = "Failed to upload Aadhaar photo. Check directory permissions.";
+                }
+            }
+        } else {
+            $error = "No file selected for upload.";
+        }
+    }
+
+    // Handle Qualification Photo Upload
+    if (isset($_POST['updateQualification'])) {
+        if (!empty($_FILES['qualificationphoto']['name'])) {
+            $qualificationphoto = $_FILES['qualificationphoto']['name'];
+            $qualificationphototarget = 'doc/' . basename($qualificationphoto);
+            $fileType = $_FILES['qualificationphoto']['type'];
+            $fileSize = $_FILES['qualificationphoto']['size'];
+
+            if ($fileSize > $maxFileSize) {
+                $error = "Qualification photo must be less than 1 MB.";
+            } elseif (!in_array($fileType, $allowedFileTypes)) {
+                $error = "Invalid file type. Only JPG, PNG, and PDF files are allowed.";
+            } else {
+                if (move_uploaded_file($_FILES['qualificationphoto']['tmp_name'], $qualificationphototarget)) {
+                    $sql = "UPDATE tblcandidate SET qualificationphoto=:qualificationphoto WHERE CandidateId=:cid";
+                    $query = $dbh->prepare($sql);
+                    $query->bindParam(':qualificationphoto', $qualificationphoto, PDO::PARAM_STR);
+                    $query->bindParam(':cid', $_POST['candidateid'], PDO::PARAM_STR);
+                    $query->execute();
+                    $msg = "Qualification photo updated successfully.";
+                } else {
+                    $error = "Failed to upload qualification photo. Check directory permissions.";
+                }
+            }
+        } else {
+            $error = "No file selected for upload.";
+        }
+    }
+
+    // Handle Application Photo Upload
+    if (isset($_POST['updateApplication'])) {
+        if (!empty($_FILES['applicationphoto']['name'])) {
+            $applicationphoto = $_FILES['applicationphoto']['name'];
+            $applicationphototarget = 'doc/' . basename($applicationphoto);
+            $fileType = $_FILES['applicationphoto']['type'];
+            $fileSize = $_FILES['applicationphoto']['size'];
+
+            if ($fileSize > $maxFileSize) {
+                $error = "Application photo must be less than 1 MB.";
+            } elseif (!in_array($fileType, $allowedFileTypes)) {
+                $error = "Invalid file type. Only JPG, PNG, and PDF files are allowed.";
+            } else {
+                if (move_uploaded_file($_FILES['applicationphoto']['tmp_name'], $applicationphototarget)) {
+                    $sql = "UPDATE tblcandidate SET applicationphoto=:applicationphoto WHERE CandidateId=:cid";
+                    $query = $dbh->prepare($sql);
+                    $query->bindParam(':applicationphoto', $applicationphoto, PDO::PARAM_STR);
+                    $query->bindParam(':cid', $_POST['candidateid'], PDO::PARAM_STR);
+                    $query->execute();
+                    $msg = "Application photo updated successfully.";
+                } else {
+                    $error = "Failed to upload application photo. Check directory permissions.";
+                }
+            }
+        } else {
+            $error = "No file selected for upload.";
+        }
+    }
+
+    // Handle Candidate Photo Deletion
+    if (isset($_POST['deletePhoto'])) {
+        $cid = $_POST['candidateid'];
+        $sql = "SELECT candidatephoto FROM tblcandidate WHERE CandidateId=:cid";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':cid', $cid, PDO::PARAM_STR);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_OBJ);
+
+        if (!empty($result->candidatephoto) && file_exists('doc/' . $result->candidatephoto)) {
+            unlink('doc/' . $result->candidatephoto); // Delete the file from the server
+        }
+
+        $sql = "UPDATE tblcandidate SET candidatephoto=NULL WHERE CandidateId=:cid";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':cid', $cid, PDO::PARAM_STR);
+        $query->execute();
+        $msg = "Candidate photo deleted successfully.";
+    }
+
+    // Handle Aadhaar Photo Deletion
+    if (isset($_POST['deleteAadhaar'])) {
+        $cid = $_POST['candidateid'];
+        $sql = "SELECT aadhaarphoto FROM tblcandidate WHERE CandidateId=:cid";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':cid', $cid, PDO::PARAM_STR);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_OBJ);
+
+        if (!empty($result->aadhaarphoto) && file_exists('doc/' . $result->aadhaarphoto)) {
+            unlink('doc/' . $result->aadhaarphoto); // Delete the file from the server
+        }
+
+        $sql = "UPDATE tblcandidate SET aadhaarphoto=NULL WHERE CandidateId=:cid";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':cid', $cid, PDO::PARAM_STR);
+        $query->execute();
+        $msg = "Aadhaar photo deleted successfully.";
+    }
+
+    // Handle Qualification Photo Deletion
+    if (isset($_POST['deleteQualification'])) {
+        $cid = $_POST['candidateid'];
+        $sql = "SELECT qualificationphoto FROM tblcandidate WHERE CandidateId=:cid";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':cid', $cid, PDO::PARAM_STR);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_OBJ);
+
+        if (!empty($result->qualificationphoto) && file_exists('doc/' . $result->qualificationphoto)) {
+            unlink('doc/' . $result->qualificationphoto); // Delete the file from the server
+        }
+
+        $sql = "UPDATE tblcandidate SET qualificationphoto=NULL WHERE CandidateId=:cid";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':cid', $cid, PDO::PARAM_STR);
+        $query->execute();
+        $msg = "Qualification photo deleted successfully.";
+    }
+
+    // Handle Application Photo Deletion
+    if (isset($_POST['deleteApplication'])) {
+        $cid = $_POST['candidateid'];
+        $sql = "SELECT applicationphoto FROM tblcandidate WHERE CandidateId=:cid";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':cid', $cid, PDO::PARAM_STR);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_OBJ);
+
+        if (!empty($result->applicationphoto) && file_exists('doc/' . $result->applicationphoto)) {
+            unlink('doc/' . $result->applicationphoto); // Delete the file from the server
+        }
+
+        $sql = "UPDATE tblcandidate SET applicationphoto=NULL WHERE CandidateId=:cid";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':cid', $cid, PDO::PARAM_STR);
+        $query->execute();
+        $msg = "Application photo deleted successfully.";
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -120,73 +284,117 @@ if (strlen($_SESSION['alogin']) == "") {
                             <h5 class="mb-0">Update Candidate Document</h5>
                         </div>
                         <div class="card-body">
-                        
-                            <form method="post" enctype="multipart/form-data">
-                                <?php
-                                    $cid = intval($_GET['candidateid']);
-                                    $sql = "SELECT * from tblcandidate where CandidateId=:cid";
-                                    $query = $dbh->prepare($sql);
-                                    $query->bindParam(':cid', $cid, PDO::PARAM_STR);
-                                    $query->execute();
-                                    $results = $query->fetchAll(PDO::FETCH_OBJ);
-                                    $cnt = 1;
-                                    if ($query->rowCount() > 0) {
-                                        foreach ($results as $result) {   ?>
-                                <input type="hidden" name="candidateid" value="<?php echo $cid; ?>">
+                            
+                            <?php
+                            $cid = intval($_GET['candidateid']);
+                            $sql = "SELECT * FROM tblcandidate WHERE CandidateId=:cid";
+                            $query = $dbh->prepare($sql);
+                            $query->bindParam(':cid', $cid, PDO::PARAM_STR);
+                            $query->execute();
+                            $result = $query->fetch(PDO::FETCH_OBJ);
+                            
+                            //print_r($result);
+                            ?>
 
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="candidatename">Full Name</label> : <?php echo htmlentities($result->candidatename); ?>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="fathername">Father Name</label> : <?php echo htmlentities($result->fathername); ?>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="aadharnumber">Aadhar Number</label> : <?php echo htmlentities($result->aadharnumber); ?>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="aadharnumber">Phone Number</label> : <?php echo htmlentities($result->phonenumber); ?>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="candidatephoto">Upload Photo</label>
-                                        <input type="file" name="candidatephoto" class="form-control" value="<?php echo htmlentities($result->candidatephoto); ?>"
-                                                id="candidatephoto">
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="aadharnumber">Upload Aadhaar </label>
-                                        <input type="file" name="aadhaarphoto" class="form-control"
-                                                id="aadhar">
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="aadharnumber">Upload Education</label>
-                                        <input type="file" name="qualificationphoto"
-                                                class="form-control" id="qualificationphoto">
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="aadharnumber">Upload Application</label>
-                                        <input type="file" name="applicationphoto"
-                                                    class="form-control" id="applicationphoto">
-                                    </div>
-                                    
-                                    
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="candidatename">Full Name</label> : <?php echo htmlentities($result->candidatename); ?>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="fathername">Father Name</label> : <?php echo htmlentities($result->fathername); ?>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="aadharnumber">Aadhar Number</label> : <?php echo htmlentities($result->aadharnumber); ?>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="aadharnumber">Phone Number</label> : <?php echo htmlentities($result->phonenumber); ?>
+                                </div>
+
+                            
+
+                            </div>
+
+                            
+
+                            <?php
+
+                            if ($query->rowCount() > 0) { ?>
+                                <!-- Candidate Photo -->
+                                <div class="card m-3 p-3">
+                                    <form method="post" enctype="multipart/form-data">
+                                        <input type="hidden" name="candidateid" value="<?php echo $cid; ?>">
+                                        <div class="form-group">
+                                            <label for="candidatephoto">Upload Candidate Photo</label>
+                                            <input type="file" name="candidatephoto" class="form-control">
+                                            <?php if (!empty($result->candidatephoto)) { ?>
+                                                <p>Current File: <a href="doc/<?php echo htmlentities($result->candidatephoto); ?>" target="_blank"><?php echo htmlentities($result->candidatephoto); ?></a></p>
+                                                <button type="submit" name="deletePhoto" class="btn btn-danger">Delete Photo</button>
+                                            <?php } ?>
+                                            <button type="submit" name="updatePhoto" class="btn btn-primary">Upload Photo</button>
+                                        </div>
+                                        
+                                        
+                                    </form>
                                 </div>
                                 
-                                
-                                    
-                                </div>
+                                <hr>
 
-
-                                <?php }
-                                    } ?>
-                                <div class="form-row">
-                                    <div class="form-group col-md-2 m-3">
-                                        <button type="submit" name="update"
-                                            class="btn btn-success btn-labeled">Update<span
-                                                class="btn-label btn-label-right"><i
-                                                    class="fa fa-check"></i></span></button>
-                                    </div>
+                                <!-- Aadhaar Photo -->
+                                <div class="card m-3 p-3">
+                                    <form method="post" enctype="multipart/form-data">
+                                        <input type="hidden" name="candidateid" value="<?php echo $cid; ?>">
+                                        <div class="form-group">
+                                            <label for="aadhaarphoto">Upload Aadhaar Photo</label>
+                                            <input type="file" name="aadhaarphoto" class="form-control">
+                                            <?php if (!empty($result->aadhaarphoto)) { ?>
+                                                <p>Current File: <a href="doc/<?php echo htmlentities($result->aadhaarphoto); ?>" target="_blank"><?php echo htmlentities($result->aadhaarphoto); ?></a></p>
+                                                <button type="submit" name="deleteAadhaar" class="btn btn-danger">Delete Aadhaar</button>
+                                            <?php } ?>
+                                            <button type="submit" name="updateAadhaar" class="btn btn-primary">Upload Aadhaar</button>
+                                        </div>
+                                        
+                                        
+                                    </form>
                                 </div>
-                            </form>
+                                <hr>
+
+                                <!-- Qualification Photo -->
+                                <div class="card m-3 p-3">
+                                    <form method="post" enctype="multipart/form-data">
+                                        <input type="hidden" name="candidateid" value="<?php echo $cid; ?>">
+                                        <div class="form-group">
+                                            <label for="qualificationphoto">Upload Qualification Photo</label>
+                                            <input type="file" name="qualificationphoto" class="form-control">
+                                            <?php if (!empty($result->qualificationphoto)) { ?>
+                                                <p>Current File: <a href="doc/<?php echo htmlentities($result->qualificationphoto); ?>" target="_blank"><?php echo htmlentities($result->qualificationphoto); ?></a></p>
+                                                <button type="submit" name="deleteQualification" class="btn btn-danger">Delete Qualification</button>
+                                            <?php } ?>
+                                            <button type="submit" name="updateQualification" class="btn btn-primary">Upload Qualification</button>
+                                        </div>
+                                        
+                                        
+                                    </form>
+                                </div>
+                                <hr>
+
+                                <!-- Application Photo -->
+                                <div class="card m-3 p-3">
+                                    <form method="post" enctype="multipart/form-data">
+                                        <input type="hidden" name="candidateid" value="<?php echo $cid; ?>">
+                                        <div class="form-group">
+                                            <label for="applicationphoto">Upload Application Photo</label>
+                                            <input type="file" name="applicationphoto" class="form-control">
+                                            <?php if (!empty($result->applicationphoto)) { ?>
+                                                <p>Current File: <a href="doc/<?php echo htmlentities($result->applicationphoto); ?>" target="_blank"><?php echo htmlentities($result->applicationphoto); ?></a></p>
+                                                <button type="submit" name="deleteApplication" class="btn btn-danger">Delete Application</button>
+                                            <?php } ?>
+                                            <button type="submit" name="updateApplication" class="btn btn-primary">Upload Application</button>
+                                        </div>
+                                        
+                                        
+                                    </form>
+                                </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </main>
