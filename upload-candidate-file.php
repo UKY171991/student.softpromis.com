@@ -162,7 +162,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                     <label for="candidatephoto">Upload Photo</label>
                                                     <input type="file" name="candidatephoto" class="form-control" id="candidatephoto">
                                                     <?php if (!empty($result->candidatephoto)) { ?>
-                                                        <p>Uploaded File: <a href="doc/<?php echo htmlentities($result->candidatephoto); ?>" target="_blank"><?php echo htmlentities($result->candidatephoto); ?></a></p>
+                                                        <p>Uploaded File: <a href="doc/<?php echo htmlentities($result->candidatephoto); ?>" target="_blank">View File</a></p>
                                                     <?php } ?>
                                                 </div>
 
@@ -170,7 +170,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                     <label for="aadhaarphoto">Upload Aadhaar</label>
                                                     <input type="file" name="aadhaarphoto" class="form-control" id="aadhaarphoto">
                                                     <?php if (!empty($result->aadhaarphoto)) { ?>
-                                                        <p>Uploaded File: <a href="doc/<?php echo htmlentities($result->aadhaarphoto); ?>" target="_blank"><?php echo htmlentities($result->aadhaarphoto); ?></a></p>
+                                                        <p>Uploaded File: <a href="doc/<?php echo htmlentities($result->aadhaarphoto); ?>" target="_blank">View File</a></p>
                                                     <?php } ?>
                                                 </div>
                                             </div>
@@ -180,7 +180,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                     <label for="qualificationphoto">Upload Education</label>
                                                     <input type="file" name="qualificationphoto" class="form-control" id="qualificationphoto">
                                                     <?php if (!empty($result->qualificationphoto)) { ?>
-                                                        <p>Uploaded File: <a href="doc/<?php echo htmlentities($result->qualificationphoto); ?>" target="_blank"><?php echo htmlentities($result->qualificationphoto); ?></a></p>
+                                                        <p>Uploaded File: <a href="doc/<?php echo htmlentities($result->qualificationphoto); ?>" target="_blank">View File</a></p>
                                                     <?php } ?>
                                                 </div>
 
@@ -188,7 +188,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                     <label for="applicationphoto">Upload Application</label>
                                                     <input type="file" name="applicationphoto" class="form-control" id="applicationphoto">
                                                     <?php if (!empty($result->applicationphoto)) { ?>
-                                                        <p>Uploaded File: <a href="doc/<?php echo htmlentities($result->applicationphoto); ?>" target="_blank"><?php echo htmlentities($result->applicationphoto); ?></a></p>
+                                                        <p>Uploaded File: <a href="doc/<?php echo htmlentities($result->applicationphoto); ?>" target="_blank">View File</a></p>
                                                     <?php } ?>
                                                 </div>
                                             </div>
