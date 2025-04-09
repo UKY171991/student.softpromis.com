@@ -288,7 +288,9 @@ if (strlen($_SESSION['alogin']) == "") {
                             $query = $dbh->prepare($sql);
                             $query->bindParam(':cid', $cid, PDO::PARAM_STR);
                             $query->execute();
-                            $result = $query->fetch(PDO::FETCH_OBJ); 
+                            $result = $query->fetch(PDO::FETCH_OBJ);
+                            
+                            print_r($result);
                             ?>
 
                             <div class="col-md-6 mb-3">
