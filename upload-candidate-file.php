@@ -9,36 +9,58 @@ if (strlen($_SESSION['alogin']) == "") {
 
         $cid = ($_POST['candidateid']);
 
-        $candidatephoto = ($_FILES['candidatephoto']['name']);
-        $candidatephototarget = 'doc/' . basename($candidatephoto);
+        // Initialize variables for SQL update
+        $updateFields = [];
+        $updateParams = [':cid' => $cid];
 
-        $aadhaarphoto = ($_FILES['aadhaarphoto']['name']);
-        $aadhaarphototarget = 'doc/' . basename($aadhaarphoto);
+        // Check and process candidate photo
+        if (!empty($_FILES['candidatephoto']['name'])) {
+            $candidatephoto = ($_FILES['candidatephoto']['name']);
+            $candidatephototarget = 'doc/' . basename($candidatephoto);
+            move_uploaded_file($_FILES['candidatephoto']['tmp_name'], $candidatephototarget);
+            $updateFields[] = "candidatephoto = :candidatephoto";
+            $updateParams[':candidatephoto'] = $candidatephoto;
+        }
 
-        $qualificationphoto = ($_FILES['qualificationphoto']['name']);
-        $qualificationphototarget = 'doc/' . basename($qualificationphoto);
+        // Check and process Aadhaar photo
+        if (!empty($_FILES['aadhaarphoto']['name'])) {
+            $aadhaarphoto = ($_FILES['aadhaarphoto']['name']);
+            $aadhaarphototarget = 'doc/' . basename($aadhaarphoto);
+            move_uploaded_file($_FILES['aadhaarphoto']['tmp_name'], $aadhaarphototarget);
+            $updateFields[] = "aadhaarphoto = :aadhaarphoto";
+            $updateParams[':aadhaarphoto'] = $aadhaarphoto;
+        }
 
-        $applicationphoto = ($_FILES['applicationphoto']['name']);
-        $applicationphototarget = 'doc/' . basename($applicationphoto);
-        $status = 1;
+        // Check and process qualification photo
+        if (!empty($_FILES['qualificationphoto']['name'])) {
+            $qualificationphoto = ($_FILES['qualificationphoto']['name']);
+            $qualificationphototarget = 'doc/' . basename($qualificationphoto);
+            move_uploaded_file($_FILES['qualificationphoto']['tmp_name'], $qualificationphototarget);
+            $updateFields[] = "qualificationphoto = :qualificationphoto";
+            $updateParams[':qualificationphoto'] = $qualificationphoto;
+        }
 
-        $sql = "update  tblcandidate set candidatephoto=:candidatephoto,aadhaarphoto=:aadhaarphoto,qualificationphoto=:qualificationphoto,applicationphoto=:applicationphoto
-        where CandidateId=:cid ";
-        $query = $dbh->prepare($sql);
-        $query->bindParam(':candidatephoto', $candidatephoto, PDO::PARAM_STR);
-        $query->bindParam(':aadhaarphoto', $aadhaarphoto, PDO::PARAM_STR);
-        $query->bindParam(':qualificationphoto', $qualificationphoto, PDO::PARAM_STR);
-        $query->bindParam(':applicationphoto', $applicationphoto, PDO::PARAM_STR);
-        $query->bindParam(':cid', $cid, PDO::PARAM_STR);
+        // Check and process application photo
+        if (!empty($_FILES['applicationphoto']['name'])) {
+            $applicationphoto = ($_FILES['applicationphoto']['name']);
+            $applicationphototarget = 'doc/' . basename($applicationphoto);
+            move_uploaded_file($_FILES['applicationphoto']['tmp_name'], $applicationphototarget);
+            $updateFields[] = "applicationphoto = :applicationphoto";
+            $updateParams[':applicationphoto'] = $applicationphoto;
+        }
 
-
-        $query->execute();
-        move_uploaded_file($_FILES['candidatephoto']['tmp_name'], $candidatephototarget);
-        move_uploaded_file($_FILES['aadhaarphoto']['tmp_name'], $aadhaarphototarget);
-        move_uploaded_file($_FILES['qualificationphoto']['tmp_name'], $qualificationphototarget);
-        move_uploaded_file($_FILES['applicationphoto']['tmp_name'], $applicationphototarget);
-
-        $msg = "Data has been updated successfully";
+        // Update the database only if there are fields to update
+        if (!empty($updateFields)) {
+            $sql = "UPDATE tblcandidate SET " . implode(", ", $updateFields) . " WHERE CandidateId = :cid";
+            $query = $dbh->prepare($sql);
+            foreach ($updateParams as $param => $value) {
+                $query->bindParam($param, $value, PDO::PARAM_STR);
+            }
+            $query->execute();
+            $msg = "Data has been updated successfully.";
+        } else {
+            $msg = "No files were uploaded.";
+        }
     }
 ?>
 <!DOCTYPE html>
