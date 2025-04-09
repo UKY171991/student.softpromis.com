@@ -281,25 +281,30 @@ if (strlen($_SESSION['alogin']) == "") {
                             <h5 class="mb-0">Update Candidate Document</h5>
                         </div>
                         <div class="card-body">
-                        <div class="col-md-6 mb-3">
-                                        <label for="candidatename">Full Name</label> : <?php echo htmlentities($result->candidatename); ?>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="fathername">Father Name</label> : <?php echo htmlentities($result->fathername); ?>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="aadharnumber">Aadhar Number</label> : <?php echo htmlentities($result->aadharnumber); ?>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="aadharnumber">Phone Number</label> : <?php echo htmlentities($result->phonenumber); ?>
-                                    </div>
+                            
                             <?php
                             $cid = intval($_GET['candidateid']);
                             $sql = "SELECT * FROM tblcandidate WHERE CandidateId=:cid";
                             $query = $dbh->prepare($sql);
                             $query->bindParam(':cid', $cid, PDO::PARAM_STR);
                             $query->execute();
-                            $result = $query->fetch(PDO::FETCH_OBJ);
+                            $result = $query->fetch(PDO::FETCH_OBJ); 
+                            ?>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="candidatename">Full Name</label> : <?php echo htmlentities($result->candidatename); ?>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="fathername">Father Name</label> : <?php echo htmlentities($result->fathername); ?>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="aadharnumber">Aadhar Number</label> : <?php echo htmlentities($result->aadharnumber); ?>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="aadharnumber">Phone Number</label> : <?php echo htmlentities($result->phonenumber); ?>
+                            </div>
+
+                            <?php
 
                             if ($query->rowCount() > 0) { ?>
                                 <!-- Candidate Photo -->
