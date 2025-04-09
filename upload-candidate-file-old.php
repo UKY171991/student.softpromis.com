@@ -160,6 +160,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
         $sql = "UPDATE tblcandidate SET aadhaarphoto=NULL WHERE CandidateId=:cid";
         $query = $dbh->prepare($sql);
+        $query->bindParam(':cid', $cid, PDO::PARAM_STR);
         $query->execute();
         $msg = "Aadhaar photo deleted successfully.";
     }
@@ -179,6 +180,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
         $sql = "UPDATE tblcandidate SET qualificationphoto=NULL WHERE CandidateId=:cid";
         $query = $dbh->prepare($sql);
+        $query->bindParam(':cid', $cid, PDO::PARAM_STR);
         $query->execute();
         $msg = "Qualification photo deleted successfully.";
     }
@@ -198,6 +200,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
         $sql = "UPDATE tblcandidate SET applicationphoto=NULL WHERE CandidateId=:cid";
         $query = $dbh->prepare($sql);
+        $query->bindParam(':cid', $cid, PDO::PARAM_STR);
         $query->execute();
         $msg = "Application photo deleted successfully.";
     }
