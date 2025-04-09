@@ -315,7 +315,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
                             if ($query->rowCount() > 0) { ?>
                                 <!-- Candidate Photo -->
-                                <div class="card">
+                                <div class="card m-3">
                                     <form method="post" enctype="multipart/form-data">
                                         <input type="hidden" name="candidateid" value="<?php echo $cid; ?>">
                                         <div class="form-group">
