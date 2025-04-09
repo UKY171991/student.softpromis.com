@@ -322,10 +322,11 @@ if (strlen($_SESSION['alogin']) == "") {
                                         <input type="file" name="candidatephoto" class="form-control">
                                         <?php if (!empty($result->candidatephoto)) { ?>
                                             <p>Current File: <a href="doc/<?php echo htmlentities($result->candidatephoto); ?>" target="_blank"><?php echo htmlentities($result->candidatephoto); ?></a></p>
-                                            <button type="submit" name="deletePhoto" class="btn btn-danger">Delete Photo</button>
+                                            
                                         <?php } ?>
                                     </div>
                                     <button type="submit" name="updatePhoto" class="btn btn-primary">Upload Photo</button>
+                                    <button type="submit" name="deletePhoto" class="btn btn-danger">Delete Photo</button>
                                 </form>
                                 <hr>
 
