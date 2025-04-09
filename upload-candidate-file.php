@@ -22,9 +22,14 @@ if (strlen($_SESSION['alogin']) == "") {
             } else {
                 $candidatephoto = ($_FILES['candidatephoto']['name']);
                 $candidatephototarget = 'doc/' . basename($candidatephoto);
-                move_uploaded_file($_FILES['candidatephoto']['tmp_name'], $candidatephototarget);
-                $updateFields[] = "candidatephoto = :candidatephoto";
-                $updateParams[':candidatephoto'] = $candidatephoto;
+
+                // Debugging: Check if the file is being uploaded
+                if (move_uploaded_file($_FILES['candidatephoto']['tmp_name'], $candidatephototarget)) {
+                    $updateFields[] = "candidatephoto = :candidatephoto";
+                    $updateParams[':candidatephoto'] = $candidatephoto;
+                } else {
+                    $error = "Failed to upload candidate photo.";
+                }
             }
         }
 
