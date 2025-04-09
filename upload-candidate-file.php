@@ -105,96 +105,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                                                 ?></h5>
                                             </div>
                                         </div>
-                                        <?php if ($msg) { ?>
-                                        <div class="alert alert-success left-icon-alert" role="alert">
-                                            <strong>Well done!</strong>
-                                            <?php echo htmlentities($msg); ?>
-                                        </div>
-                                        <?php } else if ($error) { ?>
-                                        <div class="alert alert-danger left-icon-alert" role="alert">
-                                            <strong>Oh snap!</strong>
-                                            <?php echo htmlentities($error); ?>
-                                        </div>
-                                        <?php } ?>
-                                        <form method="post" enctype="multipart/form-data">
-                                            <?php
-                                                $cid = intval($_GET['candidateid']);
-                                                $sql = "SELECT * from tblcandidate where CandidateId=:cid";
-                                                $query = $dbh->prepare($sql);
-                                                $query->bindParam(':cid', $cid, PDO::PARAM_STR);
-                                                $query->execute();
-                                                $results = $query->fetchAll(PDO::FETCH_OBJ);
-                                                $cnt = 1;
-                                                if ($query->rowCount() > 0) {
-                                                    foreach ($results as $result) {   ?>
-                                            <input type="hidden" name="candidateid" value="<?php echo $cid; ?>">
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="candidatename">Full Name</label>
-                                                    <?php echo htmlentities($result->candidatename); ?>
-                                                </div>
-
-                                                <div class="form-group col-md-6">
-                                                    <label for="fathername">Father Name</label>
-                                                    <?php echo htmlentities($result->fathername); ?>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="aadharnumber">Aadhar Number</label>
-                                                    <?php echo htmlentities($result->aadharnumber); ?>
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="aadharnumber">Phone Number</label>
-                                                    <?php echo htmlentities($result->phonenumber); ?>
-                                                </div>
-                                            </div>
-                                                
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-6">
-                                                        <label for="candidatephoto">Upload Photo</label>
-                                                        <input type="file" name="candidatephoto" class="form-control" value="<?php echo htmlentities($result->candidatephoto); ?>"
-                                                            id="candidatephoto">
-                                                    </div>
-
-                                                    <div class="form-group col-md-6">
-                                                        <label for="aadharnumber">Upload Aadhaar </label>
-                                                        <input type="file" name="aadhaarphoto" class="form-control"
-                                                            id="aadhar">
-                                                    </div>
-
-                                                    <div class="form-group col-md-6">
-                                                        <label for="aadharnumber">Upload Education</label>
-                                                        <input type="file" name="qualificationphoto"
-                                                            class="form-control" id="qualificationphoto">
-                                                    </div>
-
-                                                    <div class="form-row">
-                                                        <div class="form-group col-md-6">
-                                                            <label for="aadharnumber">Upload Application</label>
-                                                            <input type="file" name="applicationphoto"
-                                                                class="form-control" id="applicationphoto">
-                                                        </div>
-                                                        
-                                                    </div>
-
-
-                                                </div>
-                                            </div>
-
-
-                                            <?php }
-                                                } ?>
-                                            <div class="form-row">
-                                                <div class="form-group col-md-2">
-                                                    <button type="submit" name="update"
-                                                        class="btn btn-success btn-labeled">Update<span
-                                                            class="btn-label btn-label-right"><i
-                                                                class="fa fa-check"></i></span></button>
-                                                </div>
-                                            </div>
-                                        </form>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -270,39 +181,47 @@ if (strlen($_SESSION['alogin']) == "") {
 
 <?php
 session_start();
-if($_SESSION['user_type'] != 1) {
-    header("Location: index.php");
-}
 error_reporting(0);
 include('includes/config.php');
 if (strlen($_SESSION['alogin']) == "") {
     header("Location: index.php");
 } else {
-    if (isset($_POST['submit'])) {
-        $schemename = $_POST['schemename'];
+    if (isset($_POST['update'])) {
 
-        $count = "SELECT SchemeName FROM tblscheme WHERE SchemeName=:schemename";
-        $query = $dbh->prepare($count);
-        $query->bindParam(':schemename', $schemename, PDO::PARAM_STR);
+        $cid = ($_POST['candidateid']);
+
+        $candidatephoto = ($_FILES['candidatephoto']['name']);
+        $candidatephototarget = 'doc/' . basename($candidatephoto);
+
+        $aadhaarphoto = ($_FILES['aadhaarphoto']['name']);
+        $aadhaarphototarget = 'doc/' . basename($aadhaarphoto);
+
+        $qualificationphoto = ($_FILES['qualificationphoto']['name']);
+        $qualificationphototarget = 'doc/' . basename($qualificationphoto);
+
+        $applicationphoto = ($_FILES['applicationphoto']['name']);
+        $applicationphototarget = 'doc/' . basename($applicationphoto);
+        $status = 1;
+
+        $sql = "update  tblcandidate set candidatephoto=:candidatephoto,aadhaarphoto=:aadhaarphoto,qualificationphoto=:qualificationphoto,applicationphoto=:applicationphoto
+        where CandidateId=:cid ";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':candidatephoto', $candidatephoto, PDO::PARAM_STR);
+        $query->bindParam(':aadhaarphoto', $aadhaarphoto, PDO::PARAM_STR);
+        $query->bindParam(':qualificationphoto', $qualificationphoto, PDO::PARAM_STR);
+        $query->bindParam(':applicationphoto', $applicationphoto, PDO::PARAM_STR);
+        $query->bindParam(':cid', $cid, PDO::PARAM_STR);
+
+
         $query->execute();
-        $totalScheme = $query->rowCount();
-        
-        if ($totalScheme == 0) {
-            $sql = "INSERT INTO tblscheme(SchemeName) VALUES(:schemename)";
-            $query = $dbh->prepare($sql);
-            $query->bindParam(':schemename', $schemename, PDO::PARAM_STR);
-            $query->execute();
-            $lastInsertId = $dbh->lastInsertId();
-            if ($lastInsertId) {
-                $msg = "Scheme Created successfully";
-            } else {
-                $error = "Something went wrong. Please try again";
-            }
-        } else {
-            $error = "Scheme name already exists. Please try again";
-        }
+        move_uploaded_file($_FILES['candidatephoto']['tmp_name'], $candidatephototarget);
+        move_uploaded_file($_FILES['aadhaarphoto']['tmp_name'], $aadhaarphototarget);
+        move_uploaded_file($_FILES['qualificationphoto']['tmp_name'], $qualificationphototarget);
+        move_uploaded_file($_FILES['applicationphoto']['tmp_name'], $applicationphototarget);
+
+        $msg = "Data has been updated successfully";
     }
-?>
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -379,18 +298,98 @@ if (strlen($_SESSION['alogin']) == "") {
                     <!-- Form -->
                     <div class="card">
                         <div class="card-header bg-white py-3">
-                            <h5 class="mb-0">Create Scheme</h5>
+                            <h5 class="mb-0">Update Candidate Document</h5>
                         </div>
                         <div class="card-body">
-                            <form method="post" action="create-scheme.php">
-                                <div class="mb-3">
-                                    <label for="schemename" class="form-label">Scheme Name</label>
-                                    <input type="text" name="schemename" class="form-control" id="schemename" required>
-                                    <div class="form-text help-block">Enter the scheme name here</div>
+                        <?php if ($msg) { ?>
+                            <div class="alert alert-success left-icon-alert" role="alert">
+                                <strong>Well done!</strong>
+                                <?php echo htmlentities($msg); ?>
+                            </div>
+                            <?php } else if ($error) { ?>
+                            <div class="alert alert-danger left-icon-alert" role="alert">
+                                <strong>Oh snap!</strong>
+                                <?php echo htmlentities($error); ?>
+                            </div>
+                            <?php } ?>
+                            <form method="post" enctype="multipart/form-data">
+                                <?php
+                                    $cid = intval($_GET['candidateid']);
+                                    $sql = "SELECT * from tblcandidate where CandidateId=:cid";
+                                    $query = $dbh->prepare($sql);
+                                    $query->bindParam(':cid', $cid, PDO::PARAM_STR);
+                                    $query->execute();
+                                    $results = $query->fetchAll(PDO::FETCH_OBJ);
+                                    $cnt = 1;
+                                    if ($query->rowCount() > 0) {
+                                        foreach ($results as $result) {   ?>
+                                <input type="hidden" name="candidateid" value="<?php echo $cid; ?>">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="candidatename">Full Name</label>
+                                        <?php echo htmlentities($result->candidatename); ?>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label for="fathername">Father Name</label>
+                                        <?php echo htmlentities($result->fathername); ?>
+                                    </div>
                                 </div>
-                                <button type="submit" name="submit" class="btn btn-success">
-                                    <i class="fas fa-check me-2"></i>Submit
-                                </button>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="aadharnumber">Aadhar Number</label>
+                                        <?php echo htmlentities($result->aadharnumber); ?>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="aadharnumber">Phone Number</label>
+                                        <?php echo htmlentities($result->phonenumber); ?>
+                                    </div>
+                                </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="candidatephoto">Upload Photo</label>
+                                            <input type="file" name="candidatephoto" class="form-control" value="<?php echo htmlentities($result->candidatephoto); ?>"
+                                                id="candidatephoto">
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <label for="aadharnumber">Upload Aadhaar </label>
+                                            <input type="file" name="aadhaarphoto" class="form-control"
+                                                id="aadhar">
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <label for="aadharnumber">Upload Education</label>
+                                            <input type="file" name="qualificationphoto"
+                                                class="form-control" id="qualificationphoto">
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="aadharnumber">Upload Application</label>
+                                                <input type="file" name="applicationphoto"
+                                                    class="form-control" id="applicationphoto">
+                                            </div>
+                                            
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+
+                                <?php }
+                                    } ?>
+                                <div class="form-row">
+                                    <div class="form-group col-md-2">
+                                        <button type="submit" name="update"
+                                            class="btn btn-success btn-labeled">Update<span
+                                                class="btn-label btn-label-right"><i
+                                                    class="fa fa-check"></i></span></button>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>
