@@ -181,7 +181,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                 <?php }
                                     } ?>
                                 <div class="form-row">
-                                    <div class="form-group col-md-2">
+                                    <div class="form-group col-md-2 mb-3">
                                         <button type="submit" name="update"
                                             class="btn btn-success btn-labeled">Update<span
                                                 class="btn-label btn-label-right"><i
