@@ -133,15 +133,35 @@ if (strlen($_SESSION['alogin']) == "") {
                                     if ($query->rowCount() > 0) {
                                         foreach ($results as $result) {   ?>
                                 <input type="hidden" name="candidateid" value="<?php echo $cid; ?>">
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
+
+                                <div class="row">
+                                    <div class="col-md-6">
                                         <label for="candidatename">Full Name</label>
                                         <?php echo htmlentities($result->candidatename); ?>
                                     </div>
-
-                                    <div class="form-group col-md-6">
+                                    <div class="col-md-6">
                                         <label for="fathername">Father Name</label>
                                         <?php echo htmlentities($result->fathername); ?>
+                                    </div>
+                                    <div class="col-md-6"></div>
+                                    <div class="col-md-6"></div>
+                                    <div class="col-md-6"></div>
+                                    <div class="col-md-6"></div>
+                                    <div class="col-md-6"></div>
+                                    <div class="col-md-6"></div>
+                                    <div class="col-md-6"></div>
+                                    <div class="col-md-6"></div>                
+                                    <div class="col-md-6"></div>
+                                    
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        
                                     </div>
                                 </div>
 
