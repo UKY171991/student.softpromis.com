@@ -157,38 +157,41 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 </div>
                                             </div>
                                                 
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-6">
-                                                        <label for="candidatephoto">Upload Photo</label>
-                                                        <input type="file" name="candidatephoto" class="form-control" value="<?php echo htmlentities($result->candidatephoto); ?>"
-                                                            id="candidatephoto">
-                                                    </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="candidatephoto">Upload Photo</label>
+                                                    <input type="file" name="candidatephoto" class="form-control" id="candidatephoto">
+                                                    <?php if (!empty($result->candidatephoto)) { ?>
+                                                        <p>Uploaded File: <a href="doc/<?php echo htmlentities($result->candidatephoto); ?>" target="_blank"><?php echo htmlentities($result->candidatephoto); ?></a></p>
+                                                    <?php } ?>
+                                                </div>
 
-                                                    <div class="form-group col-md-6">
-                                                        <label for="aadharnumber">Upload Aadhaar </label>
-                                                        <input type="file" name="aadhaarphoto" class="form-control"
-                                                            id="aadhar">
-                                                    </div>
-
-                                                    <div class="form-group col-md-6">
-                                                        <label for="aadharnumber">Upload Education</label>
-                                                        <input type="file" name="qualificationphoto"
-                                                            class="form-control" id="qualificationphoto">
-                                                    </div>
-
-                                                    <div class="form-row">
-                                                        <div class="form-group col-md-6">
-                                                            <label for="aadharnumber">Upload Application</label>
-                                                            <input type="file" name="applicationphoto"
-                                                                class="form-control" id="applicationphoto">
-                                                        </div>
-                                                        
-                                                    </div>
-
-
+                                                <div class="form-group col-md-6">
+                                                    <label for="aadhaarphoto">Upload Aadhaar</label>
+                                                    <input type="file" name="aadhaarphoto" class="form-control" id="aadhaarphoto">
+                                                    <?php if (!empty($result->aadhaarphoto)) { ?>
+                                                        <p>Uploaded File: <a href="doc/<?php echo htmlentities($result->aadhaarphoto); ?>" target="_blank"><?php echo htmlentities($result->aadhaarphoto); ?></a></p>
+                                                    <?php } ?>
                                                 </div>
                                             </div>
 
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="qualificationphoto">Upload Education</label>
+                                                    <input type="file" name="qualificationphoto" class="form-control" id="qualificationphoto">
+                                                    <?php if (!empty($result->qualificationphoto)) { ?>
+                                                        <p>Uploaded File: <a href="doc/<?php echo htmlentities($result->qualificationphoto); ?>" target="_blank"><?php echo htmlentities($result->qualificationphoto); ?></a></p>
+                                                    <?php } ?>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label for="applicationphoto">Upload Application</label>
+                                                    <input type="file" name="applicationphoto" class="form-control" id="applicationphoto">
+                                                    <?php if (!empty($result->applicationphoto)) { ?>
+                                                        <p>Uploaded File: <a href="doc/<?php echo htmlentities($result->applicationphoto); ?>" target="_blank"><?php echo htmlentities($result->applicationphoto); ?></a></p>
+                                                    <?php } ?>
+                                                </div>
+                                            </div>
 
                                             <?php }
                                                 } ?>
