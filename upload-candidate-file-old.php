@@ -326,11 +326,12 @@ if (strlen($_SESSION['alogin']) == "") {
                                             <input type="file" name="candidatephoto" class="form-control">
                                             <?php if (!empty($result->candidatephoto)) { ?>
                                                 <p>Current File: <a href="doc/<?php echo htmlentities($result->candidatephoto); ?>" target="_blank"><?php echo htmlentities($result->candidatephoto); ?></a></p>
-                                                
+                                                <button type="submit" name="deletePhoto" class="btn btn-danger">Delete Photo</button>
                                             <?php } ?>
+                                            <button type="submit" name="updatePhoto" class="btn btn-primary">Upload Photo</button>
                                         </div>
-                                        <button type="submit" name="updatePhoto" class="btn btn-primary">Upload Photo</button>
-                                        <button type="submit" name="deletePhoto" class="btn btn-danger">Delete Photo</button>
+                                        
+                                        
                                     </form>
                                 </div>
                                 
@@ -345,11 +346,12 @@ if (strlen($_SESSION['alogin']) == "") {
                                             <input type="file" name="aadhaarphoto" class="form-control">
                                             <?php if (!empty($result->aadhaarphoto)) { ?>
                                                 <p>Current File: <a href="doc/<?php echo htmlentities($result->aadhaarphoto); ?>" target="_blank"><?php echo htmlentities($result->aadhaarphoto); ?></a></p>
-                                                
+                                                <button type="submit" name="deleteAadhaar" class="btn btn-danger">Delete Aadhaar</button>
                                             <?php } ?>
+                                            <button type="submit" name="updateAadhaar" class="btn btn-primary">Upload Aadhaar</button>
                                         </div>
-                                        <button type="submit" name="updateAadhaar" class="btn btn-primary">Upload Aadhaar</button>
-                                        <button type="submit" name="deleteAadhaar" class="btn btn-danger">Delete Aadhaar</button>
+                                        
+                                        
                                     </form>
                                 </div>
                                 <hr>
@@ -363,11 +365,12 @@ if (strlen($_SESSION['alogin']) == "") {
                                             <input type="file" name="qualificationphoto" class="form-control">
                                             <?php if (!empty($result->qualificationphoto)) { ?>
                                                 <p>Current File: <a href="doc/<?php echo htmlentities($result->qualificationphoto); ?>" target="_blank"><?php echo htmlentities($result->qualificationphoto); ?></a></p>
-                                                
+                                                <button type="submit" name="deleteQualification" class="btn btn-danger">Delete Qualification</button>
                                             <?php } ?>
+                                            <button type="submit" name="updateQualification" class="btn btn-primary">Upload Qualification</button>
                                         </div>
-                                        <button type="submit" name="updateQualification" class="btn btn-primary">Upload Qualification</button>
-                                        <button type="submit" name="deleteQualification" class="btn btn-danger">Delete Qualification</button>
+                                        
+                                        
                                     </form>
                                 </div>
                                 <hr>
@@ -381,11 +384,12 @@ if (strlen($_SESSION['alogin']) == "") {
                                             <input type="file" name="applicationphoto" class="form-control">
                                             <?php if (!empty($result->applicationphoto)) { ?>
                                                 <p>Current File: <a href="doc/<?php echo htmlentities($result->applicationphoto); ?>" target="_blank"><?php echo htmlentities($result->applicationphoto); ?></a></p>
-                                                
+                                                <button type="submit" name="deleteApplication" class="btn btn-danger">Delete Application</button>
                                             <?php } ?>
+                                            <button type="submit" name="updateApplication" class="btn btn-primary">Upload Application</button>
                                         </div>
-                                        <button type="submit" name="updateApplication" class="btn btn-primary">Upload Application</button>
-                                        <button type="submit" name="deleteApplication" class="btn btn-danger">Delete Application</button>
+                                        
+                                        
                                     </form>
                                 </div>
                             <?php } ?>
