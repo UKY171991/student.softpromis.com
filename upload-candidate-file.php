@@ -149,26 +149,85 @@ if (strlen($_SESSION['alogin']) == "") {
                                             <strong>Success!</strong> <?php echo $msg; ?>
                                         </div>
                                         <?php } ?>
-                                        <form id="uploadForm" enctype="multipart/form-data">
-                                            <div class="form-group">
-                                                <label for="candidatephoto">Upload Photo</label>
-                                                <input type="file" name="candidatephoto" id="candidatephoto" class="form-control">
+                                        <form method="post" enctype="multipart/form-data">
+                                            <?php
+                                                $cid = intval($_GET['candidateid']);
+                                                $sql = "SELECT * from tblcandidate where CandidateId=:cid";
+                                                $query = $dbh->prepare($sql);
+                                                $query->bindParam(':cid', $cid, PDO::PARAM_STR);
+                                                $query->execute();
+                                                $results = $query->fetchAll(PDO::FETCH_OBJ);
+                                                $cnt = 1;
+                                                if ($query->rowCount() > 0) {
+                                                    foreach ($results as $result) {   ?>
+                                            <input type="hidden" name="candidateid" value="<?php echo $cid; ?>">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="candidatename">Full Name</label>
+                                                    <?php echo htmlentities($result->candidatename); ?>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label for="fathername">Father Name</label>
+                                                    <?php echo htmlentities($result->fathername); ?>
+                                                </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="aadhaarphoto">Upload Aadhaar</label>
-                                                <input type="file" name="aadhaarphoto" id="aadhaarphoto" class="form-control">
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="aadharnumber">Aadhar Number</label>
+                                                    <?php echo htmlentities($result->aadharnumber); ?>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="aadharnumber">Phone Number</label>
+                                                    <?php echo htmlentities($result->phonenumber); ?>
+                                                </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="qualificationphoto">Upload Qualification</label>
-                                                <input type="file" name="qualificationphoto" id="qualificationphoto" class="form-control">
+                                                
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="candidatephoto">Upload Photo</label>
+                                                        <input type="file" name="candidatephoto" class="form-control" value="<?php echo htmlentities($result->candidatephoto); ?>"
+                                                            id="candidatephoto">
+                                                    </div>
+
+                                                    <div class="form-group col-md-6">
+                                                        <label for="aadharnumber">Upload Aadhaar </label>
+                                                        <input type="file" name="aadhaarphoto" class="form-control"
+                                                            id="aadhar">
+                                                    </div>
+
+                                                    <div class="form-group col-md-6">
+                                                        <label for="aadharnumber">Upload Education</label>
+                                                        <input type="file" name="qualificationphoto"
+                                                            class="form-control" id="qualificationphoto">
+                                                    </div>
+
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <label for="aadharnumber">Upload Application</label>
+                                                            <input type="file" name="applicationphoto"
+                                                                class="form-control" id="applicationphoto">
+                                                        </div>
+                                                        
+                                                    </div>
+
+
+                                                </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="applicationphoto">Upload Application</label>
-                                                <input type="file" name="applicationphoto" id="applicationphoto" class="form-control">
+
+
+                                            <?php }
+                                                } ?>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-2">
+                                                    <button type="submit" name="update"
+                                                        class="btn btn-success btn-labeled">Update<span
+                                                            class="btn-label btn-label-right"><i
+                                                                class="fa fa-check"></i></span></button>
+                                                </div>
                                             </div>
-                                            <button type="button" id="uploadButton" class="btn btn-success">Upload</button>
                                         </form>
-                                        <div id="uploadStatus"></div>
                                     </div>
                                 </div>
                             </div>
