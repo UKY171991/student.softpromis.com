@@ -293,18 +293,23 @@ if (strlen($_SESSION['alogin']) == "") {
                             //print_r($result);
                             ?>
 
-                            <div class="col-md-6 mb-3">
-                                <label for="candidatename">Full Name</label> : <?php echo htmlentities($result->candidatename); ?>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="candidatename">Full Name</label> : <?php echo htmlentities($result->candidatename); ?>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="fathername">Father Name</label> : <?php echo htmlentities($result->fathername); ?>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="aadharnumber">Aadhar Number</label> : <?php echo htmlentities($result->aadharnumber); ?>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="aadharnumber">Phone Number</label> : <?php echo htmlentities($result->phonenumber); ?>
+                                </div>
+
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="fathername">Father Name</label> : <?php echo htmlentities($result->fathername); ?>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="aadharnumber">Aadhar Number</label> : <?php echo htmlentities($result->aadharnumber); ?>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="aadharnumber">Phone Number</label> : <?php echo htmlentities($result->phonenumber); ?>
-                            </div>
+
+                            
 
                             <?php
 
