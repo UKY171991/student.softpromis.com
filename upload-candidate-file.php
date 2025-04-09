@@ -8,37 +8,71 @@ if (strlen($_SESSION['alogin']) == "") {
     if (isset($_POST['update'])) {
 
         $cid = ($_POST['candidateid']);
+        $maxFileSize = 1048576; // 1 MB in bytes
+        $error = "";
 
-        $candidatephoto = ($_FILES['candidatephoto']['name']);
-        $candidatephototarget = 'doc/' . basename($candidatephoto);
+        // Check and process candidate photo
+        if (!empty($_FILES['candidatephoto']['name'])) {
+            if ($_FILES['candidatephoto']['size'] > $maxFileSize) {
+                $error .= "Candidate photo must be less than 1 MB.<br>";
+            } else {
+                $candidatephoto = ($_FILES['candidatephoto']['name']);
+                $candidatephototarget = 'doc/' . basename($candidatephoto);
+                move_uploaded_file($_FILES['candidatephoto']['tmp_name'], $candidatephototarget);
+            }
+        }
 
-        $aadhaarphoto = ($_FILES['aadhaarphoto']['name']);
-        $aadhaarphototarget = 'doc/' . basename($aadhaarphoto);
+        // Check and process Aadhaar photo
+        if (!empty($_FILES['aadhaarphoto']['name'])) {
+            if ($_FILES['aadhaarphoto']['size'] > $maxFileSize) {
+                $error .= "Aadhaar photo must be less than 1 MB.<br>";
+            } else {
+                $aadhaarphoto = ($_FILES['aadhaarphoto']['name']);
+                $aadhaarphototarget = 'doc/' . basename($aadhaarphoto);
+                move_uploaded_file($_FILES['aadhaarphoto']['tmp_name'], $aadhaarphototarget);
+            }
+        }
 
-        $qualificationphoto = ($_FILES['qualificationphoto']['name']);
-        $qualificationphototarget = 'doc/' . basename($qualificationphoto);
+        // Check and process qualification photo
+        if (!empty($_FILES['qualificationphoto']['name'])) {
+            if ($_FILES['qualificationphoto']['size'] > $maxFileSize) {
+                $error .= "Qualification photo must be less than 1 MB.<br>";
+            } else {
+                $qualificationphoto = ($_FILES['qualificationphoto']['name']);
+                $qualificationphototarget = 'doc/' . basename($qualificationphoto);
+                move_uploaded_file($_FILES['qualificationphoto']['tmp_name'], $qualificationphototarget);
+            }
+        }
 
-        $applicationphoto = ($_FILES['applicationphoto']['name']);
-        $applicationphototarget = 'doc/' . basename($applicationphoto);
-        $status = 1;
+        // Check and process application photo
+        if (!empty($_FILES['applicationphoto']['name'])) {
+            if ($_FILES['applicationphoto']['size'] > $maxFileSize) {
+                $error .= "Application photo must be less than 1 MB.<br>";
+            } else {
+                $applicationphoto = ($_FILES['applicationphoto']['name']);
+                $applicationphototarget = 'doc/' . basename($applicationphoto);
+                move_uploaded_file($_FILES['applicationphoto']['tmp_name'], $applicationphototarget);
+            }
+        }
 
-        $sql = "update  tblcandidate set candidatephoto=:candidatephoto,aadhaarphoto=:aadhaarphoto,qualificationphoto=:qualificationphoto,applicationphoto=:applicationphoto
-        where CandidateId=:cid ";
-        $query = $dbh->prepare($sql);
-        $query->bindParam(':candidatephoto', $candidatephoto, PDO::PARAM_STR);
-        $query->bindParam(':aadhaarphoto', $aadhaarphoto, PDO::PARAM_STR);
-        $query->bindParam(':qualificationphoto', $qualificationphoto, PDO::PARAM_STR);
-        $query->bindParam(':applicationphoto', $applicationphoto, PDO::PARAM_STR);
-        $query->bindParam(':cid', $cid, PDO::PARAM_STR);
+        // Update database only if there are no errors
+        if (empty($error)) {
+            $sql = "UPDATE tblcandidate SET 
+                candidatephoto=:candidatephoto, 
+                aadhaarphoto=:aadhaarphoto, 
+                qualificationphoto=:qualificationphoto, 
+                applicationphoto=:applicationphoto
+                WHERE CandidateId=:cid";
+            $query = $dbh->prepare($sql);
+            $query->bindParam(':candidatephoto', $candidatephoto, PDO::PARAM_STR);
+            $query->bindParam(':aadhaarphoto', $aadhaarphoto, PDO::PARAM_STR);
+            $query->bindParam(':qualificationphoto', $qualificationphoto, PDO::PARAM_STR);
+            $query->bindParam(':applicationphoto', $applicationphoto, PDO::PARAM_STR);
+            $query->bindParam(':cid', $cid, PDO::PARAM_STR);
+            $query->execute();
 
-
-        $query->execute();
-        move_uploaded_file($_FILES['candidatephoto']['tmp_name'], $candidatephototarget);
-        move_uploaded_file($_FILES['aadhaarphoto']['tmp_name'], $aadhaarphototarget);
-        move_uploaded_file($_FILES['qualificationphoto']['tmp_name'], $qualificationphototarget);
-        move_uploaded_file($_FILES['applicationphoto']['tmp_name'], $applicationphototarget);
-
-        $msg = "Data has been updated successfully";
+            $msg = "Data has been updated successfully.";
+        }
     }
 ?>
 <!DOCTYPE html>
