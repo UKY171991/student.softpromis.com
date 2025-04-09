@@ -10,12 +10,7 @@ if (strlen($_SESSION['alogin']) == "") {
             $candidatephoto = ($_FILES['candidatephoto']['name']);
             $candidatephototarget = 'doc/' . basename($candidatephoto);
 
-            // Delete old file if it exists
-            if (!empty($result->candidatephoto) && file_exists('doc/' . $result->candidatephoto)) {
-                unlink('doc/' . $result->candidatephoto);
-            }
-
-            // Upload new file
+            // Debugging: Check if the file is being uploaded
             if (move_uploaded_file($_FILES['candidatephoto']['tmp_name'], $candidatephototarget)) {
                 $sql = "UPDATE tblcandidate SET candidatephoto=:candidatephoto WHERE CandidateId=:cid";
                 $query = $dbh->prepare($sql);
@@ -24,8 +19,10 @@ if (strlen($_SESSION['alogin']) == "") {
                 $query->execute();
                 $msg = "Candidate photo updated successfully.";
             } else {
-                $error = "Failed to upload candidate photo.";
+                $error = "Failed to upload candidate photo. Check directory permissions.";
             }
+        } else {
+            $error = "No file selected for upload.";
         }
     }
 
