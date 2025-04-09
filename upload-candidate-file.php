@@ -8,72 +8,49 @@ if (strlen($_SESSION['alogin']) == "") {
     if (isset($_POST['update'])) {
 
         $cid = ($_POST['candidateid']);
-        $maxFileSize = 1048576; // 1 MB in bytes
+        $maxFileSize = 1048576; // 1 MB
         $error = "";
-
-        // Check and process candidate photo
-        if (!empty($_FILES['candidatephoto']['name'])) {
-            if ($_FILES['candidatephoto']['size'] > $maxFileSize) {
-                $error .= "Candidate photo must be less than 1 MB.<br>";
-            } else {
-                $candidatephoto = ($_FILES['candidatephoto']['name']);
-                $candidatephototarget = 'doc/' . basename($candidatephoto);
-                move_uploaded_file($_FILES['candidatephoto']['tmp_name'], $candidatephototarget);
+        $fieldsToUpdate = [];
+        $params = [':cid' => $cid];
+    
+        // Helper function to handle uploads
+        function handleFileUpload($fieldName, $label, $maxFileSize, &$fieldsToUpdate, &$params, &$error) {
+            if (!empty($_FILES[$fieldName]['name'])) {
+                if ($_FILES[$fieldName]['size'] > $maxFileSize) {
+                    $error .= "$label must be less than 1 MB.<br>";
+                } else {
+                    $filename = basename($_FILES[$fieldName]['name']);
+                    $targetPath = "doc/" . $filename;
+                    if (move_uploaded_file($_FILES[$fieldName]['tmp_name'], $targetPath)) {
+                        $fieldsToUpdate[] = "$fieldName = :$fieldName";
+                        $params[":$fieldName"] = $filename;
+                    } else {
+                        $error .= "Failed to upload $label.<br>";
+                    }
+                }
             }
         }
-
-        // Check and process Aadhaar photo
-        if (!empty($_FILES['aadhaarphoto']['name'])) {
-            if ($_FILES['aadhaarphoto']['size'] > $maxFileSize) {
-                $error .= "Aadhaar photo must be less than 1 MB.<br>";
-            } else {
-                $aadhaarphoto = ($_FILES['aadhaarphoto']['name']);
-                $aadhaarphototarget = 'doc/' . basename($aadhaarphoto);
-                move_uploaded_file($_FILES['aadhaarphoto']['tmp_name'], $aadhaarphototarget);
-            }
-        }
-
-        // Check and process qualification photo
-        if (!empty($_FILES['qualificationphoto']['name'])) {
-            if ($_FILES['qualificationphoto']['size'] > $maxFileSize) {
-                $error .= "Qualification photo must be less than 1 MB.<br>";
-            } else {
-                $qualificationphoto = ($_FILES['qualificationphoto']['name']);
-                $qualificationphototarget = 'doc/' . basename($qualificationphoto);
-                move_uploaded_file($_FILES['qualificationphoto']['tmp_name'], $qualificationphototarget);
-            }
-        }
-
-        // Check and process application photo
-        if (!empty($_FILES['applicationphoto']['name'])) {
-            if ($_FILES['applicationphoto']['size'] > $maxFileSize) {
-                $error .= "Application photo must be less than 1 MB.<br>";
-            } else {
-                $applicationphoto = ($_FILES['applicationphoto']['name']);
-                $applicationphototarget = 'doc/' . basename($applicationphoto);
-                move_uploaded_file($_FILES['applicationphoto']['tmp_name'], $applicationphototarget);
-            }
-        }
-
-        // Update database only if there are no errors
-        if (empty($error)) {
-            $sql = "UPDATE tblcandidate SET 
-                candidatephoto=:candidatephoto, 
-                aadhaarphoto=:aadhaarphoto, 
-                qualificationphoto=:qualificationphoto, 
-                applicationphoto=:applicationphoto
-                WHERE CandidateId=:cid";
+    
+        // Check each file field
+        handleFileUpload('candidatephoto', 'Candidate Photo', $maxFileSize, $fieldsToUpdate, $params, $error);
+        handleFileUpload('aadhaarphoto', 'Aadhaar Photo', $maxFileSize, $fieldsToUpdate, $params, $error);
+        handleFileUpload('qualificationphoto', 'Qualification Photo', $maxFileSize, $fieldsToUpdate, $params, $error);
+        handleFileUpload('applicationphoto', 'Application Photo', $maxFileSize, $fieldsToUpdate, $params, $error);
+    
+        // Update only if there are fields to update and no error
+        if (empty($error) && count($fieldsToUpdate) > 0) {
+            $sql = "UPDATE tblcandidate SET " . implode(', ', $fieldsToUpdate) . " WHERE CandidateId = :cid";
             $query = $dbh->prepare($sql);
-            $query->bindParam(':candidatephoto', $candidatephoto, PDO::PARAM_STR);
-            $query->bindParam(':aadhaarphoto', $aadhaarphoto, PDO::PARAM_STR);
-            $query->bindParam(':qualificationphoto', $qualificationphoto, PDO::PARAM_STR);
-            $query->bindParam(':applicationphoto', $applicationphoto, PDO::PARAM_STR);
-            $query->bindParam(':cid', $cid, PDO::PARAM_STR);
+            foreach ($params as $key => $value) {
+                $query->bindParam($key, $value, PDO::PARAM_STR);
+            }
             $query->execute();
-
-            $msg = "Data has been updated successfully.";
+            $msg = "Document(s) updated successfully.";
+        } elseif (count($fieldsToUpdate) == 0) {
+            $msg = "No new file selected. Nothing updated.";
         }
     }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
