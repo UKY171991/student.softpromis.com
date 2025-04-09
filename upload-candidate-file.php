@@ -15,11 +15,19 @@ if (strlen($_SESSION['alogin']) == "") {
 
         // Check and process candidate photo
         if (!empty($_FILES['candidatephoto']['name'])) {
-            $candidatephoto = ($_FILES['candidatephoto']['name']);
-            $candidatephototarget = 'doc/' . basename($candidatephoto);
-            move_uploaded_file($_FILES['candidatephoto']['tmp_name'], $candidatephototarget);
-            $updateFields[] = "candidatephoto = :candidatephoto";
-            $updateParams[':candidatephoto'] = $candidatephoto;
+            if ($_FILES['candidatephoto']['size'] > 1048576) { // 1 MB limit
+                $error = "Candidate photo must be less than 1 MB.";
+            } else {
+                $candidatephoto = ($_FILES['candidatephoto']['name']);
+                $candidatephototarget = 'doc/' . basename($candidatephoto);
+
+                if (move_uploaded_file($_FILES['candidatephoto']['tmp_name'], $candidatephototarget)) {
+                    $updateFields[] = "candidatephoto = :candidatephoto";
+                    $updateParams[':candidatephoto'] = $candidatephoto;
+                } else {
+                    $error = "Failed to upload candidate photo.";
+                }
+            }
         }
 
         // Check and process Aadhaar photo
@@ -132,10 +140,10 @@ if (strlen($_SESSION['alogin']) == "") {
                                             <strong>Well done!</strong>
                                             <?php echo htmlentities($msg); ?>
                                         </div>
-                                        <?php } else if ($error) { ?>
-                                        <div class="alert alert-danger left-icon-alert" role="alert">
-                                            <strong>Oh snap!</strong>
-                                            <?php echo htmlentities($error); ?>
+                                        <?php } ?>
+                                        <?php if ($error) { ?>
+                                        <div class="alert alert-danger">
+                                            <strong>Error!</strong> <?php echo htmlentities($error); ?>
                                         </div>
                                         <?php } ?>
                                         <form method="post" enctype="multipart/form-data">
