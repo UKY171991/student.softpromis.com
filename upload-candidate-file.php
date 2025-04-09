@@ -139,15 +139,14 @@ if (strlen($_SESSION['alogin']) == "") {
                                                                                 ?></h5>
                                             </div>
                                         </div>
-                                        <?php if ($msg) { ?>
-                                        <div class="alert alert-success left-icon-alert" role="alert">
-                                            <strong>Well done!</strong>
-                                            <?php echo htmlentities($msg); ?>
+                                        <?php if (!empty($error)) { ?>
+                                        <div class="alert alert-danger">
+                                            <strong>Error!</strong> <?php echo $error; ?>
                                         </div>
-                                        <?php } else if ($error) { ?>
-                                        <div class="alert alert-danger left-icon-alert" role="alert">
-                                            <strong>Oh snap!</strong>
-                                            <?php echo htmlentities($error); ?>
+                                        <?php } ?>
+                                        <?php if (!empty($msg)) { ?>
+                                        <div class="alert alert-success">
+                                            <strong>Success!</strong> <?php echo $msg; ?>
                                         </div>
                                         <?php } ?>
                                         <form method="post" enctype="multipart/form-data">
