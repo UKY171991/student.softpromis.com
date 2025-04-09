@@ -6,46 +6,39 @@ if (strlen($_SESSION['alogin']) == "") {
     header("Location: index.php");
 } else {
     if (isset($_POST['update'])) {
+
         $cid = ($_POST['candidateid']);
 
-        // Define max file size (1 MB = 1048576 bytes)
-        $maxFileSize = 1048576;
+        $candidatephoto = ($_FILES['candidatephoto']['name']);
+        $candidatephototarget = 'doc/' . basename($candidatephoto);
 
-        // Check file sizes
-        if ($_FILES['candidatephoto']['size'] > $maxFileSize ||
-            $_FILES['aadhaarphoto']['size'] > $maxFileSize ||
-            $_FILES['qualificationphoto']['size'] > $maxFileSize ||
-            $_FILES['applicationphoto']['size'] > $maxFileSize) {
-            $error = "Each file must be less than 1 MB.";
-        } else {
-            $candidatephoto = ($_FILES['candidatephoto']['name']);
-            $candidatephototarget = 'doc/' . basename($candidatephoto);
+        $aadhaarphoto = ($_FILES['aadhaarphoto']['name']);
+        $aadhaarphototarget = 'doc/' . basename($aadhaarphoto);
 
-            $aadhaarphoto = ($_FILES['aadhaarphoto']['name']);
-            $aadhaarphototarget = 'doc/' . basename($aadhaarphoto);
+        $qualificationphoto = ($_FILES['qualificationphoto']['name']);
+        $qualificationphototarget = 'doc/' . basename($qualificationphoto);
 
-            $qualificationphoto = ($_FILES['qualificationphoto']['name']);
-            $qualificationphototarget = 'doc/' . basename($qualificationphoto);
+        $applicationphoto = ($_FILES['applicationphoto']['name']);
+        $applicationphototarget = 'doc/' . basename($applicationphoto);
+        $status = 1;
 
-            $applicationphoto = ($_FILES['applicationphoto']['name']);
-            $applicationphototarget = 'doc/' . basename($applicationphoto);
+        $sql = "update  tblcandidate set candidatephoto=:candidatephoto,aadhaarphoto=:aadhaarphoto,qualificationphoto=:qualificationphoto,applicationphoto=:applicationphoto
+        where CandidateId=:cid ";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':candidatephoto', $candidatephoto, PDO::PARAM_STR);
+        $query->bindParam(':aadhaarphoto', $aadhaarphoto, PDO::PARAM_STR);
+        $query->bindParam(':qualificationphoto', $qualificationphoto, PDO::PARAM_STR);
+        $query->bindParam(':applicationphoto', $applicationphoto, PDO::PARAM_STR);
+        $query->bindParam(':cid', $cid, PDO::PARAM_STR);
 
-            $sql = "UPDATE tblcandidate SET candidatephoto=:candidatephoto, aadhaarphoto=:aadhaarphoto, qualificationphoto=:qualificationphoto, applicationphoto=:applicationphoto WHERE CandidateId=:cid";
-            $query = $dbh->prepare($sql);
-            $query->bindParam(':candidatephoto', $candidatephoto, PDO::PARAM_STR);
-            $query->bindParam(':aadhaarphoto', $aadhaarphoto, PDO::PARAM_STR);
-            $query->bindParam(':qualificationphoto', $qualificationphoto, PDO::PARAM_STR);
-            $query->bindParam(':applicationphoto', $applicationphoto, PDO::PARAM_STR);
-            $query->bindParam(':cid', $cid, PDO::PARAM_STR);
 
-            $query->execute();
-            move_uploaded_file($_FILES['candidatephoto']['tmp_name'], $candidatephototarget);
-            move_uploaded_file($_FILES['aadhaarphoto']['tmp_name'], $aadhaarphototarget);
-            move_uploaded_file($_FILES['qualificationphoto']['tmp_name'], $qualificationphototarget);
-            move_uploaded_file($_FILES['applicationphoto']['tmp_name'], $applicationphototarget);
+        $query->execute();
+        move_uploaded_file($_FILES['candidatephoto']['tmp_name'], $candidatephototarget);
+        move_uploaded_file($_FILES['aadhaarphoto']['tmp_name'], $aadhaarphototarget);
+        move_uploaded_file($_FILES['qualificationphoto']['tmp_name'], $qualificationphototarget);
+        move_uploaded_file($_FILES['applicationphoto']['tmp_name'], $applicationphototarget);
 
-            $msg = "Data has been updated successfully";
-        }
+        $msg = "Data has been updated successfully";
     }
 ?>
 <!DOCTYPE html>
@@ -119,7 +112,8 @@ if (strlen($_SESSION['alogin']) == "") {
                                         </div>
                                         <?php } else if ($error) { ?>
                                         <div class="alert alert-danger left-icon-alert" role="alert">
-                                            <strong>Error!</strong> <?php echo htmlentities($error); ?>
+                                            <strong>Oh snap!</strong>
+                                            <?php echo htmlentities($error); ?>
                                         </div>
                                         <?php } ?>
                                         <form method="post" enctype="multipart/form-data">
