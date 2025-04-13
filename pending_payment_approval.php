@@ -45,6 +45,10 @@ if (strlen($_SESSION['alogin']) == "") {
     .text-end {
         text-align: right !important;
     }
+    .dataTables_paginate {
+        float: right !important;
+        margin-top: 10px !important;
+    }
   </style>
 
 </head>
@@ -232,8 +236,17 @@ if (strlen($_SESSION['alogin']) == "") {
     $(function($) {
         $('#example').DataTable({
             columnDefs: [
-                { className: "text-end", targets: [3,4,5,6] }  // Targets Total fee, Paid, Balance, and Last Paid columns
-            ]
+                { className: "text-end", targets: [3,4,5,6] }
+            ],
+            dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>' +
+                 '<"row"<"col-sm-12"tr>>' +
+                 '<"row"<"col-sm-12 d-flex justify-content-end"p>>',
+            language: {
+                paginate: {
+                    previous: "Previous",
+                    next: "Next"
+                }
+            }
         });
 
         $('#example2').DataTable({
