@@ -62,13 +62,11 @@ if (strlen($_SESSION['alogin']) == "") {
 
       <!-- Main Content -->
       <main class="col-lg-10 col-md-9 p-4">
-        <h2 class="mb-4">Softpro Dashboard</h2>
+        <h2 class="mb-4">Pending Approval</h2>
       
 
       <div class="card">
-            <div class="card-header bg-white py-3">
-                <h5 class="mb-0">Pending Approval</h5>
-            </div>
+            
             
             <div class="card-body">
                 <div class="panel-heading">
