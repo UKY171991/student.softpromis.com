@@ -171,7 +171,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                 </td>
 
                                 <td>
-                                    <?php echo htmlentities($result->paid); ?>
+                                    <?php echo number_format((float)$result->paid, 2, '.', ''); ?>
                                 </td>
                                 
                                 <td>
