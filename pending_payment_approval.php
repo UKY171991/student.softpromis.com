@@ -109,7 +109,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                 <th>Paid</th>
                                 <th>Balance</th>
                                 <th>Last Paid</th>
-                                <th>Updated Date</th>
+                                <th>Updated On</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -122,7 +122,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                 <th>Paid</th>
                                 <th>Balance</th>
                                 <th>Last Paid</th>
-                                <th>Updated Date</th>
+                                <th>Updated On</th>
                                 <th>Action</th>
                             </tr>
                         </tfoot>
