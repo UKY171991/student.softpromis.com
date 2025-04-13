@@ -69,6 +69,21 @@ if (strlen($_SESSION['alogin']) == "") {
             <div class="card-header bg-white py-3">
                 <h5 class="mb-0">Pending Approval</h5>
             </div>
+            <div class="panel-heading">
+                    <div class="panel-title" style="display: flex;">
+                        <?php
+                        $sqls = "SELECT SUM(paid) as total_paid FROM emi_list WHERE added_type = 2";
+                        $querys = $dbh->prepare($sqls);
+                        $querys->execute();
+                        $res = $querys->fetch(PDO::FETCH_OBJ); 
+
+                        //print_r($res->total_paid);
+                        ?>
+
+                        <!-- <h5>Pending Payment Approval : <?=$res->total_paid?></h5> -->
+                        <h5>Total Pending Amount : <?=$res->total_paid?></h5>
+                    </div>
+                </div>
             <div class="card-body">
                 <div class="panel-heading">
                     <div class="panel-title" style="display: flex;">
