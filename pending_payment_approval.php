@@ -41,6 +41,11 @@ if (strlen($_SESSION['alogin']) == "") {
             line-height: 20px;
         }
   </style>
+  <style>
+    .text-end {
+        text-align: right !important;
+    }
+  </style>
 
 </head>
 <body>
@@ -226,7 +231,11 @@ if (strlen($_SESSION['alogin']) == "") {
 
   <script>
     $(function($) {
-        $('#example').DataTable();
+        $('#example').DataTable({
+            columnDefs: [
+                { className: "text-end", targets: [3,4,5,6] }  // Targets Total fee, Paid, Balance, and Last Paid columns
+            ]
+        });
 
         $('#example2').DataTable({
             "scrollY": "300px",
