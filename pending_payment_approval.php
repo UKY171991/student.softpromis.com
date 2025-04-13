@@ -175,7 +175,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                 </td>
                                 
                                 <td>
-                                    <?php echo date("d M Y h:i:s A", strtotime($result->created)); ?>
+                                    <?php echo date("d-m-Y", strtotime($result->created)); ?>
                                 </td>
                                 <td>
                                     <?php
