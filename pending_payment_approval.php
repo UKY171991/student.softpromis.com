@@ -41,6 +41,11 @@ if (strlen($_SESSION['alogin']) == "") {
             line-height: 20px;
         }
   </style>
+  <style>
+    .text-end {
+        text-align: right !important;
+    }
+  </style>
 
 </head>
 <body>
@@ -57,13 +62,12 @@ if (strlen($_SESSION['alogin']) == "") {
 
       <!-- Main Content -->
       <main class="col-lg-10 col-md-9 p-4">
-        <h2 class="mb-4">Softpro Dashboard</h2>
+        <h2 class="mb-4">Pending Approval</h2>
       
 
       <div class="card">
-            <div class="card-header bg-white py-3">
-                <h5 class="mb-0">Pending Approval</h5>
-            </div>
+            
+            
             <div class="card-body">
                 <div class="panel-heading">
                     <div class="panel-title" style="display: flex;">
@@ -104,7 +108,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                 <th>Paid</th>
                                 <th>Balance</th>
                                 <th>Last Paid</th>
-                                <th>Updated Date</th>
+                                <th>Updated On</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -117,7 +121,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                 <th>Paid</th>
                                 <th>Balance</th>
                                 <th>Last Paid</th>
-                                <th>Updated Date</th>
+                                <th>Updated On</th>
                                 <th>Action</th>
                             </tr>
                         </tfoot>
@@ -164,18 +168,18 @@ if (strlen($_SESSION['alogin']) == "") {
                                 </td>
 
                                 <td>
-                                    <?php echo htmlentities($results_p[0]->paid); ?>
+                                    <?php echo number_format((float)$results_p[0]->paid, 2, '.', ''); ?>
                                 </td>
                                 <td>
                                     <?php echo htmlentities($results_p[0]->balance); ?>
                                 </td>
 
                                 <td>
-                                    <?php echo htmlentities($result->paid); ?>
+                                    <?php echo number_format((float)$result->paid, 2, '.', ''); ?>
                                 </td>
                                 
                                 <td>
-                                    <?php echo date("d M Y h:i:s A", strtotime($result->created)); ?>
+                                    <?php echo date("d-m-Y", strtotime($result->created)); ?>
                                 </td>
                                 <td>
                                     <?php
@@ -226,7 +230,11 @@ if (strlen($_SESSION['alogin']) == "") {
 
   <script>
     $(function($) {
-        $('#example').DataTable();
+        $('#example').DataTable({
+            columnDefs: [
+                { className: "text-end", targets: [3,4,5,6] }  // Targets Total fee, Paid, Balance, and Last Paid columns
+            ]
+        });
 
         $('#example2').DataTable({
             "scrollY": "300px",
