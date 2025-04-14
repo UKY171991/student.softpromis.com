@@ -84,7 +84,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
    /* Sidebar styling */
     .sidebar {
-      background-color: #343a40;
+      background-color: #1e2124 !important;
       min-height: 100vh;
     }
     .sidebar .nav-link {
@@ -94,7 +94,7 @@ if (strlen($_SESSION['alogin']) == "") {
     }
     .sidebar .nav-link:hover, .sidebar .nav-link.active {
       color: #fff;
-      background-color: #495057;
+      background-color: rgba(255, 255, 255, 0.1);
       border-radius: 0.25rem;
     }
     .sidebar .sidebar-header {
@@ -107,6 +107,17 @@ if (strlen($_SESSION['alogin']) == "") {
         text-align: center;
     }
         
+    /* Active menu item */
+    .sidebar .nav-link.active {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Remove any conflicting background colors */
+    .left-sidebar,
+    #sidebar,
+    .sidebar-wrapper {
+        background-color: #1e2124 !important;
+    }
 </style>
 </head>
 <body>
