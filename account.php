@@ -48,12 +48,12 @@ if (strlen($_SESSION['alogin']) == "") {
   body {
     background-color: #e9ecef;
   }
-  .bg-teal { background-color: #20c997 !important; }
+  .bg-teal { background-color: #00a0a0 !important; }
   .bg-purple { background-color: #6f42c1 !important; }
   .bg-orange { background-color: #fd7e14 !important; }
-  .bg-darkblue { background-color: #343a40 !important; }
-  .bg-pink { background-color: #e83e8c !important; }
-  .bg-indigo { background-color: #6610f2 !important; }
+  .bg-darkblue { background-color: #0d6efd !important; }
+  .bg-pink { background-color: #d63384 !important; }
+  .bg-indigo { background-color: #4263eb !important; }
   .bg-maroon { background-color: #dc3545 !important; }
   .bg-gold { background-color: #ffc107 !important; }
 
@@ -64,9 +64,11 @@ if (strlen($_SESSION['alogin']) == "") {
     transition: transform 0.3s ease;
     cursor: pointer;
     font-size: 0.9rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   .dashboard-card:hover {
     transform: translateY(-3px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
   }
   .dashboard-card .icon {
     font-size: 1.8rem;
@@ -124,7 +126,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
           <!-- Card 1: Regd Candidates Current Month -->
           <div class="col-md-4">
-            <div class="dashboard-card bg-purple">
+            <div class="dashboard-card bg-indigo">
               <div class="d-flex justify-content-between align-items-center">
                 <div>
                   <?php
@@ -147,7 +149,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
           <!-- Card 2: Regd Candidates Current Year -->
           <div class="col-md-4">
-            <div class="dashboard-card bg-teal">
+            <div class="dashboard-card bg-darkblue">
               <div class="d-flex justify-content-between align-items-center">
                 <div>
                   <?php
@@ -169,7 +171,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
           <!-- Card 3: Total Registered Candidates -->
           <div class="col-md-4">
-            <div class="dashboard-card bg-info">
+            <div class="dashboard-card bg-teal">
               <div class="d-flex justify-content-between align-items-center">
                 <div>
                   <?php
@@ -190,7 +192,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
           <!-- Card 4: Total Fees Paid & Pending (All Time) -->
           <div class="col-md-4">
-            <div class="dashboard-card bg-indigo">
+            <div class="dashboard-card bg-purple">
               <div class="d-flex justify-content-between align-items-center">
                 <div>
                   <?php
