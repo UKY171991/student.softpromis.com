@@ -447,6 +447,29 @@ if (strlen($_SESSION['alogin']) == "") {
             color: #2c3e50;
             margin: 0;
         }
+
+        /* Payment Status */
+        .payment-status {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .status-paid {
+            background: #2ecc71;
+            color: white;
+        }
+
+        .status-pending {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .status-partial {
+            background: #f1c40f;
+            color: white;
+        }
     </style>
 </head>
 
@@ -508,182 +531,88 @@ if (strlen($_SESSION['alogin']) == "") {
                         </div>
 
                         <div class="p-3">
-                            <table id="example" class="table table-borderless w-100">
+                            <table id="example" class="table">
                                 <thead>
                                     <tr>
-                                        <th><input type="checkbox" class="form-check-input" id="selectAll"></th>
-                                        <th>Enrollment ID</th>
-                                        <th>Name</th>
-                                        <th>Phone</th>
-                                        <th>Job Role</th>
-                                        <th>ID</th>
-                                        <th>Father</th>
-                                        <th>Aadhar</th>
-                                        <th>Qualification</th>
-                                        <th>DOB</th>
-                                        <th>Gender</th>
-                                        <th>Marital</th>
-                                        <th>Religion</th>
-                                        <th>Category</th>
-                                        <th>Village</th>
-                                        <th>Mandal</th>
-                                        <th>District</th>
-                                        <th>State</th>
-                                        <th>Pincode</th>
-                                        <th>Created</th>
-                                        <th>Modified</th>
-                                        <th>Batch ID</th>
-                                        <th>Training Center</th>
-                                        <th>Scheme</th>
-                                        <th>Sector</th>
-                                        <th>Batch</th>
-                                        <th>Payment</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $sql = isset($_GET['batch']) ? 
-                                        "SELECT * FROM tblcandidate WHERE batch=:batch ORDER BY CandidateId DESC" : 
-                                        "SELECT * FROM tblcandidate ORDER BY CandidateId DESC";
-                                    $query = $dbh->prepare($sql);
-                                    if(isset($_GET['batch'])) {
-                                        $query->bindParam(':batch', $_GET['batch'], PDO::PARAM_STR);
-                                    }
-                                    $query->execute();
-                                    $results = $query->fetchAll(PDO::FETCH_OBJ);
-                                    $cnt = 1;
-                                    if ($query->rowCount() > 0) {
-                                        foreach ($results as $result) {
-                                            $jobrollname = '';
-                                            $sql4 = "SELECT jobrollname FROM tbljobroll WHERE JobrollId = :jobroll";
-                                            $query4 = $dbh->prepare($sql4);
-                                            $query4->bindParam(':jobroll', $result->job_roll, PDO::PARAM_INT);
-                                            $query4->execute();
-                                            $jobrollname = $query4->fetchColumn();
-
-                                            $tc_sql = "SELECT trainingcentername FROM tbltrainingcenter WHERE TrainingcenterId = :tc";
-                                            $tc_query = $dbh->prepare($tc_sql);
-                                            $tc_query->bindParam(':tc', $result->training_center, PDO::PARAM_INT);
-                                            $tc_query->execute();
-                                            $tc_name = $tc_query->fetchColumn();
-
-                                            $scheme_sql = "SELECT SchemeName FROM tblscheme WHERE SchemeId = :scheme";
-                                            $scheme_query = $dbh->prepare($scheme_sql);
-                                            $scheme_query->bindParam(':scheme', $result->scheme, PDO::PARAM_INT);
-                                            $scheme_query->execute();
-                                            $scheme_name = $scheme_query->fetchColumn();
-
-                                            $sector_sql = "SELECT SectorName FROM tblsector WHERE SectorId = :sector";
-                                            $sector_query = $dbh->prepare($sector_sql);
-                                            $sector_query->bindParam(':sector', $result->sector, PDO::PARAM_INT);
-                                            $sector_query->execute();
-                                            $sector_name = $sector_query->fetchColumn();
-
-                                            $batch_sql = "SELECT batch_name FROM tblbatch WHERE id = :batch";
-                                            $batch_query = $dbh->prepare($batch_sql);
-                                            $batch_query->bindParam(':batch', $result->batch, PDO::PARAM_INT);
-                                            $batch_query->execute();
-                                            $batch_name = $batch_query->fetchColumn();
-
-                                            $payment_sql = "SELECT paid, total_fee FROM payment WHERE candidate_id = :cid";
-                                            $payment_query = $dbh->prepare($payment_sql);
-                                            $payment_query->bindParam(':cid', $result->CandidateId, PDO::PARAM_INT);
-                                            $payment_query->execute();
-                                            $payment = $payment_query->fetch(PDO::FETCH_ASSOC);
-                                            $status = $payment ? 
-                                                ($payment['paid'] == $payment['total_fee'] ? 
-                                                    '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank" class="btn btn-success btn-xs">Paid</a>' : 
-                                                    '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank" class="btn btn-warning btn-xs">Pending</a>') : 
-                                                '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank" class="btn btn-danger btn-xs">Unpaid</a>';
-                                    ?>
-                                        <tr>
-                                            <td>
-                                                <input type="checkbox" class="form-check-input" name="id[]" value="<?php echo $result->CandidateId; ?>">
-                                            </td>
-                                            <td><?php echo htmlentities($result->enrollmentid); ?></td>
-                                            <td><?php echo htmlentities($result->candidatename); ?></td>
-                                            <td><?php echo htmlentities($result->phonenumber); ?></td>
-                                            <td><?php echo $jobrollname; ?></td>
-                                            <td><?php echo htmlentities($result->CandidateId); ?></td>
-                                            <td><?php echo htmlentities($result->fathername); ?></td>
-                                            <td><?php echo htmlentities($result->aadharnumber); ?></td>
-                                            <td><?php echo htmlentities($result->qualification); ?></td>
-                                            <td><?php echo htmlentities($result->dateofbirth); ?></td>
-                                            <td><?php echo htmlentities($result->gender); ?></td>
-                                            <td><?php echo htmlentities($result->maritalstatus); ?></td>
-                                            <td><?php echo htmlentities($result->religion); ?></td>
-                                            <td><?php echo htmlentities($result->category); ?></td>
-                                            <td><?php echo htmlentities($result->village); ?></td>
-                                            <td><?php echo htmlentities($result->mandal); ?></td>
-                                            <td><?php echo htmlentities($result->district); ?></td>
-                                            <td><?php echo htmlentities($result->state); ?></td>
-                                            <td><?php echo htmlentities($result->pincode); ?></td>
-                                            <td><?php echo htmlentities($result->DateCreated); ?></td>
-                                            <td><?php echo htmlentities($result->DateModified); ?></td>
-                                            <td><?php echo htmlentities($result->tblbatch_id); ?></td>
-                                            <td><?php echo htmlentities($tc_name); ?></td>
-                                            <td><?php echo htmlentities($scheme_name); ?></td>
-                                            <td><?php echo htmlentities($sector_name); ?></td>
-                                            <td><?php echo htmlentities($batch_name); ?></td>
-                                            <td><?php echo $status; ?></td>
-                                            <td>
-                                                <div class="action-buttons">
-                                                    <button type="button" class="action-btn btn-edit" 
-                                                            onclick="window.location='edit-candidate.php?candidateid=<?php echo htmlentities($result->CandidateId); ?>'"
-                                                            title="Edit">
-                                                        <i class="fas fa-edit"></i>
-                                                    </button>
-                                                    <button type="button" class="action-btn btn-payment" 
-                                                            onclick="payment_status(<?php echo htmlentities($result->CandidateId); ?>)"
-                                                            title="Payment Status">
-                                                        <i class="fas fa-check"></i>
-                                                    </button>
-                                                    <button type="button" class="action-btn btn-view" 
-                                                            data-bs-toggle="modal" 
-                                                            data-bs-target="#myModal_<?php echo htmlentities($result->CandidateId); ?>"
-                                                            title="View Images">
-                                                        <i class="fas fa-image"></i>
-                                                    </button>
-                                                    <button type="button" class="action-btn btn-delete delete" 
-                                                            id="del_<?php echo htmlentities($result->CandidateId); ?>"
-                                                            title="Delete">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button>
-                                                </div>
-                                            </td>
+                                            <th>Enrollment ID</th>
+                                            <th>Name</th>
+                                            <th>Phone</th>
+                                            <th>Job Role</th>
+                                            <th>Gender</th>
+                                            <th>Batch</th>
+                                            <th>Payment</th>
+                                            <th>Action</th>
                                         </tr>
-
-                                        <!-- Image Modal -->
-                                        <div class="modal fade" id="myModal_<?php echo htmlentities($result->CandidateId); ?>" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title"><?php echo htmlentities($result->candidatename); ?></h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <p>Photo</p>
-                                                        <?php echo $result->candidatephoto ? '<a target="_blank" href="doc/'.$result->candidatephoto.'"><img style="width: 76px; height: 44px;" src="doc/'.$result->candidatephoto.'"></a>' : '<i class="fas fa-upload fa-2x"></i>'; ?>
-                                                        <hr>
-                                                        <p>Aadhaar</p>
-                                                        <?php echo $result->aadhaarphoto ? '<a target="_blank" href="doc/'.$result->aadhaarphoto.'"><img style="width: 76px; height: 44px;" src="doc/'.$result->aadhaarphoto.'"></a>' : '<i class="fas fa-upload fa-2x"></i>'; ?>
-                                                        <hr>
-                                                        <p>Qualification</p>
-                                                        <?php echo $result->qualificationphoto ? '<a target="_blank" href="doc/'.$result->qualificationphoto.'"><img style="width: 76px; height: 44px;" src="doc/'.$result->qualificationphoto.'"></a>' : '<i class="fas fa-upload fa-2x"></i>'; ?>
-                                                        <hr>
-                                                        <p>Application</p>
-                                                        <?php echo $result->applicationphoto ? '<a target="_blank" href="doc/'.$result->applicationphoto.'"><img style="width: 76px; height: 44px;" src="doc/'.$result->applicationphoto.'"></a>' : '<i class="fas fa-upload fa-2x"></i>'; ?>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <a href="upload-candidate-file.php?candidateid=<?php echo htmlentities($result->CandidateId); ?>" class="btn btn-success">Upload</a>
-                                                    </div>
-                                                </div>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                    $sql = "SELECT c.*, b.batch_name, p.paid, p.total_fee, j.jobrollname 
+                                            FROM tblcandidate c 
+                                            LEFT JOIN tblbatch b ON c.batch = b.id 
+                                            LEFT JOIN payment p ON c.CandidateId = p.candidate_id 
+                                            LEFT JOIN tbljobroll j ON c.job_roll = j.JobrollId 
+                                            ORDER BY c.CandidateId DESC";
+                                        $query = $dbh->prepare($sql);
+                                        $query->execute();
+                                        $results = $query->fetchAll(PDO::FETCH_OBJ);
+                                    
+                                        if ($query->rowCount() > 0) {
+                                            foreach ($results as $result) {
+                                            // Calculate payment status
+                                            $paymentStatus = 'Pending';
+                                            $statusClass = 'status-pending';
+                                            
+                                            if (isset($result->total_fee)) {
+                                                if ($result->paid >= $result->total_fee) {
+                                                    $paymentStatus = 'Paid';
+                                                    $statusClass = 'status-paid';
+                                                } elseif ($result->paid > 0) {
+                                                    $paymentStatus = 'Partial';
+                                                    $statusClass = 'status-partial';
+                                                }
+                                            }
+                                        ?>
+                                            <tr>
+                                        <td><?php echo htmlentities($result->enrollmentid); ?></td>
+                                                <td><?php echo htmlentities($result->candidatename); ?></td>
+                                                <td><?php echo htmlentities($result->phonenumber); ?></td>
+                                        <td><?php echo htmlentities($result->jobrollname); ?></td>
+                                                <td><?php echo htmlentities($result->gender); ?></td>
+                                        <td><?php echo htmlentities($result->batch_name); ?></td>
+                                        <td>
+                                            <span class="payment-status <?php echo $statusClass; ?>">
+                                                <?php echo $paymentStatus; ?>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button type="button" class="action-btn btn-edit" 
+                                                        onclick="window.location='edit-candidate.php?candidateid=<?php echo htmlentities($result->CandidateId); ?>'"
+                                                        title="Edit">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button type="button" class="action-btn btn-payment" 
+                                                        onclick="payment_status(<?php echo htmlentities($result->CandidateId); ?>)"
+                                                        title="Payment Status">
+                                                    <i class="fas fa-check"></i>
+                                                </button>
+                                                <button type="button" class="action-btn btn-view" 
+                                                        data-bs-toggle="modal" 
+                                                        data-bs-target="#myModal_<?php echo htmlentities($result->CandidateId); ?>"
+                                                        title="View Images">
+                                                    <i class="fas fa-image"></i>
+                                                </button>
+                                                <button type="button" class="action-btn btn-delete delete" 
+                                                        id="del_<?php echo htmlentities($result->CandidateId); ?>"
+                                                        title="Delete">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
                                             </div>
-                                        </div>
-                                    <?php $cnt++; } } ?>
-                                </tbody>
-                            </table>
+                                                </td>
+                                            </tr>
+                                    <?php }} ?>
+                                    </tbody>
+                                </table>
                         </div>
                     </div>
                 </main>
@@ -752,11 +681,9 @@ if (strlen($_SESSION['alogin']) == "") {
             "ordering": true,
             "responsive": true,
             "info": true,
-            "dom": '<"top"fl>rt<"bottom"ip>',
             "language": {
                 "search": "",
-                "searchPlaceholder": "Search...",
-                "lengthMenu": "_MENU_ per page"
+                "searchPlaceholder": "Search..."
             }
         });
 
