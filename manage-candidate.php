@@ -37,25 +37,6 @@ if (strlen($_SESSION['alogin']) == "") {
   <link rel="stylesheet" href="includes/style.css">
     
     <style>
-        .card { border: none; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-radius: 10px; }
-        .table-responsive { border-radius: 10px; overflow: hidden; }
-        .btn-action { padding: 5px 10px; margin: 0 2px; }
-        .thead-dark { background: #212529; color: white; }
-/*        .dt-buttons { margin-bottom: 15px; }*/
-        .dt-button-collection {
-            max-height: 300px; /* Adjust height as needed */
-            overflow-y: auto !important;
-        }
-
-        th.num_list,td.num_list {
-            text-align: end;
-        }
-
-        input.checkbox_list {
-            text-align: left !important;
-            float: inline-start;
-        }
-
         /* Table Styling */
         .table {
             border-collapse: separate;
@@ -91,32 +72,7 @@ if (strlen($_SESSION['alogin']) == "") {
             background-color: #f8f9fa;
         }
 
-        /* Card Styling */
-        .custom-card {
-            border: none !important;
-            border-radius: 8px !important;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
-            margin-bottom: 2rem;
-        }
-
-        .custom-card .card-header {
-            background-color: #fff !important;
-            border-bottom: 1px solid #dee2e6;
-            padding: 1.25rem 1.5rem;
-        }
-
-        /* Button Styling */
-        .btn-custom {
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-custom:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-        }
-
+        /* Action Buttons */
         .btn-action {
             padding: 0.4rem 0.8rem;
             border-radius: 4px;
@@ -151,12 +107,29 @@ if (strlen($_SESSION['alogin']) == "") {
             box-shadow: 0 2px 4px rgba(0,0,0,0.15);
         }
 
-        /* Status Badges */
-        .badge-custom {
-            padding: 0.5rem 0.75rem;
-            border-radius: 4px;
+        /* Card Styling */
+        .card {
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .card-header {
+            background-color: #fff;
+            border-bottom: 1px solid #dee2e6;
+            padding: 1.5rem;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        /* Badge Styling */
+        .badge {
+            padding: 0.5em 0.75em;
+            border-radius: 6px;
             font-weight: 500;
-            font-size: 0.875rem;
         }
 
         /* DataTables Customization */
@@ -186,314 +159,25 @@ if (strlen($_SESSION['alogin']) == "") {
             color: white !important;
         }
 
-        /* Utility Classes */
-        .text-end {
-            text-align: right !important;
-        }
-
+        /* Checkbox Styling */
         .checkbox_list {
             width: 18px;
             height: 18px;
             border-radius: 3px;
         }
 
-        /* Payment Status Badge */
-        .badge {
-            padding: 0.5em 0.75em;
-            border-radius: 6px;
-            font-weight: 500;
+        /* Utility Classes */
+        .text-end {
+            text-align: right !important;
         }
 
-        .badge-pending {
-            background-color: #dc3545;
-            color: white;
+        .text-center {
+            text-align: center !important;
         }
 
-        .badge-partial {
-            background-color: #ffc107;
-            color: #000;
-        }
-
-        .badge-success {
-            background-color: #28a745;
-            color: white;
-        }
-
-        /* Main Table Styling */
-        .table {
-            border-collapse: separate;
-            border-spacing: 0;
-            width: 100%;
-            background: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .table thead th {
-            background: #343a40;
-            color: #fff;
-            font-weight: 500;
-            font-size: 14px;
-            padding: 12px 15px;
-            border-bottom: none;
-            text-transform: uppercase;
-            white-space: nowrap;
-        }
-
-        .table tbody td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #eee;
-            vertical-align: middle;
-            font-size: 14px;
-            color: #333;
-        }
-
-        .table tbody tr:hover {
-            background-color: #f8f9fa;
-        }
-
-        /* Card Styling */
-        .card {
-            background: #fff;
-            border: none;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-            margin-bottom: 20px;
-        }
-
-        .card-header {
-            background: #fff;
-            padding: 20px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .card-body {
-            padding: 20px;
-        }
-
-        /* Button Styling */
-        .btn {
-            padding: 8px 16px;
-            border-radius: 4px;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-
-        .btn-action {
-            width: 32px;
-            height: 32px;
-            padding: 0;
-            line-height: 32px;
-            text-align: center;
-            margin: 0 3px;
-            border-radius: 4px;
-        }
-
-        .btn-info {
-            background: #00c1d4;
-            border-color: #00c1d4;
-            color: #fff;
-        }
-
-        .btn-warning {
-            background: #ffc107;
-            border-color: #ffc107;
-            color: #000;
-        }
-
-        .btn-success {
-            background: #28a745;
-            border-color: #28a745;
-            color: #fff;
-        }
-
-        .btn-danger {
-            background: #dc3545;
-            border-color: #dc3545;
-            color: #fff;
-        }
-
-        /* DataTable Styling */
-        .dataTables_wrapper .dataTables_length select,
-        .dataTables_wrapper .dataTables_filter input {
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 6px 12px;
-            height: 34px;
-        }
-
-        .dataTables_wrapper .dataTables_length select {
-            width: 70px;
-        }
-
-        .dataTables_wrapper .dataTables_filter input {
-            width: 200px;
-            margin-left: 8px;
-        }
-
-        .dataTables_wrapper .dataTables_paginate .paginate_button {
-            padding: 6px 12px;
-            margin: 0 2px;
-            border-radius: 4px;
-        }
-
-        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-            background: #00c1d4 !important;
-            border-color: #00c1d4 !important;
-            color: white !important;
-        }
-
-        /* Checkbox Styling */
-        .checkbox-custom {
-            width: 18px;
-            height: 18px;
-            margin: 0;
-        }
-
-        /* Status Badge */
-        .badge {
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-weight: 500;
-            font-size: 12px;
-        }
-
-        /* Essential Table Styling */
-        #example {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #e5e7eb;
-        }
-
-        #example thead th {
-            background: #2c3e50;
-            color: white;
-            font-weight: 500;
-            padding: 12px;
-            font-size: 13px;
-            border-bottom: none;
-            white-space: nowrap;
-        }
-
-        #example tbody td {
-            padding: 12px;
-            vertical-align: middle;
-            border-bottom: 1px solid #e5e7eb;
-            font-size: 13px;
-        }
-
-        #example tbody tr:hover {
-            background-color: #f8fafc;
-        }
-
-        /* Action Buttons */
-        .action-buttons {
-            display: flex;
-            gap: 5px;
-        }
-
-        .action-btn {
-            width: 30px;
-            height: 30px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 4px;
-            border: none;
-            color: white;
-            font-size: 14px;
-        }
-
-        .action-btn:hover {
-            opacity: 0.9;
-            transform: translateY(-1px);
-        }
-
-        .btn-edit { background: #3498db; }
-        .btn-payment { background: #f1c40f; }
-        .btn-view { background: #2ecc71; }
-        .btn-delete { background: #e74c3c; }
-
-        /* Search and Length Controls */
-        .dataTables_wrapper .dataTables_filter input {
-            border: 1px solid #e5e7eb;
-            border-radius: 4px;
-            padding: 6px 10px;
-            margin-left: 5px;
-        }
-
-        .dataTables_wrapper .dataTables_length select {
-            border: 1px solid #e5e7eb;
-            border-radius: 4px;
-            padding: 4px 8px;
-        }
-
-        /* Add New Button */
-        .add-new-btn {
-            background: #2ecc71;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .add-new-btn:hover {
-            background: #27ae60;
-            color: white;
-        }
-
-        /* Card */
-        .content-card {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
-
-        .card-top {
-            padding: 16px;
-            border-bottom: 1px solid #e5e7eb;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .card-title {
-            font-size: 18px;
-            font-weight: 500;
-            color: #2c3e50;
-            margin: 0;
-        }
-
-        /* Payment Status */
-        .payment-status {
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-
-        .status-paid {
-            background: #2ecc71;
-            color: white;
-        }
-
-        .status-pending {
-            background: #e74c3c;
-            color: white;
-        }
-
-        .status-partial {
-            background: #f1c40f;
-            color: white;
+        .dt-button-collection {
+            max-height: 300px;
+            overflow-y: auto !important;
         }
     </style>
 </head>
