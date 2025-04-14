@@ -56,6 +56,143 @@ if (strlen($_SESSION['alogin']) == "") {
             float: inline-start;
         }
 
+        /* Table Styling */
+        .custom-table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+            max-width: 100%;
+            background-color: #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .custom-table thead th {
+            background-color: #343a40 !important;
+            border-bottom: 2px solid #dee2e6;
+            color: white !important;
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 1rem;
+            vertical-align: middle;
+        }
+
+        .custom-table tbody td {
+            padding: 0.75rem 1rem;
+            vertical-align: middle;
+            border-bottom: 1px solid #dee2e6;
+            color: #495057;
+            font-size: 0.9rem;
+        }
+
+        .custom-table tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        /* Card Styling */
+        .custom-card {
+            border: none !important;
+            border-radius: 8px !important;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+            margin-bottom: 2rem;
+        }
+
+        .custom-card .card-header {
+            background-color: #fff !important;
+            border-bottom: 1px solid #dee2e6;
+            padding: 1.25rem 1.5rem;
+        }
+
+        /* Button Styling */
+        .btn-custom {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        }
+
+        .btn-action {
+            padding: 0.4rem 0.75rem;
+            border-radius: 4px;
+            margin: 0 2px;
+            font-size: 0.875rem;
+        }
+
+        /* Status Badges */
+        .badge-custom {
+            padding: 0.5rem 0.75rem;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+
+        /* DataTables Customization */
+        .dataTables_wrapper .dataTables_length select {
+            padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+            border-radius: 6px;
+            border: 1px solid #dee2e6;
+            background-color: #fff;
+        }
+
+        .dataTables_wrapper .dataTables_filter input {
+            padding: 0.375rem 0.75rem;
+            border-radius: 6px;
+            border: 1px solid #dee2e6;
+            background-color: #fff;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            margin: 0 2px;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+            background: #00c1d4 !important;
+            border-color: #00c1d4 !important;
+            color: white !important;
+        }
+
+        /* Utility Classes */
+        .text-end {
+            text-align: right !important;
+        }
+
+        .checkbox_list {
+            width: 18px;
+            height: 18px;
+            border-radius: 3px;
+        }
+
+        /* Button Colors */
+        .btn-info {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+            color: white;
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            border-color: #ffc107;
+            color: #000;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: white;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: white;
+        }
     </style>
 </head>
 
@@ -100,23 +237,24 @@ if (strlen($_SESSION['alogin']) == "") {
                     <?php } ?>
 
                     <!-- Candidates Table -->
-                    <div class="card">
-                        <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+                    <div class="custom-card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
                             <h5 class="mb-0">Candidate Information</h5>
                             <?php if(isset($_GET['batch'])){ ?>
-                                <a href="add-candidate-to-particular-batch.php?batchid=<?php echo $_GET['batch']; ?>" class="btn btn-success">
+                                <a href="add-candidate-to-particular-batch.php?batchid=<?php echo $_GET['batch']; ?>" 
+                                   class="btn btn-success btn-custom">
                                     <i class="fas fa-plus"></i> Add Candidate
                                 </a>
                             <?php } else { ?>
-                                <a href="add-candidate.php" class="btn btn-success">
+                                <a href="add-candidate.php" class="btn btn-success btn-custom">
                                     <i class="fas fa-plus"></i> Add Candidate
                                 </a>
                             <?php } ?>
                         </div>
-                        <div class="card-body p-2">
+                        <div class="card-body">
                             <div class="table-responsive">
-                                <table id="example" class="table table-hover table-bordered" style="width:100%">
-                                    <thead class="thead-dark">
+                                <table id="example" class="custom-table table-hover" style="width:100%">
+                                    <thead>
                                         <tr>
                                             <th class="num_list"><input type="checkbox" class="checkbox_list" id="selectAll"></th>
                                             <th>Enrollment ID</th>
@@ -233,10 +371,27 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 <td><?php echo htmlentities($batch_name); ?></td>
                                                 <td><?php echo $status; ?></td>
                                                 <td>
-                                                    <a href="edit-candidate.php?candidateid=<?php echo htmlentities($result->CandidateId); ?>" class="btn btn-info btn-xs btn-action" title="Edit"><i class="fas fa-edit"></i></a>
-                                                    <button onclick="payment_status(<?php echo htmlentities($result->CandidateId); ?>)" class="btn btn-warning btn-xs btn-action" data-bs-toggle="modal" data-bs-target="#myModal" title="Payment Status"><i class="fas fa-check"></i></button>
-                                                    <button class="btn btn-success btn-xs btn-action" data-bs-toggle="modal" data-bs-target="#myModal_<?php echo htmlentities($result->CandidateId); ?>" title="View Images"><i class="fas fa-image"></i></button>
-                                                    <button class="btn btn-danger btn-xs btn-action delete" id="del_<?php echo htmlentities($result->CandidateId); ?>" title="Delete"><i class="fas fa-trash"></i></button>
+                                                    <a href="edit-candidate.php?candidateid=<?php echo htmlentities($result->CandidateId); ?>" 
+                                                       class="btn btn-info btn-action" title="Edit">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                    <button class="btn btn-warning btn-action" 
+                                                            onClick='payment_status(<?php echo htmlentities($result->CandidateId); ?>)' 
+                                                            data-toggle="modal" data-target="#myModal" 
+                                                            title="Payment Status">
+                                                        <i class="fas fa-check"></i>
+                                                    </button>
+                                                    <button class="btn btn-success btn-action" 
+                                                            data-toggle="modal" 
+                                                            data-target="#myModal_<?php echo htmlentities($result->CandidateId); ?>" 
+                                                            title="View Images">
+                                                        <i class="fas fa-image"></i>
+                                                    </button>
+                                                    <button class="btn btn-danger btn-action delete" 
+                                                            id="del_<?php echo htmlentities($result->CandidateId); ?>" 
+                                                            title="Delete">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
                                                 </td>
                                             </tr>
 
@@ -339,71 +494,24 @@ if (strlen($_SESSION['alogin']) == "") {
 
     <script>
     $(document).ready(function() {
-        var table = $('#example').DataTable({
-            responsive: true,
-            lengthChange: true,
-            autoWidth: false,
-            pageLength: 10,
-            lengthMenu: [[10, 20, 50, 100, 500], [10, 20, 50, 100, 500]],
-            order: [[19, 'desc']],
+        $('#example').DataTable({
+            "pageLength": 10,
+            "responsive": true,
+            "scrollX": true,
+            "order": [[0, "asc"]],
+            "columnDefs": [
+                { className: "text-end", targets: [5] }
+            ],
+            "language": {
+                "search": "Search:",
+                "lengthMenu": "Show _MENU_ entries",
+                "info": "Showing _START_ to _END_ of _TOTAL_ entries"
+            },
+            dom: 'Bfrtip',
             buttons: [
-                {
-                    extend: 'copy',
-                    exportOptions: {
-                        columns: function (idx, data, node) {
-                            return idx !== table.columns().count() - 1 && table.column(idx).visible();
-                        }
-                    }
-                },
-                {
-                    extend: 'csv',
-                    exportOptions: {
-                        columns: function (idx, data, node) {
-                            return idx !== table.columns().count() - 1 && table.column(idx).visible();
-                        }
-                    }
-                },
-                {
-                    extend: 'excel',
-                    exportOptions: {
-                        columns: function (idx, data, node) {
-                            return idx !== table.columns().count() - 1 && table.column(idx).visible();
-                        }
-                    }
-                },
-                {
-                    extend: 'pdf',
-                    exportOptions: {
-                        columns: function (idx, data, node) {
-                            return idx !== table.columns().count() - 1 && table.column(idx).visible();
-                        }
-                    }
-                },
-                {
-                    extend: 'print',
-                    exportOptions: {
-                        columns: function (idx, data, node) {
-                            return idx !== table.columns().count() - 1 && table.column(idx).visible();
-                        }
-                    }
-                },
-                'colvis'
-            ],
-            columnDefs: [
-                { targets: [0, 1, 2, 3, 4, 26, 27], visible: true },
-                { targets: '_all', visible: false },
-                { targets: -1, orderable: false, searchable: false }
-            ],
-            dom: "<'row'<'col-sm-6'B><'col-sm-3'l><'col-sm-3'f>>" +
-                 "<'row'<'col-sm-12'tr>>" +
-                 "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
         });
-
-        // Move buttons to top-left explicitly (if needed)
-        table.buttons().container().appendTo('#example_wrapper .col-sm-6:eq(0)');
-
-
-
 
         // Select All
         $('#selectAll').on('click', function() {
@@ -430,11 +538,6 @@ if (strlen($_SESSION['alogin']) == "") {
             }
         });
 
-
-
-
-
-
         // Bulk Delete
         $('#deleteBtn').on('click', function() {
             var selectedIds = $('.deleteCheckbox:checked').map(function() { return $(this).val(); }).get();
@@ -460,7 +563,6 @@ if (strlen($_SESSION['alogin']) == "") {
             }
         });
     });
-
 
     function payment_status(id) {
         $("#c_id").html('Loading...');
