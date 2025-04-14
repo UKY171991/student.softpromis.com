@@ -32,6 +32,33 @@
         background-color: rgba(255, 255, 255, 0.1);
         border-radius: 0.25rem;
     }
+    .btn-action {
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        margin: 0 0.125rem;
+        transition: all 0.3s ease;
+    }
+
+    .btn-action:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        border-color: #17a2b8;
+        color: white;
+    }
+
+    .btn-info:hover {
+        background-color: #138496;
+        border-color: #117a8b;
+        color: white;
+    }
+
+    .fas {
+        font-size: 0.875rem;
+    }
     </style>
 </head>
 <body> 

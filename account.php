@@ -406,7 +406,10 @@ if (strlen($_SESSION['alogin']) == "") {
                             ?>
                           </td>
                           <td>
-                            <a class="btn-info btn-sm" href="edit-candidate.php?candidateid=<?php echo htmlentities($result->CandidateId); ?>" title="Edit Records"><i class="fa fa-edit"></i></a>
+                            <a href="edit-candidate.php?candidateid=<?php echo htmlentities($result->CandidateId); ?>" 
+                               class="btn btn-info btn-sm btn-action" title="Edit">
+                                <i class="fas fa-edit"></i>
+                            </a>
                           </td>
                         </tr>
                         <?php
