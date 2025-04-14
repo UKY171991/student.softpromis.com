@@ -46,6 +46,25 @@ if (strlen($_SESSION['alogin']) == "") {
         text-align: right !important;
     }
   </style>
+  <style>
+    .rounded-circle {
+        border: 1px solid #ddd;
+        background-color: #f8f9fa;
+    }
+  </style>
+  <style>
+    .sidebar {
+        background-color: #343a40 !important;
+    }
+    .sidebar .nav-link {
+        color: #adb5bd;
+    }
+    .sidebar .nav-link:hover, 
+    .sidebar .nav-link.active {
+        color: #fff;
+        background-color: #495057;
+    }
+  </style>
 
 </head>
 <body>
@@ -57,7 +76,6 @@ if (strlen($_SESSION['alogin']) == "") {
       <!-- Sidebar -->
 
       <?php include('includes/left-sidebar-new.php'); ?>
-       <?php include('includes/leftbar.php'); ?>
 
 
       <!-- Main Content -->
@@ -279,3 +297,16 @@ function updateStatus(candidateId,id) {
 
 
 </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize all dropdowns
+    var dropdowns = document.querySelectorAll('.dropdown-toggle');
+    dropdowns.forEach(function(dropdown) {
+        new bootstrap.Dropdown(dropdown);
+    });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
