@@ -40,11 +40,54 @@ if (strlen($_SESSION['alogin']) == "") {
 
     
     <style>
-        .card { border: none; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-radius: 10px; }
-        .table-responsive { border-radius: 10px; overflow: hidden; }
-        .btn-action { padding: 5px 10px; margin: 0 2px; }
-        .thead-dark { background: #212529; color: white; }
-        .dt-buttons { margin-bottom: 15px; }
+        .card { 
+            border: none; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+            border-radius: 10px; 
+            margin-bottom: 1.5rem;
+        }
+        .table-responsive { 
+            border-radius: 10px; 
+            overflow: hidden; 
+            margin: 0;
+        }
+        .btn-action { 
+            padding: 0.375rem 0.75rem; 
+            margin: 0 0.25rem; 
+            border-radius: 0.375rem;
+            transition: all 0.2s ease;
+        }
+        .btn-action:hover {
+            transform: translateY(-1px);
+        }
+        .thead-dark { 
+            background: var(--sidebar-bg); 
+            color: white; 
+        }
+        .dt-buttons { 
+            margin-bottom: 1rem; 
+        }
+        .dataTables_wrapper .dataTables_length,
+        .dataTables_wrapper .dataTables_filter {
+            margin-bottom: 1rem;
+        }
+        .dataTables_wrapper .dataTables_info,
+        .dataTables_wrapper .dataTables_paginate {
+            margin-top: 1rem;
+        }
+        .table > :not(caption) > * > * {
+            padding: 0.75rem 1rem;
+        }
+        .batch-name-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .batch-name-link:hover {
+            color: var(--primary-hover);
+            text-decoration: underline;
+        }
     </style>
 </head>
 
@@ -93,10 +136,10 @@ if (strlen($_SESSION['alogin']) == "") {
                         <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
                             <h5 class="mb-0">Batch Information</h5>
                             <a href="add-batch.php" class="btn btn-success">
-                                <i class="fas fa-plus"></i> Add Batch
+                                <i class="fas fa-plus me-2"></i> Add New Batch
                             </a>
                         </div>
-                        <div class="card-body p-2">
+                        <div class="card-body p-3">
                             <div class="table-responsive">
                                 <table id="example" class="table table-hover table-bordered" style="width:100%">
                                     <thead class="thead-dark">
@@ -121,7 +164,8 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 WHERE tblbatch.training_centre_id = tbltrainingcenter.TrainingcenterId 
                                                 AND tblbatch.scheme_id = tblscheme.SchemeId 
                                                 AND tblbatch.sector_id = tblsector.SectorId 
-                                                AND tblbatch.job_roll_id = tbljobroll.JobrollId";
+                                                AND tblbatch.job_roll_id = tbljobroll.JobrollId
+                                                ORDER BY tblbatch.id DESC";
                                         $query = $dbh->prepare($sql);
                                         $query->execute();
                                         $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -132,7 +176,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                     <td><?php echo htmlentities($cnt); ?></td>
                                                     <td>
                                                         <a href="manage-candidate.php?batch=<?php echo htmlentities($result->id); ?>" 
-                                                           class="btn btn-info btn-sm" target="_blank">
+                                                           class="batch-name-link">
                                                             <?php echo htmlentities($result->batch_name); ?>
                                                         </a>
                                                     </td>
@@ -140,20 +184,22 @@ if (strlen($_SESSION['alogin']) == "") {
                                                     <td><?php echo htmlentities($result->SectorName); ?></td>
                                                     <td><?php echo htmlentities($result->SchemeName); ?></td>
                                                     <td><?php echo htmlentities($result->trainingcentername); ?></td>
-                                                    <td><?php echo htmlentities($result->start_date); ?></td>
-                                                    <td><?php echo htmlentities($result->end_date); ?></td>
-                                                    <td><?php echo htmlentities($result->start_time); ?></td>
-                                                    <td><?php echo htmlentities($result->end_time); ?></td>
+                                                    <td><?php echo date('d M Y', strtotime($result->start_date)); ?></td>
+                                                    <td><?php echo date('d M Y', strtotime($result->end_date)); ?></td>
+                                                    <td><?php echo date('h:i A', strtotime($result->start_time)); ?></td>
+                                                    <td><?php echo date('h:i A', strtotime($result->end_time)); ?></td>
                                                     <td>
-                                                        <a href="edit-batch.php?batchid=<?php echo htmlentities($result->id); ?>" 
-                                                           class="btn btn-info btn-sm btn-action" title="Edit">
-                                                            <i class="fas fa-edit"></i>
-                                                        </a>
-                                                        <button class="btn btn-danger btn-sm btn-action delete" 
-                                                                id="del_<?php echo htmlentities($result->id); ?>" 
-                                                                title="Delete">
-                                                            <i class="fas fa-trash"></i>
-                                                        </button>
+                                                        <div class="btn-group">
+                                                            <a href="edit-batch.php?batchid=<?php echo htmlentities($result->id); ?>" 
+                                                               class="btn btn-info btn-sm btn-action" title="Edit">
+                                                                <i class="fas fa-edit"></i>
+                                                            </a>
+                                                            <button class="btn btn-danger btn-sm btn-action delete-batch" 
+                                                                    data-id="<?php echo htmlentities($result->id); ?>" 
+                                                                    title="Delete">
+                                                                <i class="fas fa-trash"></i>
+                                                            </button>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                         <?php $cnt++; }
@@ -198,76 +244,44 @@ if (strlen($_SESSION['alogin']) == "") {
             lengthChange: true,
             autoWidth: false,
             pageLength: 10,
-            lengthMenu: [[10, 20, 50, 100], [10, 20, 50, 100]],
-            order: [[6, 'desc']], // Order by Start Date
+            dom: 'Bfrtip',
             buttons: [
-                {
-                    extend: 'copy',
-                    exportOptions: { columns: [0,1,2,3,4,5,6,7,8,9] }
-                },
-                {
-                    extend: 'csv',
-                    exportOptions: { columns: [0,1,2,3,4,5,6,7,8,9] }
-                },
-                {
-                    extend: 'excel',
-                    exportOptions: { columns: [0,1,2,3,4,5,6,7,8,9] }
-                },
-                {
-                    extend: 'pdf',
-                    exportOptions: { columns: [0,1,2,3,4,5,6,7,8,9] }
-                },
-                {
-                    extend: 'print',
-                    exportOptions: { columns: [0,1,2,3,4,5,6,7,8,9] }
-                }
+                'copy', 'csv', 'excel', 'pdf', 'print'
             ],
-            dom: "<'row'<'col-sm-6'B><'col-sm-3'l><'col-sm-3'f>>" +
-                 "<'row'<'col-sm-12'tr>>" +
-                 "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+            language: {
+                search: "_INPUT_",
+                searchPlaceholder: "Search batches...",
+                lengthMenu: "Show _MENU_ entries",
+                info: "Showing _START_ to _END_ of _TOTAL_ entries",
+                infoEmpty: "Showing 0 to 0 of 0 entries",
+                infoFiltered: "(filtered from _MAX_ total entries)"
+            },
+            order: [[0, 'desc']]
         });
 
-        // Explicitly place buttons container at the top-left
-        table.buttons().container().appendTo('#example_wrapper .col-sm-6:eq(0)');
-
-
-        // Delete functionality
-        $('#example tbody').on('click', '.delete', function() {
-            var el = this;
-            var id = this.id.split("_")[1];
-            if (confirm("Are you sure you want to delete this batch?")) {
+        // Delete batch functionality
+        $('.delete-batch').on('click', function() {
+            var batchId = $(this).data('id');
+            if (confirm('Are you sure you want to delete this batch? This action cannot be undone.')) {
                 $.ajax({
-                    url: 'action.php',
+                    url: 'delete-batch.php',
                     type: 'POST',
-                    data: { id: id, action: "Delete batch" },
+                    data: { batchid: batchId },
                     success: function(response) {
-                        if (response == 4) {
-                            $(el).closest('tr').css('background', '#ffcccc').fadeOut(800, function() {
-                                $(this).remove();
-                            });
+                        var result = JSON.parse(response);
+                        if (result.status === 'success') {
+                            location.reload();
                         } else {
-                            alert('Error deleting batch.');
+                            alert('Error: ' + result.message);
                         }
+                    },
+                    error: function() {
+                        alert('An error occurred while processing your request.');
                     }
                 });
             }
         });
     });
-
-    function all_data(id) {
-        $("#c_data").html('Loading...');
-        $.ajax({
-            url: 'batch_list.php',
-            type: 'POST',
-            data: { action: 'fetch_data', id: id },
-            success: function(res) {
-                $("#c_data").html(res);
-            },
-            error: function() {
-                $("#c_data").html('<div class="alert alert-danger">Error fetching data.</div>');
-            }
-        });
-    }
     </script>
 </body>
 </html>
