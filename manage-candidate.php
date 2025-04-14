@@ -470,6 +470,79 @@ if (strlen($_SESSION['alogin']) == "") {
             background: #f1c40f;
             color: white;
         }
+
+        /* DataTable Length (Show entries) styling */
+        .dataTables_length {
+            margin-bottom: 15px;
+        }
+
+        .dataTables_length label {
+            font-weight: normal;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            margin: 0;
+            color: #333;
+        }
+
+        .dataTables_length select {
+            margin: 0 8px;
+            padding: 6px 30px 6px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #fff;
+            height: 36px;
+            font-size: 14px;
+            color: #333;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3E%3Cpath fill='%23333' d='M0 2l4 4 4-4z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 8px;
+            cursor: pointer;
+        }
+
+        .dataTables_length select:focus {
+            outline: none;
+            border-color: #80bdff;
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+        }
+
+        /* DataTable wrapper styling */
+        .dataTables_wrapper {
+            padding: 16px;
+        }
+
+        /* Search box styling */
+        .dataTables_filter {
+            margin-bottom: 15px;
+        }
+
+        .dataTables_filter label {
+            font-weight: normal;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            margin: 0;
+            color: #333;
+        }
+
+        .dataTables_filter input {
+            margin-left: 8px;
+            padding: 6px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            height: 36px;
+            width: 200px;
+            font-size: 14px;
+        }
+
+        .dataTables_filter input:focus {
+            outline: none;
+            border-color: #80bdff;
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+        }
     </style>
 </head>
 
@@ -689,12 +762,21 @@ if (strlen($_SESSION['alogin']) == "") {
             "info": true,
             "language": {
                 "search": "",
-                "searchPlaceholder": "Search..."
+                "searchPlaceholder": "Search...",
+                "lengthMenu": "Show _MENU_ entries",
+                "info": "Showing _START_ to _END_ of _TOTAL_ entries",
+                "paginate": {
+                    "first": "First",
+                    "last": "Last",
+                    "next": "Next",
+                    "previous": "Previous"
+                }
             },
             "columnDefs": [
                 { "orderable": false, "targets": 0 }
             ],
             "order": [[ 1, "desc" ]],
+            "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
             "drawCallback": function(settings) {
                 this.api().column(0).nodes().each(function(cell, i) {
                     cell.innerHTML = i + 1 + settings._iDisplayStart;
