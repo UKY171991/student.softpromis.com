@@ -72,6 +72,100 @@ if (strlen($_SESSION['alogin']) == "") {
             background-color: #f8f9fa;
         }
 
+        /* Button Styles */
+        .btn-custom {
+            background-color: #00c1d4;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-custom:hover {
+            background-color: #00a5b5;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            color: white;
+        }
+
+        /* Status Badges */
+        .badge-custom {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        .badge-pending {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .badge-partial {
+            background-color: #ffc107;
+            color: #000;
+        }
+
+        .badge-success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        /* Card Styling */
+        .custom-card {
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .custom-card .card-header {
+            background-color: #fff;
+            border-bottom: 1px solid #dee2e6;
+            padding: 1.5rem;
+        }
+
+        .custom-card .card-body {
+            padding: 1.5rem;
+        }
+
+        /* DataTables Custom Styling */
+        .dataTables_wrapper .dataTables_length select {
+            padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+            border-radius: 6px;
+            border: 1px solid #dee2e6;
+            background-color: #fff;
+        }
+
+        .dataTables_wrapper .dataTables_filter input {
+            padding: 0.375rem 0.75rem;
+            border-radius: 6px;
+            border: 1px solid #dee2e6;
+            background-color: #fff;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            margin: 0 2px;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+            background: #00c1d4 !important;
+            border-color: #00c1d4 !important;
+            color: white !important;
+        }
+
+        /* Utility Classes */
+        .text-end {
+            text-align: right !important;
+        }
+
+        .text-center {
+            text-align: center !important;
+        }
+
         /* Action Buttons */
         .btn-action {
             padding: 0.4rem 0.8rem;
@@ -107,7 +201,7 @@ if (strlen($_SESSION['alogin']) == "") {
             box-shadow: 0 2px 4px rgba(0,0,0,0.15);
         }
 
-        /* Card Styling */
+        /* Card */
         .card {
             border: none;
             border-radius: 8px;
@@ -123,61 +217,6 @@ if (strlen($_SESSION['alogin']) == "") {
 
         .card-body {
             padding: 1.5rem;
-        }
-
-        /* Badge Styling */
-        .badge {
-            padding: 0.5em 0.75em;
-            border-radius: 6px;
-            font-weight: 500;
-        }
-
-        /* DataTables Customization */
-        .dataTables_wrapper .dataTables_length select {
-            padding: 0.375rem 2.25rem 0.375rem 0.75rem;
-            border-radius: 6px;
-            border: 1px solid #dee2e6;
-            background-color: #fff;
-        }
-
-        .dataTables_wrapper .dataTables_filter input {
-            padding: 0.375rem 0.75rem;
-            border-radius: 6px;
-            border: 1px solid #dee2e6;
-            background-color: #fff;
-        }
-
-        .dataTables_wrapper .dataTables_paginate .paginate_button {
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            margin: 0 2px;
-        }
-
-        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-            background: #17a2b8 !important;
-            border-color: #17a2b8 !important;
-            color: white !important;
-        }
-
-        /* Checkbox Styling */
-        .checkbox_list {
-            width: 18px;
-            height: 18px;
-            border-radius: 3px;
-        }
-
-        /* Utility Classes */
-        .text-end {
-            text-align: right !important;
-        }
-
-        .text-center {
-            text-align: center !important;
-        }
-
-        .dt-button-collection {
-            max-height: 300px;
-            overflow-y: auto !important;
         }
     </style>
 </head>
@@ -238,11 +277,12 @@ if (strlen($_SESSION['alogin']) == "") {
                             <?php } ?>
                         </div>
 
-                        <div class="p-3">
-                            <table id="example" class="table">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="example" class="table table-striped table-hover" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
                                             <th>Enrollment ID</th>
                                             <th>Name</th>
                                             <th>Phone</th>
@@ -328,6 +368,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                     ?>
                                     </tbody>
                                 </table>
+                            </div>
                         </div>
                     </div>
                 </main>
@@ -392,18 +433,20 @@ if (strlen($_SESSION['alogin']) == "") {
     <script>
     $(document).ready(function() {
         $('#example').DataTable({
+            "order": [[0, "asc"]],
             "pageLength": 10,
-            "ordering": true,
             "responsive": true,
-            "info": true,
-            "order": [[ 1, "desc" ]],
             "language": {
-                "search": "",
-                "searchPlaceholder": "Search..."
-            },
-            "columnDefs": [
-                { "orderable": false, "targets": [0, 8] }
-            ]
+                "search": "Search:",
+                "lengthMenu": "Show _MENU_ entries",
+                "info": "Showing _START_ to _END_ of _TOTAL_ entries",
+                "paginate": {
+                    "first": "First",
+                    "last": "Last",
+                    "next": "Next",
+                    "previous": "Previous"
+                }
+            }
         });
 
         $('#selectAll').click(function() {
