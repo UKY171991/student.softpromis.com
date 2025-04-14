@@ -37,242 +37,438 @@ if (strlen($_SESSION['alogin']) == "") {
   <link rel="stylesheet" href="includes/style.css">
     
     <style>
-        /* Modern Table Styling */
+        .card { border: none; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-radius: 10px; }
+        .table-responsive { border-radius: 10px; overflow: hidden; }
+        .btn-action { padding: 5px 10px; margin: 0 2px; }
+        .thead-dark { background: #212529; color: white; }
+/*        .dt-buttons { margin-bottom: 15px; }*/
+        .dt-button-collection {
+            max-height: 300px; /* Adjust height as needed */
+            overflow-y: auto !important;
+        }
+
+        th.num_list,td.num_list {
+            text-align: end;
+        }
+
+        input.checkbox_list {
+            text-align: left !important;
+            float: inline-start;
+        }
+
+        /* Table Styling */
+        .custom-table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+            max-width: 100%;
+            background-color: #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .custom-table thead th {
+            background-color: #343a40 !important;
+            border-bottom: 2px solid #dee2e6;
+            color: white !important;
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 1rem;
+            vertical-align: middle;
+        }
+
+        .custom-table tbody td {
+            padding: 0.75rem 1rem;
+            vertical-align: middle;
+            border-bottom: 1px solid #dee2e6;
+            color: #495057;
+            font-size: 0.9rem;
+        }
+
+        .custom-table tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        /* Card Styling */
+        .custom-card {
+            border: none !important;
+            border-radius: 8px !important;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+            margin-bottom: 2rem;
+        }
+
+        .custom-card .card-header {
+            background-color: #fff !important;
+            border-bottom: 1px solid #dee2e6;
+            padding: 1.25rem 1.5rem;
+        }
+
+        /* Button Styling */
+        .btn-custom {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        }
+
+        .btn-action {
+            padding: 0.4rem 0.75rem;
+            border-radius: 4px;
+            margin: 0 2px;
+            font-size: 0.875rem;
+        }
+
+        /* Status Badges */
+        .badge-custom {
+            padding: 0.5rem 0.75rem;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+
+        /* DataTables Customization */
+        .dataTables_wrapper .dataTables_length select {
+            padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+            border-radius: 6px;
+            border: 1px solid #dee2e6;
+            background-color: #fff;
+        }
+
+        .dataTables_wrapper .dataTables_filter input {
+            padding: 0.375rem 0.75rem;
+            border-radius: 6px;
+            border: 1px solid #dee2e6;
+            background-color: #fff;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            margin: 0 2px;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+            background: #00c1d4 !important;
+            border-color: #00c1d4 !important;
+            color: white !important;
+        }
+
+        /* Utility Classes */
+        .text-end {
+            text-align: right !important;
+        }
+
+        .checkbox_list {
+            width: 18px;
+            height: 18px;
+            border-radius: 3px;
+        }
+
+        /* Button Colors */
+        .btn-info {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+            color: white;
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            border-color: #ffc107;
+            color: #000;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: white;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: white;
+        }
+
+        /* Main Table Styling */
         .table {
             border-collapse: separate;
             border-spacing: 0;
             width: 100%;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            margin-bottom: 1.5rem;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
         .table thead th {
-            background-color: #f8f9fa;
-            color: #344767;
-            font-weight: 600;
-            font-size: 0.875rem;
+            background: #343a40;
+            color: #fff;
+            font-weight: 500;
+            font-size: 14px;
+            padding: 12px 15px;
+            border-bottom: none;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            padding: 1rem 1.5rem;
-            border-bottom: 2px solid #edf2f7;
-            vertical-align: middle;
+            white-space: nowrap;
         }
 
         .table tbody td {
-            padding: 1rem 1.5rem;
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
             vertical-align: middle;
-            border-bottom: 1px solid #edf2f7;
-            color: #495057;
-            font-size: 0.875rem;
-        }
-
-        .table tbody tr:last-child td {
-            border-bottom: none;
+            font-size: 14px;
+            color: #333;
         }
 
         .table tbody tr:hover {
-            background-color: #f8fafc;
-            transition: all 0.2s ease;
-        }
-
-        /* Modern Button Styling */
-        .btn-action {
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            border: none;
-            margin: 0 0.25rem;
-            transition: all 0.2s ease;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .btn-info {
-            background-color: #3b82f6;
-            color: white;
-        }
-
-        .btn-info:hover {
-            background-color: #2563eb;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
-        }
-
-        .btn-warning {
-            background-color: #f59e0b;
-            color: white;
-        }
-
-        .btn-warning:hover {
-            background-color: #d97706;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.2);
-        }
-
-        .btn-success {
-            background-color: #10b981;
-            color: white;
-        }
-
-        .btn-success:hover {
-            background-color: #059669;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2);
-        }
-
-        .btn-danger {
-            background-color: #ef4444;
-            color: white;
-        }
-
-        .btn-danger:hover {
-            background-color: #dc2626;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.2);
+            background-color: #f8f9fa;
         }
 
         /* Card Styling */
         .card {
-            background: #ffffff;
+            background: #fff;
             border: none;
-            border-radius: 12px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
         }
 
         .card-header {
-            background-color: #ffffff;
-            border-bottom: 1px solid #edf2f7;
-            padding: 1.5rem;
+            background: #fff;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        /* Button Styling */
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .btn-action {
+            width: 32px;
+            height: 32px;
+            padding: 0;
+            line-height: 32px;
+            text-align: center;
+            margin: 0 3px;
+            border-radius: 4px;
+        }
+
+        .btn-info {
+            background: #00c1d4;
+            border-color: #00c1d4;
+            color: #fff;
+        }
+
+        .btn-warning {
+            background: #ffc107;
+            border-color: #ffc107;
+            color: #000;
+        }
+
+        .btn-success {
+            background: #28a745;
+            border-color: #28a745;
+            color: #fff;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            border-color: #dc3545;
+            color: #fff;
+        }
+
+        /* DataTable Styling */
+        .dataTables_wrapper .dataTables_length select,
+        .dataTables_wrapper .dataTables_filter input {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 6px 12px;
+            height: 34px;
+        }
+
+        .dataTables_wrapper .dataTables_length select {
+            width: 70px;
+        }
+
+        .dataTables_wrapper .dataTables_filter input {
+            width: 200px;
+            margin-left: 8px;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 6px 12px;
+            margin: 0 2px;
+            border-radius: 4px;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+            background: #00c1d4 !important;
+            border-color: #00c1d4 !important;
+            color: white !important;
+        }
+
+        /* Checkbox Styling */
+        .checkbox-custom {
+            width: 18px;
+            height: 18px;
+            margin: 0;
+        }
+
+        /* Status Badge */
+        .badge {
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 12px;
+        }
+
+        /* Essential Table Styling */
+        #example {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+        }
+
+        #example thead th {
+            background: #2c3e50;
+            color: white;
+            font-weight: 500;
+            padding: 12px;
+            font-size: 13px;
+            border-bottom: none;
+            white-space: nowrap;
+        }
+
+        #example tbody td {
+            padding: 12px;
+            vertical-align: middle;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 13px;
+        }
+
+        #example tbody tr:hover {
+            background-color: #f8fafc;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+        }
+
+        .action-btn {
+            width: 30px;
+            height: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            border: none;
+            color: white;
+            font-size: 14px;
+        }
+
+        .action-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .btn-edit { background: #3498db; }
+        .btn-payment { background: #f1c40f; }
+        .btn-view { background: #2ecc71; }
+        .btn-delete { background: #e74c3c; }
+
+        /* Search and Length Controls */
+        .dataTables_wrapper .dataTables_filter input {
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            padding: 6px 10px;
+            margin-left: 5px;
+        }
+
+        .dataTables_wrapper .dataTables_length select {
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            padding: 4px 8px;
+        }
+
+        /* Add New Button */
+        .add-new-btn {
+            background: #2ecc71;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .add-new-btn:hover {
+            background: #27ae60;
+            color: white;
+        }
+
+        /* Card */
+        .content-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .card-top {
+            padding: 16px;
+            border-bottom: 1px solid #e5e7eb;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .card-header h5 {
-            color: #344767;
-            font-weight: 600;
+        .card-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: #2c3e50;
             margin: 0;
         }
 
-        .card-body {
-            padding: 1.5rem;
-        }
-
-        /* DataTable Customization */
-        .dataTables_wrapper .dataTables_length select {
-            padding: 0.5rem 2rem 0.5rem 1rem;
-            border-radius: 6px;
-            border: 1px solid #e2e8f0;
-            background-color: #fff;
-            color: #4b5563;
-            font-size: 0.875rem;
-        }
-
-        .dataTables_wrapper .dataTables_filter input {
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            border: 1px solid #e2e8f0;
-            background-color: #fff;
-            color: #4b5563;
-            font-size: 0.875rem;
-            width: 250px;
-        }
-
-        .dataTables_wrapper .dataTables_paginate .paginate_button {
-            padding: 0.5rem 1rem;
-            margin: 0 2px;
-            border-radius: 6px;
-            border: none;
-        }
-
-        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-            background: #3b82f6 !important;
-            border: none !important;
-            color: white !important;
-        }
-
-        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-            background: #60a5fa !important;
-            border: none !important;
-            color: white !important;
-        }
-
-        /* Status Badge Styling */
-        .badge {
-            padding: 0.5em 0.75em;
-            font-size: 0.75rem;
-            font-weight: 500;
-            border-radius: 6px;
-        }
-
-        .badge-success {
-            background-color: #dcfce7;
-            color: #166534;
-        }
-
-        .badge-warning {
-            background-color: #fef3c7;
-            color: #92400e;
-        }
-
-        .badge-danger {
-            background-color: #fee2e2;
-            color: #991b1b;
-        }
-
-        /* Responsive Table */
-        .table-responsive {
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        /* Search Input Focus */
-        .dataTables_wrapper .dataTables_filter input:focus {
-            outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        /* Table Header Sort Icons */
-        table.dataTable thead .sorting:after,
-        table.dataTable thead .sorting_asc:after,
-        table.dataTable thead .sorting_desc:after {
-            opacity: 0.5;
-        }
-
-        /* Checkbox Styling */
-        .checkbox_list {
-            width: 18px;
-            height: 18px;
+        /* Payment Status */
+        .payment-status {
+            padding: 4px 8px;
             border-radius: 4px;
-            border: 2px solid #e2e8f0;
-            appearance: none;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            cursor: pointer;
-            position: relative;
-            transition: all 0.2s ease;
-        }
-
-        .checkbox_list:checked {
-            background-color: #3b82f6;
-            border-color: #3b82f6;
-        }
-
-        .checkbox_list:checked::after {
-            content: '✓';
-            position: absolute;
-            color: white;
             font-size: 12px;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
+            font-weight: 500;
+        }
+
+        .status-paid {
+            background: #2ecc71;
+            color: white;
+        }
+
+        .status-pending {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .status-partial {
+            background: #f1c40f;
+            color: white;
         }
     </style>
 </head>
@@ -318,27 +514,27 @@ if (strlen($_SESSION['alogin']) == "") {
                     <?php } ?>
 
                     <!-- Candidates Table -->
-                    <div class="card">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0">Manage Candidates</h5>
+                    <div class="content-card">
+                        <div class="card-top">
+                            <h5 class="card-title">Manage Candidates</h5>
                             <?php if(isset($_GET['batch'])){ ?>
-                                <a href="add-candidate-to-particular-batch.php?batchid=<?php echo $_GET['batch']; ?>" 
-                                   class="btn btn-success btn-action">
-                                    <i class="fas fa-plus me-1"></i> Add Candidate
+                                <a href="add-candidate-to-particular-batch.php?batchid=<?php echo $_GET['batch']; ?>" class="add-new-btn">
+                                    <i class="fas fa-plus"></i>
+                                    <span>Add Candidate</span>
                                 </a>
                             <?php } else { ?>
-                                <a href="add-candidate.php" class="btn btn-success btn-action">
-                                    <i class="fas fa-plus me-1"></i> Add Candidate
+                                <a href="add-candidate.php" class="add-new-btn">
+                                    <i class="fas fa-plus"></i>
+                                    <span>Add Candidate</span>
                                 </a>
                             <?php } ?>
                         </div>
 
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table id="example" class="table table-striped table-hover" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
+                        <div class="p-3">
+                            <table id="example" class="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
                                             <th>Enrollment ID</th>
                                             <th>Name</th>
                                             <th>Phone</th>
@@ -356,7 +552,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                             LEFT JOIN tblbatch b ON c.batch = b.id 
                                             LEFT JOIN payment p ON c.CandidateId = p.candidate_id 
                                             LEFT JOIN tbljobroll j ON c.job_roll = j.JobrollId 
-                                            ORDER BY c.enrollmentid DESC";
+                                            ORDER BY c.CandidateId DESC";
                                         $query = $dbh->prepare($sql);
                                         $query->execute();
                                         $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -424,7 +620,6 @@ if (strlen($_SESSION['alogin']) == "") {
                                     ?>
                                     </tbody>
                                 </table>
-                            </div>
                         </div>
                     </div>
                 </main>
@@ -489,20 +684,20 @@ if (strlen($_SESSION['alogin']) == "") {
     <script>
     $(document).ready(function() {
         $('#example').DataTable({
-            "order": [[0, "asc"]],
             "pageLength": 10,
+            "ordering": true,
             "responsive": true,
+            "info": true,
             "language": {
-                "search": "Search:",
-                "lengthMenu": "Show _MENU_ entries",
-                "info": "Showing _START_ to _END_ of _TOTAL_ entries",
-                "paginate": {
-                    "first": "First",
-                    "last": "Last",
-                    "next": "Next",
-                    "previous": "Previous"
-                }
-            }
+                "search": "",
+                "searchPlaceholder": "Search..."
+            },
+            // Ensure serial number column isn't sortable
+            "columnDefs": [
+                { "orderable": false, "targets": 0 }
+            ],
+            // Start ordering by second column (Enrollment ID)
+            "order": [[ 1, "asc" ]]
         });
 
         $('#selectAll').click(function() {
