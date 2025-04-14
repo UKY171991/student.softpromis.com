@@ -115,7 +115,6 @@ if (strlen($_SESSION['alogin']) == "") {
     <div class="row">
       <!-- Sidebar -->
       <?php include('includes/left-sidebar-new.php'); ?>
-      <?php  include('includes/leftbar.php'); ?>
 
       <!-- Main Content -->
       <main class="col-lg-10 col-md-9 p-4">
