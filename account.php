@@ -121,7 +121,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
       <!-- Main Content -->
       <main class="col-lg-10 col-md-9 p-4">
-        <h2 class="mb-4">Account Dashboard 1</h2>
+        <h2 class="mb-4">Account Dashboard</h2>
         <div class="row g-3">
 
           <!-- Card 1: Regd Candidates Current Month -->
