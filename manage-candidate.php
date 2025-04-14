@@ -57,7 +57,7 @@ if (strlen($_SESSION['alogin']) == "") {
         }
 
         /* Table Styling */
-        .custom-table {
+        .table {
             border-collapse: separate;
             border-spacing: 0;
             width: 100%;
@@ -68,25 +68,26 @@ if (strlen($_SESSION['alogin']) == "") {
             overflow: hidden;
         }
 
-        .custom-table thead th {
-            background-color: #343a40 !important;
+        .table thead th {
+            background-color: #f8f9fa;
             border-bottom: 2px solid #dee2e6;
-            color: white !important;
+            color: #495057;
             font-weight: 600;
+            text-transform: uppercase;
             font-size: 0.85rem;
             padding: 1rem;
             vertical-align: middle;
         }
 
-        .custom-table tbody td {
-            padding: 0.75rem 1rem;
+        .table tbody td {
+            padding: 1rem;
             vertical-align: middle;
             border-bottom: 1px solid #dee2e6;
             color: #495057;
             font-size: 0.9rem;
         }
 
-        .custom-table tbody tr:hover {
+        .table tbody tr:hover {
             background-color: #f8f9fa;
         }
 
@@ -117,10 +118,37 @@ if (strlen($_SESSION['alogin']) == "") {
         }
 
         .btn-action {
-            padding: 0.4rem 0.75rem;
+            padding: 0.4rem 0.8rem;
             border-radius: 4px;
-            margin: 0 2px;
             font-size: 0.875rem;
+            margin: 0 2px;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-info {
+            background-color: #17a2b8;
+            color: white;
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            color: #000;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-action:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
         }
 
         /* Status Badges */
@@ -153,8 +181,8 @@ if (strlen($_SESSION['alogin']) == "") {
         }
 
         .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-            background: #00c1d4 !important;
-            border-color: #00c1d4 !important;
+            background: #17a2b8 !important;
+            border-color: #17a2b8 !important;
             color: white !important;
         }
 
@@ -169,28 +197,25 @@ if (strlen($_SESSION['alogin']) == "") {
             border-radius: 3px;
         }
 
-        /* Button Colors */
-        .btn-info {
-            background-color: #17a2b8;
-            border-color: #17a2b8;
+        /* Payment Status Badge */
+        .badge {
+            padding: 0.5em 0.75em;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        .badge-pending {
+            background-color: #dc3545;
             color: white;
         }
 
-        .btn-warning {
+        .badge-partial {
             background-color: #ffc107;
-            border-color: #ffc107;
             color: #000;
         }
 
-        .btn-success {
+        .badge-success {
             background-color: #28a745;
-            border-color: #28a745;
-            color: white;
-        }
-
-        .btn-danger {
-            background-color: #dc3545;
-            border-color: #dc3545;
             color: white;
         }
 
@@ -514,18 +539,17 @@ if (strlen($_SESSION['alogin']) == "") {
                     <?php } ?>
 
                     <!-- Candidates Table -->
-                    <div class="content-card">
-                        <div class="card-top">
-                            <h5 class="card-title">Manage Candidates</h5>
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Manage Candidates</h5>
                             <?php if(isset($_GET['batch'])){ ?>
-                                <a href="add-candidate-to-particular-batch.php?batchid=<?php echo $_GET['batch']; ?>" class="add-new-btn">
-                                    <i class="fas fa-plus"></i>
-                                    <span>Add Candidate</span>
+                                <a href="add-candidate-to-particular-batch.php?batchid=<?php echo $_GET['batch']; ?>" 
+                                   class="btn btn-success btn-action">
+                                    <i class="fas fa-plus me-1"></i> Add Candidate
                                 </a>
                             <?php } else { ?>
-                                <a href="add-candidate.php" class="add-new-btn">
-                                    <i class="fas fa-plus"></i>
-                                    <span>Add Candidate</span>
+                                <a href="add-candidate.php" class="btn btn-success btn-action">
+                                    <i class="fas fa-plus me-1"></i> Add Candidate
                                 </a>
                             <?php } ?>
                         </div>
