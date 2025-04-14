@@ -552,7 +552,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                             LEFT JOIN tblbatch b ON c.batch = b.id 
                                             LEFT JOIN payment p ON c.CandidateId = p.candidate_id 
                                             LEFT JOIN tbljobroll j ON c.job_roll = j.JobrollId 
-                                            ORDER BY c.DateCreated DESC, c.CandidateId DESC";
+                                            ORDER BY c.enrollmentid DESC";
                                         $query = $dbh->prepare($sql);
                                         $query->execute();
                                         $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -688,7 +688,7 @@ if (strlen($_SESSION['alogin']) == "") {
             "ordering": true,
             "responsive": true,
             "info": true,
-            "order": [[ 0, "desc" ]],
+            "order": [[ 1, "desc" ]],
             "language": {
                 "search": "",
                 "searchPlaceholder": "Search..."
