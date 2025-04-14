@@ -534,6 +534,7 @@ if (strlen($_SESSION['alogin']) == "") {
                             <table id="example" class="table">
                                 <thead>
                                     <tr>
+                                        <th>#</th>
                                             <th>Enrollment ID</th>
                                             <th>Name</th>
                                             <th>Phone</th>
@@ -557,6 +558,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                         $results = $query->fetchAll(PDO::FETCH_OBJ);
                                     
                                         if ($query->rowCount() > 0) {
+                                        $cnt = 1; // Initialize counter
                                             foreach ($results as $result) {
                                             // Calculate payment status
                                             $paymentStatus = 'Pending';
@@ -573,6 +575,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                             }
                                         ?>
                                             <tr>
+                                        <td><?php echo $cnt; ?></td>
                                         <td><?php echo htmlentities($result->enrollmentid); ?></td>
                                                 <td><?php echo htmlentities($result->candidatename); ?></td>
                                                 <td><?php echo htmlentities($result->phonenumber); ?></td>
@@ -610,7 +613,11 @@ if (strlen($_SESSION['alogin']) == "") {
                                             </div>
                                                 </td>
                                             </tr>
-                                    <?php }} ?>
+                                    <?php 
+                                        $cnt++; // Increment counter
+                                        }
+                                    } 
+                                    ?>
                                     </tbody>
                                 </table>
                         </div>
@@ -684,7 +691,13 @@ if (strlen($_SESSION['alogin']) == "") {
             "language": {
                 "search": "",
                 "searchPlaceholder": "Search..."
-            }
+            },
+            // Ensure serial number column isn't sortable
+            "columnDefs": [
+                { "orderable": false, "targets": 0 }
+            ],
+            // Start ordering by second column (Enrollment ID)
+            "order": [[ 1, "asc" ]]
         });
 
         $('#selectAll').click(function() {
