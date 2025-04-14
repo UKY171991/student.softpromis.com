@@ -552,7 +552,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                             LEFT JOIN tblbatch b ON c.batch = b.id 
                                             LEFT JOIN payment p ON c.CandidateId = p.candidate_id 
                                             LEFT JOIN tbljobroll j ON c.job_roll = j.JobrollId 
-                                            ORDER BY c.CandidateId DESC";
+                                            ORDER BY c.enrollmentid DESC";
                                         $query = $dbh->prepare($sql);
                                         $query->execute();
                                         $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -685,19 +685,21 @@ if (strlen($_SESSION['alogin']) == "") {
     $(document).ready(function() {
         $('#example').DataTable({
             "pageLength": 10,
-            "ordering": true,
             "responsive": true,
             "info": true,
             "language": {
                 "search": "",
                 "searchPlaceholder": "Search..."
             },
-            // Ensure serial number column isn't sortable
             "columnDefs": [
                 { "orderable": false, "targets": 0 }
             ],
-            // Start ordering by second column (Enrollment ID)
-            "order": [[ 1, "asc" ]]
+            "order": [[ 1, "desc" ]],
+            "drawCallback": function(settings) {
+                this.api().column(0).nodes().each(function(cell, i) {
+                    cell.innerHTML = i + 1 + settings._iDisplayStart;
+                });
+            }
         });
 
         $('#selectAll').click(function() {
