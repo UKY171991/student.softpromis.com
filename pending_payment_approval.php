@@ -84,185 +84,140 @@ if (strlen($_SESSION['alogin']) == "") {
       
 
       <div class="card">
-            
-            
-            <div class="card-body">
-                <div class="panel-heading">
-                    <div class="panel-title" style="display: flex;">
-                        <?php
-                        $sqls = "SELECT SUM(paid) as total_paid FROM emi_list WHERE added_type = 2";
-                        $querys = $dbh->prepare($sqls);
-                        $querys->execute();
-                        $res = $querys->fetch(PDO::FETCH_OBJ); 
-
-                        //print_r($res->total_paid);
-                        ?>
-
-                        <!-- <h5>Pending Payment Approval : <?=$res->total_paid?></h5> -->
-                        <h5>Total Pending Amount : <?=$res->total_paid?></h5>
-                    </div>
-                </div>
-                <?php if ($msg) { ?>
-                <div class="alert alert-success left-icon-alert" role="alert">
-                    <strong>Well done!</strong>
-                    <?php echo htmlentities($msg); ?>
-                </div>
-                <?php } else if ($error) { ?>
-                <div class="alert alert-danger left-icon-alert" role="alert">
-                    <strong>Oh snap!</strong>
-                    <?php echo htmlentities($error); ?>
-                </div>
-                <?php } ?>
-                <div class="panel-body p-20" style="overflow: scroll;">
-                    <table id="example"
-                        class="table table-stripped table-bordered table-hover table-full-width table-grey table-responsive-lg"
-                        cellspacing="0" width="100%">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Enrollment id</th>
-                                <th>Name</th>
-                                <th>Total fee</th>
-                                <th>Paid</th>
-                                <th>Balance</th>
-                                <th>Last Paid</th>
-                                <th>Updated On</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>#</th>
-                                <th>Enrollment id</th>
-                                <th>Name</th>
-                                <th>Total fee</th>
-                                <th>Paid</th>
-                                <th>Balance</th>
-                                <th>Last Paid</th>
-                                <th>Updated On</th>
-                                <th>Action</th>
-                            </tr>
-                        </tfoot>
-                        <tbody>
-                            <?php
-                             $sql = "SELECT * from emi_list where added_type= 2";
-                                $query = $dbh->prepare($sql);
-                                $query->execute();
-                                $results = $query->fetchAll(PDO::FETCH_OBJ);
-                                $cnt = 1;
-
-
-
-                                if ($query->rowCount() > 0) {
-                                    foreach ($results as $result) { 
-                                        $candidate_id = $result->candidate_id;
-
-
-                                         $sql_p = "SELECT * from payment where added_type= 2";
-                                         $query_p = $dbh->prepare($sql_p);
-                                         $query_p->execute();
-                                         $results_p = $query_p->fetchAll(PDO::FETCH_OBJ);
-
-                                    
-
-                                        $sql_c = "SELECT * from tblcandidate where CandidateId= '$candidate_id'";
-                                        $query_c = $dbh->prepare($sql_c);
-                                        $query_c->execute();
-                                        $results_c = $query_c->fetchAll(PDO::FETCH_OBJ);
-
-                                ?>
-                            <tr>
-                                <td>
-                                    <?php echo htmlentities($cnt); ?>
-                                </td>
-                                <td>
-                                    <?php echo htmlentities($results_c[0]->enrollmentid); ?>
-                                </td>
-                                <td>
-                                    <?php echo htmlentities($results_c[0]->candidatename); ?>
-                                </td>
-                                <td>
-                                    <?php echo htmlentities($results_p[0]->total_fee); ?>
-                                </td>
-
-                                <td>
-                                    <?php echo number_format((float)$results_p[0]->paid, 2, '.', ''); ?>
-                                </td>
-                                <td>
-                                    <?php echo htmlentities($results_p[0]->balance); ?>
-                                </td>
-
-                                <td>
-                                    <?php echo number_format((float)$result->paid, 2, '.', ''); ?>
-                                </td>
-                                
-                                <td>
-                                    <?php echo date("d-m-Y", strtotime($result->created)); ?>
-                                </td>
-                                <td>
-                                    <?php
-                                     if($_SESSION['user_type']!=1){
-                                        echo "Pending Approval";
-                                     }else{
-                                        echo '<a class="badge badge-info" href="#" onclick="updateStatus( '. htmlentities($result->candidate_id) .', '. htmlentities($result->id) .')">Approve</a>';
-                                     } 
-                                     ?>
-                                    
-                                </td>
-                            </tr>
-                            <?php $cnt = $cnt + 1;
-                                    }
-                                } ?>
-
-
-                        </tbody>
-                    </table>
-
-
-                    <!-- /.col-md-12 -->
+        <div class="card-body">
+            <div class="panel-heading mb-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Total Pending Amount: <span class="text-danger fw-bold"><?= number_format($res->total_paid, 2) ?></span></h5>
                 </div>
             </div>
+
+            <?php if ($msg) { ?>
+                <div class="alert alert-success left-icon-alert" role="alert">
+                    <strong>Well done!</strong> <?php echo htmlentities($msg); ?>
+                </div>
+            <?php } else if ($error) { ?>
+                <div class="alert alert-danger left-icon-alert" role="alert">
+                    <strong>Oh snap!</strong> <?php echo htmlentities($error); ?>
+                </div>
+            <?php } ?>
+
+            <div class="table-responsive">
+                <table id="example" class="table table-striped table-hover" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Enrollment ID</th>
+                            <th>Name</th>
+                            <th class="text-end">Total Fee</th>
+                            <th class="text-end">Paid</th>
+                            <th class="text-end">Balance</th>
+                            <th class="text-end">Last Paid</th>
+                            <th>Updated On</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                         $sql = "SELECT * from emi_list where added_type= 2";
+                            $query = $dbh->prepare($sql);
+                            $query->execute();
+                            $results = $query->fetchAll(PDO::FETCH_OBJ);
+                            $cnt = 1;
+
+
+
+                            if ($query->rowCount() > 0) {
+                                foreach ($results as $result) { 
+                                    $candidate_id = $result->candidate_id;
+
+
+                                     $sql_p = "SELECT * from payment where added_type= 2";
+                                     $query_p = $dbh->prepare($sql_p);
+                                     $query_p->execute();
+                                     $results_p = $query_p->fetchAll(PDO::FETCH_OBJ);
+
+                                
+
+                                    $sql_c = "SELECT * from tblcandidate where CandidateId= '$candidate_id'";
+                                    $query_c = $dbh->prepare($sql_c);
+                                    $query_c->execute();
+                                    $results_c = $query_c->fetchAll(PDO::FETCH_OBJ);
+
+                        ?>
+                    <tr>
+                        <td><?php echo htmlentities($cnt); ?></td>
+                        <td><?php echo htmlentities($results_c[0]->enrollmentid); ?></td>
+                        <td><?php echo htmlentities($results_c[0]->candidatename); ?></td>
+                        <td class="text-end"><?php echo number_format($results_p[0]->total_fee, 2); ?></td>
+                        <td class="text-end"><?php echo number_format($results_p[0]->paid, 2); ?></td>
+                        <td class="text-end"><?php echo number_format($results_p[0]->balance, 2); ?></td>
+                        <td class="text-end"><?php echo number_format($result->paid, 2); ?></td>
+                        <td><?php echo date("d-m-Y", strtotime($result->created)); ?></td>
+                        <td class="text-center">
+                            <?php if($_SESSION['user_type']!=1) { ?>
+                                <span class="badge bg-warning">Pending Approval</span>
+                            <?php } else { ?>
+                                <button class="btn btn-info btn-sm" onclick="updateStatus(<?php echo htmlentities($result->candidate_id); ?>, <?php echo htmlentities($result->id); ?>)">
+                                    Approve
+                                </button>
+                            <?php } ?>
+                        </td>
+                    </tr>
+                    <?php $cnt = $cnt + 1;
+                            }
+                        } ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
+    </div>
 
-    </main>
-    </div><!-- /.row -->
-  </div><!-- /.container-fluid -->
+</main>
+</div><!-- /.row -->
+</div><!-- /.container-fluid -->
 
-  <!-- Bootstrap Bundle with Popper -->
+<!-- Bootstrap Bundle with Popper -->
   
 
-  <script src="js/jquery/jquery-2.2.4.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/bootstrap/bootstrap.min.js"></script>
-  <script src="js/pace/pace.min.js"></script>
-  <script src="js/lobipanel/lobipanel.min.js"></script>
-  <script src="js/iscroll/iscroll.js"></script>
-  <script src="js/prism/prism.js"></script>
-  <script src="js/select2/select2.min.js"></script>
-  <script src="js/DataTables/datatables.min.js"></script>
-  <script src="js/main.js"></script>
+<script src="js/jquery/jquery-2.2.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/bootstrap/bootstrap.min.js"></script>
+<script src="js/pace/pace.min.js"></script>
+<script src="js/lobipanel/lobipanel.min.js"></script>
+<script src="js/iscroll/iscroll.js"></script>
+<script src="js/prism/prism.js"></script>
+<script src="js/select2/select2.min.js"></script>
+<script src="js/DataTables/datatables.min.js"></script>
+<script src="js/main.js"></script>
 
     
 
 
-  <script>
-    $(function($) {
-        $('#example').DataTable({
-            columnDefs: [
-                { className: "text-end", targets: [3,4,5,6] }  // Targets Total fee, Paid, Balance, and Last Paid columns
-            ]
-        });
-
-        $('#example2').DataTable({
-            "scrollY": "300px",
-            "scrollCollapse": true,
-            "paging": false
-        });
-
-        $('#example3').DataTable();
+<script>
+$(document).ready(function() {
+    $('#example').DataTable({
+        "order": [[0, "asc"]],
+        "pageLength": 10,
+        "responsive": true,
+        "columnDefs": [
+            { className: "text-end", targets: [3,4,5,6] },
+            { className: "text-center", targets: [8] }
+        ],
+        "language": {
+            "search": "Search:",
+            "lengthMenu": "Show _MENU_ entries",
+            "info": "Showing _START_ to _END_ of _TOTAL_ entries",
+            "paginate": {
+                "first": "First",
+                "last": "Last",
+                "next": "Next",
+                "previous": "Previous"
+            }
+        }
     });
-    </script>
+});
+</script>
 </body>
 </html>
 <?php } ?>
@@ -310,3 +265,63 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+<style>
+.table {
+    font-size: 0.9rem;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    color: white;
+}
+
+.btn-info:hover {
+    background-color: #138496;
+    border-color: #117a8b;
+    color: white;
+}
+
+.badge {
+    font-weight: 500;
+    padding: 0.5em 0.75em;
+}
+
+.text-end {
+    text-align: right !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+/* DataTables customization */
+.dataTables_wrapper .dataTables_length select {
+    padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+    border-radius: 0.25rem;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.25rem;
+    border: 1px solid #ced4da;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.25rem;
+    margin: 0 0.125rem;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: #17a2b8;
+    border-color: #17a2b8;
+    color: white !important;
+}
+</style>
