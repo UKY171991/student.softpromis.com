@@ -107,6 +107,164 @@ if (strlen($_SESSION['alogin']) == "") {
         text-align: center;
     }
         
+/* Table Styling */
+.table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    max-width: 100%;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table thead th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    color: #495057;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+.table tbody td {
+    padding: 1rem;
+    vertical-align: middle;
+    border-bottom: 1px solid #dee2e6;
+    color: #495057;
+    font-size: 0.9rem;
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Enrollment ID styling */
+.enrollment-id {
+    background-color: #00c1d4;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.enrollment-id:hover {
+    background-color: #00a5b5;
+    color: white;
+}
+
+/* Status badges */
+.badge-pending {
+    background-color: #dc3545;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.badge-partial {
+    background-color: #ffc107;
+    color: #000;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.badge-paid {
+    background-color: #28a745;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+/* Action button */
+.btn-edit {
+    background-color: #00c1d4;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.btn-edit:hover {
+    background-color: #00a5b5;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* DataTables customization */
+.dataTables_wrapper .dataTables_length select {
+    padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid #dee2e6;
+    background-color: #fff;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    padding: 0.375rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid #dee2e6;
+    background-color: #fff;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    margin: 0 2px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: #00c1d4 !important;
+    border-color: #00c1d4 !important;
+    color: white !important;
+}
+
+/* Numeric columns alignment */
+.text-end {
+    text-align: right !important;
+}
+
+/* Card styling */
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card-header {
+    background-color: #fff;
+    border-bottom: 1px solid #dee2e6;
+    padding: 1.5rem;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Total amount display */
+.total-amount {
+    background-color: #f8f9fa;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.total-amount h5 {
+    margin: 0;
+    color: #495057;
+}
+
+.total-amount .amount {
+    color: #dc3545;
+    font-weight: 600;
+}
 </style>
 </head>
 <body>
@@ -307,7 +465,7 @@ if (strlen($_SESSION['alogin']) == "") {
                 <div class="card-body">
                   <h4 class="card-title mb-4">Pending Payment List</h4>
                   <div class="table-responsive">
-                    <table id="datatable" class="table table-bordered dt-responsive nowrap w-100">
+                    <table id="example" class="table">
                       <thead>
                         <tr>
                           <th>#</th>
@@ -315,7 +473,7 @@ if (strlen($_SESSION['alogin']) == "") {
                           <th>Candidate Name</th>
                           <th>Phone Number</th>
                           <th>Job Roll</th>
-                          <th>Pending Ammount</th>
+                          <th class="text-end">Pending Amount</th>
                           <th>Payment Status</th>
                           <th>Action</th>
                         </tr>
@@ -327,7 +485,7 @@ if (strlen($_SESSION['alogin']) == "") {
                           <th>Candidate Name</th>
                           <th>Phone Number</th>
                           <th>Job Roll</th>
-                          <th>Pending Ammount</th>
+                          <th class="text-end">Pending Amount</th>
                           <th>Payment Status</th>
                           <th>Action</th>
                         </tr>
@@ -386,28 +544,28 @@ if (strlen($_SESSION['alogin']) == "") {
                         <tr>
                           <td><?php echo $cnt++; ?></td>
                           <td>
-                            <button type="button" class="btn btn-info btn-xs" onClick='all_data(<?php echo htmlentities($result->CandidateId); ?>)' data-toggle="modal" data-target="#c_myModal"><?php echo htmlentities($result->enrollmentid); ?></button>
+                            <button type="button" class="enrollment-id" onClick='all_data(<?php echo htmlentities($result->CandidateId); ?>)' data-toggle="modal" data-target="#c_myModal">
+                                <?php echo htmlentities($result->enrollmentid); ?>
+                            </button>
                           </td>
                           <td><?php echo htmlentities($result->candidatename); ?></td>
                           <td><?php echo htmlentities($result->phonenumber); ?></td>
                           <td><?php echo $jobrollname; ?></td>
-                          <td style="text-align: end;"><?php echo number_format($totalPendingAmount, 2); ?></td>
+                          <td class="text-end"><?php echo number_format($totalPendingAmount, 2); ?></td>
                           <td>
                             <?php
-                              $status = '';
                               if (count($p_result) == 0) {
-                                $status = '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank"><button class="btn btn-danger btn-xs">Pending</button></a>';
+                                echo '<span class="badge-pending">Pending</span>';
                               } elseif ($p_result[0]['paid'] != $p_result[0]['total_fee']) {
-                                $status = '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank"><button class="btn btn-warning btn-xs">Pending</button></a>';
+                                echo '<span class="badge-partial">Pending</span>';
                               } else {
-                                $status = '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank"><button class="btn btn-success btn-xs">Paid</button></a>';
+                                echo '<span class="badge-paid">Paid</span>';
                               }
-                              echo $status;
                             ?>
                           </td>
                           <td>
                             <a href="edit-candidate.php?candidateid=<?php echo htmlentities($result->CandidateId); ?>" 
-                               class="btn btn-info btn-sm btn-action" title="Edit">
+                               class="btn-edit" title="Edit Records">
                                 <i class="fas fa-edit"></i>
                             </a>
                           </td>
@@ -613,26 +771,17 @@ if (strlen($_SESSION['alogin']) == "") {
 <!-- Add this script to initialize the DataTables -->
 <script>
   $(document).ready(function() {
-    $('#datatable').DataTable({
-      responsive: true,
-      paging: true,
-      searching: true,
-      ordering: true,
-      info: true,
-      lengthChange: true,
-      pageLength: 10,
-      language: {
-        search: "Search:",
-        lengthMenu: "Show _MENU_ entries",
-        info: "Showing _START_ to _END_ of _TOTAL_ entries",
-        infoEmpty: "No entries available",
-        infoFiltered: "(filtered from _MAX_ total entries)",
-        paginate: {
-          first: "First",
-          last: "Last",
-          next: "Next",
-          previous: "Previous"
-        }
+    $('#example').DataTable({
+      "pageLength": 10,
+      "responsive": true,
+      "order": [[0, "asc"]],
+      "columnDefs": [
+          { className: "text-end", targets: [5] }
+      ],
+      "language": {
+          "search": "Search:",
+          "lengthMenu": "Show _MENU_ entries",
+          "info": "Showing _START_ to _END_ of _TOTAL_ entries"
       }
     });
   });
