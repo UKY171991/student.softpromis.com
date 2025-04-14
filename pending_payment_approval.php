@@ -87,7 +87,21 @@ if (strlen($_SESSION['alogin']) == "") {
         <div class="card-body">
             <div class="panel-heading mb-4">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">Total Pending Amount: <span class="text-danger fw-bold"><?= number_format($res->total_paid, 2) ?></span></h5>
+                    <?php
+                    // Calculate total pending amount from all pending payments
+                    $sql_total = "SELECT 
+                        SUM(e.paid) as total_pending 
+                        FROM emi_list e 
+                        INNER JOIN payment p ON e.candidate_id = p.candidate_id 
+                        WHERE e.added_type = 2";
+                    $query_total = $dbh->prepare($sql_total);
+                    $query_total->execute();
+                    $total_result = $query_total->fetch(PDO::FETCH_OBJ);
+                    $total_pending = $total_result->total_pending ?? 0;
+                    ?>
+                    <h5 class="mb-0">
+                        Total Pending Amount: <span class="text-danger fw-bold">₹<?= number_format($total_pending, 2) ?></span>
+                    </h5>
                 </div>
             </div>
 
