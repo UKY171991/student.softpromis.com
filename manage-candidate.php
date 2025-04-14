@@ -193,6 +193,260 @@ if (strlen($_SESSION['alogin']) == "") {
             border-color: #dc3545;
             color: white;
         }
+
+        /* Main Table Styling */
+        .table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .table thead th {
+            background: #343a40;
+            color: #fff;
+            font-weight: 500;
+            font-size: 14px;
+            padding: 12px 15px;
+            border-bottom: none;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .table tbody td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            vertical-align: middle;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        /* Card Styling */
+        .card {
+            background: #fff;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+        }
+
+        .card-header {
+            background: #fff;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        /* Button Styling */
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .btn-action {
+            width: 32px;
+            height: 32px;
+            padding: 0;
+            line-height: 32px;
+            text-align: center;
+            margin: 0 3px;
+            border-radius: 4px;
+        }
+
+        .btn-info {
+            background: #00c1d4;
+            border-color: #00c1d4;
+            color: #fff;
+        }
+
+        .btn-warning {
+            background: #ffc107;
+            border-color: #ffc107;
+            color: #000;
+        }
+
+        .btn-success {
+            background: #28a745;
+            border-color: #28a745;
+            color: #fff;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            border-color: #dc3545;
+            color: #fff;
+        }
+
+        /* DataTable Styling */
+        .dataTables_wrapper .dataTables_length select,
+        .dataTables_wrapper .dataTables_filter input {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 6px 12px;
+            height: 34px;
+        }
+
+        .dataTables_wrapper .dataTables_length select {
+            width: 70px;
+        }
+
+        .dataTables_wrapper .dataTables_filter input {
+            width: 200px;
+            margin-left: 8px;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 6px 12px;
+            margin: 0 2px;
+            border-radius: 4px;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+            background: #00c1d4 !important;
+            border-color: #00c1d4 !important;
+            color: white !important;
+        }
+
+        /* Checkbox Styling */
+        .checkbox-custom {
+            width: 18px;
+            height: 18px;
+            margin: 0;
+        }
+
+        /* Status Badge */
+        .badge {
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 12px;
+        }
+
+        /* Essential Table Styling */
+        #example {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+        }
+
+        #example thead th {
+            background: #2c3e50;
+            color: white;
+            font-weight: 500;
+            padding: 12px;
+            font-size: 13px;
+            border-bottom: none;
+            white-space: nowrap;
+        }
+
+        #example tbody td {
+            padding: 12px;
+            vertical-align: middle;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 13px;
+        }
+
+        #example tbody tr:hover {
+            background-color: #f8fafc;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+        }
+
+        .action-btn {
+            width: 30px;
+            height: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            border: none;
+            color: white;
+            font-size: 14px;
+        }
+
+        .action-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .btn-edit { background: #3498db; }
+        .btn-payment { background: #f1c40f; }
+        .btn-view { background: #2ecc71; }
+        .btn-delete { background: #e74c3c; }
+
+        /* Search and Length Controls */
+        .dataTables_wrapper .dataTables_filter input {
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            padding: 6px 10px;
+            margin-left: 5px;
+        }
+
+        .dataTables_wrapper .dataTables_length select {
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            padding: 4px 8px;
+        }
+
+        /* Add New Button */
+        .add-new-btn {
+            background: #2ecc71;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .add-new-btn:hover {
+            background: #27ae60;
+            color: white;
+        }
+
+        /* Card */
+        .content-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .card-top {
+            padding: 16px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: #2c3e50;
+            margin: 0;
+        }
     </style>
 </head>
 
@@ -237,196 +491,199 @@ if (strlen($_SESSION['alogin']) == "") {
                     <?php } ?>
 
                     <!-- Candidates Table -->
-                    <div class="custom-card">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0">Candidate Information</h5>
+                    <div class="content-card">
+                        <div class="card-top">
+                            <h5 class="card-title">Manage Candidates</h5>
                             <?php if(isset($_GET['batch'])){ ?>
-                                <a href="add-candidate-to-particular-batch.php?batchid=<?php echo $_GET['batch']; ?>" 
-                                   class="btn btn-success btn-custom">
-                                    <i class="fas fa-plus"></i> Add Candidate
+                                <a href="add-candidate-to-particular-batch.php?batchid=<?php echo $_GET['batch']; ?>" class="add-new-btn">
+                                    <i class="fas fa-plus"></i>
+                                    <span>Add Candidate</span>
                                 </a>
                             <?php } else { ?>
-                                <a href="add-candidate.php" class="btn btn-success btn-custom">
-                                    <i class="fas fa-plus"></i> Add Candidate
+                                <a href="add-candidate.php" class="add-new-btn">
+                                    <i class="fas fa-plus"></i>
+                                    <span>Add Candidate</span>
                                 </a>
                             <?php } ?>
                         </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table id="example" class="custom-table table-hover" style="width:100%">
-                                    <thead>
+
+                        <div class="p-3">
+                            <table id="example" class="table table-borderless w-100">
+                                <thead>
+                                    <tr>
+                                        <th><input type="checkbox" class="form-check-input" id="selectAll"></th>
+                                        <th>Enrollment ID</th>
+                                        <th>Name</th>
+                                        <th>Phone</th>
+                                        <th>Job Role</th>
+                                        <th>ID</th>
+                                        <th>Father</th>
+                                        <th>Aadhar</th>
+                                        <th>Qualification</th>
+                                        <th>DOB</th>
+                                        <th>Gender</th>
+                                        <th>Marital</th>
+                                        <th>Religion</th>
+                                        <th>Category</th>
+                                        <th>Village</th>
+                                        <th>Mandal</th>
+                                        <th>District</th>
+                                        <th>State</th>
+                                        <th>Pincode</th>
+                                        <th>Created</th>
+                                        <th>Modified</th>
+                                        <th>Batch ID</th>
+                                        <th>Training Center</th>
+                                        <th>Scheme</th>
+                                        <th>Sector</th>
+                                        <th>Batch</th>
+                                        <th>Payment</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $sql = isset($_GET['batch']) ? 
+                                        "SELECT * FROM tblcandidate WHERE batch=:batch ORDER BY CandidateId DESC" : 
+                                        "SELECT * FROM tblcandidate ORDER BY CandidateId DESC";
+                                    $query = $dbh->prepare($sql);
+                                    if(isset($_GET['batch'])) {
+                                        $query->bindParam(':batch', $_GET['batch'], PDO::PARAM_STR);
+                                    }
+                                    $query->execute();
+                                    $results = $query->fetchAll(PDO::FETCH_OBJ);
+                                    $cnt = 1;
+                                    if ($query->rowCount() > 0) {
+                                        foreach ($results as $result) {
+                                            $jobrollname = '';
+                                            $sql4 = "SELECT jobrollname FROM tbljobroll WHERE JobrollId = :jobroll";
+                                            $query4 = $dbh->prepare($sql4);
+                                            $query4->bindParam(':jobroll', $result->job_roll, PDO::PARAM_INT);
+                                            $query4->execute();
+                                            $jobrollname = $query4->fetchColumn();
+
+                                            $tc_sql = "SELECT trainingcentername FROM tbltrainingcenter WHERE TrainingcenterId = :tc";
+                                            $tc_query = $dbh->prepare($tc_sql);
+                                            $tc_query->bindParam(':tc', $result->training_center, PDO::PARAM_INT);
+                                            $tc_query->execute();
+                                            $tc_name = $tc_query->fetchColumn();
+
+                                            $scheme_sql = "SELECT SchemeName FROM tblscheme WHERE SchemeId = :scheme";
+                                            $scheme_query = $dbh->prepare($scheme_sql);
+                                            $scheme_query->bindParam(':scheme', $result->scheme, PDO::PARAM_INT);
+                                            $scheme_query->execute();
+                                            $scheme_name = $scheme_query->fetchColumn();
+
+                                            $sector_sql = "SELECT SectorName FROM tblsector WHERE SectorId = :sector";
+                                            $sector_query = $dbh->prepare($sector_sql);
+                                            $sector_query->bindParam(':sector', $result->sector, PDO::PARAM_INT);
+                                            $sector_query->execute();
+                                            $sector_name = $sector_query->fetchColumn();
+
+                                            $batch_sql = "SELECT batch_name FROM tblbatch WHERE id = :batch";
+                                            $batch_query = $dbh->prepare($batch_sql);
+                                            $batch_query->bindParam(':batch', $result->batch, PDO::PARAM_INT);
+                                            $batch_query->execute();
+                                            $batch_name = $batch_query->fetchColumn();
+
+                                            $payment_sql = "SELECT paid, total_fee FROM payment WHERE candidate_id = :cid";
+                                            $payment_query = $dbh->prepare($payment_sql);
+                                            $payment_query->bindParam(':cid', $result->CandidateId, PDO::PARAM_INT);
+                                            $payment_query->execute();
+                                            $payment = $payment_query->fetch(PDO::FETCH_ASSOC);
+                                            $status = $payment ? 
+                                                ($payment['paid'] == $payment['total_fee'] ? 
+                                                    '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank" class="btn btn-success btn-xs">Paid</a>' : 
+                                                    '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank" class="btn btn-warning btn-xs">Pending</a>') : 
+                                                '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank" class="btn btn-danger btn-xs">Unpaid</a>';
+                                    ?>
                                         <tr>
-                                            <th class="num_list"><input type="checkbox" class="checkbox_list" id="selectAll"></th>
-                                            <th>Enrollment ID</th>
-                                            <th>Name</th>
-                                            <th>Phone</th>
-                                            <th>Job Role</th>
-                                            <th>ID</th>
-                                            <th>Father</th>
-                                            <th>Aadhar</th>
-                                            <th>Qualification</th>
-                                            <th>DOB</th>
-                                            <th>Gender</th>
-                                            <th>Marital</th>
-                                            <th>Religion</th>
-                                            <th>Category</th>
-                                            <th>Village</th>
-                                            <th>Mandal</th>
-                                            <th>District</th>
-                                            <th>State</th>
-                                            <th>Pincode</th>
-                                            <th>Created</th>
-                                            <th>Modified</th>
-                                            <th>Batch ID</th>
-                                            <th>Training Center</th>
-                                            <th>Scheme</th>
-                                            <th>Sector</th>
-                                            <th>Batch</th>
-                                            <th>Payment</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $sql = isset($_GET['batch']) ? 
-                                            "SELECT * FROM tblcandidate WHERE batch=:batch ORDER BY CandidateId DESC" : 
-                                            "SELECT * FROM tblcandidate ORDER BY CandidateId DESC";
-                                        $query = $dbh->prepare($sql);
-                                        if(isset($_GET['batch'])) {
-                                            $query->bindParam(':batch', $_GET['batch'], PDO::PARAM_STR);
-                                        }
-                                        $query->execute();
-                                        $results = $query->fetchAll(PDO::FETCH_OBJ);
-                                        $cnt = 1;
-                                        if ($query->rowCount() > 0) {
-                                            foreach ($results as $result) {
-                                                $jobrollname = '';
-                                                $sql4 = "SELECT jobrollname FROM tbljobroll WHERE JobrollId = :jobroll";
-                                                $query4 = $dbh->prepare($sql4);
-                                                $query4->bindParam(':jobroll', $result->job_roll, PDO::PARAM_INT);
-                                                $query4->execute();
-                                                $jobrollname = $query4->fetchColumn();
-
-                                                $tc_sql = "SELECT trainingcentername FROM tbltrainingcenter WHERE TrainingcenterId = :tc";
-                                                $tc_query = $dbh->prepare($tc_sql);
-                                                $tc_query->bindParam(':tc', $result->training_center, PDO::PARAM_INT);
-                                                $tc_query->execute();
-                                                $tc_name = $tc_query->fetchColumn();
-
-                                                $scheme_sql = "SELECT SchemeName FROM tblscheme WHERE SchemeId = :scheme";
-                                                $scheme_query = $dbh->prepare($scheme_sql);
-                                                $scheme_query->bindParam(':scheme', $result->scheme, PDO::PARAM_INT);
-                                                $scheme_query->execute();
-                                                $scheme_name = $scheme_query->fetchColumn();
-
-                                                $sector_sql = "SELECT SectorName FROM tblsector WHERE SectorId = :sector";
-                                                $sector_query = $dbh->prepare($sector_sql);
-                                                $sector_query->bindParam(':sector', $result->sector, PDO::PARAM_INT);
-                                                $sector_query->execute();
-                                                $sector_name = $sector_query->fetchColumn();
-
-                                                $batch_sql = "SELECT batch_name FROM tblbatch WHERE id = :batch";
-                                                $batch_query = $dbh->prepare($batch_sql);
-                                                $batch_query->bindParam(':batch', $result->batch, PDO::PARAM_INT);
-                                                $batch_query->execute();
-                                                $batch_name = $batch_query->fetchColumn();
-
-                                                $payment_sql = "SELECT paid, total_fee FROM payment WHERE candidate_id = :cid";
-                                                $payment_query = $dbh->prepare($payment_sql);
-                                                $payment_query->bindParam(':cid', $result->CandidateId, PDO::PARAM_INT);
-                                                $payment_query->execute();
-                                                $payment = $payment_query->fetch(PDO::FETCH_ASSOC);
-                                                $status = $payment ? 
-                                                    ($payment['paid'] == $payment['total_fee'] ? 
-                                                        '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank" class="btn btn-success btn-xs">Paid</a>' : 
-                                                        '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank" class="btn btn-warning btn-xs">Pending</a>') : 
-                                                    '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank" class="btn btn-danger btn-xs">Unpaid</a>';
-                                        ?>
-                                            <tr>
-                                                <td class="num_list"><input type="checkbox" class="deleteCheckbox checkbox_list" value="<?php echo htmlentities($result->CandidateId); ?>"><?php echo htmlentities($cnt); ?></td>
-                                                <td><button class="btn btn-info btn-xs" onclick="all_data(<?php echo htmlentities($result->CandidateId); ?>)" data-bs-toggle="modal" data-bs-target="#c_myModal"><?php echo htmlentities($result->enrollmentid); ?></button></td>
-                                                <td><?php echo htmlentities($result->candidatename); ?></td>
-                                                <td><?php echo htmlentities($result->phonenumber); ?></td>
-                                                <td><?php echo htmlentities($jobrollname); ?></td>
-                                                <td><?php echo htmlentities($result->CandidateId); ?></td>
-                                                <td><?php echo htmlentities($result->fathername); ?></td>
-                                                <td><?php echo htmlentities($result->aadharnumber); ?></td>
-                                                <td><?php echo htmlentities($result->qualification); ?></td>
-                                                <td><?php echo htmlentities($result->dateofbirth); ?></td>
-                                                <td><?php echo htmlentities($result->gender); ?></td>
-                                                <td><?php echo htmlentities($result->maritalstatus); ?></td>
-                                                <td><?php echo htmlentities($result->religion); ?></td>
-                                                <td><?php echo htmlentities($result->category); ?></td>
-                                                <td><?php echo htmlentities($result->village); ?></td>
-                                                <td><?php echo htmlentities($result->mandal); ?></td>
-                                                <td><?php echo htmlentities($result->district); ?></td>
-                                                <td><?php echo htmlentities($result->state); ?></td>
-                                                <td><?php echo htmlentities($result->pincode); ?></td>
-                                                <td><?php echo htmlentities($result->DateCreated); ?></td>
-                                                <td><?php echo htmlentities($result->DateModified); ?></td>
-                                                <td><?php echo htmlentities($result->tblbatch_id); ?></td>
-                                                <td><?php echo htmlentities($tc_name); ?></td>
-                                                <td><?php echo htmlentities($scheme_name); ?></td>
-                                                <td><?php echo htmlentities($sector_name); ?></td>
-                                                <td><?php echo htmlentities($batch_name); ?></td>
-                                                <td><?php echo $status; ?></td>
-                                                <td>
-                                                    <a href="edit-candidate.php?candidateid=<?php echo htmlentities($result->CandidateId); ?>" 
-                                                       class="btn btn-info btn-action" title="Edit">
+                                            <td>
+                                                <input type="checkbox" class="form-check-input" name="id[]" value="<?php echo $result->CandidateId; ?>">
+                                            </td>
+                                            <td><?php echo htmlentities($result->enrollmentid); ?></td>
+                                            <td><?php echo htmlentities($result->candidatename); ?></td>
+                                            <td><?php echo htmlentities($result->phonenumber); ?></td>
+                                            <td><?php echo $jobrollname; ?></td>
+                                            <td><?php echo htmlentities($result->CandidateId); ?></td>
+                                            <td><?php echo htmlentities($result->fathername); ?></td>
+                                            <td><?php echo htmlentities($result->aadharnumber); ?></td>
+                                            <td><?php echo htmlentities($result->qualification); ?></td>
+                                            <td><?php echo htmlentities($result->dateofbirth); ?></td>
+                                            <td><?php echo htmlentities($result->gender); ?></td>
+                                            <td><?php echo htmlentities($result->maritalstatus); ?></td>
+                                            <td><?php echo htmlentities($result->religion); ?></td>
+                                            <td><?php echo htmlentities($result->category); ?></td>
+                                            <td><?php echo htmlentities($result->village); ?></td>
+                                            <td><?php echo htmlentities($result->mandal); ?></td>
+                                            <td><?php echo htmlentities($result->district); ?></td>
+                                            <td><?php echo htmlentities($result->state); ?></td>
+                                            <td><?php echo htmlentities($result->pincode); ?></td>
+                                            <td><?php echo htmlentities($result->DateCreated); ?></td>
+                                            <td><?php echo htmlentities($result->DateModified); ?></td>
+                                            <td><?php echo htmlentities($result->tblbatch_id); ?></td>
+                                            <td><?php echo htmlentities($tc_name); ?></td>
+                                            <td><?php echo htmlentities($scheme_name); ?></td>
+                                            <td><?php echo htmlentities($sector_name); ?></td>
+                                            <td><?php echo htmlentities($batch_name); ?></td>
+                                            <td><?php echo $status; ?></td>
+                                            <td>
+                                                <div class="action-buttons">
+                                                    <button type="button" class="action-btn btn-edit" 
+                                                            onclick="window.location='edit-candidate.php?candidateid=<?php echo htmlentities($result->CandidateId); ?>'"
+                                                            title="Edit">
                                                         <i class="fas fa-edit"></i>
-                                                    </a>
-                                                    <button class="btn btn-warning btn-action" 
-                                                            onClick='payment_status(<?php echo htmlentities($result->CandidateId); ?>)' 
-                                                            data-toggle="modal" data-target="#myModal" 
+                                                    </button>
+                                                    <button type="button" class="action-btn btn-payment" 
+                                                            onclick="payment_status(<?php echo htmlentities($result->CandidateId); ?>)"
                                                             title="Payment Status">
                                                         <i class="fas fa-check"></i>
                                                     </button>
-                                                    <button class="btn btn-success btn-action" 
-                                                            data-toggle="modal" 
-                                                            data-target="#myModal_<?php echo htmlentities($result->CandidateId); ?>" 
+                                                    <button type="button" class="action-btn btn-view" 
+                                                            data-bs-toggle="modal" 
+                                                            data-bs-target="#myModal_<?php echo htmlentities($result->CandidateId); ?>"
                                                             title="View Images">
                                                         <i class="fas fa-image"></i>
                                                     </button>
-                                                    <button class="btn btn-danger btn-action delete" 
-                                                            id="del_<?php echo htmlentities($result->CandidateId); ?>" 
+                                                    <button type="button" class="action-btn btn-delete delete" 
+                                                            id="del_<?php echo htmlentities($result->CandidateId); ?>"
                                                             title="Delete">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
-                                                </td>
-                                            </tr>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                            <!-- Image Modal -->
-                                            <div class="modal fade" id="myModal_<?php echo htmlentities($result->CandidateId); ?>" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title"><?php echo htmlentities($result->candidatename); ?></h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <p>Photo</p>
-                                                            <?php echo $result->candidatephoto ? '<a target="_blank" href="doc/'.$result->candidatephoto.'"><img style="width: 76px; height: 44px;" src="doc/'.$result->candidatephoto.'"></a>' : '<i class="fas fa-upload fa-2x"></i>'; ?>
-                                                            <hr>
-                                                            <p>Aadhaar</p>
-                                                            <?php echo $result->aadhaarphoto ? '<a target="_blank" href="doc/'.$result->aadhaarphoto.'"><img style="width: 76px; height: 44px;" src="doc/'.$result->aadhaarphoto.'"></a>' : '<i class="fas fa-upload fa-2x"></i>'; ?>
-                                                            <hr>
-                                                            <p>Qualification</p>
-                                                            <?php echo $result->qualificationphoto ? '<a target="_blank" href="doc/'.$result->qualificationphoto.'"><img style="width: 76px; height: 44px;" src="doc/'.$result->qualificationphoto.'"></a>' : '<i class="fas fa-upload fa-2x"></i>'; ?>
-                                                            <hr>
-                                                            <p>Application</p>
-                                                            <?php echo $result->applicationphoto ? '<a target="_blank" href="doc/'.$result->applicationphoto.'"><img style="width: 76px; height: 44px;" src="doc/'.$result->applicationphoto.'"></a>' : '<i class="fas fa-upload fa-2x"></i>'; ?>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <a href="upload-candidate-file.php?candidateid=<?php echo htmlentities($result->CandidateId); ?>" class="btn btn-success">Upload</a>
-                                                        </div>
+                                        <!-- Image Modal -->
+                                        <div class="modal fade" id="myModal_<?php echo htmlentities($result->CandidateId); ?>" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title"><?php echo htmlentities($result->candidatename); ?></h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Photo</p>
+                                                        <?php echo $result->candidatephoto ? '<a target="_blank" href="doc/'.$result->candidatephoto.'"><img style="width: 76px; height: 44px;" src="doc/'.$result->candidatephoto.'"></a>' : '<i class="fas fa-upload fa-2x"></i>'; ?>
+                                                        <hr>
+                                                        <p>Aadhaar</p>
+                                                        <?php echo $result->aadhaarphoto ? '<a target="_blank" href="doc/'.$result->aadhaarphoto.'"><img style="width: 76px; height: 44px;" src="doc/'.$result->aadhaarphoto.'"></a>' : '<i class="fas fa-upload fa-2x"></i>'; ?>
+                                                        <hr>
+                                                        <p>Qualification</p>
+                                                        <?php echo $result->qualificationphoto ? '<a target="_blank" href="doc/'.$result->qualificationphoto.'"><img style="width: 76px; height: 44px;" src="doc/'.$result->qualificationphoto.'"></a>' : '<i class="fas fa-upload fa-2x"></i>'; ?>
+                                                        <hr>
+                                                        <p>Application</p>
+                                                        <?php echo $result->applicationphoto ? '<a target="_blank" href="doc/'.$result->applicationphoto.'"><img style="width: 76px; height: 44px;" src="doc/'.$result->applicationphoto.'"></a>' : '<i class="fas fa-upload fa-2x"></i>'; ?>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="upload-candidate-file.php?candidateid=<?php echo htmlentities($result->CandidateId); ?>" class="btn btn-success">Upload</a>
                                                     </div>
                                                 </div>
                                             </div>
-                                        <?php $cnt++; } } ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <button type="button" id="deleteBtn" class="btn btn-danger mt-3">Delete Selected</button>
+                                        </div>
+                                    <?php $cnt++; } } ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </main>
@@ -465,10 +722,6 @@ if (strlen($_SESSION['alogin']) == "") {
         </div>
     </div>
 
-  
-
-  
-
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -496,26 +749,19 @@ if (strlen($_SESSION['alogin']) == "") {
     $(document).ready(function() {
         $('#example').DataTable({
             "pageLength": 10,
+            "ordering": true,
             "responsive": true,
-            "scrollX": true,
-            "order": [[0, "asc"]],
-            "columnDefs": [
-                { className: "text-end", targets: [5] }
-            ],
+            "info": true,
+            "dom": '<"top"fl>rt<"bottom"ip>',
             "language": {
-                "search": "Search:",
-                "lengthMenu": "Show _MENU_ entries",
-                "info": "Showing _START_ to _END_ of _TOTAL_ entries"
-            },
-            dom: 'Bfrtip',
-            buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
-            ]
+                "search": "",
+                "searchPlaceholder": "Search...",
+                "lengthMenu": "_MENU_ per page"
+            }
         });
 
-        // Select All
-        $('#selectAll').on('click', function() {
-            $('.deleteCheckbox').prop('checked', this.checked);
+        $('#selectAll').click(function() {
+            $('table tbody input[type="checkbox"]').prop('checked', this.checked);
         });
 
         // Individual Delete
