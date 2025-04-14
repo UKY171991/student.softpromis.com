@@ -84,7 +84,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
    /* Sidebar styling */
     .sidebar {
-      background-color: #1e2124 !important;
+      background-color: #1e293b !important;
       min-height: 100vh;
     }
     .sidebar .nav-link {
