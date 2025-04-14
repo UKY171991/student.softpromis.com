@@ -37,186 +37,242 @@ if (strlen($_SESSION['alogin']) == "") {
   <link rel="stylesheet" href="includes/style.css">
     
     <style>
-        /* Table Styling */
+        /* Modern Table Styling */
         .table {
             border-collapse: separate;
             border-spacing: 0;
             width: 100%;
-            max-width: 100%;
-            background-color: #fff;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            border-radius: 8px;
-            overflow: hidden;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1.5rem;
         }
 
         .table thead th {
             background-color: #f8f9fa;
-            border-bottom: 2px solid #dee2e6;
-            color: #495057;
+            color: #344767;
             font-weight: 600;
+            font-size: 0.875rem;
             text-transform: uppercase;
-            font-size: 0.85rem;
-            padding: 1rem;
+            letter-spacing: 0.5px;
+            padding: 1rem 1.5rem;
+            border-bottom: 2px solid #edf2f7;
             vertical-align: middle;
         }
 
         .table tbody td {
-            padding: 1rem;
+            padding: 1rem 1.5rem;
             vertical-align: middle;
-            border-bottom: 1px solid #dee2e6;
+            border-bottom: 1px solid #edf2f7;
             color: #495057;
-            font-size: 0.9rem;
+            font-size: 0.875rem;
+        }
+
+        .table tbody tr:last-child td {
+            border-bottom: none;
         }
 
         .table tbody tr:hover {
-            background-color: #f8f9fa;
+            background-color: #f8fafc;
+            transition: all 0.2s ease;
         }
 
-        /* Button Styles */
-        .btn-custom {
-            background-color: #00c1d4;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-custom:hover {
-            background-color: #00a5b5;
-            transform: translateY(-1px);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            color: white;
-        }
-
-        /* Status Badges */
-        .badge-custom {
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            font-weight: 500;
-        }
-
-        .badge-pending {
-            background-color: #dc3545;
-            color: white;
-        }
-
-        .badge-partial {
-            background-color: #ffc107;
-            color: #000;
-        }
-
-        .badge-success {
-            background-color: #28a745;
-            color: white;
-        }
-
-        /* Card Styling */
-        .custom-card {
-            border: none;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .custom-card .card-header {
-            background-color: #fff;
-            border-bottom: 1px solid #dee2e6;
-            padding: 1.5rem;
-        }
-
-        .custom-card .card-body {
-            padding: 1.5rem;
-        }
-
-        /* DataTables Custom Styling */
-        .dataTables_wrapper .dataTables_length select {
-            padding: 0.375rem 2.25rem 0.375rem 0.75rem;
-            border-radius: 6px;
-            border: 1px solid #dee2e6;
-            background-color: #fff;
-        }
-
-        .dataTables_wrapper .dataTables_filter input {
-            padding: 0.375rem 0.75rem;
-            border-radius: 6px;
-            border: 1px solid #dee2e6;
-            background-color: #fff;
-        }
-
-        .dataTables_wrapper .dataTables_paginate .paginate_button {
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            margin: 0 2px;
-        }
-
-        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-            background: #00c1d4 !important;
-            border-color: #00c1d4 !important;
-            color: white !important;
-        }
-
-        /* Utility Classes */
-        .text-end {
-            text-align: right !important;
-        }
-
-        .text-center {
-            text-align: center !important;
-        }
-
-        /* Action Buttons */
+        /* Modern Button Styling */
         .btn-action {
-            padding: 0.4rem 0.8rem;
-            border-radius: 4px;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
             font-size: 0.875rem;
-            margin: 0 2px;
+            font-weight: 500;
             border: none;
-            transition: all 0.3s ease;
+            margin: 0 0.25rem;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
         }
 
         .btn-info {
-            background-color: #17a2b8;
+            background-color: #3b82f6;
             color: white;
+        }
+
+        .btn-info:hover {
+            background-color: #2563eb;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
         }
 
         .btn-warning {
-            background-color: #ffc107;
-            color: #000;
+            background-color: #f59e0b;
+            color: white;
+        }
+
+        .btn-warning:hover {
+            background-color: #d97706;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.2);
         }
 
         .btn-success {
-            background-color: #28a745;
+            background-color: #10b981;
             color: white;
+        }
+
+        .btn-success:hover {
+            background-color: #059669;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2);
         }
 
         .btn-danger {
-            background-color: #dc3545;
+            background-color: #ef4444;
             color: white;
         }
 
-        .btn-action:hover {
+        .btn-danger:hover {
+            background-color: #dc2626;
             transform: translateY(-1px);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.2);
         }
 
-        /* Card */
+        /* Card Styling */
         .card {
+            background: #ffffff;
             border: none;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
             margin-bottom: 2rem;
         }
 
         .card-header {
-            background-color: #fff;
-            border-bottom: 1px solid #dee2e6;
+            background-color: #ffffff;
+            border-bottom: 1px solid #edf2f7;
             padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-header h5 {
+            color: #344767;
+            font-weight: 600;
+            margin: 0;
         }
 
         .card-body {
             padding: 1.5rem;
+        }
+
+        /* DataTable Customization */
+        .dataTables_wrapper .dataTables_length select {
+            padding: 0.5rem 2rem 0.5rem 1rem;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+            background-color: #fff;
+            color: #4b5563;
+            font-size: 0.875rem;
+        }
+
+        .dataTables_wrapper .dataTables_filter input {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+            background-color: #fff;
+            color: #4b5563;
+            font-size: 0.875rem;
+            width: 250px;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 0.5rem 1rem;
+            margin: 0 2px;
+            border-radius: 6px;
+            border: none;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+            background: #3b82f6 !important;
+            border: none !important;
+            color: white !important;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+            background: #60a5fa !important;
+            border: none !important;
+            color: white !important;
+        }
+
+        /* Status Badge Styling */
+        .badge {
+            padding: 0.5em 0.75em;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border-radius: 6px;
+        }
+
+        .badge-success {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+
+        .badge-warning {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-danger {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+
+        /* Responsive Table */
+        .table-responsive {
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        /* Search Input Focus */
+        .dataTables_wrapper .dataTables_filter input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        /* Table Header Sort Icons */
+        table.dataTable thead .sorting:after,
+        table.dataTable thead .sorting_asc:after,
+        table.dataTable thead .sorting_desc:after {
+            opacity: 0.5;
+        }
+
+        /* Checkbox Styling */
+        .checkbox_list {
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+            border: 2px solid #e2e8f0;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .checkbox_list:checked {
+            background-color: #3b82f6;
+            border-color: #3b82f6;
+        }
+
+        .checkbox_list:checked::after {
+            content: '✓';
+            position: absolute;
+            color: white;
+            font-size: 12px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
         }
     </style>
 </head>
