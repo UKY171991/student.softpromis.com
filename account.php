@@ -84,7 +84,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
    /* Sidebar styling */
     .sidebar {
-      background-color: #1e293b !important;
+      background-color: #343a40;
       min-height: 100vh;
     }
     .sidebar .nav-link {
@@ -94,7 +94,7 @@ if (strlen($_SESSION['alogin']) == "") {
     }
     .sidebar .nav-link:hover, .sidebar .nav-link.active {
       color: #fff;
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: #495057;
       border-radius: 0.25rem;
     }
     .sidebar .sidebar-header {
@@ -107,17 +107,6 @@ if (strlen($_SESSION['alogin']) == "") {
         text-align: center;
     }
         
-    /* Active menu item */
-    .sidebar .nav-link.active {
-        background-color: rgba(255, 255, 255, 0.1);
-    }
-
-    /* Remove any conflicting background colors */
-    .left-sidebar,
-    #sidebar,
-    .sidebar-wrapper {
-        background-color: #1e2124 !important;
-    }
 </style>
 </head>
 <body>
@@ -128,6 +117,7 @@ if (strlen($_SESSION['alogin']) == "") {
     <div class="row">
       <!-- Sidebar -->
       <?php include('includes/left-sidebar-new.php'); ?>
+      <?php  include('includes/leftbar.php'); ?>
 
       <!-- Main Content -->
       <main class="col-lg-10 col-md-9 p-4">
