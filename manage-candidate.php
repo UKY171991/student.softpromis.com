@@ -193,6 +193,8 @@ if (strlen($_SESSION['alogin']) == "") {
             border-color: #dc3545;
             color: white;
         }
+<<<<<<< HEAD
+=======
 
         /* Main Table Styling */
         .table {
@@ -543,6 +545,7 @@ if (strlen($_SESSION['alogin']) == "") {
             border-color: #80bdff;
             box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
         }
+>>>>>>> ad50bbd6fd03dcc03063ac31208f82579ece5af1
     </style>
 </head>
 
@@ -587,6 +590,28 @@ if (strlen($_SESSION['alogin']) == "") {
                     <?php } ?>
 
                     <!-- Candidates Table -->
+<<<<<<< HEAD
+                    <div class="custom-card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Candidate Information</h5>
+                            <?php if(isset($_GET['batch'])){ ?>
+                                <a href="add-candidate-to-particular-batch.php?batchid=<?php echo $_GET['batch']; ?>" 
+                                   class="btn btn-success btn-custom">
+                                    <i class="fas fa-plus"></i> Add Candidate
+                                </a>
+                            <?php } else { ?>
+                                <a href="add-candidate.php" class="btn btn-success btn-custom">
+                                    <i class="fas fa-plus"></i> Add Candidate
+                                </a>
+                            <?php } ?>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="example" class="custom-table table-hover" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th class="num_list"><input type="checkbox" class="checkbox_list" id="selectAll"></th>
+=======
                     <div class="content-card">
                         <div class="card-top">
                             <h5 class="card-title">Manage Candidates</h5>
@@ -608,6 +633,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                 <thead>
                                     <tr>
                                         <th>#</th>
+>>>>>>> ad50bbd6fd03dcc03063ac31208f82579ece5af1
                                             <th>Enrollment ID</th>
                                             <th>Name</th>
                                             <th>Phone</th>
@@ -654,6 +680,46 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 <td><?php echo htmlentities($result->phonenumber); ?></td>
                                         <td><?php echo htmlentities($result->jobrollname); ?></td>
                                                 <td><?php echo htmlentities($result->gender); ?></td>
+<<<<<<< HEAD
+                                                <td><?php echo htmlentities($result->maritalstatus); ?></td>
+                                                <td><?php echo htmlentities($result->religion); ?></td>
+                                                <td><?php echo htmlentities($result->category); ?></td>
+                                                <td><?php echo htmlentities($result->village); ?></td>
+                                                <td><?php echo htmlentities($result->mandal); ?></td>
+                                                <td><?php echo htmlentities($result->district); ?></td>
+                                                <td><?php echo htmlentities($result->state); ?></td>
+                                                <td><?php echo htmlentities($result->pincode); ?></td>
+                                                <td><?php echo htmlentities($result->DateCreated); ?></td>
+                                                <td><?php echo htmlentities($result->DateModified); ?></td>
+                                                <td><?php echo htmlentities($result->tblbatch_id); ?></td>
+                                                <td><?php echo htmlentities($tc_name); ?></td>
+                                                <td><?php echo htmlentities($scheme_name); ?></td>
+                                                <td><?php echo htmlentities($sector_name); ?></td>
+                                                <td><?php echo htmlentities($batch_name); ?></td>
+                                                <td><?php echo $status; ?></td>
+                                                <td>
+                                                    <a href="edit-candidate.php?candidateid=<?php echo htmlentities($result->CandidateId); ?>" 
+                                                       class="btn btn-info btn-action" title="Edit">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                    <button class="btn btn-warning btn-action" 
+                                                            onClick='payment_status(<?php echo htmlentities($result->CandidateId); ?>)' 
+                                                            data-toggle="modal" data-target="#myModal" 
+                                                            title="Payment Status">
+                                                        <i class="fas fa-check"></i>
+                                                    </button>
+                                                    <button class="btn btn-success btn-action" 
+                                                            data-toggle="modal" 
+                                                            data-target="#myModal_<?php echo htmlentities($result->CandidateId); ?>" 
+                                                            title="View Images">
+                                                        <i class="fas fa-image"></i>
+                                                    </button>
+                                                    <button class="btn btn-danger btn-action delete" 
+                                                            id="del_<?php echo htmlentities($result->CandidateId); ?>" 
+                                                            title="Delete">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+=======
                                         <td><?php echo htmlentities($result->batch_name); ?></td>
                                         <td>
                                             <span class="payment-status <?php echo $statusClass; ?>">
@@ -684,6 +750,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </div>
+>>>>>>> ad50bbd6fd03dcc03063ac31208f82579ece5af1
                                                 </td>
                                             </tr>
                                     <?php 
@@ -759,6 +826,27 @@ if (strlen($_SESSION['alogin']) == "") {
         $('#example').DataTable({
             "pageLength": 10,
             "responsive": true,
+<<<<<<< HEAD
+            "scrollX": true,
+            "order": [[0, "asc"]],
+            "columnDefs": [
+                { className: "text-end", targets: [5] }
+            ],
+            "language": {
+                "search": "Search:",
+                "lengthMenu": "Show _MENU_ entries",
+                "info": "Showing _START_ to _END_ of _TOTAL_ entries"
+            },
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+        });
+
+        // Select All
+        $('#selectAll').on('click', function() {
+            $('.deleteCheckbox').prop('checked', this.checked);
+=======
             "info": true,
             "language": {
                 "search": "",
@@ -786,6 +874,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
         $('#selectAll').click(function() {
             $('table tbody input[type="checkbox"]').prop('checked', this.checked);
+>>>>>>> ad50bbd6fd03dcc03063ac31208f82579ece5af1
         });
 
         // Individual Delete
