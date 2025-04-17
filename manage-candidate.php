@@ -206,6 +206,12 @@ if (strlen($_SESSION['alogin']) == "") {
                                                     '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank" class="btn btn-danger btn-xs">Unpaid</a>';
 
 
+                                                    $p_checkSql = "SELECT total_fee, paid FROM payment WHERE candidate_id = :candidate_id";
+                                                    $p_checkQuery = $dbh->prepare($p_checkSql);
+                                                    $p_checkQuery->bindParam(':candidate_id', $candidate_id, PDO::PARAM_INT);
+                                                    $p_checkQuery->execute();
+                                                    $p_result = $p_checkQuery->fetchAll(PDO::FETCH_ASSOC);
+                                                    
                                                     $totalPendingAmount = 0;
                                                     foreach ($p_result as $row) {
                                                         $pending = ($row['total_fee'] ?? 0) - ($row['paid'] ?? 0);
