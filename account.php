@@ -541,7 +541,7 @@ if (strlen($_SESSION['alogin']) == "") {
                           ?>
 
 
-                        <tr>
+                        <tr> 
                           <td><?php echo $cnt++; ?></td>
                           <td>
                             <button type="button" class="enrollment-id" onClick='all_data(<?php echo htmlentities($result->CandidateId); ?>)' data-toggle="modal" data-target="#c_myModal">

@@ -144,6 +144,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                             <th>Scheme</th>
                                             <th>Sector</th>
                                             <th>Batch</th>
+                                            <th>Balance</th>
                                             <th>Payment</th>
                                             <th>Action</th>
                                         </tr>
@@ -203,6 +204,15 @@ if (strlen($_SESSION['alogin']) == "") {
                                                         '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank" class="btn btn-success btn-xs">Paid</a>' : 
                                                         '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank" class="btn btn-warning btn-xs">Pending</a>') : 
                                                     '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank" class="btn btn-danger btn-xs">Unpaid</a>';
+
+
+                                                    $totalPendingAmount = 0;
+                                                    foreach ($p_result as $row) {
+                                                        $pending = ($row['total_fee'] ?? 0) - ($row['paid'] ?? 0);
+                                                        if ($pending > 0) {
+                                                            $totalPendingAmount += $pending;
+                                                        }
+                                                    }     
                                         ?>
                                             <tr>
                                                 <td class="num_list"><input type="checkbox" class="deleteCheckbox checkbox_list" value="<?php echo htmlentities($result->CandidateId); ?>"><?php echo htmlentities($cnt); ?></td>
@@ -231,6 +241,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 <td><?php echo htmlentities($scheme_name); ?></td>
                                                 <td><?php echo htmlentities($sector_name); ?></td>
                                                 <td><?php echo htmlentities($batch_name); ?></td>
+                                                <td><?php echo $totalPendingAmount; ?></td>
                                                 <td><?php echo $status; ?></td>
                                                 <td>
                                                     <a href="edit-candidate.php?candidateid=<?php echo htmlentities($result->CandidateId); ?>" class="btn btn-info btn-xs btn-action" title="Edit"><i class="fas fa-edit"></i></a>
