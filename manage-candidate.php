@@ -212,6 +212,8 @@ if (strlen($_SESSION['alogin']) == "") {
                                                     $p_checkQuery->execute();
                                                     $p_result = $p_checkQuery->fetchAll(PDO::FETCH_ASSOC);
 
+                                                    print_r($p_result); die;
+
                                                     $totalPendingAmount = 0;
                                                     foreach ($p_result as $row) {
                                                         $pending = ($row['total_fee'] ?? 0) - ($row['paid'] ?? 0);
