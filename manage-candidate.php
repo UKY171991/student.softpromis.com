@@ -211,7 +211,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                     $p_checkQuery->bindParam(':candidate_id', $candidate_id, PDO::PARAM_INT);
                                                     $p_checkQuery->execute();
                                                     $p_result = $p_checkQuery->fetchAll(PDO::FETCH_ASSOC);
-                                                    
+
                                                     $totalPendingAmount = 0;
                                                     foreach ($p_result as $row) {
                                                         $pending = ($row['total_fee'] ?? 0) - ($row['paid'] ?? 0);
@@ -407,7 +407,7 @@ if (strlen($_SESSION['alogin']) == "") {
                 'colvis'
             ],
             columnDefs: [
-                { targets: [0, 1, 2, 3, 4, 26, 27], visible: true },
+                { targets: [0, 1, 2, 3, 4, 26, 27,28], visible: true },
                 { targets: '_all', visible: false },
                 { targets: -1, orderable: false, searchable: false }
             ],
