@@ -94,7 +94,7 @@ if (isset($_POST['login'])) {
 </head>
 <body>
     <div class="login-container">
-        <h4><i class="fas fa-user-lock"></i> Admin Login Testing</h4>
+        <h4><i class="fas fa-user-lock"></i> Admin Login</h4>
         <form method="post">
             <div class="mb-3">
                 <input type="text" name="username" class="form-control" placeholder="Enter Username" required>
