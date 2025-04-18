@@ -774,12 +774,15 @@ if (strlen($_SESSION['alogin']) == "") {
                                                                 }
                                                                  
                                                                  ?>
+
+                                                            <?php if($row['paid'] !=0){ ?>
                                                             
                                                             <tr>
                                                                 <td><b>Paid On :<?php echo htmlspecialchars($row['payment_mode']); ?> </b></td>
                                                                 <td><b><?=date("M d, Y", strtotime($row['created']))?></b></td>
                                                                 <td class="text-right"><b><?php echo htmlspecialchars($row['paid']); ?></b></td>
                                                             </tr>
+                                                            <?php } ?>
                                                             <?php endforeach; ?>
                                                         <?php endif ?>
                                                         <tr>
