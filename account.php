@@ -530,9 +530,9 @@ if (strlen($_SESSION['alogin']) == "") {
                                 $payment = $payment_query->fetch(PDO::FETCH_ASSOC);
                                 $status = $payment ? 
                                     ($payment['paid'] == $payment['total_fee'] ? 
-                                        '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank" class="btn btn-success btn-xs">Paid</a>' : 
-                                        '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank" class="badge-pending">Pending</a>') : 
-                                    '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank" class="btn btn-danger btn-xs">Unpaid</a>';
+                                        '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank" class="btn btn-success btn-sm">Paid</a>' : 
+                                        '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank" class="btn btn-warning btn-sm">Pending</a>') : 
+                                    '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank" class="btn btn-danger btn-sm">Unpaid</a>';
 
                         ?>
 
@@ -567,6 +567,7 @@ if (strlen($_SESSION['alogin']) == "") {
                           <td class="text-end"><?php echo number_format($totalPendingAmount, 2); ?></td>
                           <td>
                             <?php
+                            /*
                               if (count($p_result) == 0) {
                                 echo '<span class="badge-pending">Pending</span>';
                               } elseif ($p_result[0]['paid'] != $p_result[0]['total_fee']) {
@@ -574,6 +575,7 @@ if (strlen($_SESSION['alogin']) == "") {
                               } else {
                                 echo '<span class="badge-paid">Paid</span>';
                               }
+                                */
                             ?>
                             <?=$status?>
                           </td>
