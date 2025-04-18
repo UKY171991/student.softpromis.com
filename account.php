@@ -521,6 +521,19 @@ if (strlen($_SESSION['alogin']) == "") {
                               $jobrollname = $result4[0]['jobrollname'] ?? '';
 
                               if (count($p_result) == 0 || $p_result[0]['paid'] != $p_result[0]['total_fee']) {
+
+
+                                $payment_sql = "SELECT paid, total_fee FROM payment WHERE candidate_id = :cid";
+                                $payment_query = $dbh->prepare($payment_sql);
+                                $payment_query->bindParam(':cid', $result->CandidateId, PDO::PARAM_INT);
+                                $payment_query->execute();
+                                $payment = $payment_query->fetch(PDO::FETCH_ASSOC);
+                                $status = $payment ? 
+                                    ($payment['paid'] == $payment['total_fee'] ? 
+                                        '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank" class="btn btn-success btn-xs">Paid</a>' : 
+                                        '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank" class="btn btn-warning btn-xs">Pending</a>') : 
+                                    '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank" class="btn btn-danger btn-xs">Unpaid</a>';
+
                         ?>
 
 
@@ -562,6 +575,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                 echo '<span class="badge-paid">Paid</span>';
                               }
                             ?>
+                            <?=$status?>
                           </td>
                           <td>
                             <a href="edit-candidate.php?candidateid=<?php echo htmlentities($result->CandidateId); ?>" 
