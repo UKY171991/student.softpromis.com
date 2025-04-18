@@ -531,7 +531,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                 $status = $payment ? 
                                     ($payment['paid'] == $payment['total_fee'] ? 
                                         '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank" class="btn btn-success btn-xs">Paid</a>' : 
-                                        '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank" class="btn btn-warning btn-xs">Pending</a>') : 
+                                        '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank" class="badge-pending">Pending</a>') : 
                                     '<a href="payment.php?last_id='.$result->CandidateId.'" target="_blank" class="btn btn-danger btn-xs">Unpaid</a>';
 
                         ?>
