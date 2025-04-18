@@ -208,11 +208,11 @@ if (strlen($_SESSION['alogin']) == "") {
 
                                                     $p_checkSql = "SELECT total_fee, paid FROM payment WHERE candidate_id = :candidate_id";
                                                     $p_checkQuery = $dbh->prepare($p_checkSql);
-                                                    $p_checkQuery->bindParam(':candidate_id', $candidate_id, PDO::PARAM_INT);
+                                                    $p_checkQuery->bindParam(':candidate_id', $result->CandidateId, PDO::PARAM_INT);
                                                     $p_checkQuery->execute();
                                                     $p_result = $p_checkQuery->fetchAll(PDO::FETCH_ASSOC);
 
-                                                    print_r($p_result); die;
+                                                    print_r($p_result);
 
                                                     $totalPendingAmount = 0;
                                                     foreach ($p_result as $row) {
