@@ -224,7 +224,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                         ?>
                                             <tr>
                                                 <td class="num_list"><input type="checkbox" class="deleteCheckbox checkbox_list" value="<?php echo htmlentities($result->CandidateId); ?>"><?php echo htmlentities($cnt); ?></td>
-                                                <td><button class="btn btn-info btn-xs" onclick="all_data(<?php echo htmlentities($result->CandidateId); ?>)" data-bs-toggle="modal" data-bs-target="#c_myModal"><?php echo htmlentities($result->enrollmentid); ?></button></td>
+                                                <td><button class="btn btn-info btn-sm" onclick="all_data(<?php echo htmlentities($result->CandidateId); ?>)" data-bs-toggle="modal" data-bs-target="#c_myModal"><?php echo htmlentities($result->enrollmentid); ?></button></td>
                                                 <td><?php echo htmlentities($result->candidatename); ?></td>
                                                 <td><?php echo htmlentities($result->phonenumber); ?></td>
                                                 <td><?php echo htmlentities($jobrollname); ?></td>
