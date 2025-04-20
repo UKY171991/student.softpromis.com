@@ -1732,6 +1732,13 @@ select.form-control {
         outline: none;
     }
 
+    // Improve placeholder text visibility
+    &:invalid,
+    &:required:invalid {
+        color: #333333;  // Same as regular text for consistency
+        opacity: 0.8;    // Slightly dimmed but still very readable
+    }
+
     option {
         background-color: #ffffff;
         color: #333333;
