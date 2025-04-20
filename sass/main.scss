@@ -1658,6 +1658,29 @@ div.tagsinput span.tag a {
         padding-left: 0;
     }
 }
+.form-control {
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    &:focus {
+        border-color: #66afe9;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+}
+
+select.form-control {
+    color: #333;
+    background-color: #fff;
+    option {
+        color: #333;
+        background-color: #fff;
+        padding: 8px;
+    }
+    &:focus {
+        border-color: #66afe9;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+}
 
 
 /*--------------------------------------------------------------
