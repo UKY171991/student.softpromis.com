@@ -302,14 +302,17 @@ if (strlen($_SESSION['alogin']) == "") {
                                         </div>
                                         <div class="col-md-4">
                                             <label for="qualification">Qualification <span style="color:red">*</span></label>
-                                            <select name="qualification" id="qualification" class="form-control" required>
-                                                <option value="">Select Qualification</option>
-                                                <option value="Below SSC">Below SSC</option>
-                                                <option value="SSC">SSC</option>
-                                                <option value="Intermediate">Intermediate</option>
-                                                <option value="Graduation">Graduation</option>
-                                                <option value="Post Graduate">Post Graduate</option>
-                                            </select>
+                                            <div class="select-wrapper">
+                                                <select name="qualification" id="qualification" class="form-control" required>
+                                                    <option value="">Select Qualification</option>
+                                                    <option value="Below SSC">Below SSC</option>
+                                                    <option value="SSC">SSC</option>
+                                                    <option value="Intermediate">Intermediate</option>
+                                                    <option value="Graduation">Graduation</option>
+                                                    <option value="Post Graduate">Post Graduate</option>
+                                                </select>
+                                                <span class="dropdown-btn"></span>
+                                            </div>
                                         </div>
                                         <div class="col-md-4">
                                             <label for="phonenumber">Phone Number <span style="color:red">*</span></label>
@@ -349,30 +352,36 @@ if (strlen($_SESSION['alogin']) == "") {
                                         </div>
                                         <div class="col-md-4">
                                             <label for="religion">Religion <span style="color:red">*</span></label>
-                                            <select id="religion" name="religion" class="form-control" required>
-                                                <option selected>Select</option>
-                                                <option>Hindu</option>
-                                                <option>Muslim</option>
-                                                <option>Christian</option>
-                                                <option>Other</option>
-                                            </select>
+                                            <div class="select-wrapper">
+                                                <select id="religion" name="religion" class="form-control" required>
+                                                    <option selected>Select</option>
+                                                    <option>Hindu</option>
+                                                    <option>Muslim</option>
+                                                    <option>Christian</option>
+                                                    <option>Other</option>
+                                                </select>
+                                                <span class="dropdown-btn"></span>
+                                            </div>
                                         </div>
                                         <div class="col-md-4">
                                             <label for="category">Category</label>
-                                            <select id="category" name="category" class="form-control">
-                                                <option selected>Select</option>
-                                                <option>BC-A</option>
-                                                <option>BC-B</option>
-                                                <option>BC-C</option>
-                                                <option>BC-D</option>
-                                                <option>BC-E</option>
-                                                <option>EBC</option>
-                                                <option>Minorities</option>
-                                                <option>Other</option>
-                                                <option>OC</option>
-                                                <option>SC</option>
-                                                <option>ST</option>
-                                            </select>
+                                            <div class="select-wrapper">
+                                                <select id="category" name="category" class="form-control">
+                                                    <option selected>Select</option>
+                                                    <option>BC-A</option>
+                                                    <option>BC-B</option>
+                                                    <option>BC-C</option>
+                                                    <option>BC-D</option>
+                                                    <option>BC-E</option>
+                                                    <option>EBC</option>
+                                                    <option>Minorities</option>
+                                                    <option>Other</option>
+                                                    <option>OC</option>
+                                                    <option>SC</option>
+                                                    <option>ST</option>
+                                                </select>
+                                                <span class="dropdown-btn"></span>
+                                            </div>
                                         </div>
                                         <div class="col-md-4">
                                             <label for="village">Village <span style="color:red">*</span></label>
@@ -384,61 +393,66 @@ if (strlen($_SESSION['alogin']) == "") {
                                             <input type="text" name="mandal" class="form-control" id="mandal"
                                                 placeholder="Mandal" required>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="form-group col-md-6">
                                             <label for="district">District <span style="color:red">*</span></label>
-                                            <select id="district" name="district" class="form-control" required>
-                                                <option selected>Select</option>
-                                                <option>Alluri Sitharama Raju</option>
-                                                <option>Anakapalli</option>
-                                                <option>Anantapur</option>
-                                                <option>Annamayya</option>
-                                                <option>Bapatla</option>
-                                                <option>Chittoor</option>
-                                                <option>Dr. B. R. Ambedkar</option>
-                                                <option>East Godavari</option>
-                                                <option>Eluru</option>
-                                                <option>Guntur</option>
-                                                <option>Kakinada</option>
-                                                <option>Krishna</option>
-                                                <option>Kurnool</option>
-                                                <option>Nandyal</option>
-                                                <option>NTR</option>
-                                                <option>Palnadu</option>
-                                                <option>Parvathipuram Manyam</option>
-                                                <option>Prakasam</option>
-                                                <option>Sri Potti Sriramulu Nellore</option>
-                                                <option>Sri Sathya Sai</option>
-                                                <option>Srikakulam</option>
-                                                <option>Tirupati</option>
-                                                <option>Visakhapatnam</option>
-                                                <option>Vizianagaram</option>
-                                                <option>West Godavari</option>
-                                                <option>YSR (Kadapa)</option>
-                                            </select>
+                                            <div class="select-wrapper">
+                                                <select id="district" name="district" class="form-control" required>
+                                                    <option selected>Select</option>
+                                                    <option>Alluri Sitharama Raju</option>
+                                                    <option>Anakapalli</option>
+                                                    <option>Anantapur</option>
+                                                    <option>Annamayya</option>
+                                                    <option>Bapatla</option>
+                                                    <option>Chittoor</option>
+                                                    <option>Dr. B. R. Ambedkar</option>
+                                                    <option>East Godavari</option>
+                                                    <option>Eluru</option>
+                                                    <option>Guntur</option>
+                                                    <option>Kakinada</option>
+                                                    <option>Krishna</option>
+                                                    <option>Kurnool</option>
+                                                    <option>Nandyal</option>
+                                                    <option>NTR</option>
+                                                    <option>Palnadu</option>
+                                                    <option>Parvathipuram Manyam</option>
+                                                    <option>Prakasam</option>
+                                                    <option>Sri Potti Sriramulu Nellore</option>
+                                                    <option>Sri Sathya Sai</option>
+                                                    <option>Srikakulam</option>
+                                                    <option>Tirupati</option>
+                                                    <option>Visakhapatnam</option>
+                                                    <option>Vizianagaram</option>
+                                                    <option>West Godavari</option>
+                                                    <option>YSR (Kadapa)</option>
+                                                </select>
+                                                <span class="dropdown-btn"></span>
+                                            </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="form-group col-md-4">
                                             <label for="state">State <span style="color:red">*</span></label>
-                                            <select id="state" name="state" class="form-control" required>
-                                                <option selected>Select</option>
-                                                <option>Andhra Pradesh</option>
-                                                <option>Orissa</option>
-                                                <option>Telangana</option>
-                                                <option>Delhi</option>
-                                                <option>Jammu & Kashmir</option>
-                                                <option>Kerala</option>
-                                                <option>Arunachal Pradesh</option>
-                                                <option>Maharastra</option>
-                                                <option>Goa</option>
-                                                <option>Rajastan</option>
-                                                <option>Gujarat</option>
-                                                <option>Uttarakand</option>
-                                                <option>Uttar Pradesh</option>
-                                                <option>Assam</option>
-                                                <option>Tiruvanantapur</option>
-                                                <option>Meghalaya</option>
-                                                <option>Sikkim</option>
-
-                                            </select>
+                                            <div class="select-wrapper">
+                                                <select id="state" name="state" class="form-control" required>
+                                                    <option selected>Select</option>
+                                                    <option>Andhra Pradesh</option>
+                                                    <option>Orissa</option>
+                                                    <option>Telangana</option>
+                                                    <option>Delhi</option>
+                                                    <option>Jammu & Kashmir</option>
+                                                    <option>Kerala</option>
+                                                    <option>Arunachal Pradesh</option>
+                                                    <option>Maharastra</option>
+                                                    <option>Goa</option>
+                                                    <option>Rajastan</option>
+                                                    <option>Gujarat</option>
+                                                    <option>Uttarakand</option>
+                                                    <option>Uttar Pradesh</option>
+                                                    <option>Assam</option>
+                                                    <option>Tiruvanantapur</option>
+                                                    <option>Meghalaya</option>
+                                                    <option>Sikkim</option>
+                                                </select>
+                                                <span class="dropdown-btn"></span>
+                                            </div>
                                         </div>
                                         <div class="col-md-2">
                                             <label for="pincode">Pin Code <span style="color:red">*</span></label>

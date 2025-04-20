@@ -1545,38 +1545,80 @@ code:not(.language-html) {
 # FORMS
 --------------------------------------------------------------*/
 .form-group {
-    &.left-icon {
-        position: relative;
-        .fa {
-            line-height: 34px;
-        }
-        .form-control {
-            padding-left: 42.5px;
-        }
-        .form-left-icon {
-            position: absolute;
-            left: 15px;
-            top: 25px;
-            &.icon-lg {
-                top: 30px;
-            }
-            &.icon-sm {
-                top: 22px;
-            }
+    position: relative;
+    
+    select.form-control {
+        padding-right: 30px; // Space for the dropdown button
+    }
+
+    &::after {
+        content: '\f078'; // FontAwesome chevron-down icon
+        font-family: 'FontAwesome';
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #666;
+        pointer-events: none;
+        font-size: 12px;
+        margin-top: 8px;
+    }
+
+    // For select elements with required asterisk
+    label + select.form-control + &::after {
+        margin-top: 0;
+    }
+}
+
+// Custom dropdown button style
+.select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+
+    .dropdown-btn {
+        position: absolute;
+        right: 1px;
+        top: 1px;
+        bottom: 1px;
+        width: 25px;
+        border: none;
+        background: #f8f9fa;
+        border-left: 1px solid #ddd;
+        border-radius: 0 3px 3px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+        color: #666;
+
+        &::after {
+            content: '\f078';
+            font-family: 'FontAwesome';
+            font-size: 12px;
         }
     }
-    &.has-feedback {
-        .fa {
-            line-height: 34px;
-        }
+
+    select:focus + .dropdown-btn {
+        background: #e9ecef;
+        border-left-color: #4a90e2;
     }
-    input, textarea, select {
-        &:focus {
-            box-shadow: none;
-            border-color: $black-color;
+}
+
+// Enhance select elements
+select.form-control {
+    &::-ms-expand {
+        display: none;
+    }
+
+    option {
+        padding: 10px;
+        &:hover {
+            background-color: #f8f9fa;
         }
     }
 }
+
 .form-horizontal {
     .form-group {
         &.left-icon {
