@@ -470,6 +470,10 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 placeholder="Enter Full Name" value="<?=$results['candidatename']; ?>">
                                         </div>
 
+                                        <input type="hidden" name="phone" class="form-control"
+                                                id="candidatename" required="required"
+                                                placeholder="Enter Full Name" value="<?=$results['phonenumber']; ?>">
+
                                         <div class="form-group col-md-6">
                                             <label for="fathername">Father Name</label>
                                             <input type="text" name="fathername" required="required"
