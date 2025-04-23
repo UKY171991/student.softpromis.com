@@ -60,6 +60,9 @@ if (strlen($_SESSION['alogin']) == "") {
     $payment_mode = $_POST['payment_mode'];
     $created_date = $_POST['created_at'];
 
+    $name = $_POST['candidatename'];
+    $fathername = $_POST['fathername'];
+
     $date = DateTime::createFromFormat('d-m-Y', $created_date);
     $created_at = $date ? $date->format('Y-m-d') : null;
     $created = $date ? $date->format('Y-m-d') : null;
@@ -129,6 +132,56 @@ if (strlen($_SESSION['alogin']) == "") {
             } else {
                 echo "No record updated. Please check if candidate_id exists.";
             }
+
+            // inserting data in account 
+		
+            	
+            if($paid != 0){
+                // Include your database connection
+                include 'includes/account.php'; // $acc connection defined here
+                
+                // Sample or dynamic input values
+                $date = date('Y-m-d');
+                //$name = ''; // Fill from $_POST or leave blank if not used
+                $phone = ''; // Fill from $_POST or leave blank if not used
+                $description = $name;
+                $category = 'Student                  ';
+                $subcategory = 'Student Fees';
+                $amount = $paid;       // Example: 10000.00
+                $received = $paid;     // Example: 10000.00
+                $balance = 0;             // Can also calculate: $amount - $received
+                $student_id = $candidate_id; // Must be defined before
+                
+                // Prepare the INSERT query
+                $stmt = $acc->prepare("INSERT INTO income (
+                    date, name, phone, description, category, subcategory,
+                    amount, received, balance, created_at, updated_at, student_id
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW(), ?)");
+                
+                // Bind parameters
+                $stmt->bind_param(
+                    "ssssssddds",
+                    $date, $name, $phone, $description,
+                    $category, $subcategory, $amount, $received, $balance, $student_id
+                );
+                
+                // Execute
+                if ($stmt->execute()) {
+                  //  echo "✅ Income record inserted successfully!";
+                } else {
+                    echo "❌ Error inserting record: " . $stmt->error;
+                }
+                
+                // Close
+                $stmt->close();
+                $acc->close();
+            }
+
+
+		
+		
+		// end account section
+
         } else {
             //$balance = $total_fee-($_POST['paid']);
             $balance = $_POST['balance'];
@@ -170,6 +223,57 @@ if (strlen($_SESSION['alogin']) == "") {
 
 
             echo "Record inserted successfully. Last Insert ID: " . $lastInsertId;
+
+
+            // inserting data in account 
+		
+            	
+            if($paid != 0){
+                // Include your database connection
+                include 'includes/account.php'; // $acc connection defined here
+                
+                // Sample or dynamic input values
+                $date = date('Y-m-d');
+                //$name = ''; // Fill from $_POST or leave blank if not used
+                $phone = ''; // Fill from $_POST or leave blank if not used
+                $description = $name;
+                $category = 'Student                  ';
+                $subcategory = 'Student Fees';
+                $amount = $paid;       // Example: 10000.00
+                $received = $paid;     // Example: 10000.00
+                $balance = 0;             // Can also calculate: $amount - $received
+                $student_id = $candidate_id; // Must be defined before
+                
+                // Prepare the INSERT query
+                $stmt = $acc->prepare("INSERT INTO income (
+                    date, name, phone, description, category, subcategory,
+                    amount, received, balance, created_at, updated_at, student_id
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW(), ?)");
+                
+                // Bind parameters
+                $stmt->bind_param(
+                    "ssssssddds",
+                    $date, $name, $phone, $description,
+                    $category, $subcategory, $amount, $received, $balance, $student_id
+                );
+                
+                // Execute
+                if ($stmt->execute()) {
+                  //  echo "✅ Income record inserted successfully!";
+                } else {
+                    echo "❌ Error inserting record: " . $stmt->error;
+                }
+                
+                // Close
+                $stmt->close();
+                $acc->close();
+            }
+
+
+		
+		
+		// end account section
+
         }
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
