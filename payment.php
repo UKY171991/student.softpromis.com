@@ -62,6 +62,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
     $name = $_POST['candidatename'];
     $fathername = $_POST['fathername'];
+    $phone = $_POST['phone'];
 
     $date = DateTime::createFromFormat('d-m-Y', $created_date);
     $created_at = $date ? $date->format('Y-m-d') : null;
@@ -143,7 +144,7 @@ if (strlen($_SESSION['alogin']) == "") {
                 // Sample or dynamic input values
                 $date = date('Y-m-d');
                 //$name = ''; // Fill from $_POST or leave blank if not used
-                $phone = ''; // Fill from $_POST or leave blank if not used
+                //$phone = ''; // Fill from $_POST or leave blank if not used
                 $description = $name;
                 $category = 'Student                  ';
                 $subcategory = 'Student Fees';
@@ -235,7 +236,7 @@ if (strlen($_SESSION['alogin']) == "") {
                 // Sample or dynamic input values
                 $date = date('Y-m-d');
                 //$name = ''; // Fill from $_POST or leave blank if not used
-                $phone = ''; // Fill from $_POST or leave blank if not used
+                //$phone = ''; // Fill from $_POST or leave blank if not used
                 $description = $name;
                 $category = 'Student                  ';
                 $subcategory = 'Student Fees';
@@ -471,8 +472,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                         </div>
 
                                         <input type="hidden" name="phone" class="form-control"
-                                                id="candidatename" required="required"
-                                                placeholder="Enter Full Name" value="<?=$results['phonenumber']; ?>">
+                                                id="phone" required="required" value="<?=$results['phonenumber']; ?>">
 
                                         <div class="form-group col-md-6">
                                             <label for="fathername">Father Name</label>
