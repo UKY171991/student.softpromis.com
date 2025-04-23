@@ -13,11 +13,17 @@ if(isset($_POST['ids'])) {
     }
 
 
-    // Include database connection
+
+        // Include database connection
         include 'includes/account.php'; // This provides the $acc connection
 
-        // Get the student_id to delete — you can also use $_POST or $_GET
-        $student_id = $ids; //$policy_id; // Make sure this variable is set
+        // Make sure $ids is set
+        if (!isset($ids) || empty($ids)) {
+            echo "⚠️ No student ID provided for deletion.";
+            exit;
+        }
+
+        $student_id = $ids;
 
         // Prepare DELETE query
         $stmt = $acc->prepare("DELETE FROM income WHERE student_id = ?");
@@ -26,9 +32,9 @@ if(isset($_POST['ids'])) {
         // Execute
         if ($stmt->execute()) {
             if ($stmt->affected_rows > 0) {
-                echo "✅ Record with insurance ID $student_id deleted successfully.";
+                echo "✅ Record with student ID $student_id deleted successfully.";
             } else {
-                echo "⚠️ No record found with insurance ID $student_id.";
+                echo "⚠️ No record found with student ID $student_id.";
             }
         } else {
             echo "❌ Delete error: " . $stmt->error;
@@ -37,6 +43,7 @@ if(isset($_POST['ids'])) {
         // Close
         $stmt->close();
         $acc->close();
+
 
 
 
