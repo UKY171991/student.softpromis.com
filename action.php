@@ -11,7 +11,7 @@ if ($_POST["action"] == "Delete candidate") {
         include 'includes/account.php'; // This provides the $acc connection
 
         // Make sure $ids is set
-        if (!isset($ids) || empty($ids)) {
+        if (!isset($id) || empty($id)) {
             echo "⚠️ No student ID provided for deletion.";
             exit;
         }
