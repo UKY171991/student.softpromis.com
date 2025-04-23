@@ -137,7 +137,7 @@ if (strlen($_SESSION['alogin']) == "") {
             $lastInsertId = $dbh->lastInsertId();
             if ($lastInsertId) {
                 $msg = "Student info added successfully";
-                echo  '<script> setTimeout(function() { window.location.href = "payment.php?last_id='.$lastInsertId.'"; }, 1000); </script>';
+                echo  '<script> setTimeout(function() { window.location.href = "edit-candidate.php?candidateid='.$lastInsertId.'"; }, 1000); </script>';
             } else {
                 $error = "Something went wrong. Please try again";
             }
