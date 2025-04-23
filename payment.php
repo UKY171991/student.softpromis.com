@@ -6,6 +6,8 @@ if (strlen($_SESSION['alogin']) == "") {
     header("Location: index.php");
 } else { 
 
+    $msg ='';
+
     $last_id = $_GET['last_id'];
 
 
