@@ -226,7 +226,7 @@ if (strlen($_SESSION['alogin']) == "") {
             //echo "<script>window.location.href = window.location.href;</script>";
 
 
-            echo "Record inserted successfully. Last Insert ID: " . $lastInsertId;
+           // echo "Record inserted successfully. Last Insert ID: " . $lastInsertId;
 
 
             // inserting data in account 
