@@ -7,6 +7,7 @@ if (strlen($_SESSION['alogin']) == "") {
 } else { 
 
     $msg ='';
+    $error ='';
 
     $last_id = $_GET['last_id'];
 
