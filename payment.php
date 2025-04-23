@@ -162,7 +162,7 @@ if (strlen($_SESSION['alogin']) == "") {
                 if ($stmt->execute()) {
                   //  echo "✅ Income record inserted successfully!";
                 } else {
-                    echo "❌ Error inserting record: " . $stmt->error;
+                  //  echo "❌ Error inserting record: " . $stmt->error;
                 }
                 
                 // Close
@@ -175,7 +175,7 @@ if (strlen($_SESSION['alogin']) == "") {
                 //echo "Record updated successfully.";
 
                 echo "<script>alert('Payment  updated')</script>";
-                echo  '<script> setTimeout(function() { window.location.href = "manage-candidate.php"; }, 1000); </script>';
+               // echo  '<script> setTimeout(function() { window.location.href = "manage-candidate.php"; }, 1000); </script>';
                 //echo "<script>window.location.href = window.location.href;</script>";
             } else {
                 echo "No record updated. Please check if candidate_id exists.";
@@ -273,7 +273,7 @@ if (strlen($_SESSION['alogin']) == "") {
                 $acc->close();
             }
 
-           // echo  '<script> setTimeout(function() { window.location.href = "manage-candidate.php"; }, 1000); </script>';
+            echo  '<script> setTimeout(function() { window.location.href = "manage-candidate.php"; }, 1000); </script>';
 
 
 		
