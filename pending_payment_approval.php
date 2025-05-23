@@ -149,7 +149,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                     $query_p = $dbh->prepare($sql_p);
                                     $query_p->bindParam(':candidate_id', $candidate_id, PDO::PARAM_INT);
                                     $query_p->execute();
-                                    $results_p = $query_p->fetchAll(PDO::FETCH_OBJ);
+                                    $results_p = $query_p->fetch(PDO::FETCH_OBJ);
 
                                     $sql_c = "SELECT * from tblcandidate where CandidateId= '$candidate_id'";
                                     $query_c = $dbh->prepare($sql_c);
@@ -161,9 +161,9 @@ if (strlen($_SESSION['alogin']) == "") {
                         <td><?php echo htmlentities($cnt); ?></td>
                         <td><?php echo htmlentities($results_c[0]->enrollmentid); ?></td>
                         <td><?php echo htmlentities($results_c[0]->candidatename); ?></td>
-                        <td class="text-end"><?php echo number_format($results_p[0]->total_fee, 2); ?></td>
-                        <td class="text-end"><?php echo number_format($results_p[0]->paid, 2); ?></td>
-                        <td class="text-end"><?php echo number_format($results_p[0]->balance, 2); ?></td>
+                        <td class="text-end"><?php echo number_format($results_p->total_fee, 2); ?></td>
+                        <td class="text-end"><?php echo number_format($results_p->paid, 2); ?></td>
+                        <td class="text-end"><?php echo number_format($results_p->balance, 2); ?></td>
                         <td class="text-end"><?php echo number_format($result->paid, 2); ?></td>
                         <td><?php echo date("d-m-Y", strtotime($result->created)); ?></td>
                         <td class="text-center">
