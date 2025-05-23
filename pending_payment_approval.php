@@ -145,13 +145,11 @@ if (strlen($_SESSION['alogin']) == "") {
                                 foreach ($results as $result) { 
                                     $candidate_id = $result->candidate_id;
 
-
-                                     $sql_p = "SELECT * from payment where added_type= 2";
-                                     $query_p = $dbh->prepare($sql_p);
-                                     $query_p->execute();
-                                     $results_p = $query_p->fetchAll(PDO::FETCH_OBJ);
-
-                                
+                                    $sql_p = "SELECT * from payment where candidate_id = :candidate_id AND added_type = 2";
+                                    $query_p = $dbh->prepare($sql_p);
+                                    $query_p->bindParam(':candidate_id', $candidate_id, PDO::PARAM_INT);
+                                    $query_p->execute();
+                                    $results_p = $query_p->fetchAll(PDO::FETCH_OBJ);
 
                                     $sql_c = "SELECT * from tblcandidate where CandidateId= '$candidate_id'";
                                     $query_c = $dbh->prepare($sql_c);
