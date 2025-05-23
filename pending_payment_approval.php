@@ -81,7 +81,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
       <!-- Main Content -->
       <main class="col-lg-10 col-md-9 p-4">
-        <h2 class="mb-4">Pending Approval</h2>
+        <h2 class="mb-4">Pending Approval 1</h2>
       
 
       <div class="card">
