@@ -123,6 +123,7 @@ if (strlen($_SESSION['alogin']) == "") {
                             <th>#</th>
                             <th>Enrollment ID</th>
                             <th>Name</th>
+                            <th>Job Roll</th>
                             <th class="text-end">Total Fee</th>
                             <th class="text-end">Paid</th>
                             <th class="text-end">Balance</th>
@@ -156,11 +157,24 @@ if (strlen($_SESSION['alogin']) == "") {
                                     $query_c->execute();
                                     $results_c = $query_c->fetchAll(PDO::FETCH_OBJ);
 
+                                    // Fetch job roll name
+                                    $jobroll_id = $results_c[0]->jobroll;
+                                    $jobroll_name = '';
+                                    if ($jobroll_id) {
+                                        $sql_j = "SELECT JobRoleName FROM tbljobroll WHERE JobrollId = :jobroll_id";
+                                        $query_j = $dbh->prepare($sql_j);
+                                        $query_j->bindParam(':jobroll_id', $jobroll_id, PDO::PARAM_INT);
+                                        $query_j->execute();
+                                        $result_j = $query_j->fetch(PDO::FETCH_OBJ);
+                                        $jobroll_name = $result_j ? $result_j->JobRoleName : '';
+                                    }
+
                         ?>
                     <tr>
                         <td><?php echo htmlentities($cnt); ?></td>
                         <td><?php echo htmlentities($results_c[0]->enrollmentid); ?></td>
                         <td><?php echo htmlentities($results_c[0]->candidatename); ?></td>
+                        <td><?php echo htmlentities($jobroll_name); ?></td>
                         <td class="text-end"><?php echo number_format($results_p->total_fee, 2); ?></td>
                         <td class="text-end"><?php echo number_format($results_p->paid, 2); ?></td>
                         <td class="text-end"><?php echo number_format($results_p->balance, 2); ?></td>
